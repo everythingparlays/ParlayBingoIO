@@ -1,4 +1,5 @@
 import SVGType from "types/SVGType";
+import React from "react";
 
 export default function Medal({ color } : SVGType) {
   return (

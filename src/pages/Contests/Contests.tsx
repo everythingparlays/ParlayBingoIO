@@ -51,7 +51,7 @@ export default function Contests() {
     }
   }, [contests])
 
-  const fetchContests = async (startDate = null, endDate = null, fetchUpcoming = true) => {
+  const fetchContests = async (startDate: Date | null = null, endDate: Date | null = null, fetchUpcoming: boolean = true) => {
     setLoading(true);
   
     try {
@@ -64,13 +64,13 @@ export default function Contests() {
         }
   
         // Use the getContestDates function to get the start and end dates for the events
-        const { contestStart, contestEnd } = getContestDates(contest.allowedBetEvents.map(event => ({
+        const { contestStart, contestEnd } = getContestDates(contest.allowedBetEvents.map((event: { eventTime: string | number | Date }) => ({
           ...event,
           eventTime: new Date(event.eventTime) // Ensure eventTime is a Date object
         })));
   
         // Determine if the contest falls within the selected month
-        const isWithinSelectedMonth = contestStart >= startDate && contestStart <= endDate;
+        const isWithinSelectedMonth = startDate !== null && endDate !== null && contestStart >= startDate && contestStart <= endDate;
   
         // Determine if the contest should be considered upcoming or past
         if (fetchUpcoming) {
@@ -272,7 +272,7 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
   //let totalPrize = getTotalPrizeAmount(prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
   let totalPrize = contest.entryFee * contest.maxParticipants * ((100-contest.pctRake)/100);
   
-  function formatDate(date) {
+  function formatDate(date: { getFullYear: () => any; getMonth: () => number; getDate: () => { (): any; new(): any; toString: { (): string; new(): any } } }) {
     return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
   }
   return (
