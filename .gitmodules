@@ -1,0 +1,3 @@
+[submodule "pb-shared-deps"]
+path = src/shared-deps
+url = https://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@github.com/everythingparlays/pb-shared-deps.git
