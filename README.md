@@ -1,3 +1,2 @@
-# Parlay Bingo Fiverr Project
-
-By Pierce Martin
+# ParlayBingoIO
+Website for upcoming parlay bingo events and leaderboards
