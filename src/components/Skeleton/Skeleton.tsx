@@ -1,4 +1,5 @@
 import styles from './Skeleton.module.css'
+import React from 'react'
 
 export default function Skeleton(props : SkeletonType & React.CSSProperties) {
   const { backgroundColor, shineColor, borderRadius } = props

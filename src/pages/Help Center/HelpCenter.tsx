@@ -6,6 +6,7 @@ import Profile from 'components/svg/Profile'
 import Question from 'components/svg/Question'
 import Rules from 'components/svg/Rules'
 import Mail from 'components/svg/Mail'
+import React from 'react'
 
 export default function HelpCenter() {
   return (
