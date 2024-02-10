@@ -1,7 +1,5 @@
 import React from 'react'
-import { Amplify } from '@aws-amplify/core';
 //import '@aws-amplify/ui-react/styles.css';
-import { API } from '@aws-amplify/api';
 
 import Landing from 'pages/Landing/Landing'
 import { Route, Routes, useLocation } from 'react-router-dom'
