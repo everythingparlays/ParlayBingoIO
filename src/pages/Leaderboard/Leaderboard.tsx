@@ -1,18 +1,18 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import styles from './styles.module.css'
 import { useEffect, useState } from "react"
-import { SponsoredContest } from "shared-deps/interfaces/Contest"
-import { Board } from "shared-deps/interfaces/Board"
+import { SponsoredContest } from "../../shared-deps/interfaces/Contest"
+import { Board } from "../../shared-deps/interfaces/Board"
 import getContest from "utils/getContest"
 import getBoardsByContest from "utils/getBoardsByContest"
 import { DeepPartial } from "types/_dev"
-import { PrizeStructureItem, PrizeType, getPrizeItems, getTotalPrizeAmount } from "shared-deps/interfaces/PrizeStructures"
+import { PrizeStructureItem, PrizeType, getPrizeItems, getTotalPrizeAmount } from "../../shared-deps/interfaces/PrizeStructures"
 import Star from "components/svg/Star"
-import { Entity } from "shared-deps/interfaces/Entity"
-import { BettingProp } from "shared-deps/interfaces/BettingProp"
+import { Entity } from "../../shared-deps/interfaces/Entity"
+import { BettingProp } from "../../shared-deps/interfaces/BettingProp"
 import formatNumber from "utils/formatNumber"
 import BarChart from "components/svg/BarChart"
-import { BetEvent, TeamBetEvent } from "shared-deps/interfaces/BetEvent"
+import { BetEvent, TeamBetEvent } from "../../shared-deps/interfaces/BetEvent"
 import Alert from "components/svg/Alert"
 import Dollar from "components/svg/Dollar"
 import FilledBarChart from "components/svg/FilledBarChart"
@@ -44,7 +44,7 @@ export default function Leaderboard() {
 
     // Simulate fetching time so you can see the skeletons for now :)
     setTimeout(() => {
-      setContest(c)
+      setContest(c as SponsoredContest)
       setBoards(b)
     }, 1)
   }
@@ -352,7 +352,7 @@ export default function Leaderboard() {
                   <>
                     {/* Just create a skeleton for 1-6, weird syntax */}
                     {/* @ts-ignore */}
-                    {[0,0,0,0,0,0].map((p, index) => {
+                    {[0,0,0,0,0,0].map((_p, index) => {
                       return (
                         <span 
                           key={index}
@@ -428,14 +428,16 @@ export default function Leaderboard() {
                 </>
               ) : (
                 <>
-                  {contest?.allowedBetEvents?.map((e: BetEvent, index: string | number | null | undefined) => {
-                    return (
-                      <AvailableGame 
-                        event={e as BetEvent}
-                        key={index}
-                      />
-                    )
-                  })}
+                  {
+                    (contest?.allowedBetEvents as BetEvent[]).map((event: BetEvent, index: number) => {
+                      return (
+                        <AvailableGame 
+                          event={event}
+                          key={index}
+                        />
+                      )
+                    })
+                  }
                 </>
               )}
             </ul>

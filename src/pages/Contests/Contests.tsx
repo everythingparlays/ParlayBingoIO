@@ -8,11 +8,10 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import 'calendar.css'
 import getDisplayDate from 'utils/getDisplayDate'
-import { Contest, SponsoredContest, getContestDates } from 'shared-deps/interfaces/Contest'
+import { Contest, SponsoredContest, getContestDates } from '../../shared-deps/interfaces/Contest'
 import Calendar from 'components/svg/Calendar'
 import LocationArrow from 'components/svg/LocationArrow'
-import getAvailableContests from 'utils/getAvailableContests'
-import { PrizeType, getPrizeItems, getTotalPrizeAmount } from 'shared-deps/interfaces/PrizeStructures'
+import { PrizeType, getPrizeItems } from '../../shared-deps/interfaces/PrizeStructures'
 import Trophy from 'components/svg/Trophy'
 import FilledBarChart from 'components/svg/FilledBarChart'
 import Dollar from 'components/svg/Dollar'
@@ -23,7 +22,7 @@ import { Link } from 'react-router-dom'
 import ExternalLink from 'components/svg/ExternalLink'
 import React from 'react'
 import axios from 'axios'
-import { BetEvent } from 'shared-deps/interfaces/BetEvent'
+import { BetEvent } from '../../shared-deps/interfaces/BetEvent'
 
 export default function Contests() {
   // TODO: Remove DeepPartial in production
@@ -194,7 +193,7 @@ export default function Contests() {
           contests!.map((c, index) => {
             return (
               // TODO: Replace index with c.contestId
-              <ContestComponent key={c.contestId} contest={c!} />
+              <ContestComponent key={index} contest={c!} />
             )
           })
         )}
@@ -259,6 +258,7 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
   }
   
   // Identical code in Leaderboard.tsx to get prizes
+  // @ts-ignore
   let prizeMoney = contest && 
     contest.numberParticipants && 
     contest.entryFee
@@ -267,11 +267,11 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
 
   let prizeItems = getPrizeItems(contest.prizeStructure as PrizeType, contest.numberParticipants!)
   // Prize money for each place
-  let prizesByPlace = prizeItems.map(p => (prizeMoney * p.percentage) / 100.0)
   console.log(contest.contestName, prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
   //let totalPrize = getTotalPrizeAmount(prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
   let totalPrize = contest.entryFee * contest.maxParticipants * ((100-contest.pctRake)/100);
   
+  // @ts-ignore
   function formatDate(date: { getFullYear: () => any; getMonth: () => number; getDate: () => { (): any; new(): any; toString: { (): string; new(): any } } }) {
     return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
   }

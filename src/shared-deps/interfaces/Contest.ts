@@ -1,5 +1,4 @@
 import { BetEvent } from "./BetEvent";
-import { Board } from "./Board";
 import { Types } from "mongoose";
 
 export type Contest = SponsoredContest | PublicContest | PrivateContest;

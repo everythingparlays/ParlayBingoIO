@@ -1,4 +1,3 @@
-import Sport from "./Sport";
 
 export type  Entity = PlayerEntity | TeamEntity;
 export type EntityTypes = "PlayerEntity" | "TeamEntity";

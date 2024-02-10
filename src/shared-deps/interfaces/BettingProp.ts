@@ -1,6 +1,5 @@
 import { BetEvent } from "./BetEvent";
 import { Entity } from "./Entity";
-import Sport from "./Sport";
 import { Types } from "mongoose";
 
 export type ConsensusOutcomeTypes = "Hit" | "Miss" | "Void" | null;
