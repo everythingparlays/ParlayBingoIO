@@ -1,0 +1,384 @@
+#landing {
+  overflow-x: hidden;
+}
+
+#landing section {
+  margin-bottom: 200px;
+}
+
+#hero {
+  background: radial-gradient(var(--gray300-50), var(--bg) 67%), 
+              /* CHANGE HERO BACKGROUND URL HERE (inside public/ folder) */
+              url("/assets/images/landing/hero.jpg") center no-repeat;
+  background-size: cover;
+  padding-top: var(--header-height);
+}
+
+#hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-5);
+  justify-content: center;
+  min-height: 85vh;
+}
+
+#hero-inner h1, #hero-inner p {
+  max-width: 550px;
+}
+
+#hero-inner p {
+  color: var(--heading-color);
+}
+
+.centered {
+  max-width: 650px;
+  text-align: center;
+}
+
+.centered h2 {
+  margin-bottom: var(--size-4);
+}
+
+.centered p {
+  margin-bottom: var(--size-7);
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centered img {
+  max-width: 100%;
+}
+
+#sports-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-2);
+  justify-content: center;
+  margin-top: var(--size-7);
+}
+
+#sports-categories span {
+  border: 1px solid var(--border-color);
+  padding: var(--size-3) var(--size-4);
+  border-radius: var(--size-2);
+  background-color: var(--card-color);
+  color: var(--heading-color);
+  font-size: var(--text-0);
+  font-weight: 500;
+  cursor: default;
+  transition: border-color var(--transition-med);
+}
+
+#sports-categories span:hover {
+  border-color: var(--primary);
+}
+
+.bg-gradient {
+  position: relative;
+}
+
+.bg-gradient::before {
+  content: "";
+  background: radial-gradient(var(--gradient-center), transparent 67%);
+  width: 100%;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+#wider-audience-text {
+  max-width: 380px;
+}
+
+#wider-audience-images {
+  /* Using grid to put the images in the top left and bottom right,
+     then scaling and translating them to get the desired stack effect */
+  /* I chose this layout so I could guarantee the height of this div will
+     contain both of the images (thus no overflowing) */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, max-content);
+  grid-template-areas: 'tl tr'
+             'bl br';
+}
+
+#wider-audience-images img {
+  width: 100%;
+  border-radius: var(--size-3);
+  box-shadow: var(--shadow-xl);
+}
+
+#wider-audience-images img:first-of-type {
+  transform-origin: top left;
+  transform: scale(1.1) translateY(20%);
+  grid-area: tl;
+}
+
+#wider-audience-images img:last-of-type {
+  transform-origin: bottom right;
+  transform: scale(1.1) translateY(-20%);
+  grid-area: br;
+}
+
+#social-inner {
+  position: relative;
+  width: fit-content;
+  margin: auto;
+}
+
+#social-main-img {
+  border-radius: var(--size-5);
+  max-width: 625px;
+  width: 100%;
+  display: block;
+}
+
+#social-location {
+  background-color: var(--gray100);
+  border-radius: var(--size-2);
+  padding: var(--size-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  margin-top: var(--size-4);
+  border: 1px solid var(--border-color);
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: top left;
+  width: var(--ring-width);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 2px dashed var(--heading-color);
+  z-index: -1;
+  opacity: var(--ring-opacity);
+}
+
+.ring#small {
+  --ring-width: 600px;
+  --ring-opacity: 0.15;
+  animation: ringRotate 30s linear infinite;
+}
+
+.ring#med {
+  --ring-width: 675px;
+  --ring-opacity: 0.1;
+  animation: ringRotate 35s linear reverse infinite;
+}
+
+.ring#large {
+  --ring-width: 750px;
+  --ring-opacity: 0.05;
+  animation: ringRotate 40s linear infinite;
+}
+
+@keyframes ringRotate {
+  from {
+    rotate: 0;
+  } to {
+    rotate: 360deg;
+  }
+}
+
+#social-location-top {
+  display: flex;
+  gap: var(--size-2);
+  text-align: left;
+}
+
+#social-location-preview {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: var(--size-2);
+}
+
+#social-location h3 {
+  font-size: var(--text-regular);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+#social-location span {
+  font-size: var(--text-0);
+}
+
+.social-person {
+  position: absolute;
+  border-radius: 999px;
+  border: 3px solid white;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.social-person:nth-of-type(1) {
+  width: 80px;
+  left: 15%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+}
+
+.social-person:nth-of-type(2) {
+  width: 48px;
+  left: 7%;
+  top: -12%;
+  transform: translate(-50%, -50%);
+}
+
+.social-person:nth-of-type(3) {
+  width: 65px;
+  right: 5%;
+  top: -2%;
+  transform: translate(50%, -50%);
+}
+
+.social-person:nth-of-type(4) {
+  width: 36px;
+  right: -10%;
+  top: 55%;
+  transform: translate(50%, -50%);
+}
+
+.social-person, .ring {
+  display: none;
+}
+
+@media screen and (width > 600px) {
+  #social-inner {
+    margin-top: 200px;
+    margin-bottom: 400px;
+  }
+
+  #social-location {
+    position: absolute;
+    bottom: var(--size-5);
+    right: var(--size-5);
+    margin-top: 0;
+    margin-left: var(--size-5);
+    max-width: 350px;
+  }
+
+  .social-person, .ring {
+    display: block;
+  }
+}
+
+.infinite {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+}
+
+.infinite-row {
+  display: flex;
+  gap: var(--size-4);
+  width: max-content;
+}
+
+.testimonial {
+  background-color: var(--card-color);
+  padding: var(--size-4);
+  border-radius: var(--size-2);
+  width: 300px;
+}
+
+.testimonial h3 {
+  font-size: var(--text-regular);
+  color: var(--primary);
+}
+
+.testimonial span {
+  font-size: var(--text-0);
+}
+
+.testimonial p {
+  font-size: var(--text-ms);
+  margin-top: var(--size-2);
+  color: var(--heading-color);
+}
+
+@media screen and (width > 600px) {
+  .testimonial {
+    width: 450px;
+    padding: var(--size-5);
+  }
+
+  .testimonial h3 {
+    font-size: var(--text-1);
+  }
+
+  .testimonial p {
+    font-size: var(--text-regular);
+  }
+}
+
+#app-store {
+  background-color: var(--primary);
+  border-radius: var(--size-4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#app-store-inner {
+  padding: var(--size-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+}
+
+#app-store h2,
+#app-store p {
+  color: white;
+}
+
+#app-store-inner a {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+}
+
+#app-store-inner img {
+  width: 100%;
+  max-width: 150px;
+}
+
+#app-images {
+  width: 100%;
+  max-width: 400px;
+  transform: translateY(15%);
+  align-self: center;
+  margin-top: -15%;
+}
+
+@media screen and (width > 500px) {
+  #app-store {
+    border-radius: var(--size-6);
+  }
+
+  #app-store-inner {
+    padding: var(--size-7);
+  }
+}
+
+@media screen and (width > 850px) {
+  #app-store {
+    flex-direction: row;
+  }
+
+  #app-images {
+    align-self: flex-end;
+    margin-top: 0;
+    padding-right: var(--size-7);
+  }
+}

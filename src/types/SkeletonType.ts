@@ -1,0 +1,3 @@
+interface SkeletonType {
+  shineColor?: string;
+}

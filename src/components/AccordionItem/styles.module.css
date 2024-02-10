@@ -1,0 +1,60 @@
+.accordion {
+  border-bottom: 1px solid var(--border-color); 
+}
+
+.accordion-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--size-2);
+  padding: var(--size-5) var(--size-4);
+  
+  transition: background-color var(--transition-short),
+              border-radius var(--transition-short);
+}
+
+.accordion-toggle:hover {
+  background-color: var(--card-color);
+  border-radius: var(--size-2);
+}
+
+.accordion-toggle:focus {
+  outline: 2px solid var(--card-color);
+}
+
+.accordion-toggle h3 {
+  font-size: var(--text-1);
+  font-weight: 700;
+  text-align: left;
+}
+
+.accordion-toggle svg {
+  stroke: var(--heading-color);
+  transform: rotate(180deg);
+  transition: transform var(--transition-short);
+  width: 16px;
+}
+
+.accordion[aria-expanded="true"] .accordion-toggle svg {
+  transform: rotate(0);
+}
+
+.accordion-content {
+  padding: var(--size-1) var(--size-4) var(--size-4) var(--size-4);
+  display: none;
+  width: 100%;
+}
+
+.accordion[aria-expanded="true"] .accordion-content {
+  display: block;
+}
+
+.accordion[aria-expanded="false"]:hover,
+/* previous:has(+ next) 
+   A way to select the previous element
+   This has meh browser support currently (~90%) but it's not that 
+   important so I don't mind using it here */
+.accordion:has(+ .accordion:hover) {
+  border-color: transparent;
+}

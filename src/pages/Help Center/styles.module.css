@@ -1,0 +1,179 @@
+#hero {
+  background-color: var(--primary);
+}
+
+#hero-inner {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 900px;
+  gap: var(--size-5);
+  padding-top: 200px;
+  padding-bottom: 200px;
+  min-height: calc(100vh - var(--header-height));
+}
+
+#hero-inner h1, #hero-inner p {
+  color: white;
+}
+
+#hero-inner p {
+  max-width: 550px;
+}
+
+#search-wrapper {
+  background-color: white;
+  display: flex;
+  border: 2px solid rgba(224, 225, 228, 1);
+  border-radius: var(--size-2);
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--transition-short),
+              border-radius var(--transition-short);
+}
+
+#search-wrapper:focus-within {
+  border-radius: 24px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+}
+
+#search-icon {
+  padding: var(--size-3) 0 var(--size-3) var(--size-3);
+}
+
+#search {
+  height: 48px;
+  padding: 0 var(--size-3);
+  color: black;
+  flex: 1;
+}
+
+#search::placeholder {
+  color: rgba(113, 119, 133, 1);
+}
+
+#search-submit {
+  background-color: var(--primary);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--size-1);
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translate(48px, -50%);
+  transition: transform var(--transition-short),
+              border-radius var(--transition-short);
+}
+
+#search-submit:focus {
+  outline: 2px solid black;
+}
+
+#search-wrapper:focus-within #search-submit {
+  border-radius: 20px;
+}
+
+#search-wrapper.has-text #search-submit {
+  transform: translate(0, -50%);
+}
+
+#search-submit img {
+  width: 18px;
+}
+
+#faq,
+#large-buttons,
+#questions {
+  width: 100%;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: var(--size-6);
+}
+
+#large-buttons {
+  display: grid;
+  grid-template-columns: auto;
+  gap: var(--size-4);
+}
+
+#large-buttons a {
+  gap: var(--size-1);
+  color: var(--heading-color);
+  font-size: var(--text-1);
+  line-height: 1.1em;
+  font-weight: 700;
+  padding: var(--size-4);
+}
+
+#large-buttons a,
+#send-email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-color);
+  border-radius: var(--size-3);
+  transition: background-color var(--transition-short);
+  box-shadow: var(--shadow-xl);
+  text-align: center;
+}
+
+@media screen and (width > 600px) {
+  #hero {
+    margin-bottom: 0;
+  }
+  
+  #large-buttons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #large-buttons a {
+    margin-top: -50%;
+    aspect-ratio: 1;
+  }
+}
+
+body[theme="light"] #large-buttons a,
+body[theme="light"] #send-email {
+  background-color: var(--gray100);
+}
+
+body[theme="light"] #large-buttons a:hover,
+body[theme="light"] #send-email:hover {
+  background-color: var(--gray400);
+}
+
+#large-buttons a:hover,
+#send-email:hover {
+  background-color: var(--gray500);
+}
+
+#large-buttons a svg {
+  width: 80px;
+}
+
+#send-email {
+  gap: var(--size-2);
+  align-items: center;
+  padding: var(--size-6);
+}
+
+#send-email svg {
+  width: 60px;
+  height: 60px;
+}
+
+#send-email h3 {
+  font-size: var(--text-3);
+}

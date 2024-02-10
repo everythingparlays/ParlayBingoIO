@@ -1,0 +1,87 @@
+.scroller {
+  display: flex;
+}
+
+.segment {
+  display: flex;
+  gap: var(--scroller-gap);
+}
+
+.segment {
+  padding-left: var(--scroller-gap);
+}
+
+.no-invert .segment:first-of-type {
+  /* Segment offset is the amount of offset such that the segment would be on top of
+    the first segment. This makes my animations easier to calculate */
+  --segment-offset: 0;
+  animation: ltrCycle1 var(--cycle-time) linear infinite;
+}
+
+.no-invert .segment:nth-of-type(2) {
+  --segment-offset: -100%;
+  animation: ltrCycle2 var(--cycle-time) linear infinite;
+}
+
+.no-invert .segment:last-of-type {
+  --segment-offset: -200%;
+  animation: ltrCycle3 var(--cycle-time) linear infinite;
+}
+
+@keyframes ltrCycle1 {
+  0%       { transform: translate(0); }
+  49.9999% { transform: translate(150%); }
+  50%      { transform: translate(-150%); }
+  100%     { transform: translate(0); }
+}
+
+@keyframes ltrCycle2 {
+  0%       { transform: translate(calc(var(--segment-offset) + 100%)); }
+  16.6666% { transform: translate(calc(var(--segment-offset) + 150%)); }
+  16.6667% { transform: translate(calc(var(--segment-offset) + -150%)); }
+  100%     { transform: translate(calc(var(--segment-offset) + 100%)); }
+}
+
+@keyframes ltrCycle3 {
+  0%       { transform: translate(calc(var(--segment-offset) + -100%)); }
+  83.3332% { transform: translate(calc(var(--segment-offset) + 150%)); }
+  83.3333% { transform: translate(calc(var(--segment-offset) + -150%)); }
+  100%     { transform: translate(calc(var(--segment-offset) + -100%)); }
+}
+
+.invert .segment:first-of-type {
+  --segment-offset: 0;
+  animation: rtlCycle1 var(--cycle-time) linear infinite;
+}
+
+.invert .segment:nth-of-type(2) {
+  --segment-offset: -100%;
+  animation: rtlCycle2 var(--cycle-time) linear infinite;
+}
+
+.invert .segment:last-of-type {
+  --segment-offset: -200%;
+  animation: rtlCycle3 var(--cycle-time) linear infinite;
+}
+
+/* ltr cycles but the values are inverted */
+@keyframes rtlCycle1 {
+  0%       { transform: translate(0); }
+  49.9999% { transform: translate(-150%); }
+  50%      { transform: translate(150%); }
+  100%     { transform: translate(0); }
+}
+
+@keyframes rtlCycle2 {
+  0%       { transform: translate(calc(var(--segment-offset) + -100%)); }
+  16.6666% { transform: translate(calc(var(--segment-offset) + -150%)); }
+  16.6667% { transform: translate(calc(var(--segment-offset) + 150%)); }
+  100%     { transform: translate(calc(var(--segment-offset) + -100%)); }
+}
+
+@keyframes rtlCycle3 {
+  0%       { transform: translate(calc(var(--segment-offset) + 100%)); }
+  83.3332% { transform: translate(calc(var(--segment-offset) + -150%)); }
+  83.3333% { transform: translate(calc(var(--segment-offset) + 150%)); }
+  100%     { transform: translate(calc(var(--segment-offset) + 100%)); }
+}

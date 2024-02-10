@@ -1,0 +1,33 @@
+.calendar {
+  background-color: var(--bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--size-2);
+  box-shadow: var(--shadow-lg);
+}
+
+.react-datepicker__triangle {
+  display: none;
+}
+
+.react-datepicker__header {
+  background-color: transparent;
+  border: none;
+  color: var(--heading-color);
+}
+
+.react-datepicker__month-text {
+  color: var(--heading-color);
+  padding: 0.375rem 0;
+}
+
+body[theme="dark"] .react-datepicker__month-text--keyboard-selected {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+body[theme="dark"] .react-datepicker__month-text:not(.react-datepicker__month-text--keyboard-selected):hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+body[theme="light"] .react-datepicker__month-text--keyboard-selected {
+  background-color: rgba(0, 0, 0, 0.15);
+}
