@@ -1,24 +1,16 @@
-import React, { useEffect } from 'react';
-
-// Extend the Navigator type to include the 'standalone' property
-declare global {
-  interface Navigator {
-    standalone?: boolean;
-  }
-}
+import React from 'react';
 
 export default function DownloadPage() {
-  useEffect(() => {
-    const appStoreUrl = 'https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403';
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    const isInStandaloneMode = 'standalone' in window.navigator && window.navigator.standalone;
+  // Call this function to redirect to an external URL
+  function handleRedirect() {
+    window.location.href = 'https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403';
+  }
 
-    if (isIOS && !isInStandaloneMode) {
-      window.location.href = appStoreUrl;
-    } else {
-      window.open(appStoreUrl, '_blank', 'noopener,noreferrer');
-    }
-  }, []);
-
-  return <div>Redirecting you to the App Store...</div>;
+  // Invoke `handleRedirect` where appropriate, for example, on a button click
+  return (
+    <div>
+      <button onClick={handleRedirect}>Download Now</button>
+    </div>
+  );
 }
+
