@@ -234,7 +234,7 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
 
   contest = contest as SponsoredContest
   // TODO: Get status from contest
-  // This should be defined in the shared-deps so we know what values are actually possible here
+  // This should be defined in the pb-shared-deps so we know what values are actually possible here
   // 'Finished' | 'Joinable' | 'Live'
   // Assuming contest.allowedBetEvents is properly populated with BetEvent objects
   const now = new Date();
@@ -318,9 +318,11 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
                   </span>              
                 </div>
               <div>
-                {/* Again, these should eventually come from the contest */}
+                {/*
+                /* Again, these should eventually come from the contest
                 <LocationArrow color='var(--text-color)' />
                 <span>3.2 mi</span>
+                */}
               </div>
             </div>
           </div>

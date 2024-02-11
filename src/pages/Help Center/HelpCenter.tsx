@@ -22,9 +22,10 @@ export default function HelpCenter() {
             seasoned player or new to Parlay Bingo, this resource is here to
             guide you every step of the way.
           </p>
-          <SearchInput />
+          {/*<SearchInput />*/}
         </div>
       </section>
+      {/*
       <section className='container'>
         <div id={styles['large-buttons']}>
           <Link to="#">
@@ -48,48 +49,54 @@ export default function HelpCenter() {
           </Link>
         </div>
       </section>
+      */}
       <section className='container'>
         <div id={styles['faq']}>
           <h2 className={styles['section-heading']}>Frequently Asked Questions</h2>
           <AccordionItem
             title='What is Parlay Bingo, and how does it work?'>
-            <p>Parlay Bingo is a unique fantasy betting app that combines the excitement of fantasy sports with the thrill of bingo. Users can create their fantasy teams, enter leagues, and watch as their selected players' performances translate into bingo outcomes. It's a dynamic and engaging way to enjoy both fantasy sports and bingo.</p>
+            <p>Parlay Bingo, is a fantasy sports app that aims to create more entertainment & engagement around sports.  Parlay Bingo encourages competition and promotes social connection across a variety of sports.   Parlay Bingo offers both an in-venue entertainment service & a standalone fantasy sports app. 
+            Here's how it works: You use our app to join a contest. To enter, you pay a fee and create a bingo board with different sports props. Then, you can compete with others within the contest. The leaderboard displays who is in the top three and where the following rank. You can see how well you're doing on the leaderboard, and with a great board, you might win some money!"
+            </p>
           </AccordionItem>
           <AccordionItem
             title='How do I start playing Parlay Bingo?'>
-            <p>Insert Text Here</p>
+            <p>You start by downloading our app, creating a profile, and joining a contest!</p>
           </AccordionItem>
           <AccordionItem
             title='Is Parlay Bingo legal?'>
-            <p>Insert Text Here</p>
+            <p>Yes. Parlay bingo is a skill based fantasy game. You are not allowed to deposit, win or withdraw any money through our app.</p>
           </AccordionItem>
           <AccordionItem
             title='How are bingo outcomes determined in Parlay Bingo?'>
-            <p>Insert Text Here</p>
+            <p>The outcomes of Parlay Bingo are determined by which props you pick on your board.  After each individual prop square hits, you earn points.  Additional points are earned through each 3 in a row props are hit.  Whoever gets the highest amount of points wins first, second, third, etc. </p>
           </AccordionItem>
           <AccordionItem
             title='Can I play Parlay Bingo for free?'>
-            <p>Insert Text Here</p>
+            <p>The cost of Parlay Bingo is dependent upon the entry fee. It is possible to play Parlay Bingo for free if the contest you create doesn’t  require an entry fee. Although if there is no fee the winner receives no pot prize.</p>
           </AccordionItem>
-          <AccordionItem
-            title='Is my personal information secure on Parlay Bingo?'>
-            <p>Insert Text Here</p>
+          <AccordionItem title='Is my personal information secure on Parlay Bingo?'>
+            <p>
+              Yes. Your personal information is not shared with anyone and secured in our app.  
+              For more information on our privacy policy visit 
+              <a href="https://www.everythingparlays.com/privacy-policy" target="_blank" rel="noopener noreferrer"> our privacy policy</a>.
+            </p>
           </AccordionItem>
           <AccordionItem
             title='What makes Parlay Bingo different from other fantasy sports apps?'>
-            <p>Insert Text Here</p>
+            <p>Parlay Bingo stands out from other fantasy sports apps because it offers cross-sport fantasy competitions, allowing fans from various sports backgrounds to compete together. Additionally, our in-person bar events feature interactive leaderboards and live chat functionalities, enhancing the overall experience for users.</p>
           </AccordionItem>
           <AccordionItem
             title='Can I change my fantasy team lineup after the games have started?'>
-            <p>Insert Text Here</p>
+            <p>After the game has started and you have submitted your board you cannot change your board. However, if you submit your board before the game begins, you can change your board. </p>
           </AccordionItem>
           <AccordionItem
-            title='What happens in the case of a tie or draw in a Parlay Bingo league?'>
-            <p>Insert Text Here</p>
+            title='What happens in the case of a tie or draw in a Parlay Bingo contest?'>
+            <p>The users who earn a tie will both receive the same amount of money.</p>
           </AccordionItem>
           <AccordionItem
             title='Are there different types of bingo patterns in Parlay Bingo?'>
-            <p>Insert Text Here</p>
+            <p>Yes, in Parlay Bingo, there are various types of bingo patterns. These patterns are determined by achieving three consecutive props in the same row or diagonal, such as the top row, middle row, bottom row, left-to-right diagonal, right-to-left diagonal, and so on. </p>
           </AccordionItem>
         </div>
       </section>

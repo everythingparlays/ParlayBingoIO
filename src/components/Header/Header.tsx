@@ -75,10 +75,10 @@ export default function Header() {
                 <NavLink to="/help-center" className={styles['link']}>Help Center</NavLink>
               </li>
               <li>
-                <NavLink to="/download" className="primary">
-                  <img src={download} />
+                <a href="https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403" className="primary" target="_blank" rel="noopener noreferrer">
+                  <img src={download} alt="Download Now" />
                   Download Now
-                </NavLink>
+                </a>
               </li>
             </ul>
           </nav>
