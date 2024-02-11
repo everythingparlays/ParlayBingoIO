@@ -11,7 +11,7 @@ import getDisplayDate from 'utils/getDisplayDate'
 import { Contest, SponsoredContest, getContestDates } from '../../shared-deps/interfaces/Contest'
 import Calendar from 'components/svg/Calendar'
 import LocationArrow from 'components/svg/LocationArrow'
-import { PrizeType, getPrizeItems } from '../../shared-deps/interfaces/PrizeStructures'
+import { PrizeType, getPrizeItems, getTotalPrizeAmount } from '../../shared-deps/interfaces/PrizeStructures'
 import Trophy from 'components/svg/Trophy'
 import FilledBarChart from 'components/svg/FilledBarChart'
 import Dollar from 'components/svg/Dollar'
@@ -268,8 +268,9 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
   let prizeItems = getPrizeItems(contest.prizeStructure as PrizeType, contest.numberParticipants!)
   // Prize money for each place
   console.log(contest.contestName, prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
-  //let totalPrize = getTotalPrizeAmount(prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
-  let totalPrize = contest.entryFee * contest.maxParticipants * ((100-contest.pctRake)/100);
+  let totalPrize = getTotalPrizeAmount(prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
+  totalPrize = Math.round(totalPrize * 10) / 10; // This operation rounds to 1 decimal place and the result is unequivocally a number.
+  //let totalPrize = contest.entryFee * contest.maxParticipants * ((100-contest.pctRake)/100);
   
   // @ts-ignore
   function formatDate(date: { getFullYear: () => any; getMonth: () => number; getDate: () => { (): any; new(): any; toString: { (): string; new(): any } } }) {
