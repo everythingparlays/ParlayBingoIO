@@ -18,8 +18,8 @@ export default function Footer() {
           <div id={styles['links']}>
             <div className={styles['link-column']}>
               <h2>Social</h2>
-              <a href='#' target='_blank' rel='noopener noreferrer'>LinkedIn</a>
-              <a href='#' target='_blank' rel='noopener noreferrer'>X (Twitter)</a>
+              <a href='https://www.linkedin.com/company/everything-parlays/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>
+              <a href='https://twitter.com/parlaybingo' target='_blank' rel='noopener noreferrer'>X (Twitter)</a>
               <a href='https://instagram.com/parlaybingo' target='_blank' rel='noopener noreferrer'>Instagram</a>
             </div>
             <div className={styles['link-column']}>
@@ -28,7 +28,7 @@ export default function Footer() {
             </div>
             <div className={styles['link-column']}>
               <h2>Download</h2>
-              <a href='#' target='_blank' rel='noopener noreferrer'>AppStore</a>
+              <a href='https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403' target='_blank' rel='noopener noreferrer'>AppStore</a>
             </div>
           </div>
         </div>

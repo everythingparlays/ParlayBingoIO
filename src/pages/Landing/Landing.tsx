@@ -193,7 +193,7 @@ export default function Landing() {
             />
             <h2>Join the fun, download our app!</h2>
             <p>Live score updates, frequent near-misses, and only over props for a full game engagement experience</p>
-            <a href='#' target='_blank' rel='noopener noreferrer'>
+            <a href='https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403' target='_blank' rel='noopener noreferrer'>
               <img 
                 src='assets/images/landing/download_app_store.png' 
                 alt='Download on the Apple App Store'
@@ -289,9 +289,11 @@ const Testimonials = () => {
 
   return (
     <section className='fade-in'>
+      {/*
       <div className={`container ${styles['centered']}`}>
         <h2 className='section-title' style={{marginBottom: 'var(--size-7)'}}>What people say<br />about Parlay Bingo</h2>
       </div>
+      
       <div className={styles['infinite']}>
         <InfiniteScroller
           elements={elems.slice(0, elems.length / 3)}
@@ -310,6 +312,7 @@ const Testimonials = () => {
           cycleTime={100000}
         />
       </div>
+      */}
     </section>
   )
 }

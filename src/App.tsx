@@ -11,6 +11,7 @@ import { ScrollTrigger } from 'gsap/all'
 import Leaderboard from 'pages/Leaderboard/Leaderboard'
 import HeaderAndFooter from 'layout/HeaderAndFooter'
 import Contests from 'pages/Contests/Contests'
+import DownloadPage from 'pages/Download/Download'
 
 
 const awsconfig = {
@@ -51,6 +52,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/help-center" element={<HelpCenter />} />
           <Route path="/contests" element={<Contests />} />
+          <Route path="/download" element={<DownloadPage />} />
         </Route>
         <Route path="/contest/:id" element={<Leaderboard />} />
       </Routes>

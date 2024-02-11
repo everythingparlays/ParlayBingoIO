@@ -32,6 +32,11 @@ export default function Header() {
     }
   }, [location.pathname])
 
+  const handleClick = (e) => {
+    e.preventDefault(); // Prevent the default NavLink behavior
+    window.open('https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403', '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <header 
       id={styles['header']} 
@@ -75,10 +80,10 @@ export default function Header() {
                 <NavLink to="/help-center" className={styles['link']}>Help Center</NavLink>
               </li>
               <li>
-                <a href="https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403" className="primary" target="_blank" rel="noopener noreferrer">
-                  <img src={download} alt="Download Now" />
+                <NavLink to="/download" className="primary">
+                  <img src={download} />
                   Download Now
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>
