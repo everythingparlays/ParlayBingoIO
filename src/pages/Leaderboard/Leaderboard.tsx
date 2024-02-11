@@ -80,7 +80,7 @@ export default function Leaderboard() {
     // After getting the prizeItems
     prizeItems = getPrizeItems(contest.prizeStructure as PrizeType, contest.numberParticipants!);
     prizeMoney = getTotalPrizeAmount(prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
-
+    prizeMoney = Math.round(prizeMoney * 10) / 10;
     // Calculate prize money for each place
     prizesByPlace = prizeItems.map(item => {
         if (item.fixed) {
