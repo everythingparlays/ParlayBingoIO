@@ -443,7 +443,7 @@ export default function Leaderboard() {
             </ul>
           </div>
           <div id={styles['qr-code-wrapper']}>
-            <h2>Scan this code & Download our app!</h2>
+            <h2>Scan this code to fill out a product survey!</h2>
             { loading ? (
               <Skeleton width='132px' height='132px' marginTop='1rem' />
             ) : (
