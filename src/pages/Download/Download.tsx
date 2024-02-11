@@ -1,14 +1,24 @@
-import { useEffect } from 'react';
-import React from 'react';
+import React, { useEffect } from 'react';
+
+// Extend the Navigator type to include the 'standalone' property
+declare global {
+  interface Navigator {
+    standalone?: boolean;
+  }
+}
 
 export default function DownloadPage() {
   useEffect(() => {
-    // Open the external URL in a new tab as soon as the component mounts
-    window.open('https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403', '_blank', 'noopener,noreferrer');
-  }, []); // The empty array ensures this effect runs only once after the initial render
+    const appStoreUrl = 'https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403';
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isInStandaloneMode = 'standalone' in window.navigator && window.navigator.standalone;
 
-  // Render a message while the new tab is being opened
-  return (
-    <div>Redirecting you to the App Store...</div>
-  );
+    if (isIOS && !isInStandaloneMode) {
+      window.location.href = appStoreUrl;
+    } else {
+      window.open(appStoreUrl, '_blank', 'noopener,noreferrer');
+    }
+  }, []);
+
+  return <div>Redirecting you to the App Store...</div>;
 }
