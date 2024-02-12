@@ -791,10 +791,10 @@ const Prop = ({ prop, top3 }: PropProps) => {
   let className = `${styles['prop']} ${top3 ? styles['top-3'] : ''}`;
   // Apply hit or no-hit styles based on the conditions, regardless of isFinal status
   if (prop.isFinal || 
-      ((prop.progressValue! > prop.value!) && prop.outcomeType === 'Over') ||
+      ((prop.progressValue! >= prop.value!) && prop.outcomeType === 'Over') ||
       ((prop.progressValue! < prop.value!) && prop.outcomeType === 'Under')) {
     className += ` ${
-      ((prop.progressValue! > prop.value!) && prop.outcomeType === 'Over') ||
+      ((prop.progressValue! >= prop.value!) && prop.outcomeType === 'Over') ||
       ((prop.progressValue! < prop.value!) && prop.outcomeType === 'Under')
         ? styles['hit']
         : styles['no-hit']
