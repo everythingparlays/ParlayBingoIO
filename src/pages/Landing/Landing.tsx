@@ -102,7 +102,7 @@ export default function Landing() {
       </section>
       <section className={`container ${styles['centered']} ${styles['bg-gradient']} fade-in`}>
         <h2 className='section-title'>Maximized Engagement</h2>
-        <p>Live score updates, frequent near-misses, and only over props for a full game engagement experience</p>
+        <p>Live score updates, frequent near-misses, and only over props for a full game engagement experience.</p>
         <img 
           src='assets/images/landing/max_engagement.png' 
           alt='Parlay Bingo App'
@@ -122,11 +122,11 @@ export default function Landing() {
         <p id={styles['wider-audience-text']}>Cross sport competitions allow all groups of fans to compete, regardless of the sport</p>
         <div id={styles['wider-audience-images']} className={styles['bg-gradient']}>
           <img 
-            src='assets/images/landing/wider_audience_1.png' 
+            src='assets/images/landing/group_picture.png' 
             alt='People cheering at a bar' 
           />
           <img 
-            src='assets/images/landing/wider_audience_2.png' 
+            src='assets/images/landing/watching_at_bar.png' 
             alt='People cheering at a bar' 
           />
         </div>
@@ -139,25 +139,25 @@ export default function Landing() {
           <div id={styles['med']} className={styles['ring']}></div>
           <div id={styles['large']} className={styles['ring']}></div>
           <img
-            src='assets/images/landing/person_1.png'
+            src='assets/images/landing/muscled-chicken-lifting-trophy.png'
             alt='Headshot of a person'
             className={styles['social-person']}
             id='person-1'
           />
           <img
-            src='assets/images/landing/person_2.png'
+            src='assets/images/landing/panda-with-soccer-ball.png'
             alt='Headshot of a person'
             className={styles['social-person']}
             id='person-2'
           />
           <img
-            src='assets/images/landing/person_3.png'
+            src='assets/images/landing/football-player-helmet.png'
             alt='Headshot of a person'
             className={styles['social-person']}
             id='person-3'
           />
           <img
-            src='assets/images/landing/person_4.png'
+            src='assets/images/landing/soccer-bird.png'
             alt='Headshot of a person'
             className={styles['social-person']}
             id='person-4'
@@ -201,7 +201,7 @@ export default function Landing() {
             </a>
           </div>
           <img 
-            src='assets/images/landing/app_store_image.png' 
+            src='assets/images/landing/app-store-screens2.png' 
             alt='Pictures of our app'
             id={styles['app-images']}
           />
@@ -216,65 +216,45 @@ const Testimonials = () => {
   // I recommend at least 12 testimonials for this to look right up to 4K
   const data : TestimonialType[] = [
     {
-      name: 'Ada Lovelace A',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'
+      name: 'Bar Owner',
+      level: 'Chicago',
+      text: '"This is exactly what our bar needs to bring customers together, especially on nights with multiple games going on!"'
     },
     {
-      name: 'Ada Lovelace B',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'    
+      name: 'Future Investor',
+      level: 'Chicago',
+      text: '"I love how I have the opportunity to parlay from multiple games, takes the experience to the next level."'    
     },
     {
-      name: 'Ada Lovelace C',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'    
+      name: 'Bar Owner',
+      level: 'Chicago',
+      text: '"We struggle during the off season of baseball, and this is something that can keep the crowd year round."'    
     },
     {
-      name: 'Ada Lovelace D',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'    
+      name: 'Amazing User',
+      level: 'User',
+      text: '"The originality is what will make this app a success!"'    
     },
     {
-      name: 'Ada Lovelace E',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'    
+      name: 'Non-Sports Fan',
+      level: 'User',
+      text: '"This app will help me bond and connect with my avid sports fan friends."'    
     },
     {
-      name: 'Ada Lovelace F',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'    
+      name: 'User',
+      level: 'User',
+      text: '"I’ve never used an app like this and it was pretty intuitive. I appreciate the fun avatars and the ease of use."'    
     },
     {
-      name: 'Ada Lovelace G',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'
+      name: 'User',
+      level: 'User',
+      text: '"“The idea of bingo makes it fun and intriguing, allowing you to enter 9 three way parlays with a way to win without hitting all.”"'
     },
     {
-      name: 'Ada Lovelace H',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'    
+      name: 'User',
+      level: 'User',
+      text: '"It was super fun. I liked the live leaderboard and being able to compete against friends was a nice contrast to betting on a regular sportsbook."'    
     },
-    {
-      name: 'Ada Lovelace I',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'    
-    },
-    {
-      name: 'Ada Lovelace J',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'    
-    },
-    {
-      name: 'Ada Lovelace K',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'    
-    },
-    {
-      name: 'Ada Lovelace L',
-      level: 'Bingo Strategist',
-      text: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quod ut optio voluptate repellendus laborum."'    
-    }
   ]
 
   const elems = data.map((testimonial, index) => {
@@ -289,7 +269,6 @@ const Testimonials = () => {
 
   return (
     <section className='fade-in'>
-      {/*
       <div className={`container ${styles['centered']}`}>
         <h2 className='section-title' style={{marginBottom: 'var(--size-7)'}}>What people say<br />about Parlay Bingo</h2>
       </div>
@@ -312,7 +291,6 @@ const Testimonials = () => {
           cycleTime={100000}
         />
       </div>
-      */}
     </section>
   )
 }
