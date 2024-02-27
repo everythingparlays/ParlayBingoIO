@@ -24,7 +24,7 @@ export default function Footer() {
             </div>
             <div className={styles['link-column']}>
               <h2>Contact</h2>
-              <a href='mailto:support@parlaybingo.com'>support@parlaybingo.com</a>
+              <a href='mailto:support@everythingparlays.com'>support@everythingparlays.com</a>
             </div>
             <div className={styles['link-column']}>
               <h2>Download</h2>
