@@ -104,7 +104,7 @@ export default function Landing() {
         <h2 className='section-title'>Maximized Engagement</h2>
         <p>Live score updates, frequent near-misses, and only over props for a full game engagement experience.</p>
         <img 
-          src='assets/images/landing/max_engagement.png' 
+          src='assets/images/landing/maximized-engagement.png' 
           alt='Parlay Bingo App'
         />
         <div id={styles['sports-categories']}>
@@ -201,7 +201,7 @@ export default function Landing() {
             </a>
           </div>
           <img 
-            src='assets/images/landing/app-store-screens2.png' 
+            src='assets/images/landing/app-store-screens.png' 
             alt='Pictures of our app'
             id={styles['app-images']}
           />
@@ -248,7 +248,7 @@ const Testimonials = () => {
     {
       name: 'User',
       level: 'User',
-      text: '"“The idea of bingo makes it fun and intriguing, allowing you to enter 9 three way parlays with a way to win without hitting all.”"'
+      text: '"The idea of bingo makes it fun and intriguing, allowing you to enter 9 three way parlays with a way to win without hitting all."'
     },
     {
       name: 'User',
