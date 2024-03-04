@@ -33,16 +33,19 @@ export default function Contests() {
   ])
   const [selectedSports, setSelectedSports] = useState<string[]>([])
   const [date, setDate] = useState<Date | null>(new Date(Date.now()));
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [filterStatus, setFilterStatus] = useState<"upcoming" | "past" | "live">("upcoming");
+
 
   useEffect(() => {
-    // Assuming upcoming contests are defined as starting from the current date onwards
+    // Assuming you want to fetch contests based on the current filter mode (upcoming, past, live)
+    // and considering the filterStatus state is initialized correctly
     const today = new Date();
     const endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0); // End of the current month
   
-    // Fetch upcoming contests by default on initial load
-    fetchContests(today, endDate, true);
-  }, []);
+    // Fetch contests based on the current filter status (upcoming by default or as set)
+    fetchContests(today, endDate, filterStatus);
+}, [filterStatus]);
 
   useEffect(() => {
     if(contests) {
@@ -50,7 +53,7 @@ export default function Contests() {
     }
   }, [contests])
 
-  const fetchContests = async (startDate: Date | null = null, endDate: Date | null = null, fetchUpcoming: boolean = true) => {
+  const fetchContests = async (startDate: Date | null = null, endDate: Date | null = null, filterMode: "upcoming" | "past" | "live" = "upcoming") => {
     setLoading(true);
   
     try {
@@ -63,21 +66,22 @@ export default function Contests() {
         }
   
         // Use the getContestDates function to get the start and end dates for the events
-        const { contestStart, contestEnd } = getContestDates(contest.allowedBetEvents.map((event: { eventTime: string | number | Date }) => ({
+        const { contestStart, contestEnd } = getContestDates(contest.allowedBetEvents.map(event => ({
           ...event,
           eventTime: new Date(event.eventTime) // Ensure eventTime is a Date object
         })));
   
-        // Determine if the contest falls within the selected month
         const isWithinSelectedMonth = startDate !== null && endDate !== null && contestStart >= startDate && contestStart <= endDate;
-  
-        // Determine if the contest should be considered upcoming or past
-        if (fetchUpcoming) {
-          // For upcoming contests, check if the start date is in the future
-          return isWithinSelectedMonth && contestStart > now;
-        } else {
-          // For past contests, check if the contest has already started
-          return isWithinSelectedMonth && contestEnd < now;
+        
+        switch (filterMode) {
+          case 'upcoming':
+            return isWithinSelectedMonth && contestStart > now;
+          case 'past':
+            return isWithinSelectedMonth && contestEnd < now;
+          case 'live':
+            return isWithinSelectedMonth && contestStart <= now && contestEnd >= now;
+          default:
+            return false;
         }
       });
   
@@ -90,22 +94,18 @@ export default function Contests() {
     }
   };
 
-  const toggleUpcoming = () => {
-    const newUpcomingState = !upcoming;
-    setUpcoming(newUpcomingState);
+  useEffect(() => {
+    const fetchBasedOnFilter = async () => {
+      if (!date) return; // Exit if no date is selected
+    
+      const startOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+      const endOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0); // Last day of the month
+    
+      await fetchContests(startOfMonth, endOfMonth, filterStatus);
+    };
   
-    // Assuming `date` is the currently selected month/year
-    if (!date) return; // Exit if no date is selected
-  
-    // Calculate the start and end of the selected month
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const startOfMonth = new Date(year, month, 1);
-    const endOfMonth = new Date(year, month + 1, 0); // Last day of the month
-  
-    // Call fetchContests with the calculated start and end dates and the new upcoming state
-    fetchContests(startOfMonth, endOfMonth, newUpcomingState);
-  };
+    fetchBasedOnFilter();
+  }, [date, filterStatus]);
 
   const clearSelectedLocations = () => {
     // TODO: Fetch from API
@@ -131,34 +131,55 @@ export default function Contests() {
     const startOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
     const endOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0);
   
-    // Call fetchContests with the calculated start and end dates and the current upcoming state
-    await fetchContests(startOfMonth, endOfMonth, upcoming);
+    // Call fetchContests with the calculated start and end dates and the current filter status
+    await fetchContests(startOfMonth, endOfMonth, filterStatus);
   };
+
+  function isValidFilterStatus(value: any): value is "upcoming" | "past" | "live" {
+    return ["upcoming", "past", "live"].includes(value);
+  }
 
   return (
     <main id='main' className='container'>
       <h1 id={styles['title']}>Active & Future Contests</h1>
       <div id={styles['filters']}>
-        <fieldset 
-          id={styles['upcoming-wrapper']}
-          onChange={() => toggleUpcoming()}>
-          <input 
-            type='radio' 
-            id='upcoming' 
-            value='upcoming' 
-            name='upcoming-past'
-            defaultChecked={upcoming == true}
-          />
-          <label htmlFor='upcoming'>Upcoming</label>
-          <input 
-            type='radio' 
-            id='past-contests' 
-            value='past-contests' 
-            name='upcoming-past'
-            defaultChecked={upcoming == false}
-          />
-          <label htmlFor='past-contests'>Past Contests</label>
-        </fieldset>
+      <fieldset id={styles['upcoming-wrapper']} onChange={(e) => {
+          const value = (e.target as HTMLInputElement).value;
+          if (isValidFilterStatus(value)) {
+              setFilterStatus(value);
+          } else {
+              console.error("Invalid filter status:", value);
+              // Handle the error or set a default value
+          }
+      }}>        
+        <input 
+          type='radio' 
+          id='upcoming' 
+          value='upcoming' 
+          name='contest-filter'
+          checked={filterStatus === 'upcoming'}
+          onChange={() => {}} // Needed to suppress read-only warning
+        />
+        <label htmlFor='upcoming'>Upcoming Contests</label>
+        <input 
+          type='radio' 
+          id='live-contests' 
+          value='live'
+          name='contest-filter'
+          checked={filterStatus === 'live'}
+          onChange={() => {}} // Needed to suppress read-only warning
+        />
+        <label htmlFor='live-contests'>Live Contests</label>
+        <input 
+          type='radio' 
+          id='past-contests' 
+          value='past'
+          name='contest-filter'
+          checked={filterStatus === 'past'}
+          onChange={() => {}} // Needed to suppress read-only warning
+        />
+        <label htmlFor='past-contests'>Past Contests</label>
+      </fieldset>
         <LocationSelector
           selectedLocations={selectedLocations}
           clearSelectedLocations={clearSelectedLocations}
@@ -474,6 +495,7 @@ const LocationSelector = ({
 
   return (
     <div id={styles['locations']}>
+      {/*
       <button 
         className='focusable'
         id={styles['locations-button']}
@@ -505,6 +527,7 @@ const LocationSelector = ({
         open={locationSearchOpen}
         onSelect={handleSelectLocation}
       />
+        */}
     </div>
   )
 }
@@ -701,6 +724,7 @@ interface SportSelectorProps {
   setSelectedSports: React.Dispatch<React.SetStateAction<string[]>>
 }
 
+
 const SportSelector = ({
   selectedSports,
   setSelectedSports
@@ -716,6 +740,7 @@ const SportSelector = ({
 
   return (
     <div id={styles['sport-selector-wrapper']}>
+      {/*
       <button
         onClick={() => setPopupOpen(!popupOpen)}
         aria-haspopup={popupOpen}
@@ -737,6 +762,7 @@ const SportSelector = ({
         open={popupOpen}
         onSelect={handleSelect}
       />
+        */}
     </div>
   )
 }

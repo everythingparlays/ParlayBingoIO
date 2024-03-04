@@ -787,18 +787,22 @@ const Prop = ({ prop, top3 }: PropProps) => {
       </div>
     );
   }
-  // Determine the class based on the prop status and outcome
+  
+  // Determine the base class based on the prop status and outcome
   let className = `${styles['prop']} ${top3 ? styles['top-3'] : ''}`;
-  // Apply hit or no-hit styles based on the conditions, regardless of isFinal status
-  if (prop.isFinal || 
-      ((prop.progressValue! >= prop.value!) && prop.outcomeType === 'Over') ||
-      ((prop.progressValue! < prop.value!) && prop.outcomeType === 'Under')) {
-    className += ` ${
-      ((prop.progressValue! >= prop.value!) && prop.outcomeType === 'Over') ||
-      ((prop.progressValue! < prop.value!) && prop.outcomeType === 'Under')
-        ? styles['hit']
-        : styles['no-hit']
-    }`;
+
+  // Use consensusOutcome to apply hit or no-hit styles
+  switch (prop.consensusOutcome) {
+    case "Hit":
+      className += ` ${styles['hit']}`;
+      break;
+    case "Miss":
+      className += ` ${styles['no-hit']}`;
+      break;
+    // Optional: handle "Void" or null cases if necessary
+    default:
+      // If you need specific styling for 'Void' or undetermined outcomes, add here
+      break;
   }
 
   return (
@@ -809,10 +813,14 @@ const Prop = ({ prop, top3 }: PropProps) => {
       />
       {top3 && (
         <div className={styles['prop-details']}>
-          <h4>{prop.outcomeType === 'Over' ? '+' : '-'}{prop.value}</h4>
-          <div className={styles['bet-type-wrapper']}>
-            <span>{prop.bettingBetType}</span>
-          </div>
+          <h4>  
+            {prop.alternateValue ? prop.alternateValue : `${prop.value}${prop.outcomeType === 'Over' ? '+' : '-'}`}
+          </h4>
+          {!prop.alternateValue && (
+            <div className={styles['bet-type-wrapper']}>
+              <span>{prop.bettingBetType}</span>
+            </div>
+          )}
         </div>
       )}
     </div>
