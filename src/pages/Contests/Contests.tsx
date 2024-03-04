@@ -27,11 +27,8 @@ import { BetEvent } from '../../shared-deps/interfaces/BetEvent'
 export default function Contests() {
   // TODO: Remove DeepPartial in production
   const [contests, setContests] = useState<Contest[]>([]);
-  const [upcoming, setUpcoming] = useState(true)
-  const [selectedLocations, setSelectedLocations] = useState<string[]>([
-
-  ])
-  const [selectedSports, setSelectedSports] = useState<string[]>([])
+  //const [selectedLocations, setSelectedLocations] = useState<string[]>([])
+  //const [selectedSports, setSelectedSports] = useState<string[]>([])
   const [date, setDate] = useState<Date | null>(new Date(Date.now()));
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState<"upcoming" | "past" | "live">("upcoming");
@@ -110,16 +107,16 @@ export default function Contests() {
   const clearSelectedLocations = () => {
     // TODO: Fetch from API
 
-    setSelectedLocations([])
+    //setSelectedLocations([])
   }
 
-  const selectLocation = (selectedLocation: string) => {
-    // TODO: Fetch from API
+  // const selectLocation = (selectedLocation: string) => {
+  //   // TODO: Fetch from API
 
-    let temp = [...selectedLocations]
-    temp.push(selectedLocation)
-    setSelectedLocations(temp)
-  }
+  //   //let temp = [...selectedLocations]
+  //   //temp.push(selectedLocation)
+  //   //setSelectedLocations(temp)
+  // }
 
   const handleDateChange = async (selectedDate: Date | null) => {
     if (!selectedDate) return;
@@ -180,6 +177,7 @@ export default function Contests() {
         />
         <label htmlFor='past-contests'>Past Contests</label>
       </fieldset>
+      {/*}
         <LocationSelector
           selectedLocations={selectedLocations}
           clearSelectedLocations={clearSelectedLocations}
@@ -189,6 +187,7 @@ export default function Contests() {
           selectedSports={selectedSports}
           setSelectedSports={setSelectedSports}
         />
+      */}
         <div>
           <DatePicker
             showMonthYearPicker
@@ -339,13 +338,13 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
                     })}
                   </span>              
                 </div>
-              <div>
-                {/*
-                /* Again, these should eventually come from the contest
-                <LocationArrow color='var(--text-color)' />
-                <span>3.2 mi</span>
-                */}
-              </div>
+                <div>
+                  {/* 
+                    Again, these should eventually come from the contest
+                    <LocationArrow color='var(--text-color)' />
+                    <span>3.2 mi</span>
+                  */}
+                </div>
             </div>
           </div>
         </div>
@@ -474,63 +473,63 @@ interface LocationSelectorProps {
   selectLocation: (selectedLocation: string) => void
 }
 
-const LocationSelector = ({
-  selectedLocations,
-  clearSelectedLocations,
-  selectLocation
-}: LocationSelectorProps) => {
-  const [locationSearchOpen, setLocationSearchOpen] = useState(false)
+// const LocationSelector = ({
+//   selectedLocations,
+//   clearSelectedLocations,
+//   selectLocation
+// }: LocationSelectorProps) => {
+//   const [locationSearchOpen, setLocationSearchOpen] = useState(false)
 
-  const handleClearSelectedLocations = (e: React.MouseEvent) => {
-    // Stop from also clicking the outer button, which opens the search menu
-    e.stopPropagation()
+//   const handleClearSelectedLocations = (e: React.MouseEvent) => {
+//     // Stop from also clicking the outer button, which opens the search menu
+//     e.stopPropagation()
 
-    clearSelectedLocations()
-  }
+//     clearSelectedLocations()
+//   }
 
-  const handleSelectLocation = (selectedLocation: string) => {
-    setLocationSearchOpen(false)
-    selectLocation(selectedLocation)
-  }
+//   const handleSelectLocation = (selectedLocation: string) => {
+//     setLocationSearchOpen(false)
+//     selectLocation(selectedLocation)
+//   }
 
-  return (
-    <div id={styles['locations']}>
-      {/*
-      <button 
-        className='focusable'
-        id={styles['locations-button']}
-        onClick={() => setLocationSearchOpen(!locationSearchOpen)}
-        data-locations-selected={selectedLocations.length != 0}>
-        <Location color='var(--heading-color)' />
-        <span id={styles['selected-locations']}>
-          {selectedLocations.length == 0 
-                ? 'Select a location'
-                : selectedLocations[0]}
-        </span>
-        {selectedLocations.length > 1 && (
-          <span className={styles['more-indicator']}>
-            +{selectedLocations.length - 1}
-          </span>
-        )}
-        {selectedLocations.length != 0 && (
-          // Use span instead of button for valid DOM nesting
-          <span
-            id={styles['clear-locations']}
-            className='with-hover-circle'
-            onClick={(e) => handleClearSelectedLocations(e)}
-            title='Clear Selected Locations'>
-            <Close color='var(--heading-color)' />
-          </span>
-        )}
-      </button>
-      <LocationsPopup
-        open={locationSearchOpen}
-        onSelect={handleSelectLocation}
-      />
-        */}
-    </div>
-  )
-}
+//   return (
+//     <div id={styles['locations']}>
+//       {/*
+//       <button 
+//         className='focusable'
+//         id={styles['locations-button']}
+//         onClick={() => setLocationSearchOpen(!locationSearchOpen)}
+//         data-locations-selected={selectedLocations.length != 0}>
+//         <Location color='var(--heading-color)' />
+//         <span id={styles['selected-locations']}>
+//           {selectedLocations.length == 0 
+//                 ? 'Select a location'
+//                 : selectedLocations[0]}
+//         </span>
+//         {selectedLocations.length > 1 && (
+//           <span className={styles['more-indicator']}>
+//             +{selectedLocations.length - 1}
+//           </span>
+//         )}
+//         {selectedLocations.length != 0 && (
+//           // Use span instead of button for valid DOM nesting
+//           <span
+//             id={styles['clear-locations']}
+//             className='with-hover-circle'
+//             onClick={(e) => handleClearSelectedLocations(e)}
+//             title='Clear Selected Locations'>
+//             <Close color='var(--heading-color)' />
+//           </span>
+//         )}
+//       </button>
+//       <LocationsPopup
+//         open={locationSearchOpen}
+//         onSelect={handleSelectLocation}
+//       />
+//         */}
+//     </div>
+//   )
+// }
 
 interface LocationsPopUpProps {
   open: boolean
@@ -725,44 +724,44 @@ interface SportSelectorProps {
 }
 
 
-const SportSelector = ({
-  selectedSports,
-  setSelectedSports
-}: SportSelectorProps) => {
-  const [popupOpen, setPopupOpen] = useState(false)
+// const SportSelector = ({
+//   selectedSports,
+//   setSelectedSports
+// }: SportSelectorProps) => {
+//   const [popupOpen, setPopupOpen] = useState(false)
 
-  const handleSelect = (s: string[]) => {
-    // TODO: Fetch from API
+//   const handleSelect = (s: string[]) => {
+//     // TODO: Fetch from API
 
-    setSelectedSports(s)
-    setPopupOpen(false)
-  }
+//     setSelectedSports(s)
+//     setPopupOpen(false)
+//   }
 
-  return (
-    <div id={styles['sport-selector-wrapper']}>
-      {/*
-      <button
-        onClick={() => setPopupOpen(!popupOpen)}
-        aria-haspopup={popupOpen}
-        className='focusable'
-        id={styles['sport-popup-toggle']}>
-        <span>
-          {selectedSports.length > 0
-            ? selectedSports[0]
-            : 'Select a sport...'}
-        </span>
-        {selectedSports.length > 1 && (
-          <span className={styles['more-indicator']}>
-            +{selectedSports.length - 1}
-          </span>
-        )}
-        <ExpandArrow color='var(--heading-color)' />
-      </button>
-      <SportSelectorPopup
-        open={popupOpen}
-        onSelect={handleSelect}
-      />
-        */}
-    </div>
-  )
-}
+//   return (
+//     <div id={styles['sport-selector-wrapper']}>
+//       {/*
+//       <button
+//         onClick={() => setPopupOpen(!popupOpen)}
+//         aria-haspopup={popupOpen}
+//         className='focusable'
+//         id={styles['sport-popup-toggle']}>
+//         <span>
+//           {selectedSports.length > 0
+//             ? selectedSports[0]
+//             : 'Select a sport...'}
+//         </span>
+//         {selectedSports.length > 1 && (
+//           <span className={styles['more-indicator']}>
+//             +{selectedSports.length - 1}
+//           </span>
+//         )}
+//         <ExpandArrow color='var(--heading-color)' />
+//       </button>
+//       <SportSelectorPopup
+//         open={popupOpen}
+//         onSelect={handleSelect}
+//       />
+//         */}
+//     </div>
+//   )
+// }
