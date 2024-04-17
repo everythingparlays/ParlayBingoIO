@@ -1,3 +1,4 @@
+import { Contest } from "./Contest";
 
 export interface PrizeStructureItem {
     startPosition: number;
@@ -377,7 +378,16 @@ export const fixedPrizeStructures = {
 
 interface PrizeStructureData {
     displayName: string;
-    prizeStructureData: any; // Replace 'any' with the actual type of your prize structure data
+    prizeStructureData: PrizeStructureItem[]; // Replace 'any' with the actual type of your prize structure data
+}
+
+export interface CustomPrizeStructureData {
+    _id?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    backendName: string;
+    displayName:string;
+    prizeStructureData: PrizeStructureItem[]
 }
 
 interface PrizeStructures {
@@ -415,6 +425,21 @@ export const getPrizeItems = (type: PrizeType, numPlayers: number): PrizeStructu
      return temp
 };
 
+export const getPrizeItemsFromCustom = (customPrizeStructure: PrizeStructureData, numPlayers: number): PrizeStructureItem[] => {
+    return customPrizeStructure.prizeStructureData.filter((item: PrizeStructureItem) => ((numPlayers >= item.minUsers) && (numPlayers <= item.maxUsers)))
+}
+
+export const getPrizeItemsFromContest = (contest: Contest, numberParticipants?: number ): PrizeStructureItem[] => {
+    if(!numberParticipants){
+        numberParticipants = contest.numberParticipants;
+    }
+    if(contest.customPrizeStructure?.prizeStructureData){
+        return getPrizeItemsFromCustom(contest.customPrizeStructure, numberParticipants)
+    }
+    return getPrizeItems(contest.prizeStructure as PrizeType, numberParticipants)
+}
+
+
 //d
 export const getTotalPrizeAmount = (prizeItems: PrizeStructureItem[], entryFee: number, numEntries: number, pctRake: number): number => {
     const total = prizeItems.reduce((accumulator: number, item: PrizeStructureItem) => {
@@ -441,6 +466,22 @@ export const getPayoutAmountForPrizeItem = (prizeItem :PrizeStructureItem, entry
     return parseFloat(prizeAmount.toFixed(2)); //round to nearest two decimals
 }
 
+//Given the prize Items for that number of participants, get the prize for a specific name, returns undefined otherwise
+export const getPrizeItemForRankWithoutTies = (prizeItems: PrizeStructureItem[], rank: number): PrizeStructureItem | undefined => {
+    return prizeItems.find((item: PrizeStructureItem) => (item.startPosition <= rank && item.endPosition >= rank));
+}
+
+export const getPrizeDisplayNameFromContest = (contest: Contest): string => {
+    if(contest.customPrizeStructure){
+        return contest.customPrizeStructure.displayName;
+    }else{
+        const prizeStructure = fixedPrizeStructures[contest.prizeStructure];
+        if (!prizeStructure) {
+            return "Invalid";
+        }
+            return prizeStructure.displayName;
+    }
+}
 
 
 export const  getPrizeDisplayName = (prizeStructureName: PrizeType): string =>  {

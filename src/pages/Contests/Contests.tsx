@@ -11,7 +11,7 @@ import getDisplayDate from 'utils/getDisplayDate'
 import { Contest, SponsoredContest, getContestDates } from '../../shared-deps/interfaces/Contest'
 import Calendar from 'components/svg/Calendar'
 import LocationArrow from 'components/svg/LocationArrow'
-import { PrizeType, getPrizeItems, getTotalPrizeAmount } from '../../shared-deps/interfaces/PrizeStructures'
+import { PrizeType, getPrizeItems, getPrizeItemsFromContest, getTotalPrizeAmount } from '../../shared-deps/interfaces/PrizeStructures'
 import Trophy from 'components/svg/Trophy'
 import FilledBarChart from 'components/svg/FilledBarChart'
 import Dollar from 'components/svg/Dollar'
@@ -285,7 +285,7 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
       ? contest.numberParticipants * contest.entryFee
       : 0
 
-  let prizeItems = getPrizeItems(contest.prizeStructure as PrizeType, contest.numberParticipants!)
+  let prizeItems = getPrizeItemsFromContest(contest);
   // Prize money for each place
   console.log(contest.contestName, prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
   let totalPrize = getTotalPrizeAmount(prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
