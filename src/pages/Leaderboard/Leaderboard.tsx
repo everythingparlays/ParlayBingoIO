@@ -208,7 +208,7 @@ export default function Leaderboard() {
           <div id={styles['ad']}>
             {!loading && (<img
               alt='Advertisement'
-              src={contest!.advertiserPhoto}
+              src={'https://pbcdkmonorepostack-profilepicbucket1c6d8d96-1c2umo3ax2fk2.s3.us-east-2.amazonaws.com/6a818f2ad2e121cd5c90a587434cec5c'}
             />)}
           </div>
           {loading ? (
