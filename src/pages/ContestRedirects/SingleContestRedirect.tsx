@@ -12,7 +12,7 @@ export default function SingleContestRedirectPage() {
     const [message, setMessage] = React.useState('Redirecting...')
     const [device, setDevice] = React.useState('')
     document.title = 'Join Contest - Parlay Bingo'
-
+    /*
     const tryRedirectSendToAppStoreOtherwise = async () => {
         window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
         const timerId = setTimeout(function () {
@@ -46,6 +46,28 @@ export default function SingleContestRedirectPage() {
       
         fetchData();
       }, [id]);
+    */
+      useEffect(() => {
+        setDevice(navigator.userAgent);
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
+            const timerId = setTimeout(function () {
+                setMessage('Redirecting you to the App Store...');
+                window.location.href = 'https://apps.apple.com/us/app/parlay-bingo/id1665470403';
+            }, 500);
+            window.onblur = function () {
+                clearTimeout(timerId);
+            };
+        }else{
+            //window.open('https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403', '_blank', 'noopener,noreferrer');
+            //window.location.href = 'https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403';
+            setTimeout(() => {
+                setMessage('Redirecting you to the App Store...');
+                window.location.href = 'https://apps.apple.com/us/app/parlay-bingo/id1665470403';
+            }, 500);
+        }
+    }, []);
+
 
   // Render a message while the new tab is being opened
   return (
