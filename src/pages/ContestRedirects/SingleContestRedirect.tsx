@@ -50,11 +50,15 @@ export default function SingleContestRedirectPage() {
       useEffect(() => {
         setDevice(navigator.userAgent);
         if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-            window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
+            try{
+                window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
+            } catch (error) {
+                console.error(error);
+            }
             const timerId = setTimeout(function () {
                 setMessage('Redirecting you to the App Store...');
                 window.location.href = 'https://apps.apple.com/us/app/parlay-bingo/id1665470403';
-            }, 500);
+            }, 50);
             window.onblur = function () {
                 clearTimeout(timerId);
             };
@@ -64,7 +68,7 @@ export default function SingleContestRedirectPage() {
             setTimeout(() => {
                 setMessage('Redirecting you to the App Store...');
                 window.location.href = 'https://apps.apple.com/us/app/parlay-bingo/id1665470403';
-            }, 500);
+            }, 50);
         }
     }, []);
 
