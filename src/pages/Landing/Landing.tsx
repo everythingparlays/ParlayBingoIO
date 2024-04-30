@@ -93,7 +93,7 @@ export default function Landing() {
       <section id={styles['hero']}>
         <div id={styles['hero-inner']} className='container'>
           <h1 id='hero-title'>Competition, Connection and Community</h1>
-          <p id='hero-text'>Parlay Bingo is a unique game for all types of sports fans to enjoy by combining the fun of sports betting and the competition and community of fantasy sports. Our goal is for our users to enjoy sports with their friends just as much as we do.</p>
+          <p id='hero-text'>Parlay Bingo is a unique game for all types of sports fans to enjoy by combining the fun of sports betting and the competition and community of fantasy sports. Our goal is for our users to enjoy sports with their friends just as much as we do. Parlay Bingo runs in-person events at bars in addition to our virtual offerings.</p>
           <Link to='/download' className='primary' id='hero-cta'>
             <img src={download} />
             Download Now
@@ -102,7 +102,7 @@ export default function Landing() {
       </section>
       <section className={`container ${styles['centered']} ${styles['bg-gradient']} fade-in`}>
         <h2 className='section-title'>Maximized Engagement</h2>
-        <p>Live score updates, frequent near-misses, and only over props for a full game engagement experience.</p>
+        <p>Live score updates, frequent near-misses, and only over props create a full game engagement experience.</p>
         <img 
           src='assets/images/landing/maximized-engagement.png' 
           alt='Parlay Bingo App'
@@ -118,8 +118,8 @@ export default function Landing() {
         </div>
       </section>
       <section className={`container ${styles['centered']} fade-in`}>
-        <h2 className='section-title'>Wider Audience</h2>
-        <p id={styles['wider-audience-text']}>Cross sport competitions allow all groups of fans to compete, regardless of the sport</p>
+        <h2 className='section-title'>Wide Audience</h2>
+        <p >Multi-sport competitions combined with our gamified UI allow all groups of fans to compete, regardless of sport and skill level. </p>
         <div id={styles['wider-audience-images']} className={styles['bg-gradient']}>
           <img 
             src='assets/images/landing/group_picture.png' 
@@ -132,8 +132,8 @@ export default function Landing() {
         </div>
       </section>
       <section className={`container ${styles['centered']} fade-in`} id='social'>
-        <h2 className='section-title'>Social Features</h2>
-        <p>In-person venues for live weekly contests for any sporting event</p>
+        <h2 className='section-title'>In-Person Events</h2>
+        <p>Face to face competition experiences provide new ways for fans to connect. Events benefit venues by providing new customers and entertainment.</p>
         <div id={styles['social-inner']}>
           <div id={styles['small']} className={styles['ring']}></div>
           <div id={styles['med']} className={styles['ring']}></div>
@@ -163,7 +163,7 @@ export default function Landing() {
             id='person-4'
           />
           <img
-            src='assets/images/landing/social_features.png'
+            src='assets/images/landing/people_holding_phones.jpeg'
             alt='Bar with ping-pong tables'
             id={styles['social-main-img']}
           />
@@ -175,11 +175,11 @@ export default function Landing() {
                 id={styles['social-location-preview']}
               />
               <div>
-                <h3>102 E Green St STE 104, Champaign, IL 61820</h3>
+                <h3>YOUR FAVORITE SPORTS BAR HERE!!!</h3>
                 <span>Tuesday • 9 PM–2 AM</span>
               </div>
             </div>
-            <a href="#" className='secondary'>Get directions</a>
+            <a href="https://forms.gle/m83d7soVLv4yEm9q9" className='secondary'>Get directions</a>
           </div>
         </div>
       </section>
@@ -221,7 +221,7 @@ const Testimonials = () => {
       text: '"This is exactly what our bar needs to bring customers together, especially on nights with multiple games going on!"'
     },
     {
-      name: 'Future Investor',
+      name: 'Fantastic User',
       level: 'Chicago',
       text: '"I love how I have the opportunity to parlay from multiple games, takes the experience to the next level."'    
     },
@@ -231,14 +231,14 @@ const Testimonials = () => {
       text: '"We struggle during the off season of baseball, and this is something that can keep the crowd year round."'    
     },
     {
+      name: 'Bar Manager',
+      level: 'Chicago',
+      text: '"We need more people coming into the bar earlier in the weeknights. These contests are a great way to do that."'    
+    },
+    {
       name: 'Amazing User',
       level: 'User',
       text: '"The originality is what will make this app a success!"'    
-    },
-    {
-      name: 'Non-Sports Fan',
-      level: 'User',
-      text: '"This app will help me bond and connect with my avid sports fan friends."'    
     },
     {
       name: 'User',
@@ -254,6 +254,11 @@ const Testimonials = () => {
       name: 'User',
       level: 'User',
       text: '"It was super fun. I liked the live leaderboard and being able to compete against friends was a nice contrast to betting on a regular sportsbook."'    
+    },
+    {
+      name: 'App Store Review',
+      level: 'User',
+      text: '"Parlay Bingo is way more fun and refreshing to use compared to the typical betting apps thta are available. Highly Recommendd anyone check out the app!"'    
     },
   ]
 

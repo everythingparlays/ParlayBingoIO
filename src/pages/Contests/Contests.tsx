@@ -81,8 +81,20 @@ export default function Contests() {
             return false;
         }
       });
-  
       setContests(filteredContests);
+      //This Block is a temporary solution to the page coming up with no events
+      if(filteredContests.length <=0){
+        if(filterMode=="upcoming"){
+          setFilterStatus("live")
+        }else if(filterMode=='live'){
+          setFilterStatus("past")
+        }else if(filterMode == "past"){
+          const lastContestMonthManual = new Date(2024, 3, 30);
+          if(date >= lastContestMonthManual){
+            setDate(lastContestMonthManual)
+          }
+        }
+      }
     } catch (error) {
       console.error("Failed to fetch contests:", error);
       setContests([]);
@@ -97,7 +109,7 @@ export default function Contests() {
     
       const startOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
       const endOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0); // Last day of the month
-    
+      console.log("FETCH CONTESTS:",filterStatus, startOfMonth, endOfMonth )
       await fetchContests(startOfMonth, endOfMonth, filterStatus);
     };
   

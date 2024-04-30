@@ -382,7 +382,7 @@ export default function Leaderboard() {
               </div>
               <div id={styles['estimated-payouts-alert']}>
                 <Alert color="var(--heading-color)" />
-                <span>Prizes increase as players join</span>
+                <span>Prize may increase as players join</span>
               </div>
             </div>
           </div>
