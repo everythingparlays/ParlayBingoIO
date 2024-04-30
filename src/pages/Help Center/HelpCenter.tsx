@@ -63,17 +63,19 @@ export default function HelpCenter() {
             title='How do I start playing Parlay Bingo?'>
             <p>You start by downloading our app, creating a profile, and joining a contest!</p>
           </AccordionItem>
-          <AccordionItem
+
+          {/*<AccordionItem
             title='Is Parlay Bingo legal?'>
             <p>Yes. Parlay bingo is a skill based fantasy game. You are not allowed to deposit, win or withdraw any money through our app.</p>
           </AccordionItem>
+          */}
           <AccordionItem
             title='How are bingo outcomes determined in Parlay Bingo?'>
             <p>The outcomes of Parlay Bingo are determined by which props you pick on your board.  After each individual prop square hits, you earn points.  Additional points are earned through each 3 in a row props are hit.  Whoever gets the highest amount of points wins first, second, third, etc. </p>
           </AccordionItem>
           <AccordionItem
             title='Can I play Parlay Bingo for free?'>
-            <p>The cost of Parlay Bingo is dependent upon the entry fee. It is possible to play Parlay Bingo for free if the contest you create doesn’t  require an entry fee. Although if there is no fee the winner receives no pot prize.</p>
+            <p>The cost of Parlay Bingo is dependent upon the entry fee. It is possible to play Parlay Bingo for free if the contest you create doesn’t  require an entry fee. </p>
           </AccordionItem>
           <AccordionItem title='Is my personal information secure on Parlay Bingo?'>
             <p>
