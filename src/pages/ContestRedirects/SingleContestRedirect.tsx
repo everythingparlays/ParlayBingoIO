@@ -77,7 +77,7 @@ export default function SingleContestRedirectPage() {
   return (
     <div style={{ padding: '20px', textAlign: 'center' }}>
       <h1 style={{ marginBottom: '20px' }}>{message}</h1>
-      <p>{device}</p>
+      <p>Taking you to your contest</p>
       <a
         href="https://apps.apple.com/us/app/parlay-bingo/id1665470403"
         style={{
@@ -93,7 +93,7 @@ export default function SingleContestRedirectPage() {
         Download Parlay Bingo
       </a>
       <p style={{ color: 'grey', marginTop: '10px' }}>
-        If the redirect does not work, download the app an retry.
+        If the redirect does not work, download the app and retry.
       </p>
     </div>
   )
