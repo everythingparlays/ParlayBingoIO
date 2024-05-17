@@ -206,7 +206,7 @@ export default function Leaderboard() {
         </div>
         <div id={styles['top-boards-wrapper']}>
           <div id={styles['ad']}>
-            {!loading && (<img
+            {false && (<img
               alt='Advertisement'
               src={'https://pbcdkmonorepostack-profilepicbucket1c6d8d96-1c2umo3ax2fk2.s3.us-east-2.amazonaws.com/6a818f2ad2e121cd5c90a587434cec5c'}
             />)}
