@@ -1,5 +1,6 @@
 import { BetEvent } from "./BetEvent";
 import { Entity } from "./Entity";
+import Sport from "./Sport";
 import { Types } from "mongoose";
 
 export type ConsensusOutcomeTypes = "Hit" | "Miss" | "Void" | null;
@@ -45,7 +46,6 @@ export interface BettingProp {
     consensusOutcome: ConsensusOutcomeTypes; //these will change for real integration
     progressValue: number; // if it is a player prop this shows in game how far the player is
     isFinal: boolean; //shows if this prop has been resulted or not
-
     showProp: boolean; //Show or hide prop from users
 }
 
@@ -61,6 +61,7 @@ export interface CreateBettingPropParams {
     progressValue: number;
     isFinal: boolean;
     showProp: boolean;
+    alternateValue?: string;
 }
 
 export interface UpdateBettingPropParams {
@@ -70,6 +71,7 @@ export interface UpdateBettingPropParams {
     multiplier:Number;
     outcomeType: OutcomeTypes;
     showProp: boolean;
+    alternateValue?: string;
 }
 
 export function checkAlternateValue(checkBettingProp: BettingProp) {

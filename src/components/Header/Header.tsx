@@ -46,8 +46,8 @@ export default function Header() {
       <div className="container split" id={styles['header-inner']}>
         <Link to="/">
           <img
-            src='/assets/images/logo.png'
-            alt='Parlay Bingo logo'
+            src='/assets/images/OB-blue-purple.png'
+            alt='OverBoard Sports logo'
             height='44px'
           />
         </Link>

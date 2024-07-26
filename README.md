@@ -1,2 +1,2 @@
 # ParlayBingoIO
-Website for upcoming parlay bingo events and leaderboards
+Website for upcoming OverBoard Sports events and leaderboards

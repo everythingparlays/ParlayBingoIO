@@ -93,7 +93,7 @@ export default function Landing() {
       <section id={styles['hero']}>
         <div id={styles['hero-inner']} className='container'>
           <h1 id='hero-title'>Competition, Connection and Community</h1>
-          <p id='hero-text'>Parlay Bingo is a unique game for all types of sports fans to enjoy by combining the fun of sports betting and the competition and community of fantasy sports. Our goal is for our users to enjoy sports with their friends just as much as we do.</p>
+          <p id='hero-text'>OverBoard Sports is a unique game for all types of sports fans to enjoy by combining the fun of sports betting and the competition and community of fantasy sports. Our goal is for our users to enjoy sports with their friends just as much as we do.</p>
           <Link to='/download' className='primary' id='hero-cta'>
             <img src={download} />
             Download Now
@@ -105,7 +105,7 @@ export default function Landing() {
         <p>Live score updates, frequent near-misses, and only over props for a full game engagement experience.</p>
         <img 
           src='assets/images/landing/maximized-engagement.png' 
-          alt='Parlay Bingo App'
+          alt='OverBoard Sports App'
         />
         <div id={styles['sports-categories']}>
           <span>🏈️️  NFL</span>
@@ -270,7 +270,7 @@ const Testimonials = () => {
   return (
     <section className='fade-in'>
       <div className={`container ${styles['centered']}`}>
-        <h2 className='section-title' style={{marginBottom: 'var(--size-7)'}}>What people say<br />about Parlay Bingo</h2>
+        <h2 className='section-title' style={{marginBottom: 'var(--size-7)'}}>What people say<br />about OverBoard Sports</h2>
       </div>
       
       <div className={styles['infinite']}>

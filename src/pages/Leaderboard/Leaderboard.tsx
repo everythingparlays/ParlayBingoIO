@@ -175,8 +175,8 @@ export default function Leaderboard() {
           <div id={styles['title']}>
             <Link to='/'>
               <img
-                src='/assets/images/logo.png'
-                alt='Parlay Bingo logo'
+                src='/assets/images/OB-blue-purple.png'
+                alt='OverBoard Sports logo'
               />
             </Link>
             <h1>Contest Leaderboard</h1>

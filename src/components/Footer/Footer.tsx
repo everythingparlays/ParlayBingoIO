@@ -9,8 +9,8 @@ export default function Footer() {
         <div id={styles['top']}>
           <div id={styles['logo-wrapper']}>
             <img
-              src='/assets/images/logo.png'
-              alt='Parlay Bingo logo'
+              src='/assets/images/OB-blue-purple.png'
+              alt='OverBoard Sports logo'
               height='44px'
             />
             <p>Live score updates, frequent near-misses, and only over props for a full game engagement experience</p>
@@ -34,7 +34,7 @@ export default function Footer() {
         </div>
         <hr />
         <div id={styles['bottom']}>
-          <span>Copyright © Parlay Bingo 2024</span>
+          <span>Copyright © OverBoard Sports 2024</span>
           <div>
             <Link to='https://www.everythingparlays.com/privacy-policy'>Privacy Policy</Link>
             <Link to='https://www.everythingparlays.com/terms-of-service'>Terms & Conditions</Link>
