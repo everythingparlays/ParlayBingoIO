@@ -1,5 +1,7 @@
 import { BetEvent } from "./BetEvent";
+import { Board } from "./Board";
 import { Types } from "mongoose";
+import { CustomPrizeStructureData, PrizeStructureItem } from "./PrizeStructures";
 
 export type Contest = SponsoredContest | PublicContest | PrivateContest;
 export type ContestTypes = "SponsoredContest" | "PublicContest" | "PrivateContest";
@@ -45,6 +47,10 @@ export interface SharedContestFields {
     type: string; //used to discriminate between types of contest Details
     //Flags
     skipAttendant?:boolean;
+    externalLink?:string;
+    boardSubmitInfo?: string;
+    finalized?: boolean;
+    customPrizeStructure?: null | CustomPrizeStructureData;
 };
 
 export interface SponsoredContest extends SharedContestFields {

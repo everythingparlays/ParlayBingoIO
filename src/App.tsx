@@ -12,6 +12,7 @@ import Leaderboard from 'pages/Leaderboard/Leaderboard'
 import HeaderAndFooter from 'layout/HeaderAndFooter'
 import Contests from 'pages/Contests/Contests'
 import DownloadPage from 'pages/Download/Download'
+import SingleContestRedirectPage from 'pages/ContestRedirects/SingleContestRedirect'
 
 
 const awsconfig = {
@@ -55,6 +56,7 @@ function App() {
           <Route path="/download" element={<DownloadPage />} />
         </Route>
         <Route path="/contest/:id" element={<Leaderboard />} />
+        <Route path="/contest/redirect/:id" element={<SingleContestRedirectPage />} />
       </Routes>
     </ThemeProvider>
   )

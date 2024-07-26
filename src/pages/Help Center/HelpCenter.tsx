@@ -63,10 +63,12 @@ export default function HelpCenter() {
             title='How do I start playing OverBoard Sports?'>
             <p>You start by downloading our app, creating a profile, and joining a contest!</p>
           </AccordionItem>
-          <AccordionItem
-            title='Is OverBoard Sports legal?'>
-            <p>Yes. OverBoard Sports is a skill based fantasy game. You are not allowed to deposit, win or withdraw any money through our app.</p>
+
+          {/*<AccordionItem
+            title='Is Parlay Bingo legal?'>
+            <p>Yes. Parlay bingo is a skill based fantasy game. You are not allowed to deposit, win or withdraw any money through our app.</p>
           </AccordionItem>
+          */}
           <AccordionItem
             title='How are bingo outcomes determined in OverBoard Sports?'>
             <p>The outcomes of OverBoard Sports are determined by which props you pick on your board.  After each individual prop square hits, you earn points.  Additional points are earned through each 3 in a row props are hit.  Whoever gets the highest amount of points wins first, second, third, etc. </p>

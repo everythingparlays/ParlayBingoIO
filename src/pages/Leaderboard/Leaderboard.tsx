@@ -6,7 +6,7 @@ import { Board } from "../../shared-deps/interfaces/Board"
 import getContest from "utils/getContest"
 import getBoardsByContest from "utils/getBoardsByContest"
 import { DeepPartial } from "types/_dev"
-import { PrizeStructureItem, PrizeType, getPrizeItems, getTotalPrizeAmount } from "../../shared-deps/interfaces/PrizeStructures"
+import { PrizeStructureItem, PrizeType, getPrizeItems, getPrizeItemsFromContest, getTotalPrizeAmount } from "../../shared-deps/interfaces/PrizeStructures"
 import Star from "components/svg/Star"
 import { Entity } from "../../shared-deps/interfaces/Entity"
 import { BettingProp } from "../../shared-deps/interfaces/BettingProp"
@@ -78,7 +78,7 @@ export default function Leaderboard() {
       : 0
 
     // After getting the prizeItems
-    prizeItems = getPrizeItems(contest.prizeStructure as PrizeType, contest.numberParticipants!);
+    prizeItems = getPrizeItemsFromContest(contest)
     prizeMoney = getTotalPrizeAmount(prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
     prizeMoney = Math.round(prizeMoney * 10) / 10;
     // Calculate prize money for each place
@@ -206,9 +206,9 @@ export default function Leaderboard() {
         </div>
         <div id={styles['top-boards-wrapper']}>
           <div id={styles['ad']}>
-            {!loading && (<img
+            {false && (<img
               alt='Advertisement'
-              src={contest!.advertiserPhoto}
+              src={'https://pbcdkmonorepostack-profilepicbucket1c6d8d96-1c2umo3ax2fk2.s3.us-east-2.amazonaws.com/6a818f2ad2e121cd5c90a587434cec5c'}
             />)}
           </div>
           {loading ? (
@@ -382,7 +382,7 @@ export default function Leaderboard() {
               </div>
               <div id={styles['estimated-payouts-alert']}>
                 <Alert color="var(--heading-color)" />
-                <span>Prizes increase as players join</span>
+                <span>Prize may increase as players join</span>
               </div>
             </div>
           </div>
