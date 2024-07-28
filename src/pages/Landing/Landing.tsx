@@ -106,6 +106,7 @@ export default function Landing() {
         <img 
           src='assets/images/landing/maximized-engagement.png' 
           alt='OverBoard Sports App'
+          height="600px"
         />
         <div id={styles['sports-categories']}>
           <span>🏈️️  NFL</span>
