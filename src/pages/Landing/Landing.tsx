@@ -259,7 +259,7 @@ const Testimonials = () => {
     {
       name: 'App Store Review',
       level: 'User',
-      text: '"Parlay Bingo is way more fun and refreshing to use compared to the typical betting apps that are available. Highly Recommend anyone check out the app!"'    
+      text: '"OverBoard Sports is way more fun and refreshing to use compared to the typical betting apps that are available. Highly Recommend anyone check out the app!"'    
     },
   ]
 

@@ -11,7 +11,7 @@ export default function SingleContestRedirectPage() {
     const { id } = useParams()
     const [message, setMessage] = React.useState('Redirecting...')
     const [device, setDevice] = React.useState('')
-    document.title = 'Join Contest - Parlay Bingo'
+    document.title = 'Join Contest - OverBoard Sports'
     /*
     const tryRedirectSendToAppStoreOtherwise = async () => {
         window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
@@ -90,7 +90,7 @@ export default function SingleContestRedirectPage() {
           marginTop: '20px',
         }}
       >
-        Download Parlay Bingo
+        Download OverBoard Sports
       </a>
       <p style={{ color: 'grey', marginTop: '10px' }}>
         If the redirect does not work, download the app and retry.
