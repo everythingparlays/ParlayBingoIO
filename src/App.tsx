@@ -1,19 +1,19 @@
-import React from 'react'
-//import '@aws-amplify/ui-react/styles.css';
-
-import Landing from 'pages/Landing/Landing'
+import React, { useEffect } from 'react'
+import { AnalyticsBrowser } from '@segment/analytics-next'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { ThemeProvider } from 'context/ThemeContext'
-import HelpCenter from 'pages/Help Center/HelpCenter'
-import { useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
+import Landing from 'pages/Landing/Landing'
+import HelpCenter from 'pages/Help Center/HelpCenter'
 import Leaderboard from 'pages/Leaderboard/Leaderboard'
 import HeaderAndFooter from 'layout/HeaderAndFooter'
 import Contests from 'pages/Contests/Contests'
 import DownloadPage from 'pages/Download/Download'
 import SingleContestRedirectPage from 'pages/ContestRedirects/SingleContestRedirect'
 
+// Initialize Segment Analytics
+export const analytics = AnalyticsBrowser.load({ writeKey: '93rA6ZPlv0GkzFZBQzxuOCadSi6ZKf1B' })
 
 const awsconfig = {
   Auth: {
@@ -44,6 +44,17 @@ function App() {
   // Scroll to the top of the page when the user changes pages
   useEffect(() => {
     window.scrollTo(0, 0)
+  }, [location.pathname])
+
+  // Track page views
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const referrer = urlParams.get('referrer');
+
+    const additionalData = referrer ? { referrer } : {};
+
+    analytics.track(`Page View - ${location.pathname}`, additionalData);
+    console.log("Pathname: ", location.pathname);
   }, [location.pathname])
 
   return (
