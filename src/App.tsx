@@ -46,17 +46,6 @@ function App() {
     window.scrollTo(0, 0)
   }, [location.pathname])
 
-  // Track page views
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const referrer = urlParams.get('referrer');
-
-    const additionalData = referrer ? { referrer } : {};
-
-    analytics.track(`Page View - ${location.pathname}`, additionalData);
-    console.log("Pathname: ", location.pathname);
-  }, [location.pathname])
-
   return (
     <ThemeProvider>
       <Routes>
