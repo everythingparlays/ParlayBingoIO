@@ -3,15 +3,13 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import React from 'react';
 import { useParams } from "react-router-dom"
-
-
-
+import DownloadButton from '../../components/Buttons/DownloadButton'; // Import the new component
 
 export default function SingleContestRedirectPage() {
     const { id } = useParams()
     const [message, setMessage] = React.useState('Redirecting...')
     const [device, setDevice] = React.useState('')
-    document.title = 'Join Contest - OverBoard Sports'
+    
     /*
     const tryRedirectSendToAppStoreOtherwise = async () => {
         window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
@@ -51,7 +49,13 @@ export default function SingleContestRedirectPage() {
         setDevice(navigator.userAgent);
         if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
             try{
-                window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
+                if(id =='' || id == 'contests'){
+                    window.location.href = `parlaybingo://app/contests`;
+                    document.title = 'View Contests - OverBoard Sports'
+                }else{
+                    window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
+                    document.title = 'Join Contest - OverBoard Sports'
+                }
             } catch (error) {
                 console.error(error);
             }
@@ -72,26 +76,12 @@ export default function SingleContestRedirectPage() {
         }
     }, []);
 
-
   // Render a message while the new tab is being opened
   return (
     <div style={{ padding: '20px', textAlign: 'center' }}>
       <h1 style={{ marginBottom: '20px' }}>{message}</h1>
       <p>Taking you to your contest</p>
-      <a
-        href="https://apps.apple.com/us/app/parlay-bingo/id1665470403"
-        style={{
-          display: 'inline-block',
-          backgroundColor: '#007BFF',
-          color: 'white',
-          padding: '10px 20px',
-          textDecoration: 'none',
-          borderRadius: '5px',
-          marginTop: '20px',
-        }}
-      >
-        Download OverBoard Sports
-      </a>
+      <DownloadButton /> {/* Use the new component */}
       <p style={{ color: 'grey', marginTop: '10px' }}>
         If the redirect does not work, download the app and retry.
       </p>
