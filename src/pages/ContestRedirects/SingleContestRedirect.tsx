@@ -62,7 +62,7 @@ export default function SingleContestRedirectPage() {
             const timerId = setTimeout(function () {
                 setMessage('Redirecting you to the App Store...');
                 window.location.href = 'https://apps.apple.com/us/app/parlay-bingo/id1665470403';
-            }, 50);
+            }, 600);
             window.onblur = function () {
                 clearTimeout(timerId);
             };

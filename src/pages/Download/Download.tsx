@@ -22,7 +22,7 @@ export default function DownloadPage() {
 
   // Render a message while the new tab is being opened
   return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
+    <div style={{flex:1, padding: '20px', textAlign: 'center' }}>
       <a
         href="https://apps.apple.com/us/app/parlay-bingo/id1665470403"
         style={{
