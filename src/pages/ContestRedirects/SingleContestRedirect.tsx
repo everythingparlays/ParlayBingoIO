@@ -31,7 +31,7 @@ export default function SingleContestRedirectPage() {
               setMessage('Redirect Failed');
               setSecondaryMessage("If the app does not open, click 'Try Redirect Again' below");
               setShowTryAgain(true);
-          }, 3500);
+          }, 3000);
       } else {
           setTimeout(() => {
             setMessage('Unsupported Device');
