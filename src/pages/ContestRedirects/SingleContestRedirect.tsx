@@ -8,84 +8,97 @@ import DownloadButton from '../../components/Buttons/DownloadButton'; // Import 
 export default function SingleContestRedirectPage() {
     const { id } = useParams()
     const [message, setMessage] = React.useState('Redirecting...')
+    const [secondaryMessage, setSecondaryMessage] = React.useState('Taking you to your contest!');
+    const [showTryAgain, setShowTryAgain] = React.useState(false);
     const [device, setDevice] = React.useState('')
-    
-    /*
-    const tryRedirectSendToAppStoreOtherwise = async () => {
-        window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
-        const timerId = setTimeout(function () {
-            setMessage('Redirecting you to the App Store...');
-            window.location.href = 'https://apps.apple.com/us/app/parlay-bingo/id1665470403';
-        }, 600);
-        window.onblur = function () {
-            clearTimeout(timerId);
-        }; 
-    }
+
+    const tryRedirect = () => {
+      setDevice(navigator.userAgent);
+      setShowTryAgain(false)
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+          try {
+              if (id === '' || id === 'contests') {
+                  window.location.href = `parlaybingo://app/contests`;
+                  document.title = 'View Contests - OverBoard Sports'
+              } else {
+                  window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
+                  document.title = 'Join Contest - OverBoard Sports'
+              }
+          } catch (error) {
+              console.error(error);
+          }
+          const timerId = setTimeout(function () {
+              setMessage('Redirect Failed');
+              setSecondaryMessage("If the app does not open, click 'Try Redirect Again' below");
+              setShowTryAgain(true);
+          }, 5000);
+          window.onblur = function () {
+              clearTimeout(timerId);
+          };
+      } else {
+          setTimeout(() => {
+            setMessage('Unsupported Device');
+            setSecondaryMessage('Only iOS devices are supported at this time.');
+            setShowTryAgain(true);
+              //window.location.href = 'https://apps.apple.com/us/app/parlay-bingo/id1665470403';
+          }, 50);
+      }
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-          if (id) {
-            try {
-              const response = await axios.get(`${baseUrl}/contest?id=${id}`);
-              if (response.data && response.data.contestName) {
-                let contestName = response.data.contestName;
-                document.title = contestName;
-                console.log(response.data);
-                await tryRedirectSendToAppStoreOtherwise();
-              } else {
-                setMessage('Contest not found');
-              }
-            } catch (error) {
-              // Handle the error here
-              console.error(error);
-            }
-          }
-        };
-      
-        fetchData();
-      }, [id]);
-    */
-      useEffect(() => {
-        setDevice(navigator.userAgent);
-        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-            try{
-                if(id =='' || id == 'contests'){
-                    window.location.href = `parlaybingo://app/contests`;
-                    document.title = 'View Contests - OverBoard Sports'
-                }else{
-                    window.location.href = `parlaybingo://app/contest?id=${id}&tab=info`;
-                    document.title = 'Join Contest - OverBoard Sports'
-                }
-            } catch (error) {
-                console.error(error);
-            }
-            const timerId = setTimeout(function () {
-                setMessage('Redirecting you to the App Store...');
-                window.location.href = 'https://apps.apple.com/us/app/parlay-bingo/id1665470403';
-            }, 2000);
-            window.onblur = function () {
-                clearTimeout(timerId);
-            };
-        }else{
-            //window.open('https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403', '_blank', 'noopener,noreferrer');
-            //window.location.href = 'https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403';
-            setTimeout(() => {
-                setMessage('Redirecting you to the App Store...');
-                window.location.href = 'https://apps.apple.com/us/app/parlay-bingo/id1665470403';
-            }, 50);
-        }
-    }, []);
+      tryRedirect();
+    }, [id]);
 
-  // Render a message while the new tab is being opened
-  return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h1 style={{ marginBottom: '20px' }}>{message}</h1>
-      <p>Taking you to your contest</p>
-      <DownloadButton /> {/* Use the new component */}
-      <p style={{ color: 'grey', marginTop: '10px' }}>
-        If the redirect does not work, download the app and retry.
-      </p>
-    </div>
-  )
+    const handleTryAgain = () => {
+        tryRedirect();
+    };
+
+    return (
+        <div style={{ padding: '20px', textAlign: 'center' }}>
+            <h1 style={{ marginBottom: '20px', fontWeight: 'bold' }}>{message}</h1>
+            <p style={{ marginBottom: '20px' }}>{secondaryMessage}</p>
+            {!/iPad|iPhone|iPod/.test(navigator.userAgent) && (
+              <>
+              <p style={{ color: 'grey', fontWeight: 'bold', marginBottom: '40px', whiteSpace: 'pre-line' }}>
+                  Join our <a href="https://forms.gle/LH3Cg4aM5unooJ9o6" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff' }}>Android Waitlist</a>, or Download On Another Device Using the QR Code.
+              </p>
+              
+                  <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+
+                      <img
+                          src="/assets/images/qr-code-for-download-redirect.png"
+                          alt="QR code to download the app"
+                          style={{ width: 'min(80%, 256px)', 
+                            height: 'auto',  borderRadius: '10px' }} // Rounded corners
+                      />
+                      <p style={{ color: 'grey', marginTop: '10px', marginBottom: '20px' }}>
+                          Scan the QR code to download the app.
+                      </p>
+
+                  </div>
+                  </>
+            )}
+            <div>
+            {showTryAgain && (
+                <button onClick={handleTryAgain} style={{         
+                  display: 'inline-block',
+                  backgroundColor: '#6c757d', // Changed to grey
+                  color: 'white',
+                  padding: '10px 20px',
+                  textDecoration: 'none',
+                  borderRadius: '5px',
+                  marginTop: '20px', marginBottom: '20px' }}>
+                    Try Redirect Again
+                </button>
+            )}
+            </div>
+            <DownloadButton /> {/* Use the new component */}
+            <p style={{ color: 'grey', marginTop: '10px', marginBottom: '20px' }}>
+                If you do not have the app, download the app and retry 
+                
+            </p>
+
+        </div>
+    )
 }
 
