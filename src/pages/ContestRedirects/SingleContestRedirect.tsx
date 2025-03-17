@@ -9,7 +9,7 @@ export default function SingleContestRedirectPage() {
     const { id } = useParams()
     const [message, setMessage] = React.useState('Redirecting...')
     const [secondaryMessage, setSecondaryMessage] = React.useState('Taking you to your contest!');
-    const [showTryAgain, setShowTryAgain] = React.useState(false);
+    const [showTryAgain, setShowTryAgain] = React.useState(true);
     const [device, setDevice] = React.useState('')
 
     const tryRedirect = () => {
