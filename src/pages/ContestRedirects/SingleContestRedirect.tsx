@@ -27,14 +27,11 @@ export default function SingleContestRedirectPage() {
           } catch (error) {
               console.error(error);
           }
-          const timerId = setTimeout(function () {
+          setTimeout(function () {
               setMessage('Redirect Failed');
               setSecondaryMessage("If the app does not open, click 'Try Redirect Again' below");
               setShowTryAgain(true);
-          }, 5000);
-          window.onblur = function () {
-              clearTimeout(timerId);
-          };
+          }, 3500);
       } else {
           setTimeout(() => {
             setMessage('Unsupported Device');
