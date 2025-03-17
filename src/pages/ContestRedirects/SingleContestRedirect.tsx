@@ -84,7 +84,7 @@ export default function SingleContestRedirectPage() {
                   padding: '10px 20px',
                   textDecoration: 'none',
                   borderRadius: '5px',
-                  marginTop: '20px', marginBottom: '20px' }}>
+                  marginTop: '20px',  }}>
                     Try Redirect Again
                 </button>
             )}
