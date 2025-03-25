@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import React from 'react';
 import { analytics } from '../../App'; // Correctly import analytics as a named export
 import DownloadButton from 'components/Buttons/DownloadButton';
+import ShareButton from 'components/Buttons/ShareButton';
 
 export default function DownloadPage() {
   const [message, setMessage] = React.useState('Redirecting...');
@@ -20,7 +21,7 @@ export default function DownloadPage() {
       }
       setTimeout(function () {
         setMessage('Redirect Failed');
-        setSecondaryMessage("If the app does not open, click 'Try Redirect Again' below");
+        setSecondaryMessage("If the app does not open, click 'Download OverBoard Sports' below");
         setShowTryAgain(true);
       }, 3000);
     } else {
@@ -74,7 +75,9 @@ export default function DownloadPage() {
       )}
       <div style={{  }}>
         <DownloadButton overrideText='Download OverBoard Sports'/>
+        
       </div>
+      <ShareButton />
     </main>
   );
 }
