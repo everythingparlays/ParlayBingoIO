@@ -1,6 +1,10 @@
 import React from 'react';
 
-const DownloadButton = () => {
+interface DownloadButtonProps {
+  overrideText?: string;
+}
+
+const DownloadButton: React.FC<DownloadButtonProps> = ({ overrideText }) => {
   return (
     <a
       href="https://apps.apple.com/us/app/parlay-bingo/id1665470403"
@@ -14,7 +18,7 @@ const DownloadButton = () => {
         marginTop: '20px',
       }}
     >
-      Download OverBoard Sports
+      {overrideText || 'Download OverBoard Sports'}
     </a>
   );
 };
