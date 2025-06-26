@@ -7,7 +7,7 @@
   z-index: 99;
   border-bottom: 1px solid transparent;
   transition: background-color var(--transition-med),
-              border-color var(--transition-med);
+    border-color var(--transition-med);
 }
 
 #header.scrolled {
@@ -27,13 +27,15 @@
   transform: translateX(var(--size-2));
 }
 
-#nav-open, #nav-close {
+#nav-open,
+#nav-close {
   padding: var(--size-2);
   height: 40px;
   width: 40px;
 }
 
-#nav-open > div, #nav-close > div {
+#nav-open > div,
+#nav-close > div {
   background-color: var(--heading-color);
   height: 2px;
   width: 18px;
@@ -69,7 +71,7 @@
   border-left: 1px solid var(--border-color);
 }
 
-header[aria-expanded=true] #links {
+header[aria-expanded='true'] #links {
   transform: translateX(0);
 }
 
@@ -106,13 +108,15 @@ body[theme='light'] #nav-expanded-bg {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
-header[aria-expanded=true] #nav-expanded-bg {
+header[aria-expanded='true'] #nav-expanded-bg {
   opacity: 1;
   visibility: visible;
 }
 
 @media screen and (width > 768px) {
-  #nav-close, #nav-open, #nav-expanded-bg {
+  #nav-close,
+  #nav-open,
+  #nav-expanded-bg {
     display: none;
   }
 
@@ -138,16 +142,16 @@ header[aria-expanded=true] #nav-expanded-bg {
   font-weight: 600;
 }
 
-body[theme="light"] .link::after {
+body[theme='light'] .link::after {
   opacity: 0.2;
 }
 
-body[theme="dark"] .link::after {
+body[theme='dark'] .link::after {
   opacity: 0.4;
 }
 
 .link::after {
-  content: "";
+  content: '';
   position: absolute;
   background-color: var(--primary);
   height: 1em;
@@ -159,8 +163,53 @@ body[theme="dark"] .link::after {
   z-index: -1;
 }
 
-.link:hover::after, .link[aria-current=page]::after {
+.link:hover::after,
+.link[aria-current='page']::after {
   width: 100%;
   left: 0;
   right: auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 44px; /* Default desktop size */
+  width: auto;
+  max-width: 100%;
+  transition: height var(--transition-med);
+}
+
+/* Mobile optimization */
+@media screen and (max-width: 768px) {
+  .logo {
+    height: 36px; /* Smaller on mobile */
+  }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 480px) {
+  .logo {
+    height: 32px; /* Even smaller on very small screens */
+  }
+}
+
+/* Large screens */
+@media screen and (min-width: 1200px) {
+  .logo {
+    height: 48px; /* Larger on big screens */
+  }
+}
+
+/* When header is scrolled, optionally make logo slightly smaller */
+#header.scrolled .logo {
+  height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  #header.scrolled .logo {
+    height: 32px;
+  }
 }
