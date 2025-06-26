@@ -1,13 +1,15 @@
 @import url('/assets/fonts/Satoshi/css/satoshi.css');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap');
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 :root {
-  --font-main: "Satoshi-Variable", Arial, system-ui, sans-serif;
-  --font-secondary: "Oswald", Impact, Arial, system-ui, sans-serif;
+  --font-main: 'Satoshi-Variable', Arial, system-ui, sans-serif;
+  --font-secondary: 'Oswald', Impact, Arial, system-ui, sans-serif;
 
   font-family: var(--font-main);
 
@@ -19,8 +21,10 @@
 }
 
 body {
-  --primaryRGB: 53, 116, 220;
+  /* --primaryRGB: 53, 116, 220; */
+  --primaryRGB: 48, 48, 131;
   --primary: rgb(var(--primaryRGB));
+  --neutralRGB: 255, 255, 255;
 
   --heading-color: var(--gray1200);
   --text-color: var(--gray1000);
@@ -76,7 +80,7 @@ body {
   --shadow-xl: 4px 6px 32px var(--shadow-color);
 
   --header-height: 85px;
-  
+
   color: var(--text-color);
 }
 
@@ -119,7 +123,7 @@ body[theme='dark'] {
 
   --gold-1: rgba(255, 232, 138, 1);
   --gold-2: rgba(204, 154, 30, 1);
-  
+
   --silver-1: rgba(239, 240, 244, 1);
   --silver-2: rgba(128, 128, 128, 1);
 
@@ -187,7 +191,7 @@ body[theme='light'] {
 
   --gold-1: rgb(247, 202, 77);
   --gold-2: rgb(220, 145, 25);
-  
+
   --silver-1: rgb(175, 175, 176);
   --silver-2: rgb(101, 100, 100);
 
@@ -231,22 +235,46 @@ body {
   background-color: var(--bg);
 }
 
-p, span, li, td, code, label {
+p,
+span,
+li,
+td,
+code,
+label {
   color: var(--text-color);
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.1em;
   color: var(--heading-color);
   font-weight: 900;
 }
 
-p, span, li, td, code, button, input, textarea, select {
+p,
+span,
+li,
+td,
+code,
+button,
+input,
+textarea,
+select {
   font-size: var(--text-regular);
   color: var(--text-color);
 }
@@ -291,7 +319,9 @@ button:disabled {
   cursor: default;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   display: block;
   outline: none;
   border: none;
@@ -300,8 +330,9 @@ input, textarea, select {
   font-family: inherit;
 }
 
-input:focus, textarea:focus, select:focus {
-  
+input:focus,
+textarea:focus,
+select:focus {
 }
 
 select > option {
@@ -330,7 +361,7 @@ button.primary {
 
 a.primary::after,
 button.primary::after {
-  content: "";
+  content: '';
   position: absolute;
   background: linear-gradient(to right, transparent, white);
   width: 100%;
@@ -363,13 +394,13 @@ button.small {
   gap: var(--size-1);
 }
 
-body[theme="dark"] a.secondary:hover,
-body[theme="dark"] button.secondary:hover {
+body[theme='dark'] a.secondary:hover,
+body[theme='dark'] button.secondary:hover {
   filter: brightness(1.25);
 }
 
-body[theme="light"] a.secondary:hover,
-body[theme="light"] button.secondary:hover {
+body[theme='light'] a.secondary:hover,
+body[theme='light'] button.secondary:hover {
   filter: brightness(0.9);
 }
 
@@ -387,18 +418,18 @@ img {
   max-height: 100%;
 }
 
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
   appearance: none;
 }
 
-[type="number"] {
+[type='number'] {
   -moz-appearance: textfield;
 }
 
-[type="number"]::-webkit-outer-spin-button,
-[type="number"]::-webkit-inner-spin-button {
+[type='number']::-webkit-outer-spin-button,
+[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -458,18 +489,16 @@ img {
   visibility: hidden;
   opacity: 0;
   transform: translateY(-20px);
-  transition: opacity var(--transition-short),
-              transform var(--transition-short),
-              visibility 0ms ease 250ms;
+  transition: opacity var(--transition-short), transform var(--transition-short),
+    visibility 0ms ease 250ms;
 }
 
 .popup.open {
   visibility: visible;
   opacity: 1;
   transform: none;
-  transition: opacity var(--transition-short),
-              transform var(--transition-short),
-              visibility 0ms ease 0ms;
+  transition: opacity var(--transition-short), transform var(--transition-short),
+    visibility 0ms ease 0ms;
 }
 
 .focusable:focus,
@@ -498,4 +527,45 @@ img {
 
 .with-hover-circle:hover::after {
   background-color: var(--transparent-contrast200);
+}
+
+/* New "secondary-cta" class with light blue background and indigo text */
+a.secondary-cta,
+button.secondary-cta {
+  background-color: #d9eefb; 
+  padding: var(--size-2) var(--size-3);
+  color: #303083; 
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  border-radius: var(--size-2);
+  font-weight: 600;
+  overflow: hidden;
+  position: relative;
+  width: fit-content;
+}
+
+/* Optional hover effect - similar to primary but with indigo gradient */
+a.secondary-cta::after,
+button.secondary-cta::after {
+  content: '';
+  position: absolute;
+  background: linear-gradient(to right, transparent, #303083);
+  width: 100%;
+  height: 100%;
+  right: 100%;
+  top: 0;
+  opacity: 0.15; /* Lower opacity for subtle effect */
+}
+
+a.secondary-cta:hover::after,
+button.secondary-cta:hover::after {
+  transition: right var(--transition-long);
+  right: -100%;
+}
+
+/* Optional: Add a subtle border to enhance the button */
+a.secondary-cta,
+button.secondary-cta {
+  border: 1px solid rgba(48, 48, 131, 0.2); /* Very subtle indigo border */
 }
