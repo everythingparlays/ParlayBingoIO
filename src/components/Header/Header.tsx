@@ -67,15 +67,25 @@ export default function Header() {
             <ul>
               <li>
                 <NavLink to="/" className={styles['link']}>
-                  Home
+                  How to play
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/" className={styles['link']}>
+                  About us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/" className={styles['link']}>
+                  Contact
+                </NavLink>
+              </li>
+              {/* <li>
                 <NavLink to="/contests" className={styles['link']}>
                   Upcoming events
                 </NavLink>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <NavLink
                   to="https://forms.gle/m83d7soVLv4yEm9q9"
                   className={styles['link']}
@@ -87,11 +97,16 @@ export default function Header() {
                 <NavLink to="/help-center" className={styles['link']}>
                   Help Center
                 </NavLink>
-              </li>
+              </li> */}
               <li>
-                <NavLink to="/download" className="primary">
-                  <img src={download} />
-                  Download Now
+                <NavLink
+                  to="/download"
+                  className="secondary-cta"
+                  style={{
+                    padding: '10px 10px',
+                  }}
+                >
+                  Download the App
                 </NavLink>
               </li>
             </ul>
