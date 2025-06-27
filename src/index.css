@@ -330,10 +330,11 @@ select {
   font-family: inherit;
 }
 
-input:focus,
+/* input:focus,
 textarea:focus,
 select:focus {
-}
+
+} */
 
 select > option {
   color: black;
@@ -568,4 +569,14 @@ button.secondary-cta:hover::after {
 a.secondary-cta,
 button.secondary-cta {
   border: 1px solid rgba(48, 48, 131, 0.2); /* Very subtle indigo border */
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #DB2156 0%, #F8AC1C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #DB2156; /* Fallback for older browsers */
+  display: inline-block; /* Important for the gradient to apply correctly */
+  font-weight: bold; /* Optional: makes the gradient more visible */
 }

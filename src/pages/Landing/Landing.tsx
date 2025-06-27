@@ -6,6 +6,7 @@ import InfiniteScroller from 'components/InfiniteScroller/InfiniteScroller'
 import gsap from 'gsap'
 import { singleParallax } from 'utils/parallax'
 import React from 'react'
+import Hero from './Hero'
 
 export default function Landing() {
 
@@ -90,124 +91,7 @@ export default function Landing() {
 
   return (
     <main id={styles['landing']}>
-      <section id={styles['hero']}>
-        <div id={styles['hero-inner']} className='container'>
-          <h1 id='hero-title'>Competition, Connection and Community</h1>
-          <p id='hero-text'>OverBoard Sports is a unique game for all types of sports fans to enjoy by combining the fun of sports betting and the competition and community of fantasy sports. Our goal is for our users to enjoy sports with their friends just as much as we do. OverBoard Sports runs in-person events at bars in addition to our virtual offerings.</p>
-          <Link to='/download' className='primary' id='hero-cta'>
-            <img src={download} />
-            Download Now
-          </Link>
-        </div>
-      </section>
-      <section className={`container ${styles['centered']} ${styles['bg-gradient']} fade-in`}>
-        <h2 className='section-title'>Maximized Engagement</h2>
-        <p>Live score updates, frequent near-misses, and only over props create a full game engagement experience.</p>
-        <img 
-          src='assets/images/landing/maximized-engagement.png' 
-          alt='OverBoard Sports App'
-          height="600px"
-        />
-        <div id={styles['sports-categories']}>
-          <span>🏈️️  NFL</span>
-          <span>🏀  NBA</span>
-          <span>⚾️️  MLB</span>
-          <span>🏒️️  NHL</span>
-          <span>🎾️️  Tennis</span>
-          <span>⚽️️️  Soccer</span>
-          <span>⛳️️️️  PGA</span>
-        </div>
-      </section>
-      <section className={`container ${styles['centered']} fade-in`}>
-        <h2 className='section-title'>Wide Audience</h2>
-        <p >Multi-sport competitions combined with our gamified UI allow all groups of fans to compete, regardless of sport and skill level. </p>
-        <div id={styles['wider-audience-images']} className={styles['bg-gradient']}>
-          <img 
-            src='assets/images/landing/group_picture.png' 
-            alt='People cheering at a bar' 
-          />
-          <img 
-            src='assets/images/landing/watching_at_bar.png' 
-            alt='People cheering at a bar' 
-          />
-        </div>
-      </section>
-      <section className={`container ${styles['centered']} fade-in`} id='social'>
-        <h2 className='section-title'>In-Person Events</h2>
-        <p>Face to face competition experiences provide new ways for fans to connect. Events benefit venues by providing new customers and entertainment.</p>
-        <div id={styles['social-inner']}>
-          <div id={styles['small']} className={styles['ring']}></div>
-          <div id={styles['med']} className={styles['ring']}></div>
-          <div id={styles['large']} className={styles['ring']}></div>
-          <img
-            src='assets/images/landing/muscled-chicken-lifting-trophy.png'
-            alt='Headshot of a person'
-            className={styles['social-person']}
-            id='person-1'
-          />
-          <img
-            src='assets/images/landing/panda-with-soccer-ball.png'
-            alt='Headshot of a person'
-            className={styles['social-person']}
-            id='person-2'
-          />
-          <img
-            src='assets/images/landing/football-player-helmet.png'
-            alt='Headshot of a person'
-            className={styles['social-person']}
-            id='person-3'
-          />
-          <img
-            src='assets/images/landing/soccer-bird.png'
-            alt='Headshot of a person'
-            className={styles['social-person']}
-            id='person-4'
-          />
-          <img
-            src='assets/images/landing/people_holding_phones.jpeg'
-            alt='Bar with ping-pong tables'
-            id={styles['social-main-img']}
-          />
-          <div id={styles['social-location']}>
-            <div id={styles['social-location-top']}>
-              <img
-                src='assets/images/landing/social_features.png'
-                alt='Location preview'
-                id={styles['social-location-preview']}
-              />
-              <div>
-                <h3>YOUR FAVORITE SPORTS BAR HERE!!!</h3>
-                <span>Tuesday • 9 PM–2 AM</span>
-              </div>
-            </div>
-            <a href="https://forms.gle/m83d7soVLv4yEm9q9" className='secondary'>Get directions</a>
-          </div>
-        </div>
-      </section>
-      <Testimonials />
-      <section className='container fade-in'>
-        <div id={styles['app-store']}>
-          <div id={styles['app-store-inner']}>
-            <img 
-              src='assets/images/landing/qr_code.png' 
-              alt='QR Code'
-            />
-            <h2>Join the fun, download our app!</h2>
-            <p>Live score updates, frequent near-misses, and only over props for a full game engagement experience</p>
-            <a href='https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403' target='_blank' rel='noopener noreferrer'>
-              <img 
-                src='assets/images/landing/download_app_store.png' 
-                alt='Download on the Apple App Store'
-              />
-            </a>
-          </div>
-          <img 
-            src='assets/images/landing/app-store-screens.png' 
-            alt='Pictures of our app'
-            id={styles['app-images']}
-          />
-        </div>
-      </section>
+        <Hero />
     </main>
   )
 }
