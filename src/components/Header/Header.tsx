@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
 import styles from './styles.module.css'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import React from 'react'
 import LogoHeader from 'components/svg/LogoHeader'
 import LinearGradient from 'ui/LinearGradient'
+import Button from 'ui/Button'
 
 export default function Header() {
   const [expanded, setExpanded] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
 
   // Track screen size for responsive layout
@@ -81,15 +83,16 @@ export default function Header() {
 
           {/* Right: Download Button */}
           <div className={styles['mobile-right']}>
-            <NavLink
-              to="/download"
-              className="secondary-cta"
-              style={{
-                padding: '10px 10px',
-              }}
+            <Button
+              size="sm"
+              onClick={() => navigate('/download')}
+              bg="#d9eefb"
+              color="#303083"
+              hoverBg="#c7e6f7"
+              hoverColor="#303083"
             >
               Download the App
-            </NavLink>
+            </Button>
           </div>
         </div>
       ) : (
@@ -116,15 +119,16 @@ export default function Header() {
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/download"
-                  className="secondary-cta"
-                  style={{
-                    padding: '10px 10px',
-                  }}
+                <Button
+                  size="sm"
+                  onClick={() => navigate('/download')}
+                  bg="#d9eefb"
+                  color="#303083"
+                  hoverBg="#c7e6f7"
+                  hoverColor="#303083"
                 >
                   Download the App
-                </NavLink>
+                </Button>
               </li>
             </ul>
           </nav>
@@ -154,15 +158,19 @@ export default function Header() {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/download"
-              className="secondary-cta"
-              style={{
-                padding: '10px 10px',
+            <Button
+              size="sm"
+              onClick={() => {
+                navigate('/download')
+                setExpanded(false)
               }}
+              bg="#d9eefb"
+              color="#303083"
+              hoverBg="#c7e6f7"
+              hoverColor="#303083"
             >
               Download the App
-            </NavLink>
+            </Button>
           </li>
         </ul>
       </nav>

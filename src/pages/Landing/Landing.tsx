@@ -6,7 +6,9 @@ import InfiniteScroller from 'components/InfiniteScroller/InfiniteScroller'
 import gsap from 'gsap'
 import { singleParallax } from 'utils/parallax'
 import React from 'react'
-import Hero from './Hero'
+import Hero from './Components/Hero'
+import TickerTape from 'ui/TickerTape'
+import NewWayToPlay from './Components/NewWayToPlay'
 
 export default function Landing() {
 
@@ -92,6 +94,8 @@ export default function Landing() {
   return (
     <main id={styles['landing']}>
         <Hero />
+        <TickerTape />
+        <NewWayToPlay/> 
     </main>
   )
 }

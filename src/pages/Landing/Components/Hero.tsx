@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './styles.module.css'
+import styles from '../styles.module.css'
 import HeroIconTrophy from 'components/svg/HeroIconTrophy'
 import GooglePlayDownload from 'components/svg/GooglePlayDownload'
 import AppleDownload from 'components/svg/AppleDownload'
@@ -48,10 +48,8 @@ function Hero() {
             className={styles['phone-mockup-container']}
             style={{ position: 'relative', overflow: 'visible' }}
           >
-            <div className={styles['hero-blocks']}
-            style = {{}}
-            >
-              <HeroBlock width={300}/> 
+            <div className={styles['hero-blocks']} style={{}}>
+              <HeroBlock width={300} />
             </div>
             {/* Trophy icon - z-index: 4 */}
             <div className={styles['trophy-icon']}>
@@ -61,7 +59,7 @@ function Hero() {
             {/* Background element - z-index: 1 */}
             <div
               className={styles['background-square']}
-              style={{ left: '-20%',top:"70%", opacity: 0.7 }}
+              style={{ left: '-20%', top: '70%', opacity: 0.7 }}
             >
               <img
                 src="/assets/images/landing/hero-right-square.png"

@@ -6,6 +6,10 @@
   margin-bottom: 200px;
 }
 
+#landing section#hero {
+  margin-bottom: 0;
+}
+
 #hero {
   background-color: var(--primary);
   padding-top: 0;
@@ -586,39 +590,61 @@
   transform: rotate(5deg);
 }
 
-
-
 @media screen and (max-width: 767px) {
-  .hero-right {
-    display: none; /* Hide on mobile */
-  }
-
   #hero {
-    padding-top: 0;
-  }
-
-  #hero-inner {
-    padding-top: var(--header-height);
-    min-height: 90vh;
-  }
-
-  .hero-left {
-    padding-top: 15px;
-  }
-
-  .hero-left-inner {
-    margin-bottom: 100px;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
   }
 
   #hero-inner {
     flex-direction: column;
-  }
-  #hero {
-    padding: 0;
-    margin: 0;
-    height: 100vh;
+    padding-top: var(--header-height);
+    min-height: auto;
   }
 
+  .hero-left {
+    width: 100%;
+    order: 1;
+    padding: var(--size-4) var(--size-3);
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-left-inner {
+    margin-bottom: 0;
+  }
+
+  .hero-right {
+    width: 100%;
+    height: 60vh;
+    order: 2;
+    margin-top: var(--size-3);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .phone-mockup-container {
+    height: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-blocks {
+    top: -25%;     /* Adjust vertical position */
+    right: 10%;    /* Adjust horizontal position */
+    width: 80px;   /* Smaller size for mobile */
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -629,62 +655,30 @@
 /* Hero section fixes */
 #hero {
   background-color: var(--primary);
-  padding-top: 0; /* Remove padding-top */
-  margin-top: 0; /* Remove margin-top */
-  height: 100vh;
-  overflow: hidden; 
+  padding-top: 0;
+  margin-top: 0;
   position: relative;
 }
 
 #hero-inner {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Start from the top instead of center */
-  min-height: calc(100vh - var(--header-height)); /* Subtract header height */
-  overflow: hidden;
-  padding-top: 0; /* Remove top padding */
-  margin-top: var(--header-height); /* Add margin for header */
+  justify-content: flex-start;
+  padding-top: 0;
+  margin-top: var(--header-height);
 }
 
-/* Fix mobile view specifically */
-@media screen and (max-width: 767px) {
-  #hero {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin: 0;
-  }
-  
-  
-  #hero-inner {
-    padding-top: 0;
-    min-height: calc(100vh - 70px); /* Use exact px value to avoid CSS variable issues */
-    margin-top: 70px; /* Match header height */
-  }
-  
-  .hero-left {
-    padding-top: 0; /* Remove top padding */
-    height: calc(100vh - 70px); /* Take full height minus header */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .hero-left-inner {
-    margin-bottom: 0; /* Remove bottom margin */
-    margin-top: -70px; /* Negative margin to pull content up */
-  }
-  
-  /* Add background directly behind hero section */
-  body {
-    background-color: var(--primary);
-  }
-}
-
-/* Fix desktop view */
+/* Desktop view */
 @media screen and (min-width: 768px) {
+  #hero {
+    height: 100vh;
+    overflow: hidden;
+  }
+
   #hero-inner {
     flex-direction: row;
-    justify-content: center; /* Center content horizontally */
-    margin-top: var(--header-height); /* Match header height */
+    justify-content: center;
+    min-height: calc(100vh - var(--header-height));
+    overflow: hidden;
   }
 }
