@@ -25,7 +25,7 @@ body {
   --primaryRGB: 48, 48, 131;
   --primary: rgb(var(--primaryRGB));
   --neutralRGB: 255, 255, 255;
-
+  
   --heading-color: var(--gray1200);
   --text-color: var(--gray1000);
   --border-color: var(--gray500);
@@ -80,6 +80,8 @@ body {
   --shadow-xl: 4px 6px 32px var(--shadow-color);
 
   --header-height: 85px;
+
+  --white: #FFFFFF;
 
   color: var(--text-color);
 }

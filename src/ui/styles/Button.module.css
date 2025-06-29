@@ -14,7 +14,7 @@
 }
 
 .button:hover:not(.disabled):not(.loading) {
-  background-color: var(--hover-bg) !important;
+  background: var(--hover-bg) !important;
   color: var(--hover-color) !important;
 }
 

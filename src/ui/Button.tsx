@@ -34,7 +34,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const buttonStyle = {
-      backgroundColor: bg,
+      background: bg,
       color: color,
       '--hover-bg': hoverBg,
       '--hover-color': hoverColor,

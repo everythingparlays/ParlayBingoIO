@@ -59,7 +59,7 @@ function Hero() {
             {/* Background element - z-index: 1 */}
             <div
               className={styles['background-square']}
-              style={{ left: '-20%', top: '70%', opacity: 0.7 }}
+              style={{ left: '-20%', top: '60%', opacity: 0.7 }}
             >
               <img
                 src="/assets/images/landing/hero-right-square.png"

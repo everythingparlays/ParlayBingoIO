@@ -83,7 +83,6 @@ export default function TickerTape({
           overflow: hidden;
           width: 100%;
           background: var(--primary);
-          background: linear-gradient(135deg, var(--primary) 0%, #2a1f7a 100%);
           color: rgba(255, 255, 255, 0.8);
           padding: var(--size-4) 0;
           height: auto;

@@ -11,143 +11,128 @@ import TickerTape from 'ui/TickerTape'
 import NewWayToPlay from './Components/NewWayToPlay'
 
 export default function Landing() {
-
   useEffect(() => {
     let ctx = gsap.context(() => {
-
       // Create a bit of parallaxing for the images of people in the social features section
       singleParallax({
         element: document.getElementById('person-1'),
         speed: -1.5,
-        delay: 0
+        delay: 0,
       })
 
       singleParallax({
         element: document.getElementById('person-2'),
         speed: 1,
-        delay: 0
+        delay: 0,
       })
 
       singleParallax({
         element: document.getElementById('person-3'),
         speed: 1.5,
-        delay: 0
+        delay: 0,
       })
 
       singleParallax({
         element: document.getElementById('person-4'),
         speed: -2,
-        delay: 0
+        delay: 0,
       })
 
-      gsap.from(
-        '#hero-title, #hero-text, #hero-cta',
-        {
-          y: 15,
-          opacity: 0,
-          ease: 'expo.inOut',
-          duration: 1,
-          delay: 0.2,
-          stagger: 0.1,
-          transformOrigin: 'top left'
-        }
-      )
+      gsap.from('#hero-title, #hero-text, #hero-cta', {
+        y: 15,
+        opacity: 0,
+        ease: 'expo.inOut',
+        duration: 1,
+        delay: 0.2,
+        stagger: 0.1,
+        transformOrigin: 'top left',
+      })
 
-      gsap.from(
-        'header',
-        {
-          opacity: 0,
-          duration: 1,
-          ease: 'expo.inOut',
-          delay: 1
-        }
-      )
+      gsap.from('header', {
+        opacity: 0,
+        duration: 1,
+        ease: 'expo.inOut',
+        delay: 1,
+      })
 
       // Make all elements with the class .fade-in fade in and up when they enter the screen
       const fadeInSections = document.getElementsByClassName('fade-in')
-      for(let s of fadeInSections) {
-        gsap.from(
-          s,
-          {
-            opacity: 0, // start from 0 opacity
-            y: 25, // start from 25px down
-            scrollTrigger: {
-              trigger: s,
-              start: '150px bottom', // start animation when the element is 150px from the bottom of the screen
-              // restart the animation on entering the start position from the top,
-              // reverse the animation when leaving back upwards
-              toggleActions: 'restart none none reverse' 
-            },
-            duration: 1,
-            ease: 'expo.out'
-          }
-        )
+      for (let s of fadeInSections) {
+        gsap.from(s, {
+          opacity: 0, // start from 0 opacity
+          y: 25, // start from 25px down
+          scrollTrigger: {
+            trigger: s,
+            start: '150px bottom', // start animation when the element is 150px from the bottom of the screen
+            // restart the animation on entering the start position from the top,
+            // reverse the animation when leaving back upwards
+            toggleActions: 'restart none none reverse',
+          },
+          duration: 1,
+          ease: 'expo.out',
+        })
       }
     })
-
-    
 
     return () => ctx.revert()
   }, [])
 
-
   return (
     <main id={styles['landing']}>
-        <Hero />
-        <TickerTape />
-        <NewWayToPlay/> 
+      <Hero />
+      <TickerTape />
+      <NewWayToPlay />
     </main>
   )
 }
 
 const Testimonials = () => {
-  
   // I recommend at least 12 testimonials for this to look right up to 4K
-  const data : TestimonialType[] = [
+  const data: TestimonialType[] = [
     {
       name: 'Bar Owner',
       level: 'Chicago',
-      text: '"This is exactly what our bar needs to bring customers together, especially on nights with multiple games going on!"'
+      text: '"This is exactly what our bar needs to bring customers together, especially on nights with multiple games going on!"',
     },
     {
       name: 'Fantastic User',
       level: 'Chicago',
-      text: '"I love how I have the opportunity to parlay from multiple games, takes the experience to the next level."'    
+      text: '"I love how I have the opportunity to parlay from multiple games, takes the experience to the next level."',
     },
     {
       name: 'Bar Owner',
       level: 'Chicago',
-      text: '"We struggle during the off season of baseball, and this is something that can keep the crowd year round."'    
+      text: '"We struggle during the off season of baseball, and this is something that can keep the crowd year round."',
     },
     {
       name: 'Bar Manager',
       level: 'Chicago',
-      text: '"We need more people coming into the bar earlier in the weeknights. These contests are a great way to do that."'    
+      text: '"We need more people coming into the bar earlier in the weeknights. These contests are a great way to do that."',
     },
     {
       name: 'Amazing User',
       level: 'User',
-      text: '"The originality is what will make this app a success!"'    
+      text: '"The originality is what will make this app a success!"',
     },
     {
       name: 'User',
       level: 'User',
-      text: '"I’ve never used an app like this and it was pretty intuitive. I appreciate the fun avatars and the ease of use."'    
+      text: '"I’ve never used an app like this and it was pretty intuitive. I appreciate the fun avatars and the ease of use."',
     },
     {
       name: 'User',
       level: 'User',
-      text: '"The idea of bingo makes it fun and intriguing, allowing you to enter 9 three way parlays with a way to win without hitting all."'
+      text: '"The idea of bingo makes it fun and intriguing, allowing you to enter 9 three way parlays with a way to win without hitting all."',
     },
     {
       name: 'User',
       level: 'User',
-      text: '"It was super fun. I liked the live leaderboard and being able to compete against friends was a nice contrast to betting on a regular sportsbook."'    
+      text: '"It was super fun. I liked the live leaderboard and being able to compete against friends was a nice contrast to betting on a regular sportsbook."',
     },
     {
       name: 'App Store Review',
       level: 'User',
-      text: '"OverBoard Sports is way more fun and refreshing to use compared to the typical betting apps that are available. Highly Recommend anyone check out the app!"'    
+      text: '"OverBoard Sports is way more fun and refreshing to use compared to the typical betting apps that are available. Highly Recommend anyone check out the app!"',
     },
   ]
 
@@ -162,11 +147,15 @@ const Testimonials = () => {
   })
 
   return (
-    <section className='fade-in'>
+    <section className="fade-in">
       <div className={`container ${styles['centered']}`}>
-        <h2 className='section-title' style={{marginBottom: 'var(--size-7)'}}>What people say<br />about OverBoard Sports</h2>
+        <h2 className="section-title" style={{ marginBottom: 'var(--size-7)' }}>
+          What people say
+          <br />
+          about OverBoard Sports
+        </h2>
       </div>
-      
+
       <div className={styles['infinite']}>
         <InfiniteScroller
           elements={elems.slice(0, elems.length / 3)}
@@ -174,13 +163,13 @@ const Testimonials = () => {
           cycleTime={100000}
         />
         <InfiniteScroller
-          elements={elems.slice(elems.length / 3, 2 * elems.length / 3)}
+          elements={elems.slice(elems.length / 3, (2 * elems.length) / 3)}
           gap={1}
           cycleTime={100000}
           invert
         />
         <InfiniteScroller
-          elements={elems.slice(2 * elems.length / 3, elems.length)}
+          elements={elems.slice((2 * elems.length) / 3, elems.length)}
           gap={1}
           cycleTime={100000}
         />
