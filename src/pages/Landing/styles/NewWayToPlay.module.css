@@ -1,9 +1,10 @@
 #section {
   background-color: var(--primary);
-  min-height: 90vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: row;
-  padding-top: 5rem;
+  padding: 5rem 0 0 0;
+  margin-bottom: 0;
 }
 
 .left-side {
@@ -11,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 50%;
+  flex: 1;
 }
 
 .svg-container {
@@ -32,7 +33,7 @@
   position: relative;
   z-index: 1;
   margin-left: 2rem;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
 }
 
 .svg-badge {
@@ -70,7 +71,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  
 }
 
 .text-container p {
@@ -98,9 +98,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 50%;
+  flex: 1;
   position: relative;
-  padding: 2rem;
   border-radius: 1rem;
 }
 
@@ -110,11 +109,13 @@
   top: 30rem;
   left: 10rem;
   right: 0;
-  bottom: 0;
-  background-image: url('/heroBackgroundLeft.png');
+  bottom: -3rem;
+  background-image: 
+    linear-gradient(rgba(48, 48, 131, 0.6), rgba(48, 48, 131, 0.6)),
+    url('/heroBackgroundLeft.png');
   background-position: right center;
   background-repeat: no-repeat;
-  background-size: 110% 150% ;
+  background-size: 130% 150%;
   transform: scaleX(-1);
   z-index: 0;
   opacity: 0.7;

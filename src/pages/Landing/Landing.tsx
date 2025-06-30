@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 import download from '/assets/svg/download.svg'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import InfiniteScroller from 'components/InfiniteScroller/InfiniteScroller'
 import gsap from 'gsap'
 import { singleParallax } from 'utils/parallax'
 import React from 'react'
 import Hero from './Components/Hero'
 import TickerTape from 'ui/TickerTape'
-import NewWayToPlay from './Components/NewWayToPlay'
+import LinearGradient from 'ui/LinearGradient'
+import LoadingFallback from 'components/LoadingFallback/LoadingFallback'
+import FourEasySteps from './Components/FourEasySteps'
+
+// Lazy load below-the-fold components for better performance
+const NewWayToPlay = React.lazy(() => import('./Components/NewWayToPlay'))
+const Social = React.lazy(() => import('./Components/Social'))
+const Map = React.lazy(() => import('./Components/Map'))
 
 export default function Landing() {
   useEffect(() => {
@@ -79,9 +86,31 @@ export default function Landing() {
 
   return (
     <main id={styles['landing']}>
+      {/* Above-the-fold content - loads immediately */}
       <Hero />
       <TickerTape />
-      <NewWayToPlay />
+      
+      {/* Below-the-fold content - lazy loaded */}
+      <Suspense fallback={<LoadingFallback height="400px" message="Loading features..." />}>
+        <NewWayToPlay />
+      </Suspense>
+      
+      <LinearGradient height="4px" />
+      
+      <Suspense fallback={<LoadingFallback height="500px" message="Loading social features..." />}>
+        <Social />
+      </Suspense>
+
+      <LinearGradient height="4px" />
+
+      <Suspense fallback={<LoadingFallback height="500px" message="Loading testimonials..." />}>
+        <FourEasySteps />
+      </Suspense>
+      
+      <LinearGradient height="4px" />
+      <Suspense fallback={<LoadingFallback height="500px" message="Loading how to play..." />}>
+        <Map />
+      </Suspense>
     </main>
   )
 }

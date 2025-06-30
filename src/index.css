@@ -151,6 +151,8 @@ body[theme='dark'] {
   --footer-color: var(--card-color);
   --skeleton-color: rgba(255, 255, 255, 0.08);
   --skeleton-shine-color: var(--heading-color);
+
+  --secondary-cta: #d9eefb
 }
 
 body[theme='light'] {
@@ -219,6 +221,8 @@ body[theme='light'] {
   --footer-color: var(--bg);
   --skeleton-color: rgba(0, 0, 0, 0.08);
   --skeleton-shine-color: white;
+
+  --secondary-cta: #d9eefb
 }
 
 @media (width > 600px) {
@@ -582,3 +586,4 @@ button.secondary-cta {
   display: inline-block; /* Important for the gradient to apply correctly */
   font-weight: bold; /* Optional: makes the gradient more visible */
 }
+

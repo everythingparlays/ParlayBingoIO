@@ -1,3 +1,4 @@
+import React from 'react'
 import CashBag from 'components/svg/CashBag'
 import Sports from 'components/svg/Sports'
 import Whistle from 'components/svg/Whistle'

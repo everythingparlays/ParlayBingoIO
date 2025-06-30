@@ -12,6 +12,7 @@ import Button from 'ui/Button'
 import { useNavigate } from 'react-router-dom'
 import Features from 'components/Features/Features'
 import { newToPlayFeatures } from 'data/NewToPlayFeatures'
+import LinearGradient from 'ui/LinearGradient'
 type Props = {}
 
 function NewWayToPlay({}: Props) {
@@ -62,17 +63,21 @@ function NewWayToPlay({}: Props) {
         </div>
       </div>
       {/* Right side */}
-      <div className={styles['right-side']}>
+      <div className={styles['right-side']}
+        style = {{
+          marginBottom: '3rem',
+        }}
+      >
         <Features
           title="The Most Engaging DFS"
           features={newToPlayFeatures}
           cornerBlocks={{
             topLeft: true,
             topRight: true,
-          
           }}
         />
       </div>
+    
     </section>
   )
 }

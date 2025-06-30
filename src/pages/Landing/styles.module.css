@@ -3,7 +3,7 @@
 }
 
 #landing section {
-  margin-bottom: 200px;
+  margin-bottom: 0;
 }
 
 #landing section#hero {
@@ -639,11 +639,11 @@
     position: relative;
     z-index: 2;
   }
-  
+
   .hero-blocks {
-    top: -25%;     /* Adjust vertical position */
-    right: 10%;    /* Adjust horizontal position */
-    width: 80px;   /* Smaller size for mobile */
+    top: -25%; /* Adjust vertical position */
+    right: 10%; /* Adjust horizontal position */
+    width: 80px; /* Smaller size for mobile */
   }
 }
 
@@ -682,3 +682,4 @@
     overflow: hidden;
   }
 }
+
