@@ -1,0 +1,162 @@
+#section {
+  background-color: var(--primary);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: row;
+  padding: 5rem 0 0 0;
+  margin-bottom: 0;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.svg-container {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.svg-square {
+  position: absolute;
+  rotate: -10deg;
+  top: 2rem;
+  left: 0;
+  z-index: 0;
+}
+
+.svg-phone {
+  position: relative;
+  z-index: 1;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+
+.svg-badge {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.text {
+  margin-top: 1rem;
+  width: 80%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 3rem;
+}
+
+.text-container {
+  text-align: center;
+}
+
+.text-container h1 {
+  background: linear-gradient(135deg, #f8ac1c, #e9663a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-container p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--white);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #f8ac1c, #e9663a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+  border-radius: 1rem;
+}
+
+.right-side::before {
+  content: '';
+  position: absolute;
+  top: 30rem;
+  left: 10rem;
+  right: 0;
+  bottom: -3rem;
+  background-image: 
+    linear-gradient(rgba(48, 48, 131, 0.6), rgba(48, 48, 131, 0.6)),
+    url('/heroBackgroundLeft.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 130% 150%;
+  transform: scaleX(-1);
+  z-index: 0;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+  #section {
+    flex-direction: column;
+    padding-top: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left-side,
+  .right-side {
+    width: 100%;
+    align-items: center;
+  }
+
+  .svg-phone {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .text-container {
+    width: 100%;
+  }
+
+  .text-container h1 {
+    font-size: 3rem;
+  }
+
+  .text-container p {
+    font-size: 1rem;
+  }
+
+  .text-container span {
+    font-size: 1rem;
+  }
+
+  .button-container {
+    padding-bottom: 1rem;
+  }
+}

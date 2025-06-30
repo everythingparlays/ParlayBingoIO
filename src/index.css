@@ -25,7 +25,7 @@ body {
   --primaryRGB: 48, 48, 131;
   --primary: rgb(var(--primaryRGB));
   --neutralRGB: 255, 255, 255;
-
+  
   --heading-color: var(--gray1200);
   --text-color: var(--gray1000);
   --border-color: var(--gray500);
@@ -80,6 +80,8 @@ body {
   --shadow-xl: 4px 6px 32px var(--shadow-color);
 
   --header-height: 85px;
+
+  --white: #FFFFFF;
 
   color: var(--text-color);
 }
@@ -149,6 +151,8 @@ body[theme='dark'] {
   --footer-color: var(--card-color);
   --skeleton-color: rgba(255, 255, 255, 0.08);
   --skeleton-shine-color: var(--heading-color);
+
+  --secondary-cta: #d9eefb
 }
 
 body[theme='light'] {
@@ -217,6 +221,8 @@ body[theme='light'] {
   --footer-color: var(--bg);
   --skeleton-color: rgba(0, 0, 0, 0.08);
   --skeleton-shine-color: white;
+
+  --secondary-cta: #d9eefb
 }
 
 @media (width > 600px) {
@@ -330,10 +336,11 @@ select {
   font-family: inherit;
 }
 
-input:focus,
+/* input:focus,
 textarea:focus,
 select:focus {
-}
+
+} */
 
 select > option {
   color: black;
@@ -569,3 +576,14 @@ a.secondary-cta,
 button.secondary-cta {
   border: 1px solid rgba(48, 48, 131, 0.2); /* Very subtle indigo border */
 }
+
+.gradient-text {
+  background: linear-gradient(90deg, #DB2156 0%, #F8AC1C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #DB2156; /* Fallback for older browsers */
+  display: inline-block; /* Important for the gradient to apply correctly */
+  font-weight: bold; /* Optional: makes the gradient more visible */
+}
+
