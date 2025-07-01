@@ -11,6 +11,7 @@ import TickerTape from 'ui/TickerTape'
 import LinearGradient from 'ui/LinearGradient'
 import LoadingFallback from 'components/LoadingFallback/LoadingFallback'
 import FourEasySteps from './Components/FourEasySteps'
+import Testmonial from './Components/Testmonial'
 
 // Lazy load below-the-fold components for better performance
 const NewWayToPlay = React.lazy(() => import('./Components/NewWayToPlay'))
@@ -89,27 +90,54 @@ export default function Landing() {
       {/* Above-the-fold content - loads immediately */}
       <Hero />
       <TickerTape />
-      
+
       {/* Below-the-fold content - lazy loaded */}
-      <Suspense fallback={<LoadingFallback height="400px" message="Loading features..." />}>
+      <Suspense
+        fallback={
+          <LoadingFallback height="400px" message="Loading features..." />
+        }
+      >
         <NewWayToPlay />
       </Suspense>
-      
+
       <LinearGradient height="4px" />
-      
-      <Suspense fallback={<LoadingFallback height="500px" message="Loading social features..." />}>
+
+      <Suspense
+        fallback={
+          <LoadingFallback
+            height="500px"
+            message="Loading social features..."
+          />
+        }
+      >
         <Social />
       </Suspense>
 
       <LinearGradient height="4px" />
 
-      <Suspense fallback={<LoadingFallback height="500px" message="Loading testimonials..." />}>
+      <Suspense
+        fallback={
+          <LoadingFallback height="500px" message="Loading testimonials..." />
+        }
+      >
         <FourEasySteps />
       </Suspense>
-      
+
       <LinearGradient height="4px" />
-      <Suspense fallback={<LoadingFallback height="500px" message="Loading how to play..." />}>
+      <Suspense
+        fallback={
+          <LoadingFallback height="500px" message="Loading how to play..." />
+        }
+      >
         <Map />
+      </Suspense>
+      <LinearGradient height="4px" />
+      <Suspense
+        fallback={
+          <LoadingFallback height="500px" message="Loading how to play..." />
+        }
+      >
+        <Testmonial />
       </Suspense>
     </main>
   )
