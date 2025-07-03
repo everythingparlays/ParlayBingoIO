@@ -74,10 +74,10 @@ function Hero() {
                 width: '220%',
                 height: 'auto',
                 left: '-75%',
-                top: '0%',
                 transform: 'rotate(-5deg)',
                 zIndex: 3,
               }}
+              className={styles['phone-primary']}
             >
               <PrimaryPhoneHero />
             </div>
@@ -89,10 +89,10 @@ function Hero() {
                 width: '200%',
                 height: 'auto',
                 left: '-20%',
-                top: '10%',
                 transform: 'rotate(-6deg)',
                 zIndex: 2,
               }}
+              className={styles['phone-secondary']}
             >
               <SecondaryPhoneHero />
             </div>

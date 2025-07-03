@@ -53,4 +53,4 @@ const Testmonial = () => {
   )
 }
 
-export default Testmonial
+export default Testmonial;

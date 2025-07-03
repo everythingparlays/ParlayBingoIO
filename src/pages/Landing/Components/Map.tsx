@@ -4,6 +4,7 @@ import FreeToPlaySticker from 'components/svg/FreeToPlaySticker'
 import LeftNewToPlayBlocks from 'components/svg/LeftNewToPlayBlocks'
 import RightNewToPlayBlocks from 'components/svg/RightNewToPlayBlocks'
 import MapPin from 'components/svg/MapPin'
+import Button from 'ui/Button'
 
 type Props = {}
 
@@ -76,9 +77,15 @@ const Map = ({}: Props) => {
               ? 'Free to play anywhere, get in on the fun'
               : 'Paid contests available in select states'}
           </h3>
-          <button className={styles['download-app-button']}>
+          <Button
+            className={styles['download-app-button']}
+            style={{
+              backgroundColor: '#d9eefb',
+              color: 'var(--primary)',
+            }}
+          >
             Download the App
-          </button>
+          </Button>
         </div>
 
         {/* Bottom-right decorative section */}

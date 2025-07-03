@@ -1,46 +1,126 @@
 import styles from './styles.module.css'
-import { Link } from "react-router-dom";
-import React from 'react';
+import { Link } from 'react-router-dom'
+import QrCode from '../svg/QrCode'
+import AppleDownload from '../svg/AppleDownload'
+import GooglePlayDownload from '../svg/GooglePlayDownload'
+import React from 'react'
+import LineColumns from 'components/svg/LineColumns'
+import DashedLine from 'components/svg/DashedLine'
+import SportsBall from 'components/svg/SportsBall'
+import LinearGradient from '../../ui/LinearGradient'
+import FooterLogo from 'components/svg/FooterLogo'
+import Facebook from 'components/svg/Facebook'
+import Instagram from 'components/svg/Instagram'
+import X_twitter from 'components/svg/X_twitter'
+import Button from 'ui/Button'
 
 export default function Footer() {
   return (
-    <footer>
-      <div className='container'>
-        <div id={styles['top']}>
-          <div id={styles['logo-wrapper']}>
-            <img
-              src='/assets/images/OB-blue-purple.png'
-              alt='OverBoard Sports logo'
-              height='44px'
-            />
-            <p>Live score updates, frequent near-misses, and only over props for a full game engagement experience</p>
+    <footer id={styles['footer']}>
+      {/* Left */}
+      <div className={styles['left-container']}>
+        <div className={styles['left-container-content']}>
+          <div className={styles['title-container']}>
+            <DashedLine />
+            <h3>100% Free to Play</h3>
+            <DashedLine />
           </div>
-          <div id={styles['links']}>
-            <div className={styles['link-column']}>
-              <h2>Social</h2>
-              <a href='https://www.linkedin.com/company/everything-parlays/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>
-              <a href='https://twitter.com/parlaybingo' target='_blank' rel='noopener noreferrer'>X (Twitter)</a>
-              <a href='https://instagram.com/parlaybingo' target='_blank' rel='noopener noreferrer'>Instagram</a>
-            </div>
-            <div className={styles['link-column']}>
-              <h2>Contact</h2>
-              <a href='mailto:support@everythingparlays.com'>support@everythingparlays.com</a>
-            </div>
-            <div className={styles['link-column']}>
-              <h2>Download</h2>
-              <a href='https://apps.apple.com/us/app/parlay-bingo-fantasy-sports/id1665470403' target='_blank' rel='noopener noreferrer'>AppStore</a>
-            </div>
+          <div>
+            <h2>DOWNLOAD TO</h2>
+          </div>
+          <div>
+            <LineColumns />
+            <h1>WIN</h1>
+            <LineColumns />
+          </div>
+          <div>
+            <AppleDownload />
+            <GooglePlayDownload />
+          </div>
+          <div className={styles['qr-code-container']}>
+            <QrCode />
           </div>
         </div>
-        <hr />
-        <div id={styles['bottom']}>
-          <span>Copyright © OverBoard Sports 2024</span>
-          <div>
-            <Link to='https://www.everythingparlays.com/privacy-policy'>Privacy Policy</Link>
-            <Link to='https://www.everythingparlays.com/terms-of-service'>Terms & Conditions</Link>
+        <div className={styles['left-container-decorations']}>
+          <SportsBall />
+        </div>
+      </div>
+      {/* Right*/}
+      <div className={styles['right-container']}>
+        <div className={styles['footer-right-container-content']}>
+          <div className={styles['footer-logo-container']}>
+            <FooterLogo width="291px" height="252px" />
+          </div>
+
+          <div className={styles['footer-links-container']}>
+            <div
+              className={`${styles['footer-our-game-container']} ${styles['links-row']}`}
+            >
+              <h6>Our game</h6>
+              <h6>Social</h6>
+            </div>
+            <div
+              className={`${styles['footer-how-to-play-container']} ${styles['links-row']}`}
+            >
+              <p>How to play</p>
+              <div className={styles['footer-social-container']}>
+                <Facebook />
+                <Instagram />
+                <X_twitter />
+              </div>
+            </div>
+            <div
+              className={`${styles['footer-the-team-container']} ${styles['links-row']}`}
+            >
+              <p>The Team</p>
+              <Button
+                hoverBg="var(--white)"
+                style={{
+                  backgroundColor: 'var(--white)',
+                  color: 'var(--primary)',
+                  borderRadius: 'var(--size-1)',
+                }}
+              >
+                Join the Discord
+              </Button>
+            </div>
+            <div
+              className={`${styles['footer-contact-container']} ${styles['links-row']}`}
+            >
+              <p>Contact</p>
+              <div></div>
+            </div>
+            <div
+              className={`${styles['footer-support-container']} ${styles['links-row']}`}
+            >
+              <p>Support</p>
+              <div>
+                <p>Available in All 50 States for Free-to-Play</p>
+                <p>PlayContest</p>
+              </div>
+            </div>
+          </div>
+          <div className={styles['footer-copyright-container']}>
+            <p>© 2025 Overboard Sports. All rights reserved.</p>
+          </div>
+          <div className={styles['footer-terms-container']}>
+            <a>Terms of Service</a>
+            <span>|</span>
+            <a>Privacy Policy</a>
           </div>
         </div>
       </div>
+      <LinearGradient
+        style={{
+          height: '12px',
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1,
+        }}
+        className={styles['footer-gradient']}
+      />
     </footer>
   )
 }

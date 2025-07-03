@@ -1,8 +1,9 @@
 /* SlideShow2 Container */
 .slideshowContainer {
   width: 100%;
-  max-width: 787px;
-  height: 549px;
+  max-width: 700px;
+  height: 65%;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -33,22 +34,32 @@
   justify-content: center;
 }
 
-/* Testimonial Grid (2x2) */
+/* Testimonial Grid (2x2) with Offset */
 .testimonialGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 30px;
   width: 100%;
+  gap: var(--size-2);
   height: 100%;
-  padding: 20px;
+  padding: 30px 20px 20px 20px;
+  align-items: center;
+}
+
+.testimonialGrid > :nth-child(odd) {
+  transform: translateY(-15px);
+}
+
+.testimonialGrid > :nth-child(even) {
+  transform: translateY(0px);
 }
 
 /* Individual Testimonial Card */
 .testimonialCard {
   background-color: #1d184c;
   border-radius: 20px;
-  width: 366px;
+  width: 100%;
+  max-width: 366px;
   height: 227px;
   position: relative;
   overflow: hidden;
@@ -56,8 +67,8 @@
 }
 
 .testimonialCard:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(29, 24, 76, 0.3);
+  scale: 1.02;
 }
 
 /* Card Content */
@@ -120,7 +131,8 @@
   justify-content: center;
   gap: 12px;
   padding: var(--size-4);
-  margin-top: auto;
+  /* margin-top: auto; */
+  flex-shrink: 0;
 }
 
 .indicator {
@@ -155,7 +167,11 @@
 
   .testimonialGrid {
     gap: 20px;
-    padding: 15px;
+    padding: 45px 15px 15px 15px;
+  }
+
+  .testimonialGrid > :nth-child(odd) {
+    transform: translateY(-30px);
   }
 
   .testimonialCard {
@@ -190,6 +206,14 @@
     grid-template-rows: repeat(4, 1fr);
     gap: 15px;
     padding: 10px;
+  }
+
+  .testimonialGrid > :nth-child(odd) {
+    transform: none;
+  }
+
+  .testimonialGrid > :nth-child(even) {
+    transform: none;
   }
 
   .testimonialCard {

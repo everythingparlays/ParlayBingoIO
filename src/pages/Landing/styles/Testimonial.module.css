@@ -1,11 +1,14 @@
 .testmonial {
   background-color: var(--primary);
   padding: 0;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: space-between;
+  border-bottom: 2px solid var(--dark-indigo);
+  overflow: hidden;
 }
 
 .testmonial_left {
@@ -14,7 +17,8 @@
   background-position: center;
   background-repeat: no-repeat;
   flex: 1;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -22,6 +26,7 @@
   justify-content: center;
   padding: var(--size-10) var(--size-10) var(--size-10) var(--size-20);
   gap: var(--size-8);
+  overflow: hidden;
 }
 
 .testmonial_left_content {
@@ -40,6 +45,7 @@
   bottom: 0;
   left: -10%;
   z-index: 1;
+  rotate: -20deg;
 }
 
 h1,
@@ -71,27 +77,35 @@ p {
 
 .testmonial_right {
   flex: 1;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: var(--size-10);
   background-color: var(--primary);
+  overflow: hidden;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .testmonial {
     flex-direction: column;
-    min-height: auto;
+    height: auto;
+    max-height: none;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .testmonial_left,
   .testmonial_right {
     flex: none;
+    height: auto;
     min-height: 50vh;
+    max-height: none;
     padding: var(--size-8);
+    overflow: visible;
   }
 
   .testmonial_left {
