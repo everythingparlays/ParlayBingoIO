@@ -118,4 +118,4 @@ const SlideShow2: React.FC<SlideShow2Props> = ({
   )
 }
 
-export default SlideShow2
+export default SlideShow2;

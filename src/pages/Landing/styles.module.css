@@ -573,7 +573,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 15%;
+  top: 0%;
   z-index: 3;
   transform: rotate(-5deg);
   image-rendering: high-quality;
@@ -586,7 +586,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 10%;
+  top: 20%;
   right: 0;
   z-index: 2;
   transform: rotate(5deg);
@@ -641,11 +641,25 @@
     position: relative;
     z-index: 2;
   }
-
+  .trophy-icon {
+    top: 0%;
+    right: -15%;
+    transform: scale(0.8);
+  }
   .hero-blocks {
-    top: -25%; /* Adjust vertical position */
-    right: 10%; /* Adjust horizontal position */
-    width: 80px; /* Smaller size for mobile */
+    top: 5%; /* Adjust vertical position */
+    right: 0%; /* Adjust horizontal position */
+    transform: scale(1.5);
+    /* z-index: 10; */
+  }
+
+  .phone-primary {
+    transform: rotate(-5deg) scale(1.3) !important;
+    top: 15%;
+  }
+
+  .phone-secondary {
+    transform: rotate(-5deg) scale(1.3) !important;
   }
 }
 
@@ -653,14 +667,14 @@
   #hero-inner {
     flex-direction: row;
   }
-  
+
   .trophy-icon {
     top: 0%;
     right: 20%;
     /* width: 70px; */
     /* height: 70px; */
   }
-  
+
   .hero-blocks {
     /* width: 120px;
     height: 120px; */
@@ -678,12 +692,12 @@
     width: 80px;
     height: 80px;
   }
-  
+
   .hero-blocks {
     width: 140px;
     height: 140px;
     top: 10%;
-    right:25%;
+    right: 25%;
     transform: scale(2);
   }
 }
@@ -695,27 +709,25 @@
     right: 2%;
     transform: scale(0.8);
   }
-  
+
   .hero-blocks {
     top: 2%;
     right: 50%;
-    transform: scale(1.5)!important;
+    transform: scale(1.5) !important;
   }
 
   .phone-primary {
-    transform:rotate(-5deg) scale(1.2)!important;
+    transform: rotate(-5deg) scale(1.2) !important;
     top: 15%;
   }
 
   .phone-secondary {
-    transform:rotate(-5deg) scale(1.2)!important;
+    transform: rotate(-5deg) scale(1.2) !important;
     top: 25%;
   }
   .background-square {
     top: 0%;
   }
-  
-  
 }
 
 /* Hero section fixes */
@@ -749,19 +761,19 @@
   }
 }
 
-@media screen and (min-width: 1600px) { 
+@media screen and (min-width: 1600px) {
   .trophy-icon {
     top: 0%;
     right: 5%;
     width: 80px;
     height: 80px;
   }
-  
+
   .hero-blocks {
     /* width: 140px; */
     /* height: 140px; */
     top: 5%;
-    right:15%;
+    right: 15%;
     transform: scale(2);
   }
 }
