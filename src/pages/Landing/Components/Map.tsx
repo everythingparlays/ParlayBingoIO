@@ -45,7 +45,7 @@ const Map = ({}: Props) => {
           </div>
         </div>
 
-        <div>
+        <div className = {styles['map-subtitle-container']}>
           <p className={`${styles['map-subtitle']} gradient-text`}>
             Available in All 50 States for Free-to-Play Contests
           </p>

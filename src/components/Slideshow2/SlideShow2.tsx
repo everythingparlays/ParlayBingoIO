@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './SlideShow2.module.css'
 import { testimonialData } from '../../data/TestimonialData'
+import Arrow from 'components/svg/Arrow'
 
 interface TestimonialProps {
   id: number
@@ -38,6 +39,14 @@ const SlideShow2: React.FC<SlideShow2Props> = ({
     setCurrentSlide(index)
   }
 
+  const goToPrevious = () => {
+    setCurrentSlide(currentSlide === 0 ? testimonialData.length - 1 : currentSlide - 1)
+  }
+
+  const goToNext = () => {
+    setCurrentSlide(currentSlide === testimonialData.length - 1 ? 0 : currentSlide + 1)
+  }
+
   const renderTestimonialCard = (testimonial: TestimonialProps) => (
     <div key={testimonial.id} className={styles.testimonialCard}>
       <div className={styles.cardContent}>
@@ -55,6 +64,26 @@ const SlideShow2: React.FC<SlideShow2Props> = ({
 
   return (
     <div className={`${styles.slideshowContainer} ${className || ''}`}>
+      {/* Navigation arrows */}
+      {testimonialData.length > 1 && (
+        <>
+          <button 
+            className={styles.slideShowArrowLeft} 
+            onClick={goToPrevious}
+            aria-label="Previous slide"
+          >
+            <Arrow />
+          </button>
+          <button 
+            className={styles.slideShowArrowRight} 
+            onClick={goToNext}
+            aria-label="Next slide"
+          >
+            <Arrow />
+          </button>
+        </>
+      )}
+      
       <div className={styles.slideWrapper}>
         <div
           className={styles.slideTrack}

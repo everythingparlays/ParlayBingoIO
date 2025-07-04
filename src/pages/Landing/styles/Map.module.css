@@ -324,7 +324,7 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
 
 @media screen and (max-width: 480px) {
   .map-section {
-    padding: var(--size-6) 0 120px 0;
+    padding: var(--size-7) 0 120px 0;
   }
 
   .map-title {
@@ -335,12 +335,27 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
     font-size: var(--text-0);
   }
 
+  .contest-tabs {
+    max-width: 500px;
+    z-index: 3;
+  }
+
+  .map-subtitle-container {
+    margin-bottom: 0;
+    z-index: 4;
+  }
+
+  .map-usa {
+    z-index: 4;
+  }
+
   /* Even smaller overboard word */
   .overboard-word-container {
     max-height: 80px;
     max-width: 80px;
-    top: -30%;
+    top: -160%;
     left: -10%;
+    z-index: 0;
   }
 
   .bottom-right-decorative {

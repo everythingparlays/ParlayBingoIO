@@ -692,7 +692,7 @@
 @media screen and (max-width: 480px) {
   .trophy-icon {
     top: 0%;
-    right: 25%;
+    right: 2%;
     transform: scale(0.8);
   }
   
