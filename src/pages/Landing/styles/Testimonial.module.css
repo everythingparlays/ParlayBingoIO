@@ -120,7 +120,7 @@ p {
 @media (max-width: 768px) {
   .testmonial_left,
   .testmonial_right {
-    padding: var(--size-6);
+    padding: var(--size-8) 0;
     min-height: 40vh;
   }
 
@@ -130,5 +130,22 @@ p {
 
   .testmonial_text {
     font-size: var(--text-1);
+  }
+}
+
+@media (max-width: 480px) {
+  .testmonial_left_bottom {
+    left: -20%;
+    bottom: -25%;
+    transform: scale(0.8);
+    rotate: 15deg;
+  }
+
+  .testmonial_right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--size-8) var(--size-4);
+    min-height: 60vh;
   }
 }

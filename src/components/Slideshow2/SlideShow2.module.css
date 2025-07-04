@@ -1,12 +1,14 @@
 /* SlideShow2 Container */
 .slideshowContainer {
   width: 100%;
-  max-width: 700px;
+  max-width: 950px;
   height: 65%;
   max-height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  padding: 0 3rem;
 }
 
 /* Slide Wrapper */
@@ -14,6 +16,7 @@
   width: 100%;
   flex: 1;
   overflow: hidden;
+  border-radius: 12px;
 }
 
 /* Slide Track */
@@ -59,8 +62,8 @@
   background-color: #1d184c;
   border-radius: 20px;
   width: 100%;
-  max-width: 366px;
-  height: 227px;
+  max-width: 550px;
+  height: 16.5rem;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -136,25 +139,67 @@
 }
 
 .indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  background-color: transparent;
+  width: 2.5rem;
+  height: 0.5rem;
+  border-radius: 20%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
 }
 
 .indicator:hover {
-  border-color: rgba(255, 255, 255, 0.7);
-  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .indicator.active {
-  background-color: #f8ac1c;
-  border-color: #f8ac1c;
+  background-color: #DB2156;
   transform: scale(1.2);
+}
+
+/* Navigation Arrow Buttons */
+.slideShowArrowLeft {
+  position: absolute;
+  left: 0.5rem;
+  top: 47%;
+  transform: translateY(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideShowArrowLeft:hover {
+  /* background: rgba(255, 255, 255, 1); */
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slideShowArrowRight {
+  position: absolute;
+  right: 0.5rem;
+  top: 47%;
+  transform: translateY(-50%) rotate(180deg);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideShowArrowRight:hover {
+  transform: translateY(-50%) rotate(180deg) scale(1.1);
 }
 
 /* Responsive Design */
@@ -266,12 +311,18 @@
   }
 
   .indicator {
-    width: 10px;
-    height: 10px;
+    width: 2rem;
+    height: 0.4rem;
   }
 
   .slideIndicators {
     bottom: 15px;
     gap: 8px;
+  }
+
+  /* Hide arrow buttons on mobile */
+  .slideShowArrowLeft,
+  .slideShowArrowRight {
+    display: none;
   }
 }
