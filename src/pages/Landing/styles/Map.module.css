@@ -1,9 +1,10 @@
 /* Map Section Styles */
 .map-section {
-  padding: var(--size-2) 0;
+  padding: var(--size-6) 0;
   background-color: var(--primary);
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .map-pin-container {
@@ -48,7 +49,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--size-4);;
+  gap: var(--size-4);
   font-size: var(--text-1);
   color: var(--background);
   -webkit-background-clip: text;
@@ -202,7 +203,7 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
 }
 
 .download-app-button {
-  background: var(--accent);
+  background: #d9eefb;
   color: var(--background);
   border: none;
   padding: var(--size-4) var(--size-8);
@@ -211,6 +212,7 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
   font-size: var(--text-1);
   cursor: pointer;
   transition: all 0.3s ease;
+  z-index: 10;
 }
 
 .download-app-button:hover {
@@ -222,35 +224,36 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
 /* Bottom-right decorative section */
 .bottom-right-decorative {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 500px;
-  height: 400px;
+  bottom: -10%;
+  right: -5%;
+  width: 400px;
+  height: 350px;
   pointer-events: none;
   z-index: 5;
 }
 
 .top-right-dots {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: -35%;
+  right: 0%;
   z-index: 1;
   opacity: 0.8;
 }
 
 .bottom-left-dots {
   position: absolute;
-  bottom: -10px;
-  left: -10px;
+  bottom: 20%;
+  left: -10%;
   z-index: 1;
   opacity: 0.8;
+  pointer-events: none;
 }
 
 .main-sticker {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 10;
+  bottom: 30%;
+  right: 10%;
+  z-index: 8;
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
   animation: stickerFloat 8s ease-in-out infinite;
 }
@@ -272,71 +275,98 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
 }
 
 @media screen and (max-width: 768px) {
+  .map-section {
+    padding: var(--size-6) 0 var(--size-8) 0;
+  }
+
   .map-subtitle {
-    font-size: var(--text-3);
+    font-size: var(--text-1);
   }
 
   .map-title {
     font-size: var(--text-2);
   }
 
-  .sticker-container {
-    position: relative;
-    top: -60px;
-    right: auto;
-    transform: none;
-    display: flex;
-    justify-content: center;
-  }
-
-  .free-play-sticker {
-    width: 250px;
-    height: 250px;
+  /* Make overboard word smaller */
+  .overboard-word-container {
+    max-height: 120px;
+    max-width: 120px;
+    top: -40%;
+    left: -15%;
   }
 
   /* Responsive adjustments for bottom-right decorative section */
   .bottom-right-decorative {
-    width: 300px;
-    height: 250px;
-    bottom: -50px;
-    right: -50px;
+    width: 200px;
+    height: 180px;
+    bottom: -20%;
+    right: -15%;
   }
 
   .main-sticker {
-    bottom: 20px;
-    right: 20px;
-    transform: scale(0.7);
+    bottom: 15%;
+    right: 5%;
+    transform: scale(0.25) !important;
   }
 
   .top-right-dots {
-    transform: scale(0.6);
-    right: -20px;
+    transform: scale(0.4);
+    right: 5%;
+    top: 5%;
   }
 
   .bottom-left-dots {
-    transform: scale(0.6);
-    left: -20px;
-    bottom: -20px;
+    transform: scale(0.4);
+    left: 5%;
+    bottom: 5%;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .map-section {
+    padding: var(--size-6) 0 120px 0;
+  }
+
+  .map-title {
+    font-size: var(--text-1);
+  }
+
+  .map-subtitle {
+    font-size: var(--text-0);
+  }
+
+  /* Even smaller overboard word */
+  .overboard-word-container {
+    max-height: 80px;
+    max-width: 80px;
+    top: -30%;
+    left: -10%;
+  }
+
   .bottom-right-decorative {
-    width: 200px;
-    height: 180px;
-    bottom: -30px;
-    right: -30px;
+    width: 150px;
+    height: 120px;
+    bottom: -20%;
+    right: -20%;
   }
 
   .main-sticker {
-    bottom: 10px;
-    right: 10px;
-    transform: scale(0.5);
+    bottom: 10%;
+    right: 2%;
+    transform: scale(0.5) !important;
+    z-index: 10;
   }
 
-  .top-right-dots,
+  .top-right-dots {
+    transform: scale(0.5);
+    left: -50%;
+    top: -150%;
+  }
+
   .bottom-left-dots {
-    transform: scale(0.4);
+    transform: scale(0.5);
+    left: -100%;
+    bottom: 30%;
   }
 }
 
@@ -345,25 +375,25 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
   .bottom-right-decorative {
     width: 600px;
     height: 500px;
-    bottom: 0;
-    right: 0;
+    bottom: -10%;
+    right: -10%;
   }
 
   .main-sticker {
-    bottom: 80px;
-    right: -6rem;
-    transform: scale(1.1);
+    bottom: 20%;
+    right: 0%;
+    transform: scale(2);
   }
 
   .top-right-dots {
-    transform: scale(1.1);
-    right: -6rem;
+    transform: scale(1.7);
+    right: -25%;
     top: 10px;
   }
 
   .bottom-left-dots {
-    transform: scale(1.1);
-    right: 100rem;
-    bottom: 5rem;
+    transform: scale(1.7);
+    left: 30%;
+    bottom: 15%;
   }
 }

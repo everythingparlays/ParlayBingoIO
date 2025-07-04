@@ -543,19 +543,20 @@
 
 .trophy-icon {
   position: absolute;
-  top: 0%;
-  right: 10%;
+  top: 5%;
+  right: 15%;
   z-index: 5;
-  width: 20%;
+  width: 60px;
+  height: 60px;
 }
 
 .hero-blocks {
   z-index: 4;
   position: absolute;
-  width: 100;
-  height: 100%;
-  top: -35%;
-  right: -12%;
+  width: 100px;
+  height: 100px;
+  top: 40%;
+  right: 5%;
 }
 
 .background-square {
@@ -572,6 +573,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 15%;
   z-index: 3;
   transform: rotate(-5deg);
   image-rendering: high-quality;
@@ -584,7 +586,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0;
+  top: 10%;
   right: 0;
   z-index: 2;
   transform: rotate(5deg);
@@ -651,7 +653,71 @@
   #hero-inner {
     flex-direction: row;
   }
+  
+  .trophy-icon {
+    top: 0%;
+    right: 20%;
+    /* width: 70px; */
+    /* height: 70px; */
+  }
+  
+  .hero-blocks {
+    /* width: 120px;
+    height: 120px; */
+    transform: scale(2.3);
+    top: 5%;
+    right: 45%;
+  }
 }
+
+/* Large screens */
+@media screen and (min-width: 1400px) {
+  .trophy-icon {
+    top: 0%;
+    right: 10%;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .hero-blocks {
+    width: 140px;
+    height: 140px;
+    top: 10%;
+    right:25%;
+    transform: scale(2);
+  }
+}
+
+/* Small screens */
+@media screen and (max-width: 480px) {
+  .trophy-icon {
+    top: 0%;
+    right: 25%;
+    transform: scale(0.8);
+  }
+  
+  .hero-blocks {
+    top: 2%;
+    right: 50%;
+    transform: scale(1.5)!important;
+  }
+
+  .phone-primary {
+    transform:rotate(-5deg) scale(1.2)!important;
+    top: 15%;
+  }
+
+  .phone-secondary {
+    transform:rotate(-5deg) scale(1.2)!important;
+    top: 25%;
+  }
+  .background-square {
+    top: 0%;
+  }
+  
+  
+}
+
 /* Hero section fixes */
 #hero {
   background-color: var(--primary);
@@ -683,3 +749,19 @@
   }
 }
 
+@media screen and (min-width: 1600px) { 
+  .trophy-icon {
+    top: 0%;
+    right: 5%;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .hero-blocks {
+    /* width: 140px; */
+    /* height: 140px; */
+    top: 5%;
+    right:15%;
+    transform: scale(2);
+  }
+}

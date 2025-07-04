@@ -2,7 +2,6 @@ import React from 'react'
 import SVGType from 'types/SVGType'
 
 export default function HeroIconTrophy({
-  color,
   width = '224',
   height = '217',
 }: SVGType & { width?: string; height?: string }) {

@@ -8,8 +8,8 @@ type Props = {
 function FreeToPlaySticker({width, height}: Props) {
   return (
     <svg
-      width={`${width}` || '311px'}
-      height={`${height}` || '311px'}
+      width={`${width}`}
+      height={`${height}`}
       viewBox="0 0 311 311"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

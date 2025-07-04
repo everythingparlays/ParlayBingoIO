@@ -82,6 +82,7 @@ body {
   --header-height: 85px;
 
   --white: #FFFFFF;
+  --dark-indigo: #1e1b4b;
 
   color: var(--text-color);
 }
@@ -233,6 +234,8 @@ body[theme='light'] {
     --text-5: 2.875rem;
     --text-6: 3.25rem;
     --text-7: 4.5rem;
+    --text-8: 5.5rem;
+    --text-9: 6.5rem;
   }
 }
 
@@ -585,5 +588,14 @@ button.secondary-cta {
   color: #DB2156; /* Fallback for older browsers */
   display: inline-block; /* Important for the gradient to apply correctly */
   font-weight: bold; /* Optional: makes the gradient more visible */
+}
+
+.gradient-background {
+  background: linear-gradient(90deg, #DB2156 0%, #F8AC1C 100%);
+  color: white; /* Text color on gradient background */
+  padding: var(--size-2) var(--size-3); /* Add some padding */
+  border-radius: var(--size-1); /* Optional: rounded corners */
+  display: inline-block;
+  font-weight: bold;
 }
 
