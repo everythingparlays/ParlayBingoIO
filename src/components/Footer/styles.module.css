@@ -270,6 +270,8 @@ footer a:hover {
     flex-direction: column;
     min-height: auto;
     padding: var(--size-6) 0;
+    grid-template-columns: 1fr;
+    display: flex;
   }
 
   .left-container {
@@ -282,7 +284,6 @@ footer a:hover {
 
   .left-container-content {
     padding: 32px 24px;
-    
   }
 
   .qr-code-container {
@@ -299,6 +300,29 @@ footer a:hover {
 
   .right-container {
     padding: 0 var(--size-6);
-  
+    width: 100%;
+    order: 2;
+  }
+
+  .footer-right-container-content {
+    align-items: flex-start;
+    gap: var(--size-5);
+    max-width: 100%;
+  }
+
+  .footer-links-container {
+    grid-template-columns: 1fr;
+    gap: var(--size-4);
+    width: 100%;
+  }
+
+  .footer-logo-container {
+    align-self: center;
+    margin-bottom: var(--size-4);
+  }
+
+  .footer-copyright-container,
+  .footer-terms-container {
+    text-align: center;
   }
 }

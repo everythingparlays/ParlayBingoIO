@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from './styles.module.css'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { scrollToSection } from 'utils/scroll'
 import React from 'react'
 import LogoHeader from 'components/svg/LogoHeader'
 import LinearGradient from 'ui/LinearGradient'
@@ -104,19 +105,49 @@ export default function Header() {
           <nav id={styles['desktop-links']}>
             <ul>
               <li>
-                <NavLink to="/" className={styles['link']}>
+                <button
+                  onClick={() => {
+                    if (location.pathname !== '/') {
+                      navigate('/')
+                      setTimeout(() => scrollToSection('how-to-play'), 100)
+                    } else {
+                      scrollToSection('how-to-play')
+                    }
+                  }}
+                  className={styles['link']}
+                >
                   How to play
-                </NavLink>
+                </button>
               </li>
               <li>
-                <NavLink to="/" className={styles['link']}>
+                <button
+                  onClick={() => {
+                    if (location.pathname !== '/') {
+                      navigate('/')
+                      setTimeout(() => scrollToSection('about-us'), 100)
+                    } else {
+                      scrollToSection('about-us')
+                    }
+                  }}
+                  className={styles['link']}
+                >
                   About us
-                </NavLink>
+                </button>
               </li>
               <li>
-                <NavLink to="/" className={styles['link']}>
+                <button
+                  onClick={() => {
+                    if (location.pathname !== '/') {
+                      navigate('/')
+                      setTimeout(() => scrollToSection('contact'), 100)
+                    } else {
+                      scrollToSection('contact')
+                    }
+                  }}
+                  className={styles['link']}
+                >
                   Contact
-                </NavLink>
+                </button>
               </li>
               <li>
                 <Button
@@ -143,19 +174,52 @@ export default function Header() {
         </button>
         <ul>
           <li>
-            <NavLink to="/" className={styles['link']}>
+            <button
+              onClick={() => {
+                if (location.pathname !== '/') {
+                  navigate('/')
+                  setTimeout(() => scrollToSection('how-to-play'), 100)
+                } else {
+                  scrollToSection('how-to-play')
+                }
+                setExpanded(false)
+              }}
+              className={styles['link']}
+            >
               How to play
-            </NavLink>
+            </button>
           </li>
           <li>
-            <NavLink to="/" className={styles['link']}>
+            <button
+              onClick={() => {
+                if (location.pathname !== '/') {
+                  navigate('/')
+                  setTimeout(() => scrollToSection('about-us'), 100)
+                } else {
+                  scrollToSection('about-us')
+                }
+                setExpanded(false)
+              }}
+              className={styles['link']}
+            >
               About us
-            </NavLink>
+            </button>
           </li>
           <li>
-            <NavLink to="/" className={styles['link']}>
+            <button
+              onClick={() => {
+                if (location.pathname !== '/') {
+                  navigate('/')
+                  setTimeout(() => scrollToSection('contact'), 100)
+                } else {
+                  scrollToSection('contact')
+                }
+                setExpanded(false)
+              }}
+              className={styles['link']}
+            >
               Contact
-            </NavLink>
+            </button>
           </li>
           <li>
             <Button

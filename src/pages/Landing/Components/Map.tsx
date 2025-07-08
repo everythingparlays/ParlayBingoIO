@@ -5,11 +5,13 @@ import LeftNewToPlayBlocks from 'components/svg/LeftNewToPlayBlocks'
 import RightNewToPlayBlocks from 'components/svg/RightNewToPlayBlocks'
 import MapPin from 'components/svg/MapPin'
 import Button from 'ui/Button'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {}
 
 const Map = ({}: Props) => {
   const [activeTab, setActiveTab] = useState('free') // 'free' or 'paid'
+  const navigate = useNavigate()
 
   return (
     <section className={styles['map-section']}>
@@ -79,6 +81,7 @@ const Map = ({}: Props) => {
           </h3>
           <Button
             className={styles['download-app-button']}
+            onClick={() => navigate('/download')}
             style={{
               backgroundColor: '#d9eefb',
               color: 'var(--primary)',

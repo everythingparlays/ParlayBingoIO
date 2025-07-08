@@ -16,7 +16,7 @@ import Button from 'ui/Button'
 
 export default function Footer() {
   return (
-    <footer id={styles['footer']}>
+    <footer id={styles['footer']} data-section="contact">
       {/* Left */}
       <div className={styles['left-container']}>
         <div className={styles['left-container-content']}>

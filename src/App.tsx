@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { AnalyticsBrowser } from '@segment/analytics-next'
 import { Route, Routes, useLocation } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import { ThemeProvider } from 'context/ThemeContext'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
@@ -47,18 +48,20 @@ function App() {
   }, [location.pathname])
 
   return (
-    <ThemeProvider>
-      <Routes>
-        <Route element={<HeaderAndFooter />}>
-          <Route path="/" element={<Landing />} />
-          <Route path="/help-center" element={<HelpCenter />} />
-          <Route path="/contests" element={<Contests />} />
-          <Route path="/download" element={<DownloadPage />} />
-        </Route>
-        <Route path="/contest/:id" element={<Leaderboard />} />
-        <Route path="/contest/redirect/:id" element={<SingleContestRedirectPage />} />
-      </Routes>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <Routes>
+          <Route element={<HeaderAndFooter />}>
+            <Route path="/" element={<Landing />} />
+            <Route path="/help-center" element={<HelpCenter />} />
+            <Route path="/contests" element={<Contests />} />
+            <Route path="/download" element={<DownloadPage />} />
+          </Route>
+          <Route path="/contest/:id" element={<Leaderboard />} />
+          <Route path="/contest/redirect/:id" element={<SingleContestRedirectPage />} />
+        </Routes>
+      </ThemeProvider>
+    </HelmetProvider>
   )
 }
 

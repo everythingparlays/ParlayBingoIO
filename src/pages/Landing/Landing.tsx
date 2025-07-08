@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import styles from './styles.module.css'
 import download from '/assets/svg/download.svg'
 import { useEffect, Suspense } from 'react'
@@ -86,18 +87,45 @@ export default function Landing() {
   }, [])
 
   return (
-    <main id={styles['landing']}>
-      {/* Above-the-fold content - loads immediately */}
-      <Hero />
+    <>
+      <Helmet>
+        <title>OverBoard Sports - Social Sports Betting & Parlay Bingo</title>
+        <meta name="description" content="Join live sports contests with friends at bars and venues. Fill out parlay bingo cards and compete for cash prizes. Download the OverBoard Sports app today!" />
+        <meta name="keywords" content="sports betting, parlay bingo, social betting, sports contests, bar games, live sports, cash prizes" />
+        
+        {/* Facebook Meta Tags */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://overboardsports.com/" />
+        <meta property="og:title" content="OverBoard Sports - Social Sports Betting & Parlay Bingo" />
+        <meta property="og:description" content="Join live sports contests with friends at bars and venues. Fill out parlay bingo cards and compete for cash prizes." />
+        <meta property="og:image" content="https://overboardsports.com/OB-rebrand.png" />
+        
+        {/* Twitter Meta Tags */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://overboardsports.com/" />
+        <meta property="twitter:title" content="OverBoard Sports - Social Sports Betting & Parlay Bingo" />
+        <meta property="twitter:description" content="Join live sports contests with friends at bars and venues. Fill out parlay bingo cards and compete for cash prizes." />
+        <meta property="twitter:image" content="https://overboardsports.com/OB-rebrand.png" />
+        
+        {/* Just some website tags */}
+        <meta name="author" content="OverBoard Sports" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://overboardsports.com/" />
+      </Helmet>
+      
+      <main id={styles['landing']}>
+        {/* Above-the-fold content - loads immediately */}
+        <Hero />
       <TickerTape />
 
-      {/* Below-the-fold content - lazy loaded */}
       <Suspense
         fallback={
           <LoadingFallback height="400px" message="Loading features..." />
         }
       >
-        <NewWayToPlay />
+        <div id="about-us">
+          <NewWayToPlay />
+        </div>
       </Suspense>
 
       <LinearGradient height="4px" />
@@ -120,13 +148,15 @@ export default function Landing() {
           <LoadingFallback height="500px" message="Loading testimonials..." />
         }
       >
-        <FourEasySteps />
+        <div id="how-to-play">
+          <FourEasySteps />
+        </div>
       </Suspense>
 
       <LinearGradient height="4px" />
       <Suspense
         fallback={
-          <LoadingFallback height="500px" message="Loading how to play..." />
+        <LoadingFallback height="500px" message="Loading how to play..." />
         }
       >
         <Map />
@@ -137,9 +167,12 @@ export default function Landing() {
           <LoadingFallback height="500px" message="Loading how to play..." />
         }
       >
-        <Testmonial />
+        <div id="contact">
+          <Testmonial />
+        </div>
       </Suspense>
-    </main>
+      </main>
+    </>
   )
 }
 
