@@ -64,6 +64,18 @@ export default function Landing() {
         delay: 1,
       })
 
+      // Add floating animation to trophy
+      const trophyElement = document.querySelector('[class*="trophy-icon"]')
+      if (trophyElement) {
+        gsap.to(trophyElement, {
+          y: -10,
+          duration: 2,
+          ease: 'power2.inOut',
+          yoyo: true,
+          repeat: -1,
+        })
+      }
+
       // Make all elements with the class .fade-in fade in and up when they enter the screen
       const fadeInSections = document.getElementsByClassName('fade-in')
       for (let s of fadeInSections) {
