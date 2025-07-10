@@ -7,6 +7,7 @@ import LinearGradient from 'ui/LinearGradient'
 import PrimaryPhoneHero from 'components/svg/PrimaryPhoneHero'
 import SecondaryPhoneHero from 'components/svg/SecondaryPhoneHero'
 import HeroBlock from 'components/svg/HeroBlock'
+import DashedLine from 'components/svg/DashedLine'
 function Hero() {
   return (
     <section id={styles['hero']}>
@@ -23,13 +24,13 @@ function Hero() {
             </div>
 
             <div className={styles['hero-cta-container']}>
-              <div className={styles['hero-divider']}></div>
+              <DashedLine />
               <div>
                 <h4 style={{ fontSize: 30, color: 'white' }}>
                   100% Free to play
                 </h4>
               </div>
-              <div className={styles['hero-divider']}></div>
+              <DashedLine />
             </div>
 
             <div className={styles['app-store-buttons']}>

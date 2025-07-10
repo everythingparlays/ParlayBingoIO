@@ -62,4 +62,4 @@ function FourEasySteps({}: Props) {
   )
 }
 
-export default FourEasySteps
+export default FourEasySteps;

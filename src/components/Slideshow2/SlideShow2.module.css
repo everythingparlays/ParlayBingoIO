@@ -1,7 +1,7 @@
 /* SlideShow2 Container */
 .slideshowContainer {
   width: 100%;
-  max-width: 950px;
+  max-width: 1000px;
   height: 65%;
   max-height: 100%;
   display: flex;
@@ -43,14 +43,14 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   width: 100%;
-  gap: var(--size-2);
+  gap: var(--size-4);
   height: 100%;
   padding: 30px 20px 20px 20px;
   align-items: center;
 }
 
 .testimonialGrid > :nth-child(odd) {
-  transform: translateY(-15px);
+  transform: translateY(-30px);
 }
 
 .testimonialGrid > :nth-child(even) {
@@ -232,7 +232,6 @@
   .testimonialText {
     font-size: 14px;
     margin: 35px 0 15px 0;
-    -webkit-line-clamp: 3;
   }
 
   .authorName {
@@ -273,7 +272,6 @@
   .testimonialText {
     font-size: 13px;
     margin: 30px 0 12px 0;
-    -webkit-line-clamp: 3;
   }
 
   .authorName {
@@ -303,7 +301,6 @@
   .testimonialText {
     font-size: 12px;
     margin: 25px 0 10px 0;
-    -webkit-line-clamp: 2;
   }
 
   .authorName {

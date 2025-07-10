@@ -74,11 +74,6 @@ const Map = ({}: Props) => {
         </div>
 
         <div className={styles['map-footer']}>
-          <h3>
-            {activeTab === 'free'
-              ? 'Free to play anywhere, get in on the fun'
-              : 'Paid contests available in select states'}
-          </h3>
           <Button
             className={styles['download-app-button']}
             onClick={() => navigate('/download')}
@@ -86,9 +81,16 @@ const Map = ({}: Props) => {
               backgroundColor: '#d9eefb',
               color: 'var(--primary)',
             }}
+            hoverBg="#d9eefb"
+            hoverColor="var(--primary)"
           >
             Download the App
           </Button>
+          <h3 className={styles['map-footer-subtitle']}>
+            {activeTab === 'free'
+              ? 'Free to play anywhere, get in on the fun'
+              : 'Paid contests available in select states'}
+          </h3>
         </div>
 
         {/* Bottom-right decorative section */}

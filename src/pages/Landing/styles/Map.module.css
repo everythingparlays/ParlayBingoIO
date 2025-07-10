@@ -193,8 +193,6 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
 }
 
 .map-footer h3 {
-  color: var(--background);
-  background-color: var(--primary);
   padding: var(--size-4) var(--size-6);
   border-radius: var(--size-2);
   font-weight: 600;
@@ -215,11 +213,11 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
   z-index: 10;
 }
 
-.download-app-button:hover {
-  background: var(--accent-dark);
+/* .download-app-button:hover {
+  background: var(--primary);
   transform: translateY(-2px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* Bottom-right decorative section */
 .bottom-right-decorative {
@@ -249,6 +247,9 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
   pointer-events: none;
 }
 
+.map-footer-subtitle {
+  z-index: 10;
+}
 .main-sticker {
   position: absolute;
   bottom: 30%;
@@ -384,6 +385,17 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
     bottom: 30%;
   }
 }
+
+@media screen and (max-width: 1200px) {
+   .overboard-word-container {
+    /* max-height: 120px; */
+    /* max-width: 120px; */
+    top: -60%;
+    left: -5%;
+  }
+
+}
+
 
 /* Large screen adjustments */
 @media screen and (min-width: 1400px) {

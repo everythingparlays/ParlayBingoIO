@@ -41,7 +41,7 @@ function NewWayToPlay({}: Props) {
           <p className={styles['text']}>
             Introducing{' '}
             <span className={`${styles['gradient-text']} ${styles['text']}`}>
-              parlay bingo
+              Overboard Sports
             </span>
             : A contest based game where you can arrange picks in a 3x3 board
             and earn points
