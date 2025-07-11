@@ -69,10 +69,8 @@ const DailyFantasySportsRoute: React.FC<DailyFantasySportsRouteProps> = ({ state
   const metaContent = getMetaContent()
 
   useEffect(() => {
-    // Navigate to landing page and scroll to about-us section
     navigate('/', { replace: true })
     
-    // Use a longer delay to ensure lazy-loaded components render before scrolling
     setTimeout(() => {
       const aboutSection = document.getElementById('about-us')
       if (aboutSection) {
@@ -81,7 +79,6 @@ const DailyFantasySportsRoute: React.FC<DailyFantasySportsRouteProps> = ({ state
           block: 'start'
         })
       } else {
-        // Fallback: try to find the NewWayToPlay section directly
         const newWaySection = document.querySelector('[class*="new-way-to-play"]')
         if (newWaySection) {
           newWaySection.scrollIntoView({ 

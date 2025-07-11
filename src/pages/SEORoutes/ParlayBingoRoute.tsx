@@ -6,7 +6,6 @@ const ParlayBingoRoute: React.FC = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Navigate to landing page and scroll to about-us section (NewWayToPlay component)
     navigate('/', { replace: true })
     
     // Use a longer delay to ensure lazy-loaded components render before scrolling
@@ -18,7 +17,6 @@ const ParlayBingoRoute: React.FC = () => {
           block: 'start'
         })
       } else {
-        // Fallback: try to find the NewWayToPlay section directly
         const newWaySection = document.querySelector('[class*="new-way-to-play"]')
         if (newWaySection) {
           newWaySection.scrollIntoView({ 

@@ -6,10 +6,8 @@ const PromoCodeRoute: React.FC = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Navigate to landing page and scroll to contact section (Testimonials)
     navigate('/', { replace: true })
     
-    // Use a longer delay to ensure lazy-loaded components render before scrolling
     setTimeout(() => {
       const mapSection = document.getElementById('where-to-play')
       if (mapSection) {

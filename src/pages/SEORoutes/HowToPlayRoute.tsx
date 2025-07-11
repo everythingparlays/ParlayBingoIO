@@ -6,10 +6,8 @@ const HowToPlayRoute: React.FC = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Navigate to landing page and scroll to how-to-play section
     navigate('/', { replace: true })
     
-    // Use a longer delay to ensure lazy-loaded components render before scrolling
     setTimeout(() => {
       const howToPlaySection = document.getElementById('how-to-play')
       if (howToPlaySection) {
@@ -18,7 +16,6 @@ const HowToPlayRoute: React.FC = () => {
           block: 'start'
         })
       } else {
-        // Fallback: try to find the FourEasySteps section directly
         const stepsSection = document.querySelector('[class*="section"]')
         if (stepsSection) {
           stepsSection.scrollIntoView({ 
