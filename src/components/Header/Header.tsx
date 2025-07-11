@@ -6,6 +6,7 @@ import React from 'react'
 import LogoHeader from 'components/svg/LogoHeader'
 import LinearGradient from 'ui/LinearGradient'
 import Button from 'ui/Button'
+import { trackDownloadButton, trackNavigation, trackSectionView } from 'services/analytics'
 
 export default function Header() {
   const [expanded, setExpanded] = useState(false)
@@ -63,7 +64,9 @@ export default function Header() {
           {/* Left: Burger Menu Button */}
           <div className={styles['mobile-header-inner-left']}>
             <div className={styles['mobile-left']}>
-              <button onClick={() => setExpanded(true)} id={styles['nav-open']}>
+              <button onClick={() => {
+                setExpanded(true)
+              }} id={styles['nav-open']}>
                 <div></div>
                 <div></div>
                 <div></div>
@@ -86,7 +89,14 @@ export default function Header() {
           <div className={styles['mobile-right']}>
             <Button
               size="sm"
-              onClick={() => navigate('/download')}
+              onClick={() => {
+                trackDownloadButton({
+                  page: location.pathname,
+                  location: 'mobile_header',
+                  buttonText: 'Download the App',
+                })
+                navigate('/download')
+              }}
               bg="#d9eefb"
               color="#303083"
               hoverBg="#c7e6f7"
@@ -108,10 +118,22 @@ export default function Header() {
                 <button
                   onClick={() => {
                     if (location.pathname !== '/') {
+                      trackNavigation({
+                        from: location.pathname,
+                        to: '/how-to-play',
+                        method: 'click',
+                      })
                       navigate('/')
                       setTimeout(() => scrollToSection('how-to-play'), 100)
+                      trackSectionView('how-to-play', location.pathname)
                     } else {
+                      trackNavigation({
+                        from: location.pathname,
+                        to: '/how-to-play',
+                        method: 'scroll',
+                      })
                       scrollToSection('how-to-play')
+                      trackSectionView('how-to-play', location.pathname)
                     }
                   }}
                   className={styles['link']}
@@ -123,10 +145,22 @@ export default function Header() {
                 <button
                   onClick={() => {
                     if (location.pathname !== '/') {
+                      trackNavigation({
+                        from: location.pathname,
+                        to: '/about-us',
+                        method: 'click',
+                      })
                       navigate('/')
                       setTimeout(() => scrollToSection('about-us'), 100)
+                      trackSectionView('about-us', location.pathname)
                     } else {
+                      trackNavigation({
+                        from: location.pathname,
+                        to: '/about-us',
+                        method: 'scroll',
+                      })
                       scrollToSection('about-us')
+                      trackSectionView('about-us', location.pathname)
                     }
                   }}
                   className={styles['link']}
@@ -140,8 +174,10 @@ export default function Header() {
                     if (location.pathname !== '/') {
                       navigate('/')
                       setTimeout(() => scrollToSection('contact'), 100)
+                      trackSectionView('contact', location.pathname)
                     } else {
                       scrollToSection('contact')
+                      trackSectionView('contact', location.pathname)
                     }
                   }}
                   className={styles['link']}
@@ -152,7 +188,14 @@ export default function Header() {
               <li>
                 <Button
                   size="sm"
-                  onClick={() => navigate('/download')}
+                  onClick={() => {
+                    trackDownloadButton({
+                      page: location.pathname,
+                      location: 'desktop_header',
+                      buttonText: 'Download the App',
+                    })
+                    navigate('/download')
+                  }}
                   bg="#d9eefb"
                   color="#303083"
                   hoverBg="#c7e6f7"
@@ -179,8 +222,10 @@ export default function Header() {
                 if (location.pathname !== '/') {
                   navigate('/')
                   setTimeout(() => scrollToSection('how-to-play'), 100)
+                  trackSectionView('how-to-play', location.pathname)
                 } else {
                   scrollToSection('how-to-play')
+                  trackSectionView('how-to-play', location.pathname)
                 }
                 setExpanded(false)
               }}
@@ -195,8 +240,10 @@ export default function Header() {
                 if (location.pathname !== '/') {
                   navigate('/')
                   setTimeout(() => scrollToSection('about-us'), 100)
+                  trackSectionView('about-us', location.pathname)
                 } else {
                   scrollToSection('about-us')
+                  trackSectionView('about-us', location.pathname)
                 }
                 setExpanded(false)
               }}
@@ -211,8 +258,10 @@ export default function Header() {
                 if (location.pathname !== '/') {
                   navigate('/')
                   setTimeout(() => scrollToSection('contact'), 100)
+                  trackSectionView('contact', location.pathname)
                 } else {
                   scrollToSection('contact')
+                  trackSectionView('contact', location.pathname)
                 }
                 setExpanded(false)
               }}
@@ -225,6 +274,11 @@ export default function Header() {
             <Button
               size="sm"
               onClick={() => {
+                trackDownloadButton({
+                  page: location.pathname,
+                  location: 'mobile_header',
+                  buttonText: 'Download the App',
+                })
                 navigate('/download')
                 setExpanded(false)
               }}
