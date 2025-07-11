@@ -14,7 +14,7 @@ const Map = ({}: Props) => {
   const navigate = useNavigate()
 
   return (
-    <section className={styles['map-section']}>
+    <section id="where-to-play" className={styles['map-section']}>
       <div className={styles['map-pin-container']}>
         <MapPin width={46} height={57} />
       </div>
@@ -56,10 +56,10 @@ const Map = ({}: Props) => {
         <div className={styles['map-visual']}>
           <div className={styles['map-usa-container']}>
             <img
-              src="/assets/images/landing/Map.png"
+              src={activeTab === 'paid' ? "/assets/images/landing/MapComingSoon.png" : "/assets/images/landing/Map.png"}
               alt="US Map"
               className={styles['map-usa']}
-            />
+          />
             <div className={styles['overboard-word-container']}>
               <div className={styles['overboard-word']}>
                 <img

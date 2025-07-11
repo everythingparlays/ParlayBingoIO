@@ -1,8 +1,7 @@
 .testmonial {
   background-color: var(--primary);
   padding: 0;
-  height: 100vh;
-  max-height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -17,8 +16,7 @@
   background-position: center;
   background-repeat: no-repeat;
   flex: 1;
-  height: 100vh;
-  max-height: 100vh;
+  min-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -77,15 +75,13 @@ p {
 
 .testmonial_right {
   flex: 1;
-  height: 100vh;
-  max-height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: var(--size-10);
   background-color: var(--primary);
-  overflow: hidden;
 }
 
 /* Responsive Design */

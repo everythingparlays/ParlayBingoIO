@@ -2,13 +2,13 @@
 .slideshowContainer {
   width: 100%;
   max-width: 1000px;
-  height: 65%;
-  max-height: 100%;
+  height: auto;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   overflow: visible;
   position: relative;
-  padding: 0 3rem;
+  padding: 2rem 3rem;
 }
 
 /* Slide Wrapper */
@@ -44,9 +44,10 @@
   grid-template-rows: 1fr 1fr;
   width: 100%;
   gap: var(--size-4);
-  height: 100%;
-  padding: 30px 20px 20px 20px;
-  align-items: center;
+  height: auto;
+  min-height: 100%;
+  padding: 30px 20px 40px 20px;
+  align-items: stretch;
 }
 
 .testimonialGrid > :nth-child(odd) {
@@ -63,15 +64,11 @@
   border-radius: 20px;
   width: 100%;
   max-width: 550px;
-  height: 16.5rem;
+  min-height: 16.5rem;
+  height: auto;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.testimonialCard:hover {
-  box-shadow: 0 8px 32px rgba(29, 24, 76, 0.3);
-  scale: 1.02;
 }
 
 /* Card Content */

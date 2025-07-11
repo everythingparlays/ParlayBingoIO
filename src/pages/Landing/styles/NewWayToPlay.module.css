@@ -38,9 +38,9 @@
 
 .svg-badge {
   position: absolute;
-  top: 0;
+  top: -2rem;
   z-index: 2;
-  transform: scale(2);
+  transform: scale(1);
 }
 
 .text-container {

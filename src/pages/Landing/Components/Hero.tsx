@@ -8,6 +8,11 @@ import PrimaryPhoneHero from 'components/svg/PrimaryPhoneHero'
 import SecondaryPhoneHero from 'components/svg/SecondaryPhoneHero'
 import HeroBlock from 'components/svg/HeroBlock'
 import DashedLine from 'components/svg/DashedLine'
+
+{/*
+  Hero section CSS is in the styles/Hero.module.css file
+*/}
+
 function Hero() {
   return (
     <section id={styles['hero']}>

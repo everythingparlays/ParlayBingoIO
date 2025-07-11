@@ -150,7 +150,9 @@ export default function Landing() {
           />
         }
       >
-        <Social />
+        <div id="social-features">
+          <Social />
+        </div>
       </Suspense>
 
       <LinearGradient height="4px" />

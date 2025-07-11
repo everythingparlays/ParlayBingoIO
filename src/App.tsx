@@ -12,6 +12,10 @@ import HeaderAndFooter from 'layout/HeaderAndFooter'
 import Contests from 'pages/Contests/Contests'
 import DownloadPage from 'pages/Download/Download'
 import SingleContestRedirectPage from 'pages/ContestRedirects/SingleContestRedirect'
+import HowToPlayRoute from 'pages/SEORoutes/HowToPlayRoute'
+import ParlayBingoRoute from 'pages/SEORoutes/ParlayBingoRoute'
+import PromoCodeRoute from 'pages/SEORoutes/PromoCodeRoute'
+import DailyFantasySportsRoute from 'pages/SEORoutes/DailyFantasySportsRoute'
 
 // Initialize Segment Analytics
 export const analytics = AnalyticsBrowser.load({ writeKey: '93rA6ZPlv0GkzFZBQzxuOCadSi6ZKf1B' })
@@ -56,6 +60,16 @@ function App() {
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/contests" element={<Contests />} />
             <Route path="/download" element={<DownloadPage />} />
+            
+            {/* SEO Routes that redirect to landing page sections */}
+            <Route path="/how-to-play-overboard-sports" element={<HowToPlayRoute />} />
+            <Route path="/parlay-bingo" element={<ParlayBingoRoute />} />
+            <Route path="/overboardsports-promo-code" element={<PromoCodeRoute />} />
+            <Route path="/daily-fantasy-sports-california" element={<DailyFantasySportsRoute state="california" />} />
+            <Route path="/daily-fantasy-sports-florida" element={<DailyFantasySportsRoute state="florida" />} />
+            <Route path="/daily-fantasy-sports-nba" element={<DailyFantasySportsRoute sport="nba" />} />
+            <Route path="/daily-fantasy-sports-nfl" element={<DailyFantasySportsRoute sport="nfl" />} />
+            <Route path="/daily-fantasy-sports-mlb" element={<DailyFantasySportsRoute sport="mlb" />} />
           </Route>
           <Route path="/contest/:id" element={<Leaderboard />} />
           <Route path="/contest/redirect/:id" element={<SingleContestRedirectPage />} />

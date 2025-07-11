@@ -146,6 +146,7 @@ header[aria-expanded='true'] #nav-expanded-bg {
   color: var(--heading-color);
   position: relative;
   font-weight: 600;
+  transition: all 0.4s ease;
 }
 
 body[theme='light'] .link::after {
@@ -248,6 +249,10 @@ body[theme='dark'] .link::after {
   gap: 1rem;
 }
 
+.link:hover{
+  transform: scale(1.05);
+  transition: all 0.4s ease;
+}
 /* .mobile-left {
   flex: 1;
   display: flex;
