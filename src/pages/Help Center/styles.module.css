@@ -16,7 +16,12 @@
   min-height: calc(100vh - var(--header-height));
 }
 
-#hero-inner h1, #hero-inner p {
+#hero-inner p{
+  line-height: 2;
+}
+
+#hero-inner h1,
+#hero-inner p {
   color: white;
 }
 
@@ -35,7 +40,7 @@
   position: relative;
   overflow: hidden;
   transition: box-shadow var(--transition-short),
-              border-radius var(--transition-short);
+    border-radius var(--transition-short);
 }
 
 #search-wrapper:focus-within {
@@ -68,7 +73,7 @@
   top: 50%;
   transform: translate(48px, -50%);
   transition: transform var(--transition-short),
-              border-radius var(--transition-short);
+    border-radius var(--transition-short);
 }
 
 #search-submit:focus {
@@ -87,18 +92,48 @@
   width: 18px;
 }
 
-#faq,
-#large-buttons,
+.faq-container {
+  background-color: var(--primary);
+}
+
+.questions-container {
+  background-color: var(--primary);
+}
+
+#faq {
+  width: 100%;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--size-6) var(--size-4);
+}
+
 #questions {
   width: 100%;
   max-width: 750px;
   margin-left: auto;
   margin-right: auto;
+  padding: var(--size-6) var(--size-4);
 }
 
 .section-heading {
   text-align: center;
   margin-bottom: var(--size-6);
+  color: white;
+  font-weight: 700;
+  position: relative;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -var(--size-3);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue800), var(--blue600));
+  border-radius: 2px;
 }
 
 #large-buttons {
@@ -129,33 +164,82 @@
   text-align: center;
 }
 
+#send-email {
+  background: linear-gradient(135deg, #1d184c 0%, #2a1f5c 100%);
+  border: 2px solid rgba(100, 144, 247, 0.3);
+  transition: all var(--transition-med);
+  position: relative;
+  overflow: hidden;
+}
+
+#send-email::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 144, 247, 0.2), transparent);
+  transition: left var(--transition-long);
+}
+
+#send-email:hover::before {
+  left: 100%;
+}
+
+#send-email:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl), 0 8px 32px rgba(100, 144, 247, 0.3);
+  border-color: rgba(100, 144, 247, 0.5);
+}
+
+#send-email h3 {
+  color: white;
+  margin-bottom: var(--size-1);
+}
+
+#send-email svg {
+  filter: drop-shadow(0 2px 8px rgba(100, 144, 247, 0.4));
+}
+
 @media screen and (width > 600px) {
   #hero {
     margin-bottom: 0;
   }
-  
+
   #large-buttons {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   #large-buttons a {
-    margin-top: -50%;
+    margin-top: 0;
     aspect-ratio: 1;
   }
 }
 
-body[theme="light"] #large-buttons a,
-body[theme="light"] #send-email {
+body[theme='light'] #large-buttons a {
   background-color: var(--gray100);
 }
 
-body[theme="light"] #large-buttons a:hover,
-body[theme="light"] #send-email:hover {
+body[theme='light'] #large-buttons a:hover {
   background-color: var(--gray400);
 }
 
-#large-buttons a:hover,
-#send-email:hover {
+body[theme='light'] #send-email {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 2px solid rgba(100, 144, 247, 0.2);
+}
+
+body[theme='light'] #send-email h3 {
+  color: var(--primary);
+}
+
+body[theme='light'] #send-email:hover {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+  border-color: rgba(100, 144, 247, 0.4);
+}
+
+#large-buttons a:hover {
   background-color: var(--gray500);
 }
 

@@ -5,13 +5,16 @@ import LeftNewToPlayBlocks from 'components/svg/LeftNewToPlayBlocks'
 import RightNewToPlayBlocks from 'components/svg/RightNewToPlayBlocks'
 import MapPin from 'components/svg/MapPin'
 import Button from 'ui/Button'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { trackDownloadButton, trackAppDownloadRedirect } from 'services/analytics'
+import { analytics } from 'App'
 
 type Props = {}
 
 const Map = ({}: Props) => {
   const [activeTab, setActiveTab] = useState('free') // 'free' or 'paid'
   const navigate = useNavigate()
+  const location = useLocation()
 
   return (
     <section id="where-to-play" className={styles['map-section']}>
@@ -30,7 +33,14 @@ const Map = ({}: Props) => {
                   ? styles['contest-tab-active']
                   : styles['contest-tab']
               }
-              onClick={() => setActiveTab('free')}
+              onClick={() => {
+                setActiveTab('free')
+                analytics.track('map_tab_clicked', {
+                  tab: 'free',
+                  page: location.pathname,
+                  timestamp: new Date().toISOString(),
+                })
+              }}
             >
               <span>Free-to-Play</span>
             </div>
@@ -40,7 +50,14 @@ const Map = ({}: Props) => {
                   ? styles['contest-tab-active']
                   : styles['contest-tab']
               }
-              onClick={() => setActiveTab('paid')}
+              onClick={() => {
+                setActiveTab('paid')
+                analytics.track('map_tab_clicked', {
+                  tab: 'paid',
+                  page: location.pathname,
+                  timestamp: new Date().toISOString(),
+                })
+              }}
             >
               <span>Paid Contests</span>
             </div>
@@ -76,7 +93,18 @@ const Map = ({}: Props) => {
         <div className={styles['map-footer']}>
           <Button
             className={styles['download-app-button']}
-            onClick={() => navigate('/download')}
+            onClick={() => {
+              trackDownloadButton({
+                page: location.pathname,
+                location: 'map_section',
+                buttonText: 'Download the App',
+                source: `map_${activeTab}_tab`,
+              })
+              const urlParams = new URLSearchParams(window.location.search)
+              const referrer = urlParams.get('referrer')
+              trackAppDownloadRedirect(referrer)
+              navigate('/download')
+            }}
             style={{
               backgroundColor: '#d9eefb',
               color: 'var(--primary)',

@@ -121,6 +121,7 @@ footer h6{
   overflow: hidden;
 }
 
+
 /* Right container */
 .right-container {
   display: flex;
@@ -206,9 +207,6 @@ footer a {
   color: var(--heading-color);
 }
 
-body[theme='dark'] footer a {
-  opacity: 0.5;
-}
 
 footer a:hover {
   text-decoration: underline;

@@ -3,13 +3,15 @@ import styles from '../styles/Social.module.css'
 import Features from 'components/Features/Features'
 import { socialData } from 'data/SocialData'
 import Button from 'ui/Button'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { trackDownloadButton, trackAppDownloadRedirect } from 'services/analytics'
 import Slideshow from 'components/Slideshow/Slideshow'
 
 type Props = {}
 
 function Social({}: Props) {
   const navigate = useNavigate()
+  const location = useLocation()
   
   const socialImages = [
     '/assets/images/landing/social-slide-1.png',
@@ -59,6 +61,14 @@ function Social({}: Props) {
           hoverBg="linear-gradient(135deg, #E9663A, #F8AC1C)"
           style={{ border: '1px solid' }}
           onClick={() => {
+            trackDownloadButton({
+              page: location.pathname,
+              location: 'social_section',
+              buttonText: 'Create a Free Board',
+            })
+            const urlParams = new URLSearchParams(window.location.search)
+            const referrer = urlParams.get('referrer')
+            trackAppDownloadRedirect(referrer)
             navigate('/download')
           }}
         >

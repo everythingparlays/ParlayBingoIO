@@ -23,8 +23,8 @@ const ShareButton = () => {
       onClick={handleShare}
       style={{
         display: 'inline-block',
-        backgroundColor: '#28a745',
-        color: 'white',
+        backgroundColor: '#D9EEFB',
+        color: '#303083',
         padding: '10px 20px',
         textDecoration: 'none',
         borderRadius: '5px',

@@ -24,7 +24,7 @@ export const trackDownloadButton = (props: DownloadButtonProps) => {
 }
 
 export const trackAppDownloadRedirect = (referrer?: string) => {
-  analytics.track('app_download_redirect', {
+  analytics.track('App Download Redirect', {
     referrer,
     user_agent: navigator.userAgent,
     timestamp: new Date().toISOString(),

@@ -6,7 +6,8 @@ import React from 'react'
 import LogoHeader from 'components/svg/LogoHeader'
 import LinearGradient from 'ui/LinearGradient'
 import Button from 'ui/Button'
-import { trackDownloadButton, trackNavigation, trackSectionView } from 'services/analytics'
+import { trackAppDownloadRedirect, trackDownloadButton, trackNavigation, trackSectionView } from 'services/analytics'
+import { analytics } from 'App'
 
 export default function Header() {
   const [expanded, setExpanded] = useState(false)
@@ -95,6 +96,9 @@ export default function Header() {
                   location: 'mobile_header',
                   buttonText: 'Download the App',
                 })
+                const urlParams = new URLSearchParams(window.location.search)
+                const referrer = urlParams.get('referrer')
+                trackAppDownloadRedirect(referrer)
                 navigate('/download')
               }}
               bg="#d9eefb"
@@ -194,6 +198,9 @@ export default function Header() {
                       location: 'desktop_header',
                       buttonText: 'Download the App',
                     })
+                    const urlParams = new URLSearchParams(window.location.search)
+                    const referrer = urlParams.get('referrer')
+                    trackAppDownloadRedirect(referrer)
                     navigate('/download')
                   }}
                   bg="#d9eefb"
@@ -276,9 +283,12 @@ export default function Header() {
               onClick={() => {
                 trackDownloadButton({
                   page: location.pathname,
-                  location: 'mobile_header',
+                  location: 'mobile_expanded_menu',
                   buttonText: 'Download the App',
                 })
+                const urlParams = new URLSearchParams(window.location.search)
+                const referrer = urlParams.get('referrer')
+                trackAppDownloadRedirect(referrer)
                 navigate('/download')
                 setExpanded(false)
               }}

@@ -4,10 +4,12 @@ import Crown from '../../../components/svg/Crown'
 import ChatTestimonial from '../../../components/svg/ChatTestimonial'
 import Button from '../../../ui/Button'
 import SlideShow2 from '../../../components/Slideshow2/SlideShow2'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { trackDownloadButton, trackAppDownloadRedirect } from 'services/analytics'
 
 const Testmonial = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   return (
     <section id="section" className={styles.testmonial}>
       {/* left */}
@@ -30,6 +32,14 @@ const Testmonial = () => {
           <Button
             size="md"
             onClick={() => {
+              trackDownloadButton({
+                page: location.pathname,
+                location: 'testimonials_section',
+                buttonText: 'Join These Users Having Fun >',
+              })
+              const urlParams = new URLSearchParams(window.location.search)
+              const referrer = urlParams.get('referrer')
+              trackAppDownloadRedirect(referrer)
               navigate('/download')
             }}
             bg="linear-gradient(135deg, #F8AC1C, #E9663A)"
