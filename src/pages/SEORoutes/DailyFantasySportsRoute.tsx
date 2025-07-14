@@ -72,14 +72,14 @@ const DailyFantasySportsRoute: React.FC<DailyFantasySportsRouteProps> = ({ state
     navigate('/', { replace: true })
     
     setTimeout(() => {
-      const aboutSection = document.getElementById('about-us')
+      const aboutSection = document.getElementById('where-to-play')
       if (aboutSection) {
         aboutSection.scrollIntoView({ 
           behavior: 'smooth',
           block: 'start'
         })
       } else {
-        const newWaySection = document.querySelector('[class*="new-way-to-play"]')
+        const newWaySection = document.querySelector('[id*="where-to-play"]')
         if (newWaySection) {
           newWaySection.scrollIntoView({ 
             behavior: 'smooth',

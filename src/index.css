@@ -420,7 +420,8 @@ hr {
 }
 
 section {
-  margin-bottom: 72px;
+  /* margin-bottom: 72px; */
+  background-color: var(--primary);
 }
 
 img {
@@ -446,6 +447,7 @@ img {
 
 #main {
   padding-top: var(--header-height);
+  background-color: var(--primary);
 }
 
 .split {

@@ -8,10 +8,13 @@ import PrimaryPhoneHero from 'components/svg/PrimaryPhoneHero'
 import SecondaryPhoneHero from 'components/svg/SecondaryPhoneHero'
 import HeroBlock from 'components/svg/HeroBlock'
 import DashedLine from 'components/svg/DashedLine'
+import { trackDownloadButton, trackAppDownloadRedirect } from 'services/analytics'
 
-{/*
+{
+  /*
   Hero section CSS is in the styles/Hero.module.css file
-*/}
+*/
+}
 
 function Hero() {
   return (
@@ -39,10 +42,34 @@ function Hero() {
             </div>
 
             <div className={styles['app-store-buttons']}>
-              <a href="/download">
+              <a
+                href="/download"
+                onClick={() => {
+                  trackDownloadButton({
+                    page: '/',
+                    location: 'hero_section',
+                    buttonText: 'Apple App Store',
+                  })
+                  const urlParams = new URLSearchParams(window.location.search)
+                  const referrer = urlParams.get('referrer')
+                  trackAppDownloadRedirect(referrer)
+                }}
+              >
                 <AppleDownload width={200} height={75} />
               </a>
-              <a href="/download">
+              <a 
+                href="/download"
+                onClick={() => {
+                  trackDownloadButton({
+                    page: '/',
+                    location: 'hero_section',
+                    buttonText: 'Google Play Store',
+                  })
+                  const urlParams = new URLSearchParams(window.location.search)
+                  const referrer = urlParams.get('referrer')
+                  trackAppDownloadRedirect(referrer)
+                }}
+              >
                 <GooglePlayDownload width={200} height={75} />
               </a>
             </div>

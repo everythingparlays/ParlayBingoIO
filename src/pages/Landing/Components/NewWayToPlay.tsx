@@ -9,7 +9,8 @@ import Sports from 'components/svg/Sports'
 import Whistle from 'components/svg/Whistle'
 import styles from '../styles/NewWayToPlay.module.css'
 import Button from 'ui/Button'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { trackDownloadButton, trackAppDownloadRedirect } from 'services/analytics'
 import Features from 'components/Features/Features'
 import { newToPlayFeatures } from 'data/NewToPlayFeatures'
 import LinearGradient from 'ui/LinearGradient'
@@ -18,6 +19,7 @@ type Props = {}
 
 function NewWayToPlay({}: Props) {
   const navigate = useNavigate()
+  const location = useLocation()
   return (
     <section id={styles['section']}>
       {/* Left side */}
@@ -53,6 +55,14 @@ function NewWayToPlay({}: Props) {
           <Button
             size="md"
             onClick={() => {
+              trackDownloadButton({
+                page: location.pathname,
+                location: 'new_way_to_play_section',
+                buttonText: 'Download App',
+              })
+              const urlParams = new URLSearchParams(window.location.search)
+              const referrer = urlParams.get('referrer')
+              trackAppDownloadRedirect(referrer)
               navigate('/download')
             }}
             bg="linear-gradient(135deg, #F8AC1C, #E9663A)"

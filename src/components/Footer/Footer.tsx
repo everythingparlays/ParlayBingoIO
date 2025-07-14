@@ -1,5 +1,7 @@
 import styles from './styles.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { scrollToSection } from 'utils/scroll'
+import { trackDownloadButton, trackAppDownloadRedirect, trackNavigation, trackSectionView } from 'services/analytics'
 import QrCode from '../svg/QrCode'
 import AppleDownload from '../svg/AppleDownload'
 import GooglePlayDownload from '../svg/GooglePlayDownload'
@@ -15,6 +17,8 @@ import X_twitter from 'components/svg/X_twitter'
 import Button from 'ui/Button'
 
 export default function Footer() {
+  const navigate = useNavigate()
+  const location = useLocation()
   return (
     <footer id={styles['footer']} data-section="contact">
       {/* Left */}
@@ -34,8 +38,38 @@ export default function Footer() {
             <LineColumns />
           </div>
           <div>
-            <AppleDownload />
-            <GooglePlayDownload />
+            <a
+              href="/download"
+              onClick={() => {
+                trackDownloadButton({
+                  page: location.pathname,
+                  location: 'footer',
+                  buttonText: 'Apple App Store',
+                })
+                const urlParams = new URLSearchParams(window.location.search)
+                const referrer = urlParams.get('referrer')
+                trackAppDownloadRedirect(referrer)
+              }}
+              className={styles['download-svg-container']}
+            >
+              <AppleDownload />
+            </a>
+            <a
+              href="/download"
+              onClick={() => {
+                trackDownloadButton({
+                  page: location.pathname,
+                  location: 'footer',
+                  buttonText: 'Google Play Store',
+                })
+                const urlParams = new URLSearchParams(window.location.search)
+                const referrer = urlParams.get('referrer')
+                trackAppDownloadRedirect(referrer)
+              }}
+              className={styles['download-svg-container']}
+            >
+              <GooglePlayDownload />
+            </a>
           </div>
           <div className={styles['qr-code-container']}>
             <QrCode />
@@ -62,7 +96,31 @@ export default function Footer() {
             <div
               className={`${styles['footer-how-to-play-container']} ${styles['links-row']}`}
             >
-              <p>How to play</p>
+              <p 
+                onClick={() => {
+                  if (location.pathname !== '/') {
+                    trackNavigation({
+                      from: location.pathname,
+                      to: '/how-to-play',
+                      method: 'click',
+                    })
+                    navigate('/')
+                    setTimeout(() => scrollToSection('how-to-play'), 100)
+                    trackSectionView('how-to-play', location.pathname)
+                  } else {
+                    trackNavigation({
+                      from: location.pathname,
+                      to: '/how-to-play',
+                      method: 'scroll',
+                    })
+                    scrollToSection('how-to-play')
+                    trackSectionView('how-to-play', location.pathname)
+                  }
+                }}
+                style={{ cursor: 'pointer' }}
+              >
+                How to play
+              </p>
               <div className={styles['footer-social-container']}>
                 <Facebook />
                 <Instagram />

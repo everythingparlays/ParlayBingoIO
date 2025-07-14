@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from '../styles/FourEasySteps.module.css'
 import Button from 'ui/Button'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { trackDownloadButton, trackAppDownloadRedirect } from 'services/analytics'
 import DashedLine from 'components/svg/DashedLine'
 import { stepsToPlay } from 'data/StepsToPlay'
 import Card from 'ui/Card/Card'
@@ -9,6 +10,7 @@ type Props = {}
 
 function FourEasySteps({}: Props) {
   const navigate = useNavigate()
+  const location = useLocation()
   return (
     <section id={styles.section}>
       {/*Titles and descriptions */}
@@ -29,6 +31,14 @@ function FourEasySteps({}: Props) {
             <Button
               size="md"
               onClick={() => {
+                trackDownloadButton({
+                  page: location.pathname,
+                  location: 'how_to_play_section',
+                  buttonText: 'Get Started',
+                })
+                const urlParams = new URLSearchParams(window.location.search)
+                const referrer = urlParams.get('referrer')
+                trackAppDownloadRedirect(referrer)
                 navigate('/download')
               }}
               bg="var(--secondary-cta)"
@@ -44,6 +54,14 @@ function FourEasySteps({}: Props) {
               hoverBg="linear-gradient(135deg, #E9663A, #F8AC1C)"
               style={{ border: '1px solid' }}
               onClick={() => {
+                trackDownloadButton({
+                  page: location.pathname,
+                  location: 'how_to_play_section',
+                  buttonText: 'Create a Free Board',
+                })
+                const urlParams = new URLSearchParams(window.location.search)
+                const referrer = urlParams.get('referrer')
+                trackAppDownloadRedirect(referrer)
                 navigate('/download')
               }}
             >
