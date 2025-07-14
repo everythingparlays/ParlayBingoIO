@@ -161,7 +161,7 @@ export default function Footer() {
                   backgroundColor: 'var(--white)',
                   color: 'var(--primary)',
                   borderRadius: 'var(--size-1)',
-                  
+                  visibility: 'hidden',
                 }}
               >
                 Join the Discord
