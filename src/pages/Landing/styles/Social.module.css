@@ -26,6 +26,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 100%;
 }
 
 .left-side > * {
@@ -42,7 +43,7 @@
   bottom: -7rem;
   background-image: 
     linear-gradient(rgba(48, 48, 131, 0.6), rgba(48, 48, 131, 0.6)),
-    url('/heroBackgroundLeft.png');
+    url('/heroBackgroundLeft.webp');
   background-repeat: no-repeat;
   background-size: 50% 150%;
   background-position: left center;
@@ -85,6 +86,13 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .right-side {
+    max-width: 300px;
+    
   }
 }
 

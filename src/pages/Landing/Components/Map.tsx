@@ -76,12 +76,14 @@ const Map = ({}: Props) => {
               src={activeTab === 'paid' ? "/assets/images/landing/MapComingSoon.png" : "/assets/images/landing/Map.png"}
               alt="US Map"
               className={styles['map-usa']}
+              loading="lazy"
           />
             <div className={styles['overboard-word-container']}>
               <div className={styles['overboard-word']}>
                 <img
                   src="/assets/images/landing/overboardword.png"
                   alt="Overboard"
+                  loading="lazy"
                 />
               </div>
             </div>

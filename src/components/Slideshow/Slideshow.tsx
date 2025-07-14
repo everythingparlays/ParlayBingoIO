@@ -46,6 +46,7 @@ function Slideshow({ images, alt = 'Slideshow image', maxWidth = '400px', minHei
         alt={`${alt} ${currentSlide + 1}`}
         className={styles['slide-image']}
         style={{ maxWidth, minHeight }}
+        loading="lazy"
       />
       {images.length > 1 && (
         <div className={styles['slide-controls']}>
