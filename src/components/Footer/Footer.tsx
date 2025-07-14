@@ -1,7 +1,12 @@
 import styles from './styles.module.css'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { scrollToSection } from 'utils/scroll'
-import { trackDownloadButton, trackAppDownloadRedirect, trackNavigation, trackSectionView } from 'services/analytics'
+import {
+  trackDownloadButton,
+  trackAppDownloadRedirect,
+  trackNavigation,
+  trackSectionView,
+} from 'services/analytics'
 import QrCode from '../svg/QrCode'
 import AppleDownload from '../svg/AppleDownload'
 import GooglePlayDownload from '../svg/GooglePlayDownload'
@@ -96,7 +101,7 @@ export default function Footer() {
             <div
               className={`${styles['footer-how-to-play-container']} ${styles['links-row']}`}
             >
-              <p 
+              <p
                 onClick={() => {
                   if (location.pathname !== '/') {
                     trackNavigation({
@@ -122,9 +127,27 @@ export default function Footer() {
                 How to play
               </p>
               <div className={styles['footer-social-container']}>
-                <Facebook />
-                <Instagram />
-                <X_twitter />
+                <a
+                  href="https://www.facebook.com/people/OverBoard-Sports/61567589822869/"
+                  target="_blank"
+                  style={{ cursor: 'pointer' }}
+                >
+                  <Facebook />
+                </a>
+                <a
+                  href="https://www.instagram.com/overboardsports/"
+                  target="_blank"
+                  style={{ cursor: 'pointer' }}
+                >
+                  <Instagram />
+                </a>
+                <a
+                  href="https://x.com/overboardsport"
+                  target="_blank"
+                  style={{ cursor: 'pointer' }}
+                >
+                  <X_twitter />
+                </a>
               </div>
             </div>
             <div
@@ -132,11 +155,13 @@ export default function Footer() {
             >
               <p>The Team</p>
               <Button
+                disabled={true}
                 hoverBg="var(--white)"
                 style={{
                   backgroundColor: 'var(--white)',
                   color: 'var(--primary)',
                   borderRadius: 'var(--size-1)',
+                  
                 }}
               >
                 Join the Discord
@@ -145,7 +170,13 @@ export default function Footer() {
             <div
               className={`${styles['footer-contact-container']} ${styles['links-row']}`}
             >
-              <p>Contact</p>
+              <a
+                href="/help-center"
+                target="_blank"
+                style={{ textDecoration: 'none' }}
+              >
+                <p>Contact</p>
+              </a>
               <div></div>
             </div>
             <div
