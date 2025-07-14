@@ -9,11 +9,11 @@
   overflow: hidden;
 }
 
-footer p{
+footer p {
   color: var(--white);
 }
 
-footer h6{
+footer h6 {
   color: var(--gray1000);
 }
 
@@ -121,7 +121,6 @@ footer h6{
   overflow: hidden;
 }
 
-
 /* Right container */
 .right-container {
   display: flex;
@@ -174,7 +173,7 @@ footer h6{
 .footer-right-container-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start */
   gap: var(--size-7);
   max-width: 800px;
   /* margin-left: 250px; */
@@ -191,8 +190,6 @@ footer h6{
   display: contents;
 }
 
-
-
 .footer-social-container {
   display: flex;
   flex-direction: row;
@@ -206,7 +203,6 @@ footer h6{
 footer a {
   color: var(--heading-color);
 }
-
 
 footer a:hover {
   text-decoration: underline;
@@ -232,6 +228,18 @@ footer a:hover {
   display: flex;
   flex-direction: row;
   gap: var(--size-2);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-self: center; /* Add this to center only this element */
+}
+
+.footer-logo-container {
+  align-self: center; /* Center the logo */
+}
+
+.footer-copyright-container {
+  align-self: center; /* Center the copyright */
 }
 
 @media screen and (width > 500px) {
@@ -303,7 +311,7 @@ footer a:hover {
   }
 
   .footer-right-container-content {
-    align-items: flex-start;
+    align-items: flex-start; /* Keep left alignment on mobile */
     gap: var(--size-5);
     max-width: 100%;
   }
@@ -321,6 +329,12 @@ footer a:hover {
 
   .footer-copyright-container,
   .footer-terms-container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-2);
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    align-self: center; /* Center these specific items */
   }
 }

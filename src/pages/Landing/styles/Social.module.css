@@ -92,7 +92,7 @@
 @media screen and (max-width: 480px) {
   .right-side {
     max-width: 300px;
-    
+    margin-top: 5rem;
   }
 }
 

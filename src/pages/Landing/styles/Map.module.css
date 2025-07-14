@@ -211,6 +211,8 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
+  width: auto;
+  max-width: 300px;
 }
 
 /* .download-app-button:hover {
@@ -275,6 +277,39 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
   }
 }
 
+@keyframes stickerFloatMobile {
+  0%,
+  100% {
+    transform: scale(0.25) translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: scale(0.25) translateY(-10px) rotate(1deg);
+  }
+  50% {
+    transform: scale(0.25) translateY(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: scale(0.25) translateY(-15px) rotate(0.5deg);
+  }
+}
+
+@keyframes stickerFloatMobileSmall {
+  0%,
+  100% {
+    transform: scale(0.5) translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: scale(0.5) translateY(-10px) rotate(1deg);
+  }
+  50% {
+    transform: scale(0.5) translateY(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: scale(0.5) translateY(-15px) rotate(0.5deg);
+  }
+}
+
+
 @media screen and (max-width: 768px) {
   .map-section {
     padding: var(--size-6) 0 var(--size-8) 0;
@@ -307,7 +342,7 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
   .main-sticker {
     bottom: 15%;
     right: 5%;
-    transform: scale(0.25) !important;
+    animation: stickerFloatMobile 8s ease-in-out infinite;
   }
 
   .top-right-dots {
@@ -341,6 +376,12 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
     z-index: 3;
   }
 
+  .download-app-button {
+    max-width: 250px;
+    padding: var(--size-3) var(--size-6);
+    font-size: var(--text-0);
+  }
+
   .map-subtitle-container {
     margin-bottom: 0;
     z-index: 4;
@@ -362,14 +403,14 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
   .bottom-right-decorative {
     width: 150px;
     height: 120px;
-    bottom: -20%;
+    bottom: -25%;
     right: -20%;
   }
 
   .main-sticker {
     bottom: 10%;
     right: 2%;
-    transform: scale(0.5) !important;
+    animation: stickerFloatMobileSmall 8s ease-in-out infinite;
     z-index: 10;
   }
 
