@@ -37,7 +37,7 @@ export default function Features({
 }: FeaturesProps) {
   return (
     <section className={`${styles.featuresSection} ${className}`}>
-      <div className="container">
+      <div className="">
         {/* Corner Blocks */}
         {cornerBlocks.topLeft && (
           <div className={styles.cornerBlock} data-corner="top-left">

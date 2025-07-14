@@ -101,7 +101,7 @@ export default function TickerTape({
           top: 0;
           bottom: 0;
           width: 50%;
-          background-image: url('/TickerImageBackground.png');
+          background-image: url('/TickerImageBackground.webp');
           background-repeat: no-repeat;
           background-position: 70% center;
           background-size: cover;

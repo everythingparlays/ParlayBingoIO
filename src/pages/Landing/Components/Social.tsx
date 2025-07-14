@@ -47,7 +47,7 @@ function Social({}: Props) {
             images={socialImages}
             alt="Social feature"
             maxWidth="500px"
-            minHeight="400px"
+            // minHeight="300px"
           />
         </div>
       </div>

@@ -97,6 +97,7 @@ function Hero() {
               <img
                 src="/assets/images/landing/hero-right-square.png"
                 alt="Background Element"
+                loading="lazy"
               />
             </div>
 

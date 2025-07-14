@@ -1,6 +1,7 @@
 .featureCard {
   display: flex;
-  align-items: flex-start;
+  align-items: center;  
+  justify-content: center;
   gap: var(--size-4);
   padding: var(--size-5);
   background: rgba(255, 255, 255, 0.05);
@@ -9,6 +10,9 @@
   /* backdrop-filter: blur(10px); */
   /* border: 1px solid rgba(255, 255, 255, 0.1); */
   transition: all 0.3s ease;
+  max-width: 1000px;
+  width: 100%;
+
 }
 
 .featureCard:hover {

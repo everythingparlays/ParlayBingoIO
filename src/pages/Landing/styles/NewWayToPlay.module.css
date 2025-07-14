@@ -113,7 +113,7 @@
   bottom: -3rem;
   background-image: 
     linear-gradient(rgba(48, 48, 131, 0.6), rgba(48, 48, 131, 0.6)),
-    url('/heroBackgroundLeft.png');
+    url('/heroBackgroundLeft.webp');
   background-position: right center;
   background-repeat: no-repeat;
   background-size: 130% 150%;
