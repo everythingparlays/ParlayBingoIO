@@ -144,4 +144,28 @@ p {
     padding: var(--size-8) var(--size-4);
     min-height: 60vh;
   }
+  .testmonial_left_content {
+    /* padding: 0; */
+    margin: 2rem auto;
+  }
+  .testmonial_text {
+    text-align: center;
+  }
+
+  .testmonial_title_container {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .testmonial_title {
+    text-align: center;
+  }
+
+  .testmonial_left_bottom {
+    left: -20%;
+    bottom: 2%;
+    transform: scale(0.8);
+    rotate: 15deg;
+  }
+
 }
