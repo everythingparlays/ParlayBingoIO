@@ -1,6 +1,6 @@
 import React from 'react'
 
-type Props = {width?:number;height?:number}
+type Props = {width?:string;height?:string}
 
 const HeroBlock = ({width,height}: Props) => {
   return (

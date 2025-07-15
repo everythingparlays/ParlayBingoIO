@@ -422,8 +422,8 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
 
   .bottom-left-dots {
     transform: scale(0.5);
-    left: -100%;
-    bottom: 30%;
+    left: -130%;
+    bottom: 60%;
   }
 }
 

@@ -546,20 +546,22 @@
 .trophy-icon {
   position: absolute;
   top: 5%;
-  right: 15%;
+  right: 20%;
   z-index: 5;
   width: 60px;
   height: 60px;
 }
 
+/* Hero blocks - base mobile size */
 .hero-blocks {
-  z-index: 4;
   position: absolute;
-  width: 100px;
+  width: 120px;
   height: 100px;
-  top: 40%;
-  right: 5%;
+  top: 5%;
+  right: 0%;
+  z-index: 4;
 }
+/* Large screens */
 
 .background-square {
   position: absolute;
@@ -652,12 +654,6 @@
     right: -15%;
     transform: scale(0.8);
   }
-  .hero-blocks {
-    top: 5%; /* Adjust vertical position */
-    right: 0%; /* Adjust horizontal position */
-    transform: scale(1.5);
-    /* z-index: 10; */
-  }
 
   .phone-primary {
     transform: rotate(-5deg) scale(1.3) !important;
@@ -681,44 +677,12 @@
     /* height: 70px; */
   }
 
+  /* Regular desktop hero blocks size */
   .hero-blocks {
-    /* width: 120px;
-    height: 120px; */
-    transform: scale(2.3);
-    top: 5%;
-    right: 45%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .hero-right .trophy-icon {
+    width: 300px;
+    height: 250px;
     top: 0%;
-    right: 25%;
-    transform: scale(0.8);
-  }
-
-  .hero-right .hero-blocks {
-    top: 2%;
-    right: 50%;
-    transform: scale(1.5);
-  }
-}
-
-/* Large screens */
-@media screen and (min-width: 1400px) {
-  .trophy-icon {
-    top: 0%;
-    right: 10%;
-    width: 80px;
-    height: 80px;
-  }
-
-  .hero-blocks {
-    width: 140px;
-    height: 140px;
-    top: 10%;
-    right: 25%;
-    transform: scale(2);
+    right: -10%;
   }
 }
 
@@ -735,16 +699,6 @@
 
   .hero-titles h1.gradient-text {
     font-size: 38px !important; /* Smaller for narrow screens */
-  }
-
-  .app-store-buttons {
-    flex-direction: column;
-    gap: var(--size-2);
-    align-items: center;
-  }
-
-  .app-store-buttons a {
-    width: 180px; /* Smaller button width */
   }
 
   .hero-left {
@@ -772,14 +726,17 @@
 @media screen and (max-width: 480px) {
   .trophy-icon {
     top: 0%;
-    right: 2%;
-    transform: scale(0.8);
+    right: 50%;
+    transform: scale(0.6);
   }
 
   .hero-blocks {
-    top: 2%;
-    right: 50%;
-    transform: scale(1.5) !important;
+    width: 120px;
+    height: 100px;
+    top: 5%;
+    right: 0%;
+    z-index: 4;
+    transform: scale(1.6);
   }
 
   .phone-primary {
@@ -793,6 +750,22 @@
   }
   .background-square {
     top: 0%;
+  }
+
+  .hero-right .trophy-icon {
+    top: 0%;
+    right: 25%;
+    transform: scale(0.8);
+  }
+
+  .app-store-buttons {
+    flex-direction: column;
+    gap: var(--size-2);
+    align-items: center;
+  }
+
+  .app-store-buttons a {
+    width: 180px; /* Smaller button width */
   }
 }
 
@@ -828,19 +801,28 @@
   }
 }
 
+@media screen and (min-width: 1400px) {
+  .trophy-icon {
+    top: 0%;
+    right: 15%;
+    width: 80px;
+    height: 80px;
+  }
+
+  .hero-blocks {
+    width: 300px;
+    height: 250px;
+    right: -10%;
+    top: -5%;
+    transform: scale(1);
+  }
+}
+
 @media screen and (min-width: 1600px) {
   .trophy-icon {
     top: 0%;
     right: 5%;
     width: 80px;
     height: 80px;
-  }
-
-  .hero-blocks {
-    /* width: 140px; */
-    /* height: 140px; */
-    top: 5%;
-    right: 15%;
-    transform: scale(2);
   }
 }

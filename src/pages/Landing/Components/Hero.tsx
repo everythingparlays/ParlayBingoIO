@@ -8,7 +8,10 @@ import PrimaryPhoneHero from 'components/svg/PrimaryPhoneHero'
 import SecondaryPhoneHero from 'components/svg/SecondaryPhoneHero'
 import HeroBlock from 'components/svg/HeroBlock'
 import DashedLine from 'components/svg/DashedLine'
-import { trackDownloadButton, trackAppDownloadRedirect } from 'services/analytics'
+import {
+  trackDownloadButton,
+  trackAppDownloadRedirect,
+} from 'services/analytics'
 
 {
   /*
@@ -57,7 +60,7 @@ function Hero() {
               >
                 <AppleDownload width={200} height={75} />
               </a>
-              <a 
+              <a
                 href="/download"
                 onClick={() => {
                   trackDownloadButton({
@@ -81,8 +84,8 @@ function Hero() {
             className={styles['phone-mockup-container']}
             style={{ position: 'relative', overflow: 'visible' }}
           >
-            <div className={styles['hero-blocks']} style={{}}>
-              <HeroBlock width={300} />
+            <div className={styles['hero-blocks']}>
+              <HeroBlock />
             </div>
             {/* Trophy icon - z-index: 4 */}
             <div className={styles['trophy-icon']}>
