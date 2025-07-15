@@ -41,17 +41,31 @@
   left: -5rem;
   right: -10rem;
   bottom: -7rem;
-  background-image: 
-    linear-gradient(rgba(48, 48, 131, 0.6), rgba(48, 48, 131, 0.6)),
+  background-image: linear-gradient(
+      to bottom,
+      rgba(var(--primaryRGB), 1) 2%,
+      rgba(var(--primaryRGB), 0.9) 4%,
+      rgba(var(--primaryRGB), 0.7) 8%,
+      rgba(var(--primaryRGB), 0.5) 12%,
+      rgba(var(--primaryRGB), 0.3) 16%,
+      rgba(var(--primaryRGB), 0.1) 20%,
+      transparent 100%,
+      transparent 100%,
+      var(--primary) 100%
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(48, 48, 131, 0.7) 70%,
+      var(--primary) 100%
+    ),
     url('/heroBackgroundLeft.webp');
   background-repeat: no-repeat;
-  background-size: 50% 150%;
+  background-size: 75% 150%;
   background-position: left center;
   z-index: 0;
-  opacity: .85;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.85;
 }
-
 .right-side {
   flex: 1;
   display: flex;
@@ -95,6 +109,3 @@
     margin-top: 5rem;
   }
 }
-
-
-
