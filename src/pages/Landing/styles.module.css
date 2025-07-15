@@ -672,7 +672,8 @@
 
   .trophy-icon {
     top: 0%;
-    right: 20%;
+    right: 25%;
+
     /* width: 70px; */
     /* height: 70px; */
   }
@@ -681,7 +682,7 @@
   .hero-blocks {
     width: 300px;
     height: 250px;
-    top: 0%;
+    top: -5%;
     right: -10%;
   }
 }
@@ -694,11 +695,11 @@
   }
 
   .hero-titles h1:first-child {
-    font-size: 32px !important; /* Smaller for narrow screens */
+    font-size: 32px !important; 
   }
 
   .hero-titles h1.gradient-text {
-    font-size: 38px !important; /* Smaller for narrow screens */
+    font-size: 38px !important; 
   }
 
   .hero-left {
@@ -734,7 +735,7 @@
     width: 120px;
     height: 100px;
     top: 5%;
-    right: 0%;
+    right: -5%;
     z-index: 4;
     transform: scale(1.6);
   }
@@ -766,6 +767,17 @@
 
   .app-store-buttons a {
     width: 180px; /* Smaller button width */
+  }
+
+  .hero-titles{
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .hero-titles h1 {
+    white-space: normal;
+    word-wrap: break-word;
+    hyphens: auto;
   }
 }
 
@@ -818,10 +830,10 @@
   }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1500px) {
   .trophy-icon {
     top: 0%;
-    right: 5%;
+    right: 20%;
     width: 80px;
     height: 80px;
   }
