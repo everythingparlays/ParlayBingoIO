@@ -57,7 +57,7 @@ function Hero() {
                   const referrer = urlParams.get('referrer')
                   trackAppDownloadRedirect(referrer)
                 }}
-                aria-label='Apple App Store Button'
+                aria-label="Apple App Store Button"
               >
                 <AppleDownload width={200} height={75} />
               </a>
@@ -73,7 +73,7 @@ function Hero() {
                   const referrer = urlParams.get('referrer')
                   trackAppDownloadRedirect(referrer)
                 }}
-                aria-label='Google Play Store Button'
+                aria-label="Google Play Store Button"
               >
                 <GooglePlayDownload width={200} height={75} />
               </a>
@@ -101,8 +101,8 @@ function Hero() {
             >
               <img
                 src="/assets/images/landing/hero-right-square.png"
+                {...({ fetchpriority: 'high' } as any)}
                 alt="Background Element"
-                loading="lazy"
               />
             </div>
 

@@ -58,22 +58,23 @@ export default function TickerTape({
     .flat()
 
   useEffect(() => {
-    // Calculate content width once to avoid forced reflows
-    const containerWidth = window.innerWidth
-    const contentWidth = containerWidth * 1.5 // Approximate content width
+    // Use CSS transforms to avoid forced reflows
+    // Use viewport units instead of JavaScript width calculations
+    const containerWidth = '100vw'
+    const contentWidth = '150vw'
     
     // Line 1: left to right
     gsap.fromTo(
       '.ticker-line-1',
-      { x: -contentWidth },
-      { x: containerWidth + 200, duration: speed, repeat: -1, ease: 'none' }
+      { x: `-${contentWidth}` },
+      { x: `calc(${containerWidth} + 200px)`, duration: speed, repeat: -1, ease: 'none' }
     )
 
     // Line 2: right to left  
     gsap.fromTo(
       '.ticker-line-2',
-      { x: containerWidth + 200 },
-      { x: -contentWidth, duration: speed, repeat: -1, ease: 'none' }
+      { x: `calc(${containerWidth} + 200px)` },
+      { x: `-${contentWidth}`, duration: speed, repeat: -1, ease: 'none' }
     )
     
     // Cleanup function
