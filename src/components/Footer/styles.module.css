@@ -7,6 +7,7 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   overflow: hidden;
+  gap: 2rem;
 }
 
 footer p {
@@ -20,8 +21,8 @@ footer h6 {
 /* Left Container - Main content area */
 .left-container {
   position: relative;
-  width: 461px;
-  height: 606px;
+  max-width: 500px;
+  height: 650px;
   margin-left: 80px;
   margin-top: 140px;
 }
@@ -37,10 +38,11 @@ footer h6 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 48px 40px;
+  padding: 52px 42px;
   color: white;
   text-align: center;
   z-index: 2;
+  overflow: hidden;
   margin: 0;
 }
 
@@ -170,20 +172,27 @@ footer h6 {
   font-weight: 700;
 }
 
-.footer-right-container-content {
+.-right-container-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Changed from center to flex-start */
-  gap: var(--size-7);
+  gap: var(--size-8);
   max-width: 800px;
+  
   /* margin-left: 250px; */
+  
 }
 
 .footer-links-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--size-5) var(--size-6);
+  margin-bottom: var(--size-8);
   align-items: start;
+}
+
+.footer-our-game-container h3{
+  font-size: var(--text-1);
 }
 
 .links-row {
@@ -193,7 +202,7 @@ footer h6 {
 .footer-social-container {
   display: flex;
   flex-direction: row;
-  gap: var(--size-2);
+  gap: var(--size-4);
 }
 
 .footer-support-container {
@@ -224,6 +233,29 @@ footer a:hover {
   gap: var(--size-4);
 }
 
+.footer-bottom-container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--size-4);
+  justify-content: space-between;
+  align-items: center;
+  color: #848FBF;
+  
+}
+
+.footer-bottom-container p,
+.footer-bottom-container a,
+.footer-bottom-container span {
+  color: #848FBF !important;
+}
+
+.footer-break-container {
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  margin: var(--size-7) 0;
+}
+
 .footer-terms-container {
   display: flex;
   flex-direction: row;
@@ -232,10 +264,14 @@ footer a:hover {
   align-items: center;
   text-align: center;
   align-self: center; /* Add this to center only this element */
+  
 }
 
 .footer-logo-container {
   align-self: center; /* Center the logo */
+  justify-self: center;
+  justify-content: center;
+  display: flex;
 }
 
 .footer-copyright-container {

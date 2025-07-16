@@ -53,7 +53,7 @@ const SlideShow2: React.FC<SlideShow2Props> = ({
         <div className={styles.quoteIcon}>{testimonial.icon}</div>
         <p className={styles.testimonialText}>{testimonial.text}</p>
         <div className={styles.starsContainer}>{testimonial.stars}</div>
-        <h4 className={styles.authorName}>{testimonial.name}</h4>
+        <p className={styles.authorName}>{testimonial.name}</p>
       </div>
     </div>
   )

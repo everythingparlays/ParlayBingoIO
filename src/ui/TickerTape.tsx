@@ -58,19 +58,29 @@ export default function TickerTape({
     .flat()
 
   useEffect(() => {
+    // Calculate content width once to avoid forced reflows
+    const containerWidth = window.innerWidth
+    const contentWidth = containerWidth * 1.5 // Approximate content width
+    
     // Line 1: left to right
     gsap.fromTo(
       '.ticker-line-1',
-      { x: '-100%' },
-      { x: 'calc(100vw + 100%)', duration: speed, repeat: -1, ease: 'none' }
+      { x: -contentWidth },
+      { x: containerWidth + 200, duration: speed, repeat: -1, ease: 'none' }
     )
 
-    // Line 2: right to left
+    // Line 2: right to left  
     gsap.fromTo(
       '.ticker-line-2',
-      { x: 'calc(100vw + 100%)' },
-      { x: '-100%', duration: speed, repeat: -1, ease: 'none' }
+      { x: containerWidth + 200 },
+      { x: -contentWidth, duration: speed, repeat: -1, ease: 'none' }
     )
+    
+    // Cleanup function
+    return () => {
+      gsap.killTweensOf('.ticker-line-1')
+      gsap.killTweensOf('.ticker-line-2')
+    }
   }, [speed])
 
   return (

@@ -31,7 +31,7 @@ export default function Footer() {
         <div className={styles['left-container-content']}>
           <div className={styles['title-container']}>
             <DashedLine />
-            <h3>100% Free to Play</h3>
+            <h4>100% Free to Play</h4>
             <DashedLine />
           </div>
           <div>
@@ -56,6 +56,7 @@ export default function Footer() {
                 trackAppDownloadRedirect(referrer)
               }}
               className={styles['download-svg-container']}
+              aria-label="Apple App Store Button"
             >
               <AppleDownload />
             </a>
@@ -90,13 +91,13 @@ export default function Footer() {
           <div className={styles['footer-logo-container']}>
             <FooterLogo width="291px" height="252px" />
           </div>
-
+          <div className={styles['footer-break-container']}></div>
           <div className={styles['footer-links-container']}>
             <div
               className={`${styles['footer-our-game-container']} ${styles['links-row']}`}
             >
-              <h6>Our game</h6>
-              <h6>Social</h6>
+              <h3>Our game</h3>
+              <h3>Social</h3>
             </div>
             <div
               className={`${styles['footer-how-to-play-container']} ${styles['links-row']}`}
@@ -131,6 +132,7 @@ export default function Footer() {
                   href="https://www.facebook.com/people/OverBoard-Sports/61567589822869/"
                   target="_blank"
                   style={{ cursor: 'pointer' }}
+                  aria-label="Facebook"
                 >
                   <Facebook />
                 </a>
@@ -138,6 +140,7 @@ export default function Footer() {
                   href="https://www.instagram.com/overboardsports/"
                   target="_blank"
                   style={{ cursor: 'pointer' }}
+                  aria-label="Instagram"
                 >
                   <Instagram />
                 </a>
@@ -145,6 +148,7 @@ export default function Footer() {
                   href="https://x.com/overboardsport"
                   target="_blank"
                   style={{ cursor: 'pointer' }}
+                  aria-label="X"
                 >
                   <X_twitter />
                 </a>
@@ -184,18 +188,19 @@ export default function Footer() {
             >
               <p>Support</p>
               <div>
-                <p>Available in All 50 States for Free-to-Play</p>
-                <p>PlayContest</p>
+                <p>Available in All 50 States for Free-to-Play Contests</p>
               </div>
             </div>
           </div>
-          <div className={styles['footer-copyright-container']}>
-            <p>© 2025 Overboard Sports. All rights reserved.</p>
-          </div>
-          <div className={styles['footer-terms-container']}>
-            <a>Terms of Service</a>
-            <span>|</span>
-            <a>Privacy Policy</a>
+          <div className={styles['footer-bottom-container']}>
+            <div className={styles['footer-copyright-container']}>
+              <p>© 2025 Overboard Sports. All rights reserved.</p>
+            </div>
+            <div className={styles['footer-terms-container']}>
+              <a>Terms of Service</a>
+              <span>|</span>
+              <a>Privacy Policy</a>
+            </div>
           </div>
         </div>
       </div>

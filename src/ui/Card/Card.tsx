@@ -18,7 +18,7 @@ function Card({image, title, description}: Props) {
       <div className={styles['content-container']}>
         {/* Title and description */}
         <div className={styles['title-container']}>
-          <h3 className={styles.title}>{title}</h3>
+          <h2 className={styles.title}>{title}</h2>
           <p className={styles.description}>{description}</p>
         </div>
       </div>

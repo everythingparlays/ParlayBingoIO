@@ -65,9 +65,14 @@ export default function Header() {
           {/* Left: Burger Menu Button */}
           <div className={styles['mobile-header-inner-left']}>
             <div className={styles['mobile-left']}>
-              <button onClick={() => {
-                setExpanded(true)
-              }} id={styles['nav-open']}>
+              <button 
+                onClick={() => {
+                  setExpanded(true)
+                }} 
+                id={styles['nav-open']}
+                aria-label="Open navigation menu"
+                aria-expanded={expanded}
+              >
                 <div></div>
                 <div></div>
                 <div></div>
@@ -218,7 +223,11 @@ export default function Header() {
 
       {/* Mobile slide-out navigation menu */}
       <nav id={styles['links']} className={isMobile ? '' : styles['hidden']}>
-        <button onClick={() => setExpanded(false)} id={styles['nav-close']}>
+        <button 
+          onClick={() => setExpanded(false)} 
+          id={styles['nav-close']}
+          aria-label="Close navigation menu"
+        >
           <div></div>
           <div></div>
         </button>

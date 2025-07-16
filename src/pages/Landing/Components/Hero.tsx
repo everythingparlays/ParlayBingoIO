@@ -37,9 +37,9 @@ function Hero() {
             <div className={styles['hero-cta-container']}>
               <DashedLine />
               <div>
-                <h4 style={{ fontSize: 30, color: 'white' }}>
+                <h2 style={{ fontSize: 30, color: 'white' }}>
                   100% Free to play
-                </h4>
+                </h2>
               </div>
               <DashedLine />
             </div>
@@ -57,6 +57,7 @@ function Hero() {
                   const referrer = urlParams.get('referrer')
                   trackAppDownloadRedirect(referrer)
                 }}
+                aria-label='Apple App Store Button'
               >
                 <AppleDownload width={200} height={75} />
               </a>
@@ -72,6 +73,7 @@ function Hero() {
                   const referrer = urlParams.get('referrer')
                   trackAppDownloadRedirect(referrer)
                 }}
+                aria-label='Google Play Store Button'
               >
                 <GooglePlayDownload width={200} height={75} />
               </a>
