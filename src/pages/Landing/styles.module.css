@@ -15,6 +15,9 @@
   padding-top: 0;
   height: 100vh;
   overflow: hidden;
+  /* Mobile performance optimizations */
+  contain: layout style paint;
+  will-change: auto;
 }
 
 #hero-inner {
@@ -346,6 +349,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* Mobile performance optimizations */
+  contain: layout style;
+  will-change: auto;
 }
 
 .hero-left-inner {

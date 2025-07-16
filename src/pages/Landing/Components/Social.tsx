@@ -14,7 +14,7 @@ function Social({}: Props) {
   const location = useLocation()
   
   const socialImages = [
-    '/assets/images/landing/social-slide-1.png',
+    '/assets/images/landing/social-slide-1.webp',
     '/assets/images/landing/social-slide-2.png',
     '/assets/images/landing/social-slide-3.png'
   ]
@@ -47,6 +47,8 @@ function Social({}: Props) {
             images={socialImages}
             alt="Social feature"
             maxWidth="500px"
+            autoSlide={true}
+            slideInterval={4000}
             // minHeight="300px"
           />
         </div>

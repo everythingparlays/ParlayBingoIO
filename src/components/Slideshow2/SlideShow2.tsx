@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './SlideShow2.module.css'
 import { testimonialData } from '../../data/TestimonialData'
 import Arrow from 'components/svg/Arrow'
@@ -23,6 +23,9 @@ const SlideShow2: React.FC<SlideShow2Props> = ({
   className,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
+  const minSwipeDistance = 50
 
   // Auto-slide functionality
   useEffect(() => {
@@ -45,6 +48,29 @@ const SlideShow2: React.FC<SlideShow2Props> = ({
 
   const goToNext = () => {
     setCurrentSlide(currentSlide === testimonialData.length - 1 ? 0 : currentSlide + 1)
+  }
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchEndX.current = 0 // Reset end position
+    touchStartX.current = e.targetTouches[0].clientX
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return
+    
+    const distance = touchStartX.current - touchEndX.current
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      goToNext()
+    } else if (isRightSwipe) {
+      goToPrevious()
+    }
   }
 
   const renderTestimonialCard = (testimonial: TestimonialProps) => (
@@ -84,7 +110,12 @@ const SlideShow2: React.FC<SlideShow2Props> = ({
         </>
       )}
       
-      <div className={styles.slideWrapper}>
+      <div 
+        className={styles.slideWrapper}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         <div
           className={styles.slideTrack}
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}

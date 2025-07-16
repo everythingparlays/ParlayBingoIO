@@ -22,83 +22,106 @@ const Map = React.lazy(() => import('./Components/Map'))
 
 export default function Landing() {
   useEffect(() => {
-    // Register GSAP plugins
+    // CRITICAL: Keep header visible immediately, defer heavy animations
     gsap.registerPlugin(ScrollTrigger)
     
-    let ctx = gsap.context(() => {
-      // Create a bit of parallaxing for the images of people in the social features section
-      singleParallax({
-        element: document.getElementById('person-1'),
-        speed: -1.5,
-        delay: 0,
-      })
+    // Immediate: Show header (critical for UX)
+    gsap.from('header', {
+      opacity: 1,
+      duration: 0.8,
+      ease: 'expo.inOut',
+      delay: 0.1,
+    })
 
-      singleParallax({
-        element: document.getElementById('person-2'),
-        speed: 1,
-        delay: 0,
-      })
-
-      singleParallax({
-        element: document.getElementById('person-3'),
-        speed: 1.5,
-        delay: 0,
-      })
-
-      singleParallax({
-        element: document.getElementById('person-4'),
-        speed: -2,
-        delay: 0,
-      })
-
+    const initializeAnimations = () => {
+      // Phase 2: Hero animations (after LCP paints)
       gsap.from('#hero-title, #hero-text, #hero-cta', {
         y: 15,
         opacity: 0,
         ease: 'expo.inOut',
         duration: 1,
-        delay: 0.2,
-        stagger: 0.1,
+        delay: 0.1,
+        stagger: 0.05,
         transformOrigin: 'top left',
       })
 
-      gsap.from('header', {
-        opacity: 0,
-        duration: 1,
-        ease: 'expo.inOut',
-        delay: 1,
+      // Phase 3: Non-critical animations
+      setupNonCriticalAnimations()
+    }
+
+    // Cleanup function
+    let ctx: gsap.Context
+
+    const setupNonCriticalAnimations = () => {
+      ctx = gsap.context(() => {
+        // Parallax animations (not needed for LCP)
+        singleParallax({
+          element: document.getElementById('person-1'),
+          speed: -1.5,
+          delay: 0,
+        })
+
+        singleParallax({
+          element: document.getElementById('person-2'),
+          speed: 1,
+          delay: 0,
+        })
+
+        singleParallax({
+          element: document.getElementById('person-3'),
+          speed: 1.5,
+          delay: 0,
+        })
+
+        singleParallax({
+          element: document.getElementById('person-4'),
+          speed: -2,
+          delay: 0,
+        })
+
+        // Trophy floating animation
+        const trophyElement = document.querySelector('[class*="trophy-icon"]')
+        if (trophyElement) {
+          gsap.to(trophyElement, {
+            y: -10,
+            duration: 2,
+            ease: 'power2.inOut',
+            yoyo: true,
+            repeat: -1,
+          })
+        }
+
+        // Scroll-triggered animations
+        const fadeInSections = document.getElementsByClassName('fade-in')
+        for (let s of fadeInSections) {
+          gsap.from(s, {
+            opacity: 0,
+            y: 25,
+            scrollTrigger: {
+              trigger: s,
+              start: '150px bottom',
+              toggleActions: 'restart none none reverse',
+            },
+            duration: 1,
+            ease: 'expo.out',
+          })
+        }
       })
+    }
 
-      // Add floating animation to trophy
-      const trophyElement = document.querySelector('[class*="trophy-icon"]')
-      if (trophyElement) {
-        gsap.to(trophyElement, {
-          y: -10,
-          duration: 2,
-          ease: 'power2.inOut',
-          yoyo: true,
-          repeat: -1,
-        })
-      }
+    // Defer initialization until browser is idle
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        initializeAnimations()
+      })
+    } else {
+      // Fallback - still defer significantly
+      setTimeout(initializeAnimations, 200)
+    }
 
-      // Make all elements with the class .fade-in fade in and up when they enter the screen
-      const fadeInSections = document.getElementsByClassName('fade-in')
-      for (let s of fadeInSections) {
-        gsap.from(s, {
-          opacity: 0, // start from 0 opacity
-          y: 25, // start from 25px down
-          scrollTrigger: {
-            trigger: s,
-            start: '150px bottom',
-            
-            toggleActions: 'restart none none reverse',
-          },
-          duration: 1,
-          ease: 'expo.out',
-        })
-      }
-    })
-
-    return () => ctx.revert()
+    return () => {
+      if (ctx) ctx.revert()
+    }
   }, [])
 
   return (

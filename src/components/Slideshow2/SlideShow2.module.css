@@ -17,6 +17,9 @@
   flex: 1;
   overflow: hidden;
   border-radius: 12px;
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
 }
 
 /* Slide Track */
@@ -314,9 +317,20 @@
     gap: 8px;
   }
 
-  /* Hide arrow buttons on mobile */
+  /* Make arrow buttons more touch-friendly on mobile */
   .slideShowArrowLeft,
   .slideShowArrowRight {
-    display: none;
+    width: 3rem;
+    height: 3rem;
+    /* background: rgba(255, 255, 255, 0.8); */
+    backdrop-filter: blur(10px);
+  }
+  
+  .slideShowArrowLeft {
+    left: 0.5rem;
+  }
+  
+  .slideShowArrowRight {
+    right: 0.5rem;
   }
 }

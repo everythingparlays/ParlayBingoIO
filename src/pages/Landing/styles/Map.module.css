@@ -94,16 +94,25 @@
   background-color: #1d184c;
   color: #ffffff;
   flex: 1;
-  border-radius: 12px 0 0 12px;
-  border: 2px solid #1d184c;
+  border: 1px solid #1d184c;
 }
 
 .contest-tab {
   background-color: #303083;
   color: #848fbf;
   flex: 1;
-  border-radius: 0 12px 12px 0;
+  /* border-radius: 0 12px 12px 0; */
   border: 2px solid #1d184c;
+}
+
+/* When FREE tab is active - add rounded corners on left */
+div[class*='contest-tab-active']:first-child {
+  border-radius: 12px 0 0 12px;
+}
+
+/* When PAID tab is active - add rounded corners on right */
+div[class*='contest-tab-active']:last-child {
+  border-radius: 0 12px 12px 0;
 }
 
 /* When tab is not active but is 'free' tab, adjust right border */
