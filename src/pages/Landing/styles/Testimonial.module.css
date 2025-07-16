@@ -46,9 +46,9 @@
   rotate: -20deg;
 }
 
-h1,
-p {
-  color: var(--white);
+.testmonial h1,
+.testmonial p {
+  color: var(--white) !important;
 }
 
 .testmonial_title_container {

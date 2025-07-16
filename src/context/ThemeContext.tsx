@@ -23,16 +23,19 @@ export function ThemeProvider({ children } : Props) {
   useEffect(() => {
     let body = document.querySelector('body')!
 
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
-
-    // Set the theme depending on what the user's preference is
-    if (prefersDark.matches) {
-      setTheme('dark')
-      body.setAttribute('theme', 'dark')
-    } else {
-      setTheme('light')
-      body.setAttribute('theme', 'light')
-    }
+    // Force light mode for now - disable auto theme detection
+    setTheme('light')
+    body.setAttribute('theme', 'light')
+    
+    // DISABLED: Auto theme detection
+    // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+    // if (prefersDark.matches) {
+    //   setTheme('dark')
+    //   body.setAttribute('theme', 'dark')
+    // } else {
+    //   setTheme('light')
+    //   body.setAttribute('theme', 'light')
+    // }
   }, [])
 
   const switchTheme = () => {

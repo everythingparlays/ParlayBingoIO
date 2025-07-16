@@ -94,7 +94,7 @@ export default function TickerTape({
           overflow: hidden;
           width: 100%;
           background: var(--primary);
-          color: rgba(255, 255, 255, 0.8);
+          color: rgba(255, 255, 255, 0.9);
           padding: var(--size-4) 0;
           height: auto;
           min-height: calc(var(--text-3) * 4);
@@ -103,6 +103,10 @@ export default function TickerTape({
           justify-content: center;
           gap: var(--size-2);
           position: relative;
+        }
+        
+        .ticker-container * {
+          color: rgba(255, 255, 255, 0.9);
         }
 
         .ticker-container::before {
@@ -143,6 +147,7 @@ export default function TickerTape({
         .ticker-phrase {
           margin: 0 var(--size-4);
           font-size: var(--text-3);
+          color: rgba(255, 255, 255, 0.9);
         }
         
         .ticker-separator {

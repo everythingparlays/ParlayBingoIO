@@ -201,12 +201,14 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
   gap: var(--size-6);
 }
 
-.map-footer h3 {
+.map-footer h3,
+.map-footer-subtitle {
   padding: var(--size-4) var(--size-6);
   border-radius: var(--size-2);
   font-weight: 600;
   font-size: var(--text-2);
   max-width: 600px;
+  color: var(--white);
 }
 
 .download-app-button {

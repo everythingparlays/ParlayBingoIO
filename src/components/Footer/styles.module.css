@@ -10,12 +10,11 @@
   gap: 2rem;
 }
 
-footer p {
+#footer p,
+#footer h3,
+#footer h6,
+.footer-our-game-container h3 {
   color: var(--white);
-}
-
-footer h6 {
-  color: var(--gray1000);
 }
 
 /* Left Container - Main content area */
@@ -209,8 +208,9 @@ footer h6 {
   gap: var(--size-6);
 }
 
-footer a {
-  color: var(--heading-color);
+#footer a,
+.footer-terms-container a {
+  color: var(--white);
 }
 
 footer a:hover {
