@@ -13,9 +13,10 @@ export default defineConfig({
       open: false,
       gzipSize: true,
       brotliSize: true,
-    })
+    }),
   ],
   build: {
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -23,8 +24,14 @@ export default defineConfig({
           gsap: ['gsap'],
           aws: ['@aws-amplify/api', '@aws-amplify/core'],
           router: ['react-router-dom'],
-        }
-      }
-    }
-  }
+        },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name?.endsWith('.css')) {
+            return 'assets/css/[name]-[hash][extname]'
+          }
+          return 'assets/[name]-[hash][extname]'
+        },
+      },
+    },
+  },
 })

@@ -88,9 +88,8 @@ export default function Landing() {
           y: 25, // start from 25px down
           scrollTrigger: {
             trigger: s,
-            start: '150px bottom', // start animation when the element is 150px from the bottom of the screen
-            // restart the animation on entering the start position from the top,
-            // reverse the animation when leaving back upwards
+            start: '150px bottom',
+            
             toggleActions: 'restart none none reverse',
           },
           duration: 1,
