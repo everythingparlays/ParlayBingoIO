@@ -5,6 +5,7 @@ import download from '/assets/svg/download.svg'
 import { useEffect, Suspense } from 'react'
 import InfiniteScroller from 'components/InfiniteScroller/InfiniteScroller'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
 import { singleParallax } from 'utils/parallax'
 import React from 'react'
 import Hero from './Components/Hero'
@@ -21,6 +22,9 @@ const Map = React.lazy(() => import('./Components/Map'))
 
 export default function Landing() {
   useEffect(() => {
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger)
+    
     let ctx = gsap.context(() => {
       // Create a bit of parallaxing for the images of people in the social features section
       singleParallax({

@@ -25,8 +25,9 @@
   position: absolute;
   rotate: -10deg;
   top: 2rem;
-  left: 0;
+  left: -2rem;
   z-index: 0;
+  transform: scale(.8);
 }
 
 .svg-phone {
@@ -34,6 +35,14 @@
   z-index: 1;
   margin-left: 2rem;
   margin-bottom: 2rem;
+  width: 80%;
+  max-width: 400px;
+}
+
+.svg-phone img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .svg-badge {
@@ -136,9 +145,38 @@
     align-items: center;
   }
 
+  .svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    position: relative;
+  }
+
   .svg-phone {
     margin-left: 0;
     margin-bottom: 0;
+    width: 100%;
+    max-width: 280px;
+    transform: scale(.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .svg-badge {
+    transform: scale(.7);
+    top: -1rem;
+    left: 20%;
+    margin-left: -92px;
+  }
+
+  .svg-square {
+    transform: scale(.6);
+    left: -4rem;
+    top: 1rem;
   }
 
   .text-container {

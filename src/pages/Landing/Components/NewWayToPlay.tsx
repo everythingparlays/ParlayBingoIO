@@ -15,6 +15,7 @@ import Features from 'components/Features/Features'
 import { newToPlayFeatures } from 'data/NewToPlayFeatures'
 import LinearGradient from 'ui/LinearGradient'
 import ThreeInARow from 'components/svg/ThreeInARow'
+
 type Props = {}
 
 function NewWayToPlay({}: Props) {
@@ -34,7 +35,8 @@ function NewWayToPlay({}: Props) {
             <ThreeInARow width="185" height="145" />
           </div>
           <div className={styles['svg-phone']}>
-            <ThreeInARowBonusPhone />
+            {/* <ThreeInARowBonusPhone /> */}
+            <img src="/assets/images/landing/ThreeInARowBonusPhone.png" alt="Three in a row bonus" />
           </div>
         </div>
         {/* Text */}

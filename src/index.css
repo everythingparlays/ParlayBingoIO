@@ -1,5 +1,4 @@
 @import url('/assets/fonts/Satoshi/css/satoshi.css');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap');
 
 *,
 *::before,
@@ -9,7 +8,7 @@
 
 :root {
   --font-main: 'Satoshi-Variable', Arial, system-ui, sans-serif;
-  --font-secondary: 'Oswald', Impact, Arial, system-ui, sans-serif;
+  --font-secondary: 'Satoshi', Impact, Arial, system-ui, sans-serif;
 
   font-family: var(--font-main);
 
@@ -25,7 +24,7 @@ body {
   --primaryRGB: 48, 48, 131;
   --primary: rgb(var(--primaryRGB));
   --neutralRGB: 255, 255, 255;
-  
+
   --heading-color: var(--gray1200);
   --text-color: var(--gray1000);
   --border-color: var(--gray500);
@@ -81,7 +80,7 @@ body {
 
   --header-height: 85px;
 
-  --white: #FFFFFF;
+  --white: #ffffff;
   --dark-indigo: #1e1b4b;
 
   color: var(--text-color);
@@ -153,7 +152,7 @@ body[theme='dark'] {
   --skeleton-color: rgba(255, 255, 255, 0.08);
   --skeleton-shine-color: var(--heading-color);
 
-  --secondary-cta: #d9eefb
+  --secondary-cta: #d9eefb;
 }
 
 body[theme='light'] {
@@ -223,7 +222,7 @@ body[theme='light'] {
   --skeleton-color: rgba(0, 0, 0, 0.08);
   --skeleton-shine-color: white;
 
-  --secondary-cta: #d9eefb
+  --secondary-cta: #d9eefb;
 }
 
 @media (width > 600px) {
@@ -544,9 +543,9 @@ img {
 /* New "secondary-cta" class with light blue background and indigo text */
 a.secondary-cta,
 button.secondary-cta {
-  background-color: #d9eefb; 
+  background-color: #d9eefb;
   padding: var(--size-2) var(--size-3);
-  color: #303083; 
+  color: #303083;
   display: flex;
   align-items: center;
   gap: var(--size-2);
@@ -583,21 +582,20 @@ button.secondary-cta {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #DB2156 0%, #F8AC1C 100%);
+  background: linear-gradient(90deg, #db2156 0%, #f8ac1c 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #DB2156; /* Fallback for older browsers */
+  color: #db2156; /* Fallback for older browsers */
   display: inline-block; /* Important for the gradient to apply correctly */
   font-weight: bold; /* Optional: makes the gradient more visible */
 }
 
 .gradient-background {
-  background: linear-gradient(90deg, #DB2156 0%, #F8AC1C 100%);
+  background: linear-gradient(90deg, #db2156 0%, #f8ac1c 100%);
   color: white; /* Text color on gradient background */
   padding: var(--size-2) var(--size-3); /* Add some padding */
   border-radius: var(--size-1); /* Optional: rounded corners */
   display: inline-block;
   font-weight: bold;
 }
-
