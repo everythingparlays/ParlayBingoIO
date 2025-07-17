@@ -18,7 +18,7 @@ export default function AccordionItem({ title, children } : Props) {
         onClick={() => setOpen(!open)}>
         <h3>{title}</h3>
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" clipRule="evenodd" d="M5 -4.86374e-05L0 4.99995L0.7 5.69995L5 1.39995L9.3 5.69995L10 4.99995L5 -4.86374e-05Z" fill="black"/>
+          <path fillRule="evenodd" clipRule="evenodd" d="M5 -4.86374e-05L0 4.99995L0.7 5.69995L5 1.39995L9.3 5.69995L10 4.99995L5 -4.86374e-05Z" fill="white"/>
         </svg>
       </button>
       <div className={styles['accordion-content']}>

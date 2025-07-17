@@ -55,6 +55,7 @@
 
 .download-to-container {
   margin-bottom: 16px;
+  color: var(--white);
 }
 
 .title-container h3 {
@@ -102,6 +103,7 @@
   font-size: 48px;
   margin: 0;
   letter-spacing: 0.1em;
+  color: white;
 }
 
 /* App store buttons container */
