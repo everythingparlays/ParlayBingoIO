@@ -80,7 +80,10 @@ export default function Header() {
             </div>
 
             {/* Center: Logo */}
-            <div className={styles['mobile-center']}>
+            <div
+              className={styles['mobile-center']}
+              aria-label="Overboard Sports Logo"
+            >
               <Link to="/" className={styles['logo-container']}>
                 <LogoHeader
                   height={36}
@@ -203,7 +206,9 @@ export default function Header() {
                       location: 'desktop_header',
                       buttonText: 'Download the App',
                     })
-                    const urlParams = new URLSearchParams(window.location.search)
+                    const urlParams = new URLSearchParams(
+                      window.location.search
+                    )
                     const referrer = urlParams.get('referrer')
                     trackAppDownloadRedirect(referrer)
                     navigate('/download')

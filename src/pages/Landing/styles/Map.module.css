@@ -97,6 +97,10 @@
   border: 1px solid #1d184c;
 }
 
+.contest-tab-active span {
+  color: #ffffff;
+}
+
 .contest-tab {
   background-color: #303083;
   color: #848fbf;

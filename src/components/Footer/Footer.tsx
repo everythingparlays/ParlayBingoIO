@@ -34,8 +34,8 @@ export default function Footer() {
             <h4>100% Free to Play</h4>
             <DashedLine />
           </div>
-          <div>
-            <h2>DOWNLOAD TO</h2>
+          <div className={styles['download-to-container']}>
+            <h3>DOWNLOAD TO</h3>
           </div>
           <div>
             <LineColumns />

@@ -678,7 +678,7 @@
 
   .trophy-icon {
     top: 0%;
-    right: 25%;
+    right: 30%;
 
     /* width: 70px; */
     /* height: 70px; */
@@ -689,7 +689,7 @@
     width: 300px;
     height: 250px;
     top: -5%;
-    right: -10%;
+    left: 64%;
   }
 }
 
