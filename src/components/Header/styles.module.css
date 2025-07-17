@@ -8,18 +8,23 @@
   border-bottom: 1px solid transparent;
   transition: background-color var(--transition-med),
     border-color var(--transition-med);
-  background-color: #303083;
+  background-color: #303083; /* Solid indigo - homepage only */
   top: 0;
 }
 
 /*
 TODO: Can taket this out for the scroll
 */
-#header.scrolled {
-  background-color: rgba(29, 24, 76, 0.95);
+/* #header.scrolled {
+  background-color: rgba(
+    29,
+    24,
+    76,
+    0.95
+  ); 
   backdrop-filter: blur(10px);
   border-color: var(--border-color);
-}
+} */
 
 #header-inner {
   width: 100%;
@@ -69,7 +74,7 @@ TODO: Can taket this out for the scroll
   top: 0;
   right: 0;
   padding: 2rem 1.5rem;
-  background-color: var(--bg);
+  background-color: var(--primary);
   z-index: 99;
   height: 100%;
   transform: translateX(100%);
@@ -112,7 +117,7 @@ body[theme='dark'] #nav-expanded-bg {
 }
 
 body[theme='light'] #nav-expanded-bg {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 header[aria-expanded='true'] #nav-expanded-bg {
@@ -250,7 +255,7 @@ body[theme='dark'] .link::after {
   gap: 1rem;
 }
 
-.link:hover{
+.link:hover {
   transform: scale(1.05);
   transition: all 0.4s ease;
 }
@@ -272,7 +277,6 @@ body[theme='dark'] .link::after {
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  
 }
 
 .mobile-download-btn {

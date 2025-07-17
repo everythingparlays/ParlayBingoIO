@@ -78,13 +78,13 @@ export default function DownloadPage() {
         width: '100%',
       }}
     >
-      <h1 style={{ marginBottom: '20px', fontWeight: 'bold' }}>{message}</h1>
-      <p style={{ marginBottom: '20px' }}>{secondaryMessage}</p>
+      <h1 style={{ marginBottom: '20px', fontWeight: 'bold', color: 'white' }}>{message}</h1>
+      <p style={{ marginBottom: '20px', color: 'white' }}>{secondaryMessage}</p>
       {!/iPad|iPhone|iPod/.test(navigator.userAgent) && (
         <>
           <p
             style={{
-              color: 'grey',
+              color: 'white',
               fontWeight: 'bold',
               marginBottom: '20px',
               whiteSpace: 'pre-line',
@@ -112,7 +112,7 @@ export default function DownloadPage() {
               }} // Rounded corners
             />
             <p
-              style={{ color: 'grey', marginTop: '10px', marginBottom: '20px' }}
+              style={{ color: 'white', marginTop: '10px', marginBottom: '20px' }}
             >
               Scan the QR code to download the app.
             </p>

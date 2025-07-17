@@ -230,6 +230,7 @@ body[theme='light'] {
   --skeleton-shine-color: white;
 
   --secondary-cta: #d9eefb;
+  --white: #ffffff;
 }
 
 @media (width > 600px) {

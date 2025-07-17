@@ -82,9 +82,8 @@ export default function Header() {
             {/* Center: Logo */}
             <div
               className={styles['mobile-center']}
-              aria-label="Overboard Sports Logo"
             >
-              <Link to="/" className={styles['logo-container']}>
+              <Link to="/" className={styles['logo-container']} aria-label="Overboard Sports Logo - Go to homepage">
                 <LogoHeader
                   height={36}
                   width={150}
@@ -121,7 +120,7 @@ export default function Header() {
       ) : (
         /* Desktop header layout */
         <div className="container split" id={styles['header-inner']}>
-          <Link to="/" className={styles['logo-container']}>
+          <Link to="/" className={styles['logo-container']} aria-label="Overboard Sports Logo - Go to homepage">
             <LogoHeader height={44} width={201} className={styles['logo']} />
           </Link>
           <nav id={styles['desktop-links']}>

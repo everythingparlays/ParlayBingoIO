@@ -31,7 +31,7 @@ export default function Footer() {
         <div className={styles['left-container-content']}>
           <div className={styles['title-container']}>
             <DashedLine />
-            <h4>100% Free to Play</h4>
+            <h3>100% Free to Play</h3>
             <DashedLine />
           </div>
           <div className={styles['download-to-container']}>
@@ -73,6 +73,7 @@ export default function Footer() {
                 trackAppDownloadRedirect(referrer)
               }}
               className={styles['download-svg-container']}
+              aria-label="Google Play Store Button"
             >
               <GooglePlayDownload />
             </a>
@@ -197,9 +198,21 @@ export default function Footer() {
               <p>© 2025 Overboard Sports. All rights reserved.</p>
             </div>
             <div className={styles['footer-terms-container']}>
-              <a>Terms of Service</a>
+              <a
+                aria-label="Terms of Service"
+                href="https://www.everythingparlays.com/privacy-policy"
+                target="_blank"
+              >
+                Terms of Service
+              </a>
               <span>|</span>
-              <a>Privacy Policy</a>
+              <a
+                aria-label="Privacy Policy"
+                href="https://www.everythingparlays.com/privacy-policy"
+                target="_blank"
+              >
+                Privacy Policy
+              </a>
             </div>
           </div>
         </div>

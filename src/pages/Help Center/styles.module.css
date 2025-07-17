@@ -122,6 +122,7 @@
   color: white;
   font-weight: 700;
   position: relative;
+  background-color: var(--primary);
 }
 
 .section-heading::after {
@@ -226,17 +227,19 @@ body[theme='light'] #large-buttons a:hover {
 }
 
 body[theme='light'] #send-email {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border: 2px solid rgba(100, 144, 247, 0.2);
+  background: linear-gradient(135deg, #1d184c 0%, #2a1f5c 100%);
+  border: 2px solid rgba(100, 144, 247, 0.3);
 }
 
 body[theme='light'] #send-email h3 {
-  color: var(--primary);
+  color: white;
 }
 
 body[theme='light'] #send-email:hover {
-  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-  border-color: rgba(100, 144, 247, 0.4);
+  background: linear-gradient(135deg, #1d184c 0%, #2a1f5c 100%);
+  border-color: rgba(100, 144, 247, 0.5);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl), 0 8px 32px rgba(100, 144, 247, 0.3);
 }
 
 #large-buttons a:hover {

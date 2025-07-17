@@ -1,10 +1,7 @@
 import { useState } from 'react'
 import styles from './styles.module.css'
 import AccordionItem from 'components/AccordionItem/AccordionItem'
-import { Link } from 'react-router-dom'
-import Profile from 'components/svg/Profile'
-import Question from 'components/svg/Question'
-import Rules from 'components/svg/Rules'
+
 import Mail from 'components/svg/Mail'
 import React from 'react'
 import { LinearGradient } from 'ui/LinearGradient'
@@ -27,31 +24,6 @@ export default function HelpCenter() {
         </div>
       </section>
       <LinearGradient style={{ marginBottom: '10rem' }} />
-      {/*
-      <section className='container'>
-        <div id={styles['large-buttons']}>
-          <Link to="#">
-            <Profile
-              color='var(--gray800)'
-              colorBg='var(--transparent-contrast200)'
-            />
-            My account
-          </Link>
-          <Link to="#">
-            <Question
-              color='var(--gray800)'
-            />
-            How to play
-          </Link>
-          <Link to="#">
-            <Rules
-              color='var(--gray800)'
-            />
-            State rules & locations
-          </Link>
-        </div>
-      </section>
-      */}
       <section className={styles['faq-container']}>
         <div id={styles['faq']}>
           <h2 className={styles['section-heading']}>
@@ -78,12 +50,6 @@ export default function HelpCenter() {
               a contest!
             </p>
           </AccordionItem>
-
-          {/*<AccordionItem
-            title='Is Parlay Bingo legal?'>
-            <p>Yes. Parlay bingo is a skill based fantasy game. You are not allowed to deposit, win or withdraw any money through our app.</p>
-          </AccordionItem>
-          */}
           <AccordionItem title="How are bingo outcomes determined in OverBoard Sports?">
             <p>
               The outcomes of OverBoard Sports are determined by which props you
