@@ -3,7 +3,7 @@ import styles from './Slideshow.module.css'
 import Arrow from 'components/svg/Arrow'
 
 interface SlideshowProps {
-  images: string[]
+  images: string[] | { webp: string; fallback: string }[]
   alt?: string
   maxWidth?: string
   minHeight?: string
@@ -85,16 +85,32 @@ function Slideshow({ images, alt = 'Slideshow image', maxWidth = '400px', minHei
       >
         <Arrow />
       </button>
-      <img 
-        src={images[currentSlide]} 
-        alt={`${alt} ${currentSlide + 1}`}
-        className={styles['slide-image']}
-        style={{ maxWidth, minHeight }}
-        loading="lazy"
-      />
+      {typeof images[0] === 'string' ? (
+        <img 
+          src={images[currentSlide] as string} 
+          alt={`${alt} ${currentSlide + 1}`}
+          className={styles['slide-image']}
+          style={{ maxWidth, minHeight }}
+          loading="lazy"
+        />
+      ) : (
+        <picture>
+          <source 
+            srcSet={(images[currentSlide] as { webp: string; fallback: string }).webp} 
+            type="image/webp" 
+          />
+          <img 
+            src={(images[currentSlide] as { webp: string; fallback: string }).fallback}
+            alt={`${alt} ${currentSlide + 1}`}
+            className={styles['slide-image']}
+            style={{ maxWidth, minHeight }}
+            loading="lazy"
+          />
+        </picture>
+      )}
       {images.length > 1 && (
         <div className={styles['slide-controls']}>
-          {images.map((_, index) => (
+          {images.map((_: any, index: number) => (
             <button
               key={index}
               className={`${styles['slide-button']} ${index === currentSlide ? styles['active'] : ''}`}

@@ -200,7 +200,7 @@ export default function Footer() {
             <div className={styles['footer-terms-container']}>
               <a
                 aria-label="Terms of Service"
-                href="https://www.everythingparlays.com/privacy-policy"
+                href="https://www.everythingparlays.com/terms-of-service"
                 target="_blank"
               >
                 Terms of Service
