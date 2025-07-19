@@ -14,9 +14,9 @@ function Social({}: Props) {
   const location = useLocation()
   
   const socialImages = [
-    '/assets/images/landing/social-slide-1.webp',
-    '/assets/images/landing/social-slide-2.png',
-    '/assets/images/landing/social-slide-3.png'
+    '/assets/images/landing/social-slide-1-hq.webp',
+    '/assets/images/landing/social-slide-2-hq.webp',
+    '/assets/images/landing/social-slide-3-hq.webp'
   ]
   return (
     <section id={styles.section}>

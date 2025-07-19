@@ -1,6 +1,5 @@
 import React from 'react'
 import ThreeInARowBonus from 'components/svg/ThreeInARowBonus'
-import ThreeInARowBonusPhone from 'components/svg/ThreeInARowBonusPhone'
 import NewToPlaySquare from 'components/svg/NewToPlaySquare'
 import LeftNewToPlayBlocks from 'components/svg/LeftNewToPlayBlocks'
 import RightNewToPlayBlocks from 'components/svg/RightNewToPlayBlocks'
@@ -36,7 +35,7 @@ function NewWayToPlay({}: Props) {
           </div>
           <div className={styles['svg-phone']}>
             {/* <ThreeInARowBonusPhone /> */}
-            <img src="/assets/images/landing/ThreeInARowBonusPhone.png" alt="Three in a row bonus" />
+            <img src="/assets/images/landing/ThreeInARowBonusPhone.webp" alt="Three in a row bonus" />
           </div>
         </div>
         {/* Text */}
