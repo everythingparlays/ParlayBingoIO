@@ -119,8 +119,12 @@
 
 /* Extra small screens */
 @media (max-width: 480px) {
+  .slideshow-container {
+   margin-top: 1rem;
+  }
+
   .slide-image {
-    height: 200px;
+    height: 400px;
     object-fit: contain;
   }
 }
