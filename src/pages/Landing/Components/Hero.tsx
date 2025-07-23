@@ -118,7 +118,7 @@ function Hero() {
               }}
               className={styles['phone-primary']}
             >
-              <img src="/assets/images/landing/PrimaryPhoneHero.png" alt="Primary Phone" />
+              <img src="/assets/images/landing/PrimaryPhoneHero.webp" alt="Primary Phone" />
             </div>
 
             {/* Secondary phone SVG - z-index: 2 */}
@@ -133,7 +133,7 @@ function Hero() {
               }}
               className={styles['phone-secondary']}
             >
-              <img src="/assets/images/landing/SecondaryPhoneHero.png" alt="Secondary Phone" />
+              <img src="/assets/images/landing/SecondaryPhoneHero.webp" alt="Secondary Phone" />
             </div>
           </div>
         </div>
