@@ -40,7 +40,6 @@
       as="image"
     />
 
-    
     <link
       rel="preload"
       href="/assets/fonts/Satoshi/fonts/Satoshi-Variable.woff2"
@@ -48,6 +47,20 @@
       type="font/woff2"
       crossorigin
     />
+
+    <!-- Defer render-blocking CSS -->
+    <link
+      rel="preload"
+      href="/assets/css/index-66d3530f.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link rel="stylesheet" href="/assets/css/index-66d3530f.css"
+    /></noscript>
+
+    <!-- Preload critical JavaScript -->
+    <link rel="preload" href="/assets/index-5fe70460.js" as="script">
 
     <script>
       !(function () {
