@@ -8,7 +8,8 @@
   flex-direction: column;
   overflow: visible;
   position: relative;
-  padding: 2rem 3rem;
+  padding: 1rem 1.5rem;
+  margin: 0 auto;
 }
 
 /* Slide Wrapper */
@@ -154,7 +155,7 @@
 }
 
 .indicator.active {
-  background-color: #DB2156;
+  background-color: #db2156;
   transform: scale(1.2);
 }
 
@@ -243,6 +244,10 @@
   .slideshowContainer {
     height: auto;
     min-height: 450px;
+    margin: 0 auto; /* Ensure horizontal centering */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
   }
 
   .testimonialGrid {
@@ -250,6 +255,8 @@
     grid-template-rows: repeat(4, 1fr);
     gap: 15px;
     padding: 10px;
+    margin: 0 auto; /* Center the grid */
+    justify-items: center; /* Center grid items */
   }
 
   .testimonialGrid > :nth-child(odd) {
@@ -263,15 +270,11 @@
   .testimonialCard {
     height: 180px;
     min-height: 180px;
+    margin: 0 auto; /* Center individual cards */
   }
 
   .cardContent {
     padding: 20px;
-  }
-
-  .testimonialText {
-    font-size: 13px;
-    margin: 30px 0 12px 0;
   }
 
   .authorName {
@@ -287,11 +290,25 @@
 @media (max-width: 480px) {
   .slideshowContainer {
     min-height: 400px;
+    padding: 0 1rem; /* Add some padding for mobile */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .testimonialGrid {
+    justify-items: center; /* Ensure grid items are centered */
+    align-items: center; /* Vertically center grid items */
+    margin: 0 auto; /* Center the entire grid */
   }
 
   .testimonialCard {
-    height: 160px;
-    min-height: 160px;
+    height: 270px;
+    min-height: 270px;
+    max-width: 277px;
+    max-height: 277px;
+    margin: 0 auto; /* Center each card */
   }
 
   .cardContent {
@@ -299,12 +316,11 @@
   }
 
   .testimonialText {
-    font-size: 12px;
-    margin: 25px 0 10px 0;
+    font-size: 1rem;
   }
 
   .authorName {
-    font-size: 12px;
+    font-size: 1rem;
   }
 
   .indicator {
@@ -315,6 +331,7 @@
   .slideIndicators {
     bottom: 15px;
     gap: 8px;
+    justify-content: center; /* Ensure indicators stay centered */
   }
 
   /* Make arrow buttons more touch-friendly on mobile */
@@ -322,15 +339,14 @@
   .slideShowArrowRight {
     width: 3rem;
     height: 3rem;
-    /* background: rgba(255, 255, 255, 0.8); */
     backdrop-filter: blur(10px);
   }
-  
+
   .slideShowArrowLeft {
-    left: 0.5rem;
+    left: -1rem;
   }
-  
+
   .slideShowArrowRight {
-    right: 0.5rem;
+    right: -1rem;
   }
 }

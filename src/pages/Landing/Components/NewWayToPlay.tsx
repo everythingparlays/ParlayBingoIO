@@ -9,7 +9,10 @@ import Whistle from 'components/svg/Whistle'
 import styles from '../styles/NewWayToPlay.module.css'
 import Button from 'ui/Button'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { trackDownloadButton, trackAppDownloadRedirect } from 'services/analytics'
+import {
+  trackDownloadButton,
+  trackAppDownloadRedirect,
+} from 'services/analytics'
 import Features from 'components/Features/Features'
 import { newToPlayFeatures } from 'data/NewToPlayFeatures'
 import LinearGradient from 'ui/LinearGradient'
@@ -35,7 +38,10 @@ function NewWayToPlay({}: Props) {
           </div>
           <div className={styles['svg-phone']}>
             {/* <ThreeInARowBonusPhone /> */}
-            <img src="/assets/images/landing/ThreeInARowBonusPhone.webp" alt="Three in a row bonus" />
+            <img
+              src="/assets/images/landing/ThreeInARowBonusPhone.webp"
+              alt="Three in a row bonus"
+            />
           </div>
         </div>
         {/* Text */}
@@ -75,21 +81,28 @@ function NewWayToPlay({}: Props) {
         </div>
       </div>
       {/* Right side */}
-      <div className={styles['right-side']}
-        style = {{
+      <div
+        className={styles['right-side']}
+        style={{
           marginBottom: '3rem',
         }}
       >
         <Features
-          title="The Most Engaging DFS"
+          title={
+            <>
+              The Most Engaging
+              <br />
+              DFS
+            </>
+          }
           features={newToPlayFeatures}
           cornerBlocks={{
             topLeft: true,
             topRight: true,
           }}
+          
         />
       </div>
-    
     </section>
   )
 }

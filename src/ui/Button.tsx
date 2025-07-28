@@ -13,6 +13,8 @@ export interface ButtonProps
   color?: string
   hoverBg?: string
   hoverColor?: string
+  fontWeight?: string
+  fontSize?: string
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -29,6 +31,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       hoverBg,
       hoverColor,
       style,
+      fontWeight,
+      fontSize,
       ...props
     },
     ref
@@ -36,6 +40,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const buttonStyle = {
       background: bg,
       color: color,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
       '--hover-bg': hoverBg,
       '--hover-color': hoverColor,
       ...style,

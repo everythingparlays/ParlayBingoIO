@@ -18,14 +18,14 @@ interface CornerBlocksConfig {
 }
 
 interface FeaturesProps {
-  title?: string
+  title?: React.ReactNode
   features: Feature[]
   cornerBlocks?: CornerBlocksConfig
   className?: string
 }
 
 export default function Features({
-  title = "Features",
+  title = '',
   features,
   cornerBlocks = {
     topLeft: true,

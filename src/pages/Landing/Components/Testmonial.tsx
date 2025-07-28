@@ -45,6 +45,8 @@ const Testmonial = () => {
             bg="linear-gradient(135deg, #F8AC1C, #E9663A)"
             color="#1D184C"
             hoverBg="linear-gradient(135deg, #E9663A, #F8AC1C)"
+            fontSize="1rem"
+            fontWeight="700"
           >
             Join These Users Having Fun {'>'}
           </Button>

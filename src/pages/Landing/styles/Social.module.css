@@ -10,6 +10,9 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 3rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .content-container {
@@ -65,6 +68,20 @@
   background-position: left center;
   z-index: 0;
   opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Hide background on mobile and tablet, show only on desktop */
+@media screen and (max-width: 768px) {
+  .left-side::before {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .left-side::before {
+    display: block;
+  }
 }
 .right-side {
   flex: 1;
@@ -101,11 +118,19 @@
     justify-content: center;
     gap: 2rem;
   }
+
+  .left-side,
+  .right-side {
+    width: 100%;
+    align-items: center;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .right-side {
-    max-width: 300px;
-    margin-top: 5rem;
+    max-width: 90vw;
+    width: 100%;
+    margin-top: 3rem;
+    padding: 0 1rem;
   }
 }

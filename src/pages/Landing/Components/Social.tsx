@@ -38,6 +38,7 @@ function Social({}: Props) {
               topLeft: true,
               bottomRight: true,
             }}
+            
             features={socialData}
           />
         </div>
