@@ -4,7 +4,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  border: 0.3rem solid #1d184c;
+  border: 0.2rem solid #1d184c;
   width: 80%;
 }
 
@@ -15,10 +15,9 @@
 /* Corner Blocks */
 .cornerBlock {
   position: absolute;
-  opacity: 0.4;
   pointer-events: none;
   z-index: 1;
-  transition: opacity 0.3s ease;
+  /* transition: opacity 0.3s ease; */
 }
 
 .cornerBlock svg {
@@ -54,21 +53,24 @@
 
 .header {
   text-align: center;
+  margin-top: 4rem;
   margin-bottom: var(--size-4);
   position: relative;
   z-index: 2;
 }
 
 .title {
-  font-size: var(--text-5);
-  font-weight: 800;
+  font-size: var(--text-4);
+  font-weight: bold;
   color: white;
   margin: 0;
-  font-family: var(--font-secondary);
+  font-family: var(--font-main);
+  font-weight: 700;
   margin-top: var(--size-2);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 1px;
   position: relative;
+  /* line-height: 40px; */
 }
 
 .featuresGrid {
@@ -86,6 +88,8 @@
 /* Tablet and up */
 @media screen and (min-width: 768px) {
   .featuresSection {
+    width: 100%;
+    margin: 0;
     padding: var(--size-4) 0;
   }
 
@@ -114,13 +118,15 @@
     max-width: 250px;
     max-height: 250px;
   }
-  
 }
 
 /* Mobile adjustments */
 @media screen and (max-width: 767px) {
-  .cornerBlock {
-    opacity: 0.2;
+  .featuresSection {
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: var(--size-4) var(--size-2);
   }
 
   .cornerBlock svg {
@@ -146,5 +152,37 @@
   .cornerBlock[data-corner='bottom-left'],
   .cornerBlock[data-corner='bottom-right'] {
     bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    margin-top: var(--size-7);
+    margin-bottom: var(--size-7);
+  }
+
+  .cornerBlock svg {
+    max-width: 100px;
+    max-height: 100px;
+    transform: scale(1.8);
+  }
+
+  .cornerBlock[data-corner='top-left'] {
+    top: 0px;
+    left: -50px;
+  }
+
+  .cornerBlock[data-corner='bottom-left'] {
+    left: 10px;
+  }
+
+  .cornerBlock[data-corner='top-right'] {
+    right: -100px;
+    top: 80px;
+  }
+
+  .cornerBlock[data-corner='bottom-left'],
+  .cornerBlock[data-corner='bottom-right'] {
+    bottom: -10px;
   }
 }

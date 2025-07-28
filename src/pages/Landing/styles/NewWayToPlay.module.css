@@ -3,7 +3,7 @@
   min-height: 60vh;
   display: flex;
   flex-direction: row;
-  padding: 5rem 0 0 0;
+  padding: 2rem;
   margin-bottom: 0;
 }
 
@@ -27,7 +27,7 @@
   top: 2rem;
   left: -2rem;
   z-index: 0;
-  transform: scale(.8);
+  transform: scale(0.8);
 }
 
 .svg-phone {
@@ -106,11 +106,16 @@
 .right-side {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   flex: 1;
   position: relative;
   border-radius: 1rem;
+}
+
+.right-side > * {
+  position: relative;
+  z-index: 1;
 }
 
 .right-side::before {
@@ -120,8 +125,10 @@
   left: 10rem;
   right: 0;
   bottom: -3rem;
-  background-image: 
-    linear-gradient(rgba(48, 48, 131, 0.6), rgba(48, 48, 131, 0.6)),
+  background-image: linear-gradient(
+      rgba(48, 48, 131, 0.6),
+      rgba(48, 48, 131, 0.6)
+    ),
     url('/heroBackgroundLeft.webp');
   background-position: right center;
   background-repeat: no-repeat;
@@ -129,8 +136,17 @@
   transform: scaleX(-1);
   z-index: 0;
   opacity: 0.7;
+  pointer-events: none;
 }
 
+@media screen and (max-width: 480px) {
+  .right-side::before {
+    top: 15rem;
+    left: -5rem;
+    right: -10rem;
+    bottom: -5rem;
+  }
+}
 @media screen and (max-width: 768px) {
   #section {
     flex-direction: column;
@@ -160,21 +176,21 @@
     margin-bottom: 0;
     width: 100%;
     max-width: 280px;
-    transform: scale(.8);
+    transform: scale(0.8);
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .svg-badge {
-    transform: scale(.7);
+    transform: scale(0.7);
     top: -1rem;
     left: 20%;
     margin-left: -92px;
   }
 
   .svg-square {
-    transform: scale(.6);
+    transform: scale(0.6);
     left: -4rem;
     top: 1rem;
   }
@@ -188,11 +204,11 @@
   }
 
   .text-container p {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   .text-container span {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   .button-container {

@@ -163,8 +163,8 @@
 
   .testmonial_left_bottom {
     left: -20%;
-    bottom: 2%;
-    transform: scale(0.8);
+    bottom: -10%;
+    transform: scale(0.72);
     rotate: 15deg;
   }
 

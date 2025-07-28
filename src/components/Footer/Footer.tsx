@@ -10,7 +10,7 @@ import {
 import QrCode from '../svg/QrCode'
 import AppleDownload from '../svg/AppleDownload'
 import GooglePlayDownload from '../svg/GooglePlayDownload'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import LineColumns from 'components/svg/LineColumns'
 import DashedLine from 'components/svg/DashedLine'
 import SportsBall from 'components/svg/SportsBall'
@@ -24,6 +24,23 @@ import Button from 'ui/Button'
 export default function Footer() {
   const navigate = useNavigate()
   const location = useLocation()
+
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 480)
+    }
+    console.log(window.innerWidth)
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
+
+  useEffect(() => {
+    console.log(isMobile)
+  }, [isMobile])
   return (
     <footer id={styles['footer']} data-section="contact">
       {/* Left */}
@@ -94,104 +111,193 @@ export default function Footer() {
           </div>
           <div className={styles['footer-break-container']}></div>
           <div className={styles['footer-links-container']}>
-            <div
-              className={`${styles['footer-our-game-container']} ${styles['links-row']}`}
-            >
-              <h3>Our game</h3>
-              <h3>Social</h3>
-            </div>
-            <div
-              className={`${styles['footer-how-to-play-container']} ${styles['links-row']}`}
-            >
-              <p
-                onClick={() => {
-                  if (location.pathname !== '/') {
-                    trackNavigation({
-                      from: location.pathname,
-                      to: '/how-to-play',
-                      method: 'click',
-                    })
-                    navigate('/')
-                    setTimeout(() => scrollToSection('how-to-play'), 100)
-                    trackSectionView('how-to-play', location.pathname)
-                  } else {
-                    trackNavigation({
-                      from: location.pathname,
-                      to: '/how-to-play',
-                      method: 'scroll',
-                    })
-                    scrollToSection('how-to-play')
-                    trackSectionView('how-to-play', location.pathname)
-                  }
-                }}
-                style={{ cursor: 'pointer' }}
-              >
-                How to play
-              </p>
-              <div className={styles['footer-social-container']}>
-                <a
-                  href="https://www.facebook.com/people/OverBoard-Sports/61567589822869/"
-                  target="_blank"
-                  style={{ cursor: 'pointer' }}
-                  aria-label="Facebook"
+            {isMobile ? (
+              // Mobile layout: Our Game section first, then Social section
+              <>
+                <div className={styles['footer-our-game-section']}>
+                  <h3>Our game</h3>
+                  <p
+                    onClick={() => {
+                      if (location.pathname !== '/') {
+                        trackNavigation({
+                          from: location.pathname,
+                          to: '/how-to-play',
+                          method: 'click',
+                        })
+                        navigate('/')
+                        setTimeout(() => scrollToSection('how-to-play'), 100)
+                        trackSectionView('how-to-play', location.pathname)
+                      } else {
+                        trackNavigation({
+                          from: location.pathname,
+                          to: '/how-to-play',
+                          method: 'scroll',
+                        })
+                        scrollToSection('how-to-play')
+                        trackSectionView('how-to-play', location.pathname)
+                      }
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    How to play
+                  </p>
+                  <p>The Team</p>
+                  <a
+                    href="/help-center"
+                    target="_blank"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <p>Contact</p>
+                  </a>
+                  <p>Support</p>
+                </div>
+                <div className={styles['footer-social-section']}>
+                  <h3>Social</h3>
+                  <div className={styles['footer-social-container']}>
+                    <a
+                      href="https://www.facebook.com/people/OverBoard-Sports/61567589822869/"
+                      target="_blank"
+                      style={{ cursor: 'pointer' }}
+                      aria-label="Facebook"
+                    >
+                      <Facebook />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/overboardsports/"
+                      target="_blank"
+                      style={{ cursor: 'pointer' }}
+                      aria-label="Instagram"
+                    >
+                      <Instagram />
+                    </a>
+                    <a
+                      href="https://x.com/overboardsport"
+                      target="_blank"
+                      style={{ cursor: 'pointer' }}
+                      aria-label="X"
+                    >
+                      <X_twitter />
+                    </a>
+                  </div>
+                  <Button
+                    disabled={true}
+                    hoverBg="#ffffff"
+                    style={{
+                      backgroundColor: '#ffffff',
+                      color: 'var(--primary)',
+                      borderRadius: 'var(--size-1)',
+                      opacity: 1, // Add this line
+                    }}
+                  >
+                    Join the Discord
+                  </Button>
+                </div>
+                <div className={styles['footer-support-text']}>
+                  <p>Available in All 50 States for Free-to-Play Contests</p>
+                </div>
+              </>
+            ) : (
+              // Desktop layout: Keep original structure
+              <>
+                <div
+                  className={`${styles['footer-our-game-container']} ${styles['links-row']}`}
                 >
-                  <Facebook />
-                </a>
-                <a
-                  href="https://www.instagram.com/overboardsports/"
-                  target="_blank"
-                  style={{ cursor: 'pointer' }}
-                  aria-label="Instagram"
+                  <h3>Our game</h3>
+                  <h3>Social</h3>
+                </div>
+                <div
+                  className={`${styles['footer-how-to-play-container']} ${styles['links-row']}`}
                 >
-                  <Instagram />
-                </a>
-                <a
-                  href="https://x.com/overboardsport"
-                  target="_blank"
-                  style={{ cursor: 'pointer' }}
-                  aria-label="X"
+                  <p
+                    onClick={() => {
+                      if (location.pathname !== '/') {
+                        trackNavigation({
+                          from: location.pathname,
+                          to: '/how-to-play',
+                          method: 'click',
+                        })
+                        navigate('/')
+                        setTimeout(() => scrollToSection('how-to-play'), 100)
+                        trackSectionView('how-to-play', location.pathname)
+                      } else {
+                        trackNavigation({
+                          from: location.pathname,
+                          to: '/how-to-play',
+                          method: 'scroll',
+                        })
+                        scrollToSection('how-to-play')
+                        trackSectionView('how-to-play', location.pathname)
+                      }
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    How to play
+                  </p>
+                  <div className={styles['footer-social-container']}>
+                    <a
+                      href="https://www.facebook.com/people/OverBoard-Sports/61567589822869/"
+                      target="_blank"
+                      style={{ cursor: 'pointer' }}
+                      aria-label="Facebook"
+                    >
+                      <Facebook />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/overboardsports/"
+                      target="_blank"
+                      style={{ cursor: 'pointer' }}
+                      aria-label="Instagram"
+                    >
+                      <Instagram />
+                    </a>
+                    <a
+                      href="https://x.com/overboardsport"
+                      target="_blank"
+                      style={{ cursor: 'pointer' }}
+                      aria-label="X"
+                    >
+                      <X_twitter />
+                    </a>
+                  </div>
+                </div>
+                <div
+                  className={`${styles['footer-the-team-container']} ${styles['links-row']}`}
                 >
-                  <X_twitter />
-                </a>
-              </div>
-            </div>
-            <div
-              className={`${styles['footer-the-team-container']} ${styles['links-row']}`}
-            >
-              <p>The Team</p>
-              <Button
-                disabled={true}
-                hoverBg="var(--white)"
-                style={{
-                  backgroundColor: 'var(--white)',
-                  color: 'var(--primary)',
-                  borderRadius: 'var(--size-1)',
-                  visibility: 'hidden',
-                }}
-              >
-                Join the Discord
-              </Button>
-            </div>
-            <div
-              className={`${styles['footer-contact-container']} ${styles['links-row']}`}
-            >
-              <a
-                href="/help-center"
-                target="_blank"
-                style={{ textDecoration: 'none' }}
-              >
-                <p>Contact</p>
-              </a>
-              <div></div>
-            </div>
-            <div
-              className={`${styles['footer-support-container']} ${styles['links-row']}`}
-            >
-              <p>Support</p>
-              <div>
-                <p>Available in All 50 States for Free-to-Play Contests</p>
-              </div>
-            </div>
+                  <p>The Team</p>
+                  <Button
+                    disabled={true}
+                    hoverBg="#ffffff"
+                    style={{
+                      backgroundColor: 'var(--white)',
+                      color: 'var(--primary)',
+                      borderRadius: 'var(--size-1)',
+                    }}
+                  >
+                    Join the Discord
+                  </Button>
+                </div>
+                <div
+                  className={`${styles['footer-contact-container']} ${styles['links-row']}`}
+                >
+                  <a
+                    href="/help-center"
+                    target="_blank"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <p>Contact</p>
+                  </a>
+                  {!isMobile && <div></div>} {/* Only render on desktop */}
+                </div>
+                <div
+                  className={`${styles['footer-support-container']} ${styles['links-row']}`}
+                >
+                  <p>Support</p>
+                  <div>
+                    <p>Available in All 50 States for Free-to-Play Contests</p>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
           <div className={styles['footer-bottom-container']}>
             <div className={styles['footer-copyright-container']}>

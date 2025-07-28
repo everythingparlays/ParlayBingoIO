@@ -65,7 +65,7 @@ const Map = ({}: Props) => {
         </div>
 
         <div className = {styles['map-subtitle-container']}>
-          <p className={`${styles['map-subtitle']} gradient-text`}>
+          <p className={`${styles['map-subtitle']}`} style={{color: 'var(--gold-2)', fontStyle: 'italic !important'}}>
             Available in All 50 States for Free-to-Play Contests
           </p>
         </div>
@@ -113,6 +113,8 @@ const Map = ({}: Props) => {
             }}
             hoverBg="#d9eefb"
             hoverColor="var(--primary)"
+            fontWeight="700"
+            fontSize="1rem"
           >
             Download the App
           </Button>

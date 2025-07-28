@@ -471,6 +471,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: var(--font-main);
+  font-weight: 400;
 }
 
 .hero-titles-left {
@@ -481,7 +483,8 @@
   width: 50%;
 }
 .hero-titles h1 {
-  font-family: var(--font-secondary);
+  font-family: var(--font-main); /* or 'Satoshi-Variable' directly */
+  font-weight: 900; /* This gives you the "Black" weight */
   line-height: 1;
   color: white;
   margin: 0;
@@ -489,42 +492,19 @@
   white-space: nowrap;
 }
 
-.hero-titles h1:first-child {
-  font-size: 54px; /* Smaller line */
+/* Hero title font sizes - Desktop default */
+.hero-titles h1.hero-title {
+  font-size: 54px;
   margin-bottom: var(--size-2);
 }
 
-.hero-titles h1.gradient-text {
-  font-size: 70px; /* Bigger line */
-}
-
-@media screen and (min-width: 768px) {
-  .hero-titles h1:first-child {
-    font-size: 54px; /* Desktop size from Figma */
-  }
-
-  .hero-titles h1.gradient-text {
-    font-size: 70px; /* Desktop size from Figma */
-  }
-}
-
-.hero-titles h1.gradient-text {
-  font-size: 46px; /* Mobile size */
+.hero-titles h1.hero-title2 {
+  font-size: 70px;
 }
 
 .download-button-icon {
   width: 135px;
   height: auto;
-}
-
-@media screen and (min-width: 768px) {
-  .hero-titles h1:first-child {
-    font-size: 54px; /* Desktop size from Figma */
-  }
-
-  .hero-titles h1.gradient-text {
-    font-size: 70px; /* Desktop size from Figma */
-  }
 }
 
 @media screen and (min-width: 768px) {
@@ -539,7 +519,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 85vh; /* Match the hero height */
+  height: 100vh; /* Match the hero height */
 }
 
 .phone-mockup-container {
@@ -602,6 +582,11 @@
   transform: rotate(5deg);
 }
 
+.app-store-button {
+  width: 250px;
+  flex-shrink: 0;
+}
+
 @media screen and (max-width: 767px) {
   #hero {
     height: auto;
@@ -645,7 +630,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .phone-mockup-container {
@@ -669,6 +654,19 @@
   .phone-secondary {
     transform: rotate(-5deg) scale(1.3) !important;
   }
+
+  .app-store-buttons {
+    flex-direction: row;
+    gap: var(--size-2);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .app-store-buttons a {
+    width: 160px;
+    flex-shrink: 0;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -678,8 +676,7 @@
 
   .trophy-icon {
     top: 0%;
-    right: 30%;
-
+    left: 75%;
     /* width: 70px; */
     /* height: 70px; */
   }
@@ -693,97 +690,58 @@
   }
 }
 
-/* Very small screens - iPhone 12/13/14 (390px) and similar */
-@media screen and (max-width: 390px) {
-  #hero {
-    min-height: 100vh;
-    min-height: 100dvh; /* Ensure full coverage on very small screens */
-  }
-
-  .hero-titles h1:first-child {
-    font-size: 32px !important; 
-  }
-
-  .hero-titles h1.gradient-text {
-    font-size: 38px !important; 
-  }
-
-  .hero-left {
-    padding: var(--size-3) var(--size-2);
-    min-height: calc(100vh - var(--header-height));
-    min-height: calc(
-      100dvh - var(--header-height)
-    ); /* Ensure full height coverage */
-  }
-
-  .hero-left-inner {
-    margin-bottom: 50px; /* Much smaller margin */
-  }
-
-  .hero-cta-container {
-    margin: var(--size-3) 0;
-  }
-
-  .hero-cta-container h4 {
-    font-size: 24px !important; /* Smaller "100% Free to play" text */
-  }
-}
-
 /* Small screens */
 @media screen and (max-width: 480px) {
   .trophy-icon {
     top: 0%;
-    right: 50%;
-    transform: scale(0.6);
+    left: 50%;
+    transform: scale(1);
+  }
+
+  /* Hero title font sizes - Mobile */
+  .hero-titles h1.hero-title {
+    font-size: 32px;
+  }
+
+  .hero-titles h1.hero-title2 {
+    font-size: 48px;
   }
 
   .hero-blocks {
-    width: 120px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     top: 5%;
-    right: -5%;
+    right: 6%;
     z-index: 4;
-    transform: scale(1.6);
+    transform: scale(1.5);
   }
 
   .phone-primary {
-    transform: rotate(-5deg) scale(1.2) !important;
-    top: 15%;
+    transform: rotate(-5deg) scale(1) !important;
+    top: 0%;
   }
 
   .phone-secondary {
-    transform: rotate(-5deg) scale(1.2) !important;
-    top: 25%;
-  }
-  .background-square {
-    top: 0%;
+    transform: rotate(-5deg) scale(1) !important;
   }
 
-  .hero-right .trophy-icon {
-    top: 0%;
-    right: 25%;
-    transform: scale(0.8);
+  .background-square {
+    top: -20%;
+    transform: scale(0.6);
   }
 
   .app-store-buttons {
-    flex-direction: column;
-    gap: var(--size-2);
-    align-items: center;
+    flex-direction: row;
+    gap: var(--size-1);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: var(--size-4);
   }
 
   .app-store-buttons a {
-    width: 180px; /* Smaller button width */
-  }
-
-  .hero-titles{
-    max-width: 100%;
-    width: 100%;
-  }
-  
-  .hero-titles h1 {
-    white-space: normal;
-    word-wrap: break-word;
-    hyphens: auto;
+    width: 140px;
+    min-width: 140px;
+    flex-shrink: 0;
   }
 }
 
@@ -839,8 +797,42 @@
 @media screen and (min-width: 1500px) {
   .trophy-icon {
     top: 0%;
-    right: 20%;
+    right: 10%;
     width: 80px;
     height: 80px;
+  }
+}
+
+/* Mobile hero styles */
+@media screen and (max-width: 767px) {
+  .hero-right .trophy-icon {
+    top: 5%;
+    right: 5%;
+    transform: scale(0.8);
+  }
+
+  .app-store-buttons {
+    flex-direction: row;
+    gap: var(--size-2);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .app-store-buttons a {
+    width: 160px;
+    flex-shrink: 0;
+  }
+
+  .hero-titles {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-titles h1 {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 }

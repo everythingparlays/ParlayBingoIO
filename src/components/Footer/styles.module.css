@@ -193,9 +193,8 @@
   align-items: flex-start; /* Changed from center to flex-start */
   gap: var(--size-8);
   max-width: 800px;
-  
+
   /* margin-left: 250px; */
-  
 }
 
 .footer-links-container {
@@ -206,7 +205,7 @@
   align-items: start;
 }
 
-.footer-our-game-container h3{
+.footer-our-game-container h3 {
   font-size: var(--text-1);
 }
 
@@ -255,14 +254,13 @@ footer a:hover {
   gap: var(--size-4);
   justify-content: space-between;
   align-items: center;
-  color: #848FBF;
-  
+  color: #848fbf;
 }
 
 .footer-bottom-container p,
 .footer-bottom-container a,
 .footer-bottom-container span {
-  color: #848FBF !important;
+  color: #848fbf !important;
 }
 
 .footer-break-container {
@@ -280,7 +278,6 @@ footer a:hover {
   align-items: center;
   text-align: center;
   align-self: center; /* Add this to center only this element */
-  
 }
 
 .footer-logo-container {
@@ -388,5 +385,161 @@ footer a:hover {
     align-items: center;
     text-align: center;
     align-self: center; /* Center these specific items */
+  }
+
+  .footer-copyright-container {
+    font-size: 0.75rem;
+  }
+
+  .footer-bottom-container {
+    flex-direction: column;
+    gap: var(--size-2);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-self: center; /* Center only this element */
+  }
+}
+
+/* Add this new media query for screens less than 480px */
+@media screen and (max-width: 480px) {
+  /* Mobile layout using flexbox */
+  .footer-links-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-4);
+  }
+
+  /* Our Game section - all game items grouped together */
+  .footer-our-game-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-5);
+  }
+
+  .footer-our-game-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: var(--size-2);
+  }
+
+  .footer-our-game-section p {
+    font-size: 1rem;
+    color: var(--white);
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .footer-our-game-section a {
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  /* Social section - separate from Our Game */
+  .footer-social-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-3);
+    margin-top: var(--size-4);
+    padding-top: var(--size-4);
+  }
+
+  .footer-social-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+  }
+
+  .footer-social-section .footer-social-container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-4);
+  }
+
+  /* Support text at the bottom */
+  .footer-support-text {
+    margin-top: var(--size-4);
+    padding-top: var(--size-3);
+  }
+
+  .footer-support-text p {
+    font-size: 13px;
+    color: var(--white);
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Left container font sizes */
+  .left-container-content h3 {
+    font-size: 14px;
+  }
+
+  .left-container-content h2 {
+    font-size: 24px;
+  }
+
+  .left-container-content h1 {
+    font-size: 32px;
+  }
+
+  .title-container h3 {
+    font-size: 14px;
+  }
+
+  .title-container h4 {
+    font-size: 14px;
+  }
+
+  .download-to-container h3 {
+    font-size: 16px;
+  }
+
+  /* Right container font sizes */
+  .footer-links-container h3 {
+    font-size: 16px;
+  }
+
+  .footer-links-container p {
+    font-size: 1rem;
+  }
+
+  .footer-our-game-container h3 {
+    font-size: 16px;
+  }
+
+  .link-column h2 {
+    font-size: 16px;
+  }
+
+  .footer-bottom-container p {
+    font-size: 12px;
+  }
+
+  .footer-bottom-container a {
+    font-size: 12px;
+  }
+
+  .footer-terms-container a {
+    font-size: 12px;
+  }
+
+  .footer-copyright-container {
+    font-size: 11px;
+  }
+
+  /* Support text */
+  .footer-support-container p {
+    font-size: 13px;
+  }
+
+  /* Override any remaining elements */
+  #footer p {
+    font-size: 14px;
+  }
+
+  #footer h3 {
+    font-size: 16px;
   }
 }

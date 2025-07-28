@@ -27,17 +27,17 @@ function Hero() {
           <div className={styles['hero-left-inner']}>
             <div className={styles['hero-titles']}>
               <div>
-                <h1>MAKE EVERY GAME</h1>
+                <h1 className={styles['hero-title']}>MAKE EVERY GAME</h1>
               </div>
               <div>
-                <h1 className="gradient-text">A GREAT GAME</h1>
+                <h1 className={`${styles['hero-title2']} gradient-text`}>A GREAT GAME</h1>
               </div>
             </div>
 
             <div className={styles['hero-cta-container']}>
               <DashedLine />
               <div>
-                <h2 style={{ fontSize: 30, color: 'white' }}>
+                <h2 style={{ fontSize: 30, color: 'white' , fontFamily: 'var(--font-main)', fontWeight: 700}}>
                   100% Free to play
                 </h2>
               </div>
@@ -58,8 +58,9 @@ function Hero() {
                   trackAppDownloadRedirect(referrer)
                 }}
                 aria-label="Apple App Store Button"
+                className={styles['app-store-button']}
               >
-                <AppleDownload width={200} height={75} />
+                <AppleDownload />
               </a>
               <a
                 href="/download"
@@ -73,9 +74,10 @@ function Hero() {
                   const referrer = urlParams.get('referrer')
                   trackAppDownloadRedirect(referrer)
                 }}
+                className={styles['app-store-button']}
                 aria-label="Google Play Store Button"
               >
-                <GooglePlayDownload width={200} height={75} />
+                <GooglePlayDownload />
               </a>
             </div>
           </div>
