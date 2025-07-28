@@ -50,6 +50,7 @@
   display: flex;
   align-items: center;
   gap: 18px;
+  margin-top: 1rem;
   /* margin-bottom: 32px; */
 }
 
@@ -295,6 +296,12 @@ footer a:hover {
   align-self: center; /* Center the copyright */
 }
 
+ .app-store-button {
+    width: 150px;
+    max-width: 200px;
+    flex-shrink: 0;
+  }
+
 @media screen and (width > 500px) {
   #links {
     flex-direction: row;
@@ -482,7 +489,7 @@ footer a:hover {
   }
 
   .title-container h3 {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     font-size: 24px;
   }
 
@@ -544,14 +551,15 @@ footer a:hover {
   #footer h3 {
     font-size: 16px;
   }
-  .download-svg-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    height: 50px;
+  /* Replace the complex download-svg-container with Hero's approach */
+  .app-store-button {
     width: 150px;
+    max-width: 200px;
+    flex-shrink: 0;
+  }
+
+  .download-svg-container:hover {
+    transform: scale(1.05);
   }
 
   /* Override the footer-bottom-container styles from the 768px media query */

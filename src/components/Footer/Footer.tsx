@@ -73,7 +73,7 @@ export default function Footer() {
                 const referrer = urlParams.get('referrer')
                 trackAppDownloadRedirect(referrer)
               }}
-              className={styles['download-svg-container']}
+              className={styles['app-store-button']}
               aria-label="Apple App Store Button"
             >
               <AppleDownload  />
@@ -90,7 +90,7 @@ export default function Footer() {
                 const referrer = urlParams.get('referrer')
                 trackAppDownloadRedirect(referrer)
               }}
-              className={styles['download-svg-container']}
+              className={styles['app-store-button']}
               aria-label="Google Play Store Button"
             >
               <GooglePlayDownload />
