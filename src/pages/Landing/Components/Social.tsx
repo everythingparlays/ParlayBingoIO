@@ -4,7 +4,10 @@ import Features from 'components/Features/Features'
 import { socialData } from 'data/SocialData'
 import Button from 'ui/Button'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { trackDownloadButton, trackAppDownloadRedirect } from 'services/analytics'
+import {
+  trackDownloadButton,
+  trackAppDownloadRedirect,
+} from 'services/analytics'
 import Slideshow from 'components/Slideshow/Slideshow'
 
 type Props = {}
@@ -12,21 +15,29 @@ type Props = {}
 function Social({}: Props) {
   const navigate = useNavigate()
   const location = useLocation()
-  
+
   const socialImages = [
     '/assets/images/landing/social-slide-1-hq.webp',
     '/assets/images/landing/social-slide-2-hq.webp',
-    '/assets/images/landing/social-slide-3-hq.webp'
+    '/assets/images/landing/social-slide-3-hq.webp',
   ]
   return (
     <section id={styles.section}>
       {/* Title */}
       <div className={styles['title-container']}>
-        <h1 style={{ fontSize: '2rem' }}>
-          <span className="gradient-text" style={{ fontSize: '2rem' }}>
-            BE SOCIAL. MAKE FRIENDS.
-          </span>{' '}
-          HAVE FUN.
+        <h1
+          className={`gradient-text ${styles['title-text']}`}
+          style={{ fontSize: '2rem' }}
+        >
+          <span className={styles['title-line']} style={{ fontSize: '2rem' }}>
+            BE SOCIAL. 
+          </span>
+          <span className={styles['title-line']} style={{ fontSize: '2rem' }}>
+            MAKE FRIENDS.
+          </span>
+          <span className={styles['title-line']} style={{ fontSize: '2rem' }}>
+            HAVE FUN.
+          </span>
         </h1>
       </div>
       {/* Content */}
@@ -38,13 +49,12 @@ function Social({}: Props) {
               topLeft: true,
               bottomRight: true,
             }}
-            
             features={socialData}
           />
         </div>
         {/* Right side */}
         <div className={styles['right-side']}>
-          <Slideshow 
+          <Slideshow
             images={socialImages}
             alt="Social feature"
             maxWidth="500px"
@@ -75,7 +85,8 @@ function Social({}: Props) {
             navigate('/download')
           }}
         >
-          Create a Free Board</Button>
+          Create a Free Board
+        </Button>
       </div>
     </section>
   )
