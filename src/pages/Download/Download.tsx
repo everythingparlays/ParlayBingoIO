@@ -73,12 +73,17 @@ export default function DownloadPage() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh',
+        minHeight: '100vh', // Use min-height instead of height
+        paddingTop: '80px', // Add padding for header (adjust value as needed)
+        paddingBottom: '20px', // Add some bottom padding
         textAlign: 'center',
         width: '100%',
+        boxSizing: 'border-box', // Include padding in height calculation
       }}
     >
-      <h1 style={{ marginBottom: '20px', fontWeight: 'bold', color: 'white' }}>{message}</h1>
+      <h1 style={{ marginBottom: '20px', fontWeight: 'bold', color: 'white' }}>
+        {message}
+      </h1>
       <p style={{ marginBottom: '20px', color: 'white' }}>{secondaryMessage}</p>
       {!/iPad|iPhone|iPod/.test(navigator.userAgent) && (
         <>
@@ -112,7 +117,11 @@ export default function DownloadPage() {
               }} // Rounded corners
             />
             <p
-              style={{ color: 'white', marginTop: '10px', marginBottom: '20px' }}
+              style={{
+                color: 'white',
+                marginTop: '10px',
+                marginBottom: '20px',
+              }}
             >
               Scan the QR code to download the app.
             </p>
@@ -141,9 +150,7 @@ export default function DownloadPage() {
         </Button>
       </div>
       <ShareButton />
-      <LinearGradient
-        style={{ marginTop: '10rem' }}
-      />
+      <LinearGradient style={{ marginTop: '10rem' }} />
     </main>
   )
 }

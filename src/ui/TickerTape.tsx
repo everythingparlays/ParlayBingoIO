@@ -30,11 +30,10 @@ export default function TickerTape({
     return phrases.map((phrase, index) => (
       <React.Fragment key={index}>
         <span className="ticker-phrase">{phrase}</span>
-        {index < phrases.length - 1 && (
-          <span className="ticker-separator">
-            <DashedLine width={60} height={4} />
-          </span>
-        )}
+        {/* Always add separator after each phrase (including the last one) */}
+        <span className="ticker-separator">
+          <DashedLine width={60} height={4} />
+        </span>
       </React.Fragment>
     ))
   }
@@ -62,21 +61,26 @@ export default function TickerTape({
     // Use viewport units instead of JavaScript width calculations
     const containerWidth = '100vw'
     const contentWidth = '150vw'
-    
+
     // Line 1: left to right
     gsap.fromTo(
       '.ticker-line-1',
       { x: `-${contentWidth}` },
-      { x: `calc(${containerWidth} + 200px)`, duration: speed, repeat: -1, ease: 'none' }
+      {
+        x: `calc(${containerWidth} + 200px)`,
+        duration: speed,
+        repeat: -1,
+        ease: 'none',
+      }
     )
 
-    // Line 2: right to left  
+    // Line 2: right to left
     gsap.fromTo(
       '.ticker-line-2',
       { x: `calc(${containerWidth} + 200px)` },
       { x: `-${contentWidth}`, duration: speed, repeat: -1, ease: 'none' }
     )
-    
+
     // Cleanup function
     return () => {
       gsap.killTweensOf('.ticker-line-1')

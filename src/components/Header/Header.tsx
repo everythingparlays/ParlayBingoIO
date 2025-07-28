@@ -197,6 +197,11 @@ export default function Header() {
                 </button>
               </li>
               <li>
+                <button className={styles['link']} onClick={() => {
+                  navigate('/contests')
+                }}>Contests</button>
+              </li>
+              <li>
                 <Button
                   size="sm"
                   onClick={() => {
@@ -289,6 +294,11 @@ export default function Header() {
             >
               Contact
             </button>
+          </li>
+          <li>
+            <button className={styles['link']} onClick={() => {
+              navigate('/contests')
+            }}>Contests</button>
           </li>
           <li>
             <Button

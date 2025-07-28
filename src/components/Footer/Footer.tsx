@@ -44,7 +44,8 @@ export default function Footer() {
   return (
     <footer id={styles['footer']} data-section="contact">
       {/* Left */}
-      <div className={styles['left-container']}>
+      {/* {!isMobile && ( */}
+        <div className={styles['left-container']}>
         <div className={styles['left-container-content']}>
           <div className={styles['title-container']}>
             <DashedLine />
@@ -56,7 +57,7 @@ export default function Footer() {
           </div>
           <div>
             <LineColumns />
-            <h1>WIN</h1>
+            <h1 className={styles['win-text']}>WIN</h1>
             <LineColumns />
           </div>
           <div>
@@ -75,7 +76,7 @@ export default function Footer() {
               className={styles['download-svg-container']}
               aria-label="Apple App Store Button"
             >
-              <AppleDownload />
+              <AppleDownload  />
             </a>
             <a
               href="/download"
@@ -103,6 +104,7 @@ export default function Footer() {
           <SportsBall />
         </div>
       </div>
+      {/* )} */}
       {/* Right*/}
       <div className={styles['right-container']}>
         <div className={styles['footer-right-container-content']}>
@@ -187,6 +189,7 @@ export default function Footer() {
                       color: 'var(--primary)',
                       borderRadius: 'var(--size-1)',
                       opacity: 1, // Add this line
+                      visibility: 'hidden',
                     }}
                   >
                     Join the Discord
@@ -271,6 +274,7 @@ export default function Footer() {
                       backgroundColor: 'var(--white)',
                       color: 'var(--primary)',
                       borderRadius: 'var(--size-1)',
+                      visibility: 'hidden',
                     }}
                   >
                     Join the Discord
