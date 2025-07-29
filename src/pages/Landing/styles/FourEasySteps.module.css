@@ -72,6 +72,20 @@ p {
     background-color: var(--primary);
     margin-top: 0;
   }
+
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .buttons-container button {
+    width: 250px; /* Set consistent width */
+    max-width: 100%; /* Prevent overflow on very small screens */
+    flex-shrink: 0; /* Prevent shrinking */
+  }
 }
 
 @media (max-width: 768px) {
@@ -87,12 +101,5 @@ p {
   .content-container {
     grid-template-columns: 1fr;
     padding: 0 1rem;
-  }
-
-  .buttons-container {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
   }
 }

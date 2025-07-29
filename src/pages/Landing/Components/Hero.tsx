@@ -30,14 +30,23 @@ function Hero() {
                 <h1 className={styles['hero-title']}>MAKE EVERY GAME</h1>
               </div>
               <div>
-                <h1 className={`${styles['hero-title2']} gradient-text`}>A GREAT GAME</h1>
+                <h1 className={`${styles['hero-title2']} gradient-text`}>
+                  A GREAT GAME
+                </h1>
               </div>
             </div>
 
             <div className={styles['hero-cta-container']}>
               <DashedLine />
               <div>
-                <h2 style={{ fontSize: 30, color: 'white' , fontFamily: 'var(--font-main)', fontWeight: 700}}>
+                <h2
+                  style={{
+                    fontSize: 30,
+                    color: 'white',
+                    fontFamily: 'var(--font-main)',
+                    fontWeight: 700,
+                  }}
+                >
                   100% Free to play
                 </h2>
               </div>
@@ -120,7 +129,17 @@ function Hero() {
               }}
               className={styles['phone-primary']}
             >
-              <img src="/assets/images/landing/PrimaryPhoneHero.webp" alt="Primary Phone" />
+              <picture>
+                <source
+                  srcSet="/assets/images/landing/PrimaryPhoneHero.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="/assets/images/landing/PrimaryPhoneHero.png"
+                  alt="Primary Phone"
+                  loading="eager"
+                />
+              </picture>
             </div>
 
             {/* Secondary phone SVG - z-index: 2 */}
@@ -135,7 +154,10 @@ function Hero() {
               }}
               className={styles['phone-secondary']}
             >
-              <img src="/assets/images/landing/SecondaryPhoneHero.webp" alt="Secondary Phone" />
+              <img
+                src="/assets/images/landing/SecondaryPhoneHero.webp"
+                alt="Secondary Phone"
+              />
             </div>
           </div>
         </div>
