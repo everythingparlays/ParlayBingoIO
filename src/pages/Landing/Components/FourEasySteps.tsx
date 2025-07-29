@@ -16,16 +16,16 @@ function FourEasySteps({}: Props) {
       {/*Titles and descriptions */}
       <div className={styles['container-top']}>
         <div className={styles['titles-container']}>
-          <h1 className="gradient-text">4 Easy Steps</h1>
-          <h1 className="gradient-text">To PLAY</h1>
+          <h1 className="gradient-text">4 EASY STEPS</h1>
+          <h1 className="gradient-text">TO PLAY</h1>
           <div>
             <DashedLine height={4} />
           </div>
         </div>
         <div className={styles['container-top-right']}>
-          <p style={{ color: 'white', fontSize: 'var(--font-size-lg)' }}>
+          <p style={{ color: 'white', fontSize: '1.25rem' }}>
             We give you a quick overview of how to play the game here, but you
-            can see even more details to the right.
+            can see even more details below.
           </p>
           <div className={styles['buttons-container']}>
             <Button

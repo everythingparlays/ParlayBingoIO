@@ -65,7 +65,7 @@ function NewWayToPlay({}: Props) {
               trackDownloadButton({
                 page: location.pathname,
                 location: 'new_way_to_play_section',
-                buttonText: 'Download App',
+                buttonText: 'Download the App',
               })
               const urlParams = new URLSearchParams(window.location.search)
               const referrer = urlParams.get('referrer')
@@ -76,7 +76,7 @@ function NewWayToPlay({}: Props) {
             color="#303083"
             hoverBg="linear-gradient(135deg, #E9663A, #F8AC1C)"
           >
-            Download App
+            Download the App
           </Button>
         </div>
       </div>

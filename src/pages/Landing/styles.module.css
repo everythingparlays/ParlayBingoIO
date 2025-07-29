@@ -319,21 +319,6 @@
   color: var(--heading-color);
 }
 
-@media screen and (width > 600px) {
-  .testimonial {
-    width: 450px;
-    padding: var(--size-5);
-  }
-
-  .testimonial h3 {
-    font-size: var(--text-1);
-  }
-
-  .testimonial p {
-    font-size: var(--text-regular);
-  }
-}
-
 .hero-left {
   background-image: url('/heroBackgroundLeft.webp');
   background-size: cover;
@@ -473,6 +458,7 @@
   align-items: center;
   font-family: var(--font-main);
   font-weight: 400;
+  z-index: 3;
 }
 
 .hero-titles-left {
@@ -564,7 +550,7 @@
   width: 100%;
   height: 100%;
   top: 0%;
-  z-index: 3;
+  z-index: 2;
   transform: rotate(-5deg);
 }
 
@@ -589,7 +575,7 @@
   height: 100%;
   top: 20%;
   right: 0;
-  z-index: 2;
+  z-index: 1;
   transform: rotate(5deg);
 }
 
@@ -785,6 +771,20 @@
     min-height: calc(100vh - var(--header-height));
     margin-top: var(--header-height); /* Apply margin-top only on desktop */
     overflow: hidden;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .trophy-icon {
+    top: 0%;
+    left: 45vw; /* Reset any left positioning */
+    transform: scale(1);
+  }
+
+  .hero-blocks {
+    top: 20%;
+    right: -15vw;
+    transform: scale(2.5);
   }
 }
 

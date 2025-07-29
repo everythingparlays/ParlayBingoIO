@@ -5,13 +5,22 @@ import Close from 'components/svg/Close'
 import Search from 'components/svg/Search'
 import ExpandArrow from 'components/svg/ExpandArrow'
 import DatePicker from 'react-datepicker'
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css'
 import 'calendar.css'
 import getDisplayDate from 'utils/getDisplayDate'
-import { Contest, SponsoredContest, getContestDates } from '../../shared-deps/interfaces/Contest'
+import {
+  Contest,
+  SponsoredContest,
+  getContestDates,
+} from '../../shared-deps/interfaces/Contest'
 import Calendar from 'components/svg/Calendar'
 import LocationArrow from 'components/svg/LocationArrow'
-import { PrizeType, getPrizeItems, getPrizeItemsFromContest, getTotalPrizeAmount } from '../../shared-deps/interfaces/PrizeStructures'
+import {
+  PrizeType,
+  getPrizeItems,
+  getPrizeItemsFromContest,
+  getTotalPrizeAmount,
+} from '../../shared-deps/interfaces/PrizeStructures'
 import Trophy from 'components/svg/Trophy'
 import FilledBarChart from 'components/svg/FilledBarChart'
 import Dollar from 'components/svg/Dollar'
@@ -23,102 +32,102 @@ import ExternalLink from 'components/svg/ExternalLink'
 import React from 'react'
 import axios from 'axios'
 import { BetEvent } from '../../shared-deps/interfaces/BetEvent'
+import LinearGradient from '../../ui/LinearGradient'
 
 export default function Contests() {
   // TODO: Remove DeepPartial in production
-  const [contests, setContests] = useState<Contest[]>([]);
+  const [contests, setContests] = useState<Contest[]>([])
   //const [selectedLocations, setSelectedLocations] = useState<string[]>([])
   //const [selectedSports, setSelectedSports] = useState<string[]>([])
-  const [date, setDate] = useState<Date | null>(new Date(Date.now()));
-  const [loading, setLoading] = useState(true);
-  const [filterStatus, setFilterStatus] = useState<"upcoming" | "past" | "live">("upcoming");
-
+  const [date, setDate] = useState<Date | null>(new Date(Date.now()))
+  const [loading, setLoading] = useState(true)
+  const [filterStatus, setFilterStatus] = useState<'active' | 'past'>('active')
 
   useEffect(() => {
     // Assuming you want to fetch contests based on the current filter mode (upcoming, past, live)
     // and considering the filterStatus state is initialized correctly
-    const today = new Date();
-    const endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0); // End of the current month
-  
+    const today = new Date()
+    const endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0) // End of the current month
+
     // Fetch contests based on the current filter status (upcoming by default or as set)
-    fetchContests(today, endDate, filterStatus);
-}, [filterStatus]);
+    fetchContests(today, endDate, filterStatus)
+  }, [filterStatus])
 
   useEffect(() => {
-    if(contests) {
+    if (contests) {
       setLoading(false)
     }
   }, [contests])
 
-  const fetchContests = async (startDate: Date | null = null, endDate: Date | null = null, filterMode: "upcoming" | "past" | "live" = "upcoming") => {
-    setLoading(true);
-  
+  const fetchContests = async (
+    startDate: Date | null = null,
+    endDate: Date | null = null,
+    filterMode: 'active' | 'past' = 'active'
+  ) => {
+    setLoading(true)
+
     try {
-      const response = await axios.get('https://d7hwmlam1e.execute-api.us-east-2.amazonaws.com/dev/contest/get-shown-contests');
-      const now = new Date();
-  
-      const filteredContests = response.data.filter(contest => {
-        if (!contest.allowedBetEvents || contest.allowedBetEvents.length === 0) {
-          return false; // Exclude contests without any bet events
+      const response = await axios.get(
+        'https://d7hwmlam1e.execute-api.us-east-2.amazonaws.com/dev/contest/get-shown-contests'
+      )
+      const now = new Date()
+
+      const filteredContests = response.data.filter((contest) => {
+        if (
+          !contest.allowedBetEvents ||
+          contest.allowedBetEvents.length === 0
+        ) {
+          return false // Exclude contests without any bet events
         }
-  
+
         // Use the getContestDates function to get the start and end dates for the events
-        const { contestStart, contestEnd } = getContestDates(contest.allowedBetEvents.map(event => ({
-          ...event,
-          eventTime: new Date(event.eventTime) // Ensure eventTime is a Date object
-        })));
-  
-        const isWithinSelectedMonth = startDate !== null && endDate !== null && contestStart >= startDate && contestStart <= endDate;
-        
+        const { contestStart, contestEnd } = getContestDates(
+          contest.allowedBetEvents.map((event) => ({
+            ...event,
+            eventTime: new Date(event.eventTime), // Ensure eventTime is a Date object
+          }))
+        )
+
+        const isWithinSelectedMonth =
+          startDate !== null &&
+          endDate !== null &&
+          contestStart >= startDate &&
+          contestStart <= endDate
+
         switch (filterMode) {
-          case 'upcoming':
-            return isWithinSelectedMonth && contestStart > now;
+          case 'active':
+            return isWithinSelectedMonth && contestEnd >= now
           case 'past':
-            return isWithinSelectedMonth && contestEnd < now;
-          case 'live':
-            return isWithinSelectedMonth && contestStart <= now && contestEnd >= now;
+            return isWithinSelectedMonth && contestEnd < now
           default:
-            return false;
+            return false
         }
-      });
-      setContests(filteredContests);
-      //This Block is a temporary solution to the page coming up with no events
-      if(filteredContests.length <=0){
-        if(filterMode=="upcoming"){
-          setFilterStatus("live")
-        }else if(filterMode=='live'){
-          setFilterStatus("past")
-        }else if(filterMode == "past"){
-          const lastContestMonthManual = new Date(2024, 3, 30);
-          if(date >= lastContestMonthManual){
-            setDate(lastContestMonthManual)
-          }
-        }
-      }
+      })
+      setContests(filteredContests)
+      // Remove automatic switching - let users see empty state instead
     } catch (error) {
-      console.error("Failed to fetch contests:", error);
-      setContests([]);
+      console.error('Failed to fetch contests:', error)
+      setContests([])
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   useEffect(() => {
     const fetchBasedOnFilter = async () => {
-      if (!date) return; // Exit if no date is selected
-    
-      const startOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
-      const endOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0); // Last day of the month
-      console.log("FETCH CONTESTS:",filterStatus, startOfMonth, endOfMonth )
-      await fetchContests(startOfMonth, endOfMonth, filterStatus);
-    };
-  
-    fetchBasedOnFilter();
-  }, [date, filterStatus]);
+      if (!date) return // Exit if no date is selected
+
+      const startOfMonth = new Date(date.getFullYear(), date.getMonth(), 1)
+      const endOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0) // Last day of the month
+      console.log('FETCH CONTESTS:', filterStatus, startOfMonth, endOfMonth)
+      await fetchContests(startOfMonth, endOfMonth, filterStatus)
+    }
+
+    fetchBasedOnFilter()
+  }, [date, filterStatus])
 
   const clearSelectedLocations = () => {
     // TODO: Fetch from API
-
     //setSelectedLocations([])
   }
 
@@ -131,65 +140,78 @@ export default function Contests() {
   // }
 
   const handleDateChange = async (selectedDate: Date | null) => {
-    if (!selectedDate) return;
-  
-    // Update the date state to reflect the selected month and year
-    setDate(selectedDate);
-  
-    // Define the start and end of the selected month
-    const startOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
-    const endOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0);
-  
-    // Call fetchContests with the calculated start and end dates and the current filter status
-    await fetchContests(startOfMonth, endOfMonth, filterStatus);
-  };
+    if (!selectedDate) return
 
-  function isValidFilterStatus(value: any): value is "upcoming" | "past" | "live" {
-    return ["upcoming", "past", "live"].includes(value);
+    // Update the date state to reflect the selected month and year
+    setDate(selectedDate)
+
+    // Define the start and end of the selected month
+    const startOfMonth = new Date(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      1
+    )
+    const endOfMonth = new Date(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth() + 1,
+      0
+    )
+
+    // Call fetchContests with the calculated start and end dates and the current filter status
+    await fetchContests(startOfMonth, endOfMonth, filterStatus)
+  }
+
+  function isValidFilterStatus(value: any): value is 'active' | 'past' {
+    return ['active', 'past'].includes(value)
   }
 
   return (
-    <main id='main' className='container'>
-      <h1 id={styles['title']}>Active & Future Contests</h1>
-      <div id={styles['filters']}>
-      <fieldset id={styles['upcoming-wrapper']} onChange={(e) => {
-          const value = (e.target as HTMLInputElement).value;
-          if (isValidFilterStatus(value)) {
-              setFilterStatus(value);
-          } else {
-              console.error("Invalid filter status:", value);
-              // Handle the error or set a default value
-          }
-      }}>        
-        <input 
-          type='radio' 
-          id='upcoming' 
-          value='upcoming' 
-          name='contest-filter'
-          checked={filterStatus === 'upcoming'}
-          onChange={() => {}} // Needed to suppress read-only warning
-        />
-        <label htmlFor='upcoming'>Upcoming Contests</label>
-        <input 
-          type='radio' 
-          id='live-contests' 
-          value='live'
-          name='contest-filter'
-          checked={filterStatus === 'live'}
-          onChange={() => {}} // Needed to suppress read-only warning
-        />
-        <label htmlFor='live-contests'>Live Contests</label>
-        <input 
-          type='radio' 
-          id='past-contests' 
-          value='past'
-          name='contest-filter'
-          checked={filterStatus === 'past'}
-          onChange={() => {}} // Needed to suppress read-only warning
-        />
-        <label htmlFor='past-contests'>Past Contests</label>
-      </fieldset>
-      {/*}
+    <>
+      <main id={styles['main']}>
+        <h1 id={styles['title']}>Active & Future Contests</h1>
+        <div id={styles['filters']}>
+          <fieldset
+            id={styles['upcoming-wrapper']}
+            onChange={(e) => {
+              const value = (e.target as HTMLInputElement).value
+              if (isValidFilterStatus(value)) {
+                setFilterStatus(value)
+              } else {
+                console.error('Invalid filter status:', value)
+                // Handle the error or set a default value
+              }
+            }}
+          >
+            <input
+              type="radio"
+              id="active"
+              value="active"
+              name="contest-filter"
+              checked={filterStatus === 'active'}
+              onChange={() => {}} // Needed to suppress read-only warning
+            />
+            <label
+              htmlFor="active"
+              className={`${styles['active-label']} ${styles['contest-label']}`}
+            >
+              Active Contests
+            </label>
+            <input
+              type="radio"
+              id="past-contests"
+              value="past"
+              name="contest-filter"
+              checked={filterStatus === 'past'}
+              onChange={() => {}} // Needed to suppress read-only warning
+            />
+            <label
+              htmlFor="past-contests"
+              className={`${styles['past-label']} ${styles['label']}`}
+            >
+              Past Contests
+            </label>
+          </fieldset>
+          {/*}
         <LocationSelector
           selectedLocations={selectedLocations}
           clearSelectedLocations={clearSelectedLocations}
@@ -200,122 +222,163 @@ export default function Contests() {
           setSelectedSports={setSelectedSports}
         />
       */}
-        <div>
-          <DatePicker
-            showMonthYearPicker
-            onChange={(d) => handleDateChange(d)}
-            selected={date}
-            dateFormat={'MM/yyyy'}
-            // I think they've got their own types wrong, this works perfectly fine
-            // @ts-ignore
-            customInput={<DateSelector />}
-            calendarClassName='calendar'
-            popperPlacement='bottom-start'
-          />
+          <div>
+            <DatePicker
+              showMonthYearPicker
+              onChange={(d) => handleDateChange(d)}
+              selected={date}
+              dateFormat={'MM/yyyy'}
+              // I think they've got their own types wrong, this works perfectly fine
+              // @ts-ignore
+              customInput={<DateSelector />}
+              calendarClassName="calendar"
+              popperPlacement="bottom-start"
+              disabled={filterStatus === 'active'}
+            />
+          </div>
         </div>
-      </div>
-      <div id={styles['contests']}>
-        {loading ? (
-          <>
-            <Skeleton width='100%' height='142px' />
-            <Skeleton width='100%' height='142px' />
-            <Skeleton width='100%' height='142px' />
-          </>
-        ) : (
-          contests!.map((c, index) => {
-            return (
-              // TODO: Replace index with c.contestId
-              <ContestComponent key={index} contest={c!} />
-            )
-          })
-        )}
-      </div>
-    </main>
+        <div id={styles['contests']}>
+          {loading ? (
+            <>
+              <Skeleton width="100%" height="142px" />
+              <Skeleton width="100%" height="142px" />
+              <Skeleton width="100%" height="142px" />
+            </>
+          ) : contests.length === 0 && filterStatus === 'active' ? (
+            <div className={styles['no-contests-message']}>
+              <h3>No active contests</h3>
+              <p>
+                There are no active contests at this time. Check back later or
+                browse past contests.
+              </p>
+            </div>
+          ) : contests.length === 0 && filterStatus === 'past' ? (
+            <div className={styles['no-contests-message']}>
+              <h3>No past contests</h3>
+              <p>
+                There are no past contests at this time. Check back later or
+                browse active contests.
+              </p>
+            </div>
+          ) : (
+            contests!.map((c, index) => {
+              return (
+                // TODO: Replace index with c.contestId
+                <ContestComponent key={index} contest={c!} />
+              )
+            })
+          )}
+        </div>
+      </main>
+    </>
   )
 }
 
 interface ContestComponentProps {
-  contest: Contest;
+  contest: Contest
 }
 
 const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
-  const [expanded, setExpanded] = useState(false);
-  const [boards, setBoards] = useState<Board[]>([]);
-  const [loadingBoards, setLoadingBoards] = useState(true);
+  const [expanded, setExpanded] = useState(false)
+  const [boards, setBoards] = useState<Board[]>([])
+  const [loadingBoards, setLoadingBoards] = useState(true)
 
   // Fetch top boards every time the user opens the leaderboard
   useEffect(() => {
-    if(expanded) {
+    if (expanded) {
       fetchBoards()
     }
   }, [expanded])
 
   const fetchBoards = async () => {
-    setLoadingBoards(true);
+    setLoadingBoards(true)
     try {
-      const b = await getBoardsByContest(contest._id!);
-      setBoards(b);
+      const b = await getBoardsByContest(contest._id!)
+      setBoards(b)
     } catch (error) {
-      console.error('Error fetching boards:', error);
+      console.error('Error fetching boards:', error)
       // Handle the error state appropriately, possibly setting boards to an empty array or showing an error message
-      setBoards([]);
+      setBoards([])
     } finally {
-      setLoadingBoards(false);
+      setLoadingBoards(false)
     }
-  };
+  }
 
   contest = contest as SponsoredContest
   // TODO: Get status from contest
   // This should be defined in the pb-shared-deps so we know what values are actually possible here
   // 'Finished' | 'Joinable' | 'Live'
   // Assuming contest.allowedBetEvents is properly populated with BetEvent objects
-  const now = new Date();
+  const now = new Date()
 
   // Extract the start and end dates for the contest
-  const { contestStart, contestEnd } = getContestDates(contest.allowedBetEvents as BetEvent[]);
+  const { contestStart, contestEnd } = getContestDates(
+    contest.allowedBetEvents as BetEvent[]
+  )
 
   // Determine the status based on contestStart, contestEnd, and current time
-  let status = 'Joinable'; // Default status
+  let status = 'Joinable' // Default status
 
   if (contestStart > now) {
-    status = 'Joinable'; // The contest hasn't started yet
+    status = 'Joinable' // The contest hasn't started yet
   } else {
     // Check if the contest is currently live
-    const fiveHoursAfterLastEvent = new Date(contestEnd.getTime() + 5 * 60 * 60 * 1000);
+    const fiveHoursAfterLastEvent = new Date(
+      contestEnd.getTime() + 5 * 60 * 60 * 1000
+    )
     if (now < fiveHoursAfterLastEvent) {
-      status = 'Live'; // The contest is ongoing
+      status = 'Live' // The contest is ongoing
     } else {
-      status = 'Finished'; // The contest has ended
+      status = 'Finished' // The contest has ended
     }
   }
-  
+
   // Identical code in Leaderboard.tsx to get prizes
   // @ts-ignore
-  let prizeMoney = contest && 
-    contest.numberParticipants && 
-    contest.entryFee
+  let prizeMoney =
+    contest && contest.numberParticipants && contest.entryFee
       ? contest.numberParticipants * contest.entryFee
       : 0
 
-  let prizeItems = getPrizeItemsFromContest(contest);
+  let prizeItems = getPrizeItemsFromContest(contest)
   // Prize money for each place
-  console.log(contest.contestName, prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
-  let totalPrize = getTotalPrizeAmount(prizeItems, contest.entryFee, contest.numberParticipants, contest.pctRake);
-  totalPrize = Math.round(totalPrize * 10) / 10; // This operation rounds to 1 decimal place and the result is unequivocally a number.
+  console.log(
+    contest.contestName,
+    prizeItems,
+    contest.entryFee,
+    contest.numberParticipants,
+    contest.pctRake
+  )
+  let totalPrize = getTotalPrizeAmount(
+    prizeItems,
+    contest.entryFee,
+    contest.numberParticipants,
+    contest.pctRake
+  )
+  totalPrize = Math.round(totalPrize * 10) / 10 // This operation rounds to 1 decimal place and the result is unequivocally a number.
   //let totalPrize = contest.entryFee * contest.maxParticipants * ((100-contest.pctRake)/100);
-  
+
   // @ts-ignore
-  function formatDate(date: { getFullYear: () => any; getMonth: () => number; getDate: () => { (): any; new(): any; toString: { (): string; new(): any } } }) {
-    return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+  function formatDate(date: {
+    getFullYear: () => any
+    getMonth: () => number
+    getDate: () => {
+      (): any
+      new (): any
+      toString: { (): string; new (): any }
+    }
+  }) {
+    return `${date.getFullYear()}-${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`
   }
   return (
-    <div 
-      className={styles['contest']}
-      aria-expanded={expanded}>
+    <div className={styles['contest']} aria-expanded={expanded}>
       <button
-        title='Toggle Leaderboard'
+        title="Toggle Leaderboard"
         className={styles['contest-meta']}
-        onClick={() => setExpanded(!expanded)}>
+        onClick={() => setExpanded(!expanded)}
+      >
         <div className={styles['contest-main-info']}>
           <img
             // Will eventually come from contest
@@ -325,38 +388,38 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
           <div className={styles['contest-main-inner']}>
             <div className={styles['contest-name-and-link']}>
               <h2>{contest.contestName}</h2>
-              <Link 
-                className='primary small'
-                to={`/contest/${contest._id}`}>
+              <Link className="primary small" to={`/contest/${contest._id}`}>
                 Full Leaderboard
-                <ExternalLink color='white' />
+                <ExternalLink color="white" />
               </Link>
             </div>
             <div className={styles['contest-location']}>
               <div>
-                <Location color='var(--text-color)' />
+                <Location color="var(--white)" />
                 <span>{contest.location}</span>
               </div>
               <div>
-                <Calendar color='var(--text-color)' />
-                  <span>
-                    {getContestDates(contest.allowedBetEvents as BetEvent[]).contestStart.toLocaleString('en-US', {
-                      month: 'short', // "Jan"
-                      day: '2-digit', // "14"
-                      year: 'numeric', // "2024"
-                      hour: 'numeric', // "9"
-                      minute: '2-digit', // "30"
-                      hour12: true // AM/PM format
-                    })}
-                  </span>              
-                </div>
-                <div>
-                  {/* 
+                <Calendar color="var(--white)" />
+                <span>
+                  {getContestDates(
+                    contest.allowedBetEvents as BetEvent[]
+                  ).contestStart.toLocaleString('en-US', {
+                    month: 'short', // "Jan"
+                    day: '2-digit', // "14"
+                    year: 'numeric', // "2024"
+                    hour: 'numeric', // "9"
+                    minute: '2-digit', // "30"
+                    hour12: true, // AM/PM format
+                  })}
+                </span>
+              </div>
+              <div>
+                {/* 
                     Again, these should eventually come from the contest
                     <LocationArrow color='var(--text-color)' />
                     <span>3.2 mi</span>
                   */}
-                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -365,12 +428,15 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
             <div>
               <span>Status</span>
               <span
-                className={`${status == 'Finished'
-                            ? styles['finished']
-                            : status == 'Joinable'
-                              ? styles['joinable']
-                              : styles['live']}
-                              ${styles['status']}`}>
+                className={`${
+                  status == 'Finished'
+                    ? styles['finished']
+                    : status == 'Joinable'
+                    ? styles['joinable']
+                    : styles['live']
+                }
+                              ${styles['status']}`}
+              >
                 {status}
               </span>
             </div>
@@ -382,7 +448,7 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
           <div className={styles['contest-info-cards']}>
             <div className={styles['contest-info-card']}>
               <div className={styles['card-icon']}>
-                <Trophy color='var(--blue1000)' />
+                <Trophy color="var(--blue1000)" />
               </div>
               <div>
                 <h3>{contest.prizeStructure}</h3>
@@ -391,7 +457,7 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
             </div>
             <div className={styles['contest-info-card']}>
               <div className={styles['card-icon']}>
-                <FilledBarChart color='var(--orange1000)' />
+                <FilledBarChart color="var(--orange1000)" />
               </div>
               <div>
                 <h3>{contest.maxParticipants}</h3>
@@ -400,7 +466,7 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
             </div>
             <div className={styles['contest-info-card']}>
               <div className={styles['card-icon']}>
-                <Dollar color='var(--green1100)' />
+                <Dollar color="var(--green1100)" />
               </div>
               <div>
                 <h3>{contest.entryFee}</h3>
@@ -410,74 +476,81 @@ const ContestComponent: React.FC<ContestComponentProps> = ({ contest }) => {
           </div>
         </div>
       </button>
-      {expanded && (
-      loadingBoards ? (
-        <div className={styles['leaderboard-skeletons']}>
-          <Skeleton width='100%' height='50px' />
-          <Skeleton width='100%' height='50px' />
-          <Skeleton width='100%' height='50px' />
-          <Skeleton width='100%' height='50px' />
-          <Skeleton width='100%' height='50px' />
-          <Skeleton width='100%' height='50px' />
-          <Skeleton width='100%' height='50px' />
-          <Skeleton width='100%' height='50px' />
-          <Skeleton width='100%' height='50px' />
-          <Skeleton width='100%' height='50px' />
-        </div>
-      ) : (
-        <div className={`with-scrollbar ${styles['leaderboard-wrapper']}`}>
-          <table className={styles['leaderboard']}>
-            <thead>
-              <tr>
-                <th>Position</th>
-                <th>Player</th>
-                <th>Points</th>
-                <th>Max total points</th>
-              </tr>
-            </thead>
-            <tbody>
-              {boards.map((b, index) => {
-                return (
-                  // TODO: Replace with b._id
-                  <tr key={b._id}>
-                    <td><span>{index + 1}</span></td>
-                    <td className={styles['board-user-td']}>
-                      <div className={styles['board-user']}>
-                        <img
-                          src={b!.userInfo?.profilePictureUrl}
-                          alt={b!.userInfo?.username}
-                        />
-                        <span>{b!.userInfo?.username}</span>
-                      </div>
-                    </td>
-                    <td>{Math.round(b!.currentScore)}</td>
-                    <td>{Math.round(b!.maxPossibleScore)}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
-      ))}
+      {expanded &&
+        (loadingBoards ? (
+          <div className={styles['leaderboard-skeletons']}>
+            <Skeleton width="100%" height="50px" />
+            <Skeleton width="100%" height="50px" />
+            <Skeleton width="100%" height="50px" />
+            <Skeleton width="100%" height="50px" />
+            <Skeleton width="100%" height="50px" />
+            <Skeleton width="100%" height="50px" />
+            <Skeleton width="100%" height="50px" />
+            <Skeleton width="100%" height="50px" />
+            <Skeleton width="100%" height="50px" />
+            <Skeleton width="100%" height="50px" />
+          </div>
+        ) : (
+          <div className={`with-scrollbar ${styles['leaderboard-wrapper']}`}>
+            <table className={styles['leaderboard']}>
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Player</th>
+                  <th>Points</th>
+                  <th>Max total points</th>
+                </tr>
+              </thead>
+              <tbody>
+                {boards.map((b, index) => {
+                  return (
+                    // TODO: Replace with b._id
+                    <tr key={b._id}>
+                      <td>
+                        <span className={styles['board-position']}>
+                          {index + 1}
+                        </span>
+                      </td>
+                      <td className={styles['board-user-td']}>
+                        <div className={styles['board-user']}>
+                          <img
+                            src={b!.userInfo?.profilePictureUrl}
+                            alt={b!.userInfo?.username}
+                          />
+                          <span>{b!.userInfo?.username}</span>
+                        </div>
+                      </td>
+                      <td>{Math.round(b!.currentScore)}</td>
+                      <td>{Math.round(b!.maxPossibleScore)}</td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        ))}
     </div>
   )
 }
 
 interface DateSelectorProps {
-  value: string;
-  onClick: () => void;
+  value: string
+  onClick: () => void
 }
 
-const DateSelector = forwardRef<HTMLButtonElement, DateSelectorProps>(({ value, onClick }, ref) => (
-  <button 
-    id={styles['date-selector-button']} 
-    className='focusable'
-    onClick={onClick} 
-    ref={ref}>
-    <span>{getDisplayDate(value)}</span>
-    <ExpandArrow color='var(--heading-color)' />
-  </button>
-));
+const DateSelector = forwardRef<HTMLButtonElement, DateSelectorProps>(
+  ({ value, onClick }, ref) => (
+    <button
+      id={styles['date-selector-button']}
+      className="focusable"
+      onClick={onClick}
+      ref={ref}
+    >
+      <span>{getDisplayDate(value)}</span>
+      <ExpandArrow color="var(--heading-color)" />
+    </button>
+  )
+)
 
 interface LocationSelectorProps {
   selectedLocations: string[]
@@ -507,14 +580,14 @@ interface LocationSelectorProps {
 //   return (
 //     <div id={styles['locations']}>
 //       {/*
-//       <button 
+//       <button
 //         className='focusable'
 //         id={styles['locations-button']}
 //         onClick={() => setLocationSearchOpen(!locationSearchOpen)}
 //         data-locations-selected={selectedLocations.length != 0}>
 //         <Location color='var(--heading-color)' />
 //         <span id={styles['selected-locations']}>
-//           {selectedLocations.length == 0 
+//           {selectedLocations.length == 0
 //                 ? 'Select a location'
 //                 : selectedLocations[0]}
 //         </span>
@@ -558,14 +631,10 @@ const LocationsPopup = ({ open, onSelect }: LocationsPopUpProps) => {
     setSearch(v)
 
     // Temporarily set fake search results to see what it looks like
-    if(v == '') {
+    if (v == '') {
       setSearchResults([])
     } else {
-      setSearchResults([
-        'Rochester NY',
-        'Rochester UK',
-        'Rochester MN, USA'
-      ])
+      setSearchResults(['Rochester NY', 'Rochester UK', 'Rochester MN, USA'])
     }
   }
 
@@ -577,26 +646,30 @@ const LocationsPopup = ({ open, onSelect }: LocationsPopUpProps) => {
   }
 
   return (
-    <div id={styles['locations-popup']} className={`popup ${open ? 'open' : 'closed'}`}>
-      <div id={styles['search-wrapper']} className='focusable'>
-        <Search color='var(--border-color)' />
-        <input 
+    <div
+      id={styles['locations-popup']}
+      className={`popup ${open ? 'open' : 'closed'}`}
+    >
+      <div id={styles['search-wrapper']} className="focusable">
+        <Search color="var(--border-color)" />
+        <input
           id={styles['search']}
-          type='search' 
+          type="search"
           value={search}
-          onChange={e => searchFor(e.target.value)}
+          onChange={(e) => searchFor(e.target.value)}
         />
       </div>
       {searchResults.length > 0 && (
         <div id={styles['locations-search-results']}>
           {searchResults.map((r, index) => {
             return (
-              <button 
+              <button
                 key={index}
                 className={styles['location-select']}
                 title={`Select ${r}`}
-                type='submit'
-                onClick={() => select(r)}>
+                type="submit"
+                onClick={() => select(r)}
+              >
                 {r}
               </button>
             )
@@ -616,29 +689,27 @@ interface SportSelectorItemProps {
 const SportSelectorItem = ({
   id,
   text,
-  selectedSports
+  selectedSports,
 }: SportSelectorItemProps) => {
   const checked = selectedSports.includes(text)
 
   return (
-      <label
-        htmlFor={id}
-        className={`${styles['sport-item']}`}
-        aria-selected={checked}>
-          <input 
-            type='checkbox'
-            id={id}
-            value={text}
-            name='sports'
-            defaultChecked={checked}
-            aria-hidden={true}
-          />
-          <span 
-            aria-checked={checked}
-            className={styles['custom-checkbox']}
-          />
-          <span>{text}</span>
-        </label>
+    <label
+      htmlFor={id}
+      className={`${styles['sport-item']}`}
+      aria-selected={checked}
+    >
+      <input
+        type="checkbox"
+        id={id}
+        value={text}
+        name="sports"
+        defaultChecked={checked}
+        aria-hidden={true}
+      />
+      <span aria-checked={checked} className={styles['custom-checkbox']} />
+      <span>{text}</span>
+    </label>
   )
 }
 
@@ -647,20 +718,18 @@ interface SportSelectorPopupProps {
   onSelect: (s: string[]) => void
 }
 
-const SportSelectorPopup = ({
-  open,
-  onSelect
-}: SportSelectorPopupProps) => {
+const SportSelectorPopup = ({ open, onSelect }: SportSelectorPopupProps) => {
   const [selected, setSelected] = useState<string[]>([])
 
   const handleSelectedChange = (e: React.FormEvent) => {
     const sport = (e.target as HTMLInputElement).value
-    let newSelected : string[] = []
+    let newSelected: string[] = []
 
     // If the selected sports include this sport, filter it out
-    if(selected.includes(sport)) {
-      newSelected = selected.filter(s => s != sport)
-    } else { // Otherwise, add it in
+    if (selected.includes(sport)) {
+      newSelected = selected.filter((s) => s != sport)
+    } else {
+      // Otherwise, add it in
       newSelected = [...selected, sport]
     }
 
@@ -670,59 +739,58 @@ const SportSelectorPopup = ({
   const handleClearSelected = () => {
     setSelected([])
   }
-  
+
   return (
-    <div 
+    <div
       id={styles['sport-selector-popup']}
-      className={`popup ${open ? 'open' : 'closed'}`}>
-      <fieldset onChange={e => handleSelectedChange(e)}>
+      className={`popup ${open ? 'open' : 'closed'}`}
+    >
+      <fieldset onChange={(e) => handleSelectedChange(e)}>
         <SportSelectorItem
-          id='football'
-          text='🏈 Football'
+          id="football"
+          text="🏈 Football"
           selectedSports={selected}
         />
         <SportSelectorItem
-          id='basketball'
-          text='🏀 Basketball'
+          id="basketball"
+          text="🏀 Basketball"
           selectedSports={selected}
         />
         <SportSelectorItem
-          id='baseball'
-          text='⚾ Baseball'
+          id="baseball"
+          text="⚾ Baseball"
           selectedSports={selected}
         />
         <SportSelectorItem
-          id='hockey'
-          text='🏒 Hockey'
+          id="hockey"
+          text="🏒 Hockey"
           selectedSports={selected}
         />
         <SportSelectorItem
-          id='tennis'
-          text='🎾 Tennis'
+          id="tennis"
+          text="🎾 Tennis"
           selectedSports={selected}
         />
         <SportSelectorItem
-          id='soccer'
-          text='⚽ Soccer'
+          id="soccer"
+          text="⚽ Soccer"
           selectedSports={selected}
         />
-        <SportSelectorItem
-          id='golf'
-          text='⛳ Golf'
-          selectedSports={selected}
-        />
+        <SportSelectorItem id="golf" text="⛳ Golf" selectedSports={selected} />
       </fieldset>
       <div id={styles['sport-buttons']}>
         <button
           id={styles['clear-sports']}
-          className='secondary'
-          onClick={() => handleClearSelected()}>
+          className="secondary"
+          onClick={() => handleClearSelected()}
+        >
           Clear
         </button>
         <button
           id={styles['apply']}
-          className='primary'
-          onClick={() => onSelect(selected)}>
+          className="primary"
+          onClick={() => onSelect(selected)}
+        >
           Apply
         </button>
       </div>
@@ -734,7 +802,6 @@ interface SportSelectorProps {
   selectedSports: string[]
   setSelectedSports: React.Dispatch<React.SetStateAction<string[]>>
 }
-
 
 // const SportSelector = ({
 //   selectedSports,

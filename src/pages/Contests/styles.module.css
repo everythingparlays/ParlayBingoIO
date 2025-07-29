@@ -1,7 +1,27 @@
+#main{
+  min-height: calc(100vh - var(--header-height));
+  width: 100%;
+  background-color: var(--primary);
+  padding: var(--header-height) var(--size-4) 0;
+  box-sizing: border-box;
+}
+
+@media screen and (width > 768px) {
+  #main {
+    padding: var(--header-height) var(--size-6) 0;
+  }
+}
+
+@media screen and (width > 1200px) {
+  #main {
+    padding: var(--header-height) var(--size-8) 0;
+  }
+}
 #title {
   font-size: var(--text-3);
   font-weight: 700;
   padding: var(--size-6) 0;
+  color: var(--white);
 }
 
 #filters {
@@ -39,7 +59,7 @@
   display: block;
   padding: var(--size-3);
   cursor: pointer;
-  color: var(--heading-color);
+  color: var(--white);
 }
 
 #upcoming-wrapper input:checked+label {
@@ -148,6 +168,11 @@
   color: var(--heading-color);
 }
 
+.board-position {
+  color: var(--white);
+}
+
+
 #sport-selector-popup fieldset {
   border: none;
   padding: 0;
@@ -164,7 +189,7 @@
 
 .sport-item {
   cursor: pointer;
-}
+} 
 
 .sport-item[aria-selected=false]:hover .custom-checkbox {
   border-color: var(--text-color);
@@ -232,21 +257,28 @@
 }
 
 #date-selector-button span {
-  color: var(--heading-color);
+  color: var(--white);
 }
 
 #contests {
   display: flex;
   flex-direction: column;
   gap: var(--size-2);
-  margin-bottom: var(--size-6);
 }
 
 .contest {
-  background-color: var(--card-color);
-  border: 1px solid var(--border-color);
+  background: #1D184C;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--size-2);
   overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contest:hover {
+  transform: translateY(-2px);
+  background: rgba(29, 24, 76, 0.95);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .contest:has(.contest-meta:focus) {
@@ -267,7 +299,7 @@
 }
 
 .contest-meta:hover {
-  background-color: var(--transparent-contrast200);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .contest-main-info {
@@ -296,6 +328,8 @@
 
 .contest-name-and-link h2 {
   font-size: 1.25rem;
+  color: white;
+  font-weight: 900;
 }
 
 .contest-name-and-link a svg {
@@ -318,6 +352,7 @@
 
 .contest-location span {
   font-size: var(--text-00);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .contest-info-row {
@@ -333,6 +368,10 @@
   display: flex;
   align-items: center;
   gap: var(--size-3);
+}
+
+.contest-info-row > div > span:first-child {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .status {
@@ -384,7 +423,8 @@ body[theme="light"] .status.live {
 
 .main-prize {
   font-size: var(--text-3);
-  color: var(--green1100);
+  color: white;
+  font-weight: 900;
 }
 
 body[theme="light"] .main-prize {
@@ -398,7 +438,8 @@ body[theme="light"] .main-prize {
 }
 
 .contest-info-card {
-  background-color: var(--gray500);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--size-2);
   padding: var(--size-3);
   display: flex;
@@ -413,22 +454,24 @@ body[theme="light"] .main-prize {
 
 .contest-info-card h3 {
   font-size: var(--text-0);
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1em;
   white-space: nowrap;
+  color: white;
 }
 
 .contest-info-card span {
   font-size: var(--text-00);
   line-height: 1em;
   white-space: nowrap;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .card-icon {
   width: 24px;
   height: 24px;
   border-radius: 999px;
-  background-color: var(--card-color);
+  background-color: rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -465,8 +508,9 @@ body[theme="light"] .main-prize {
 
 .leaderboard-wrapper {
   overflow: auto;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--size-2);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 @media screen and (width > 768px) {
@@ -488,12 +532,12 @@ body[theme="light"] .main-prize {
 }
 
 .leaderboard td {
-  color: var(--heading-color);
+  color: white;
   font-weight: 700;
 }
 
 .leaderboard th {
-  color: var(--gray800);
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -529,6 +573,7 @@ body[theme="light"] .main-prize {
 
 .board-user span {
   font-weight: 500;
+  color: white;
 }
 
 .board-user img {
@@ -540,11 +585,11 @@ body[theme="light"] .main-prize {
 
 .leaderboard tr:not(:last-of-type),
 .leaderboard thead tr {
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .leaderboard :not(thead) tr:nth-of-type(odd) {
-  background-color: var(--transparent-contrast100);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .leaderboard :not(thead) td:first-of-type {
@@ -582,4 +627,28 @@ body[theme="light"] .main-prize {
   display: flex;
   flex-direction: column;
   gap: var(--size-1);
+}
+
+.no-contests-message {
+  background: #1D184C;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--size-2);
+  padding: var(--size-6);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  margin: var(--size-4) 0;
+}
+
+.no-contests-message h3 {
+  color: white;
+  font-size: var(--text-2);
+  font-weight: 700;
+  margin: 0 0 var(--size-2) 0;
+}
+
+.no-contests-message p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--text-1);
+  margin: 0;
+  line-height: 1.5;
 }
