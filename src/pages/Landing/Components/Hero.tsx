@@ -134,7 +134,7 @@ function Hero() {
 
             {/* Primary phone SVG - z-index: 3 */}
             <div
-              style={{
+              style={{ 
                 position: 'absolute',
                 width: '220%',
                 height: 'auto',
