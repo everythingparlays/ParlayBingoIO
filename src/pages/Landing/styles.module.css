@@ -751,9 +751,8 @@
 
   /* HERO SMALL MOBILE BUTTON SIZE CONTROL: Change width to adjust small mobile hero app store button container size */
   .app-store-buttons a {
-    width: 110px;
-    max-width: 110px;
-    min-width: 110px;
+    width: 165px;
+    max-width: 165px;
     flex-shrink: 0;
   }
 
