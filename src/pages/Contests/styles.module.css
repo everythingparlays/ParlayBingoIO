@@ -1,4 +1,4 @@
-#main{
+#main {
   min-height: calc(100vh - var(--header-height));
   width: 100%;
   background-color: var(--primary);
@@ -45,13 +45,13 @@
 #upcoming-wrapper {
   padding: 0;
   display: flex;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--white);
   border-radius: var(--size-2);
   overflow: hidden;
   width: fit-content;
 }
 
-#filters input[type="radio"] {
+#filters input[type='radio'] {
   display: none;
 }
 
@@ -62,11 +62,21 @@
   color: var(--white);
 }
 
-#upcoming-wrapper input:checked+label {
-  pointer-events: none;
-  background-color: var(--card-color);
-  color: rgba(88, 92, 104, 1);
+/* Active Contests tab when selected */
+#upcoming-wrapper input[id='active']:checked + label {
+  pointer-events: none !important;
+  background-color: white !important;
+  color: black !important;
 }
+
+/* Past Contests tab when selected */
+#upcoming-wrapper input[id='past-contests']:checked + label {
+  pointer-events: none !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Base styles for contest filter labels are inherited from #upcoming-wrapper label styles above */
 
 #locations {
   position: relative;
@@ -88,7 +98,7 @@
   text-overflow: ellipsis;
 }
 
-#locations-button[data-locations-selected=true] {
+#locations-button[data-locations-selected='true'] {
   border-color: var(--blue1000);
 }
 
@@ -172,7 +182,6 @@
   color: var(--white);
 }
 
-
 #sport-selector-popup fieldset {
   border: none;
   padding: 0;
@@ -189,13 +198,13 @@
 
 .sport-item {
   cursor: pointer;
-} 
+}
 
-.sport-item[aria-selected=false]:hover .custom-checkbox {
+.sport-item[aria-selected='false']:hover .custom-checkbox {
   border-color: var(--text-color);
 }
 
-.sport-item[aria-selected=true] {
+.sport-item[aria-selected='true'] {
   background-color: var(--card-color);
 }
 
@@ -217,13 +226,13 @@
   position: relative;
 }
 
-.custom-checkbox[aria-checked=true] {
+.custom-checkbox[aria-checked='true'] {
   background-color: var(--primary);
   border-color: var(--primary);
 }
 
-.custom-checkbox[aria-checked=true]::after {
-  content: "";
+.custom-checkbox[aria-checked='true']::after {
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -267,8 +276,8 @@
 }
 
 .contest {
-  background: #1D184C;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1d184c;
+  border: 1px solid white;
   border-radius: var(--size-2);
   overflow: hidden;
   backdrop-filter: blur(10px);
@@ -385,18 +394,22 @@
   color: var(--heading-color);
 }
 
+/* DISABLED: Light mode styles - using dark mode only
 body[theme="light"] .status.finished {
   background-color: var(--red1000);
 }
+*/
 
 .status.joinable {
   background-color: var(--green1100);
   color: var(--bg);
 }
 
+/* DISABLED: Light mode styles - using dark mode only
 body[theme="light"] .status.joinable {
   background-color: var(--green800);
 }
+*/
 
 .status.live {
   background-color: var(--orange1000);
@@ -405,12 +418,14 @@ body[theme="light"] .status.joinable {
   position: relative;
 }
 
+/* DISABLED: Light mode styles - using dark mode only
 body[theme="light"] .status.live {
   background-color: var(--orange700);
 }
+*/
 
 .status.live::after {
-  content: "";
+  content: '';
   background-color: var(--bg);
   width: 6px;
   height: 6px;
@@ -427,9 +442,11 @@ body[theme="light"] .status.live {
   font-weight: 900;
 }
 
+/* DISABLED: Light mode styles - using dark mode only
 body[theme="light"] .main-prize {
   color: var(--green800);
 }
+*/
 
 .contest-info-cards {
   display: flex;
@@ -439,7 +456,7 @@ body[theme="light"] .main-prize {
 
 .contest-info-card {
   background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
   border-radius: var(--size-2);
   padding: var(--size-3);
   display: flex;
@@ -508,7 +525,7 @@ body[theme="light"] .main-prize {
 
 .leaderboard-wrapper {
   overflow: auto;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
   border-radius: var(--size-2);
   background: rgba(255, 255, 255, 0.05);
 }
@@ -585,7 +602,7 @@ body[theme="light"] .main-prize {
 
 .leaderboard tr:not(:last-of-type),
 .leaderboard thead tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid white;
 }
 
 .leaderboard :not(thead) tr:nth-of-type(odd) {
@@ -593,7 +610,7 @@ body[theme="light"] .main-prize {
 }
 
 .leaderboard :not(thead) td:first-of-type {
-  width: 140px
+  width: 140px;
 }
 
 .leaderboard :not(thead) td:first-of-type span {
@@ -630,8 +647,8 @@ body[theme="light"] .main-prize {
 }
 
 .no-contests-message {
-  background: #1D184C;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1d184c;
+  border: 1px solid white;
   border-radius: var(--size-2);
   padding: var(--size-6);
   text-align: center;

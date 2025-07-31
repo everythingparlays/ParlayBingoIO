@@ -7,7 +7,7 @@ type Props = {
 
 
 
-function PrimaryPhoneHero({width,height}: Props) {
+function PrimaryPhoneHero({width = 1266, height = 949}: Props) {
   return (
     <svg
       width={`${width}`}

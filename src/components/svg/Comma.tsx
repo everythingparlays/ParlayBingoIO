@@ -1,9 +1,9 @@
 import React from "react"
 type Props = {
-  width: string
-  height: string
+  width?: string
+  height?: string
 }
-const Comma = ({width, height}: Props) => {
+const Comma = ({width = '15', height = '13'}: Props) => {
   return (
     <svg
       width={`${width}`}

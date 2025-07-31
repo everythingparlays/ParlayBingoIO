@@ -116,9 +116,11 @@ body[theme='dark'] #nav-expanded-bg {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* DISABLED: Light mode styles - using dark mode only
 body[theme='light'] #nav-expanded-bg {
   background-color: rgba(0, 0, 0, 0.5);
 }
+*/
 
 header[aria-expanded='true'] #nav-expanded-bg {
   opacity: 1;

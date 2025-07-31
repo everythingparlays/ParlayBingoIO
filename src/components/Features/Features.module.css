@@ -35,7 +35,7 @@
 
 /* Top Right */
 .cornerBlock[data-corner='top-right'] {
-  top: -20px;
+  top: 10vh;
   right: -20px;
 }
 

@@ -4,7 +4,7 @@ type Props = {
   height?: number
   width?: number
 }
-export default function GooglePlayDownload({width, height}:Props) {
+export default function GooglePlayDownload({width = 253, height = 75}:Props) {
   return (
     <svg
       width={`${width}`}

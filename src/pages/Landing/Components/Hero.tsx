@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '../styles.module.css'
 import HeroIconTrophy from 'components/svg/HeroIconTrophy'
 import GooglePlayDownload from 'components/svg/GooglePlayDownload'
@@ -20,6 +20,19 @@ import {
 }
 
 function Hero() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 480)
+    }
+    
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
+
   return (
     <section id={styles['hero']}>
       <div id={styles['hero-inner']}>
@@ -69,7 +82,8 @@ function Hero() {
                 aria-label="Apple App Store Button"
                 className={styles['app-store-button']}
               >
-                <AppleDownload />
+                {/* HERO BUTTON SIZE CONTROL: Change these width/height values to adjust hero app store button sizes */}
+                <AppleDownload width={isMobile ? 120 : 200} height={isMobile ? 36 : 60} />
               </a>
               <a
                 href="/download"
@@ -86,7 +100,8 @@ function Hero() {
                 className={styles['app-store-button']}
                 aria-label="Google Play Store Button"
               >
-                <GooglePlayDownload />
+                {/* HERO BUTTON SIZE CONTROL: Change these width/height values to adjust hero app store button sizes */}
+                <GooglePlayDownload width={isMobile ? 120 : 200} height={isMobile ? 36 : 60} />
               </a>
             </div>
           </div>

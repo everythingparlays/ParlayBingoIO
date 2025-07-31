@@ -1,13 +1,13 @@
 import React from 'react'
 
 type Props = {
-  width: string
-  height: string
+  width?: string
+  height?: string
 }
 
 
 
-const Stars = ({width, height}: Props) => {
+const Stars = ({width = '91', height = '14'}: Props) => {
   return (
     <svg
       width={width}

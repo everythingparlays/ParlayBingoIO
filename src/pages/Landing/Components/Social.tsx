@@ -50,6 +50,7 @@ function Social({}: Props) {
               bottomRight: true,
             }}
             features={socialData}
+            dashedLine={false}
           />
         </div>
         {/* Right side */}

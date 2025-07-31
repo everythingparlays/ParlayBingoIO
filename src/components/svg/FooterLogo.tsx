@@ -5,7 +5,7 @@ type Props = {
   height?: string
 }
 
-function FooterLogo({ width , height  }: Props) {
+function FooterLogo({ width = '291', height = '252'  }: Props) {
   return (
     <svg
       width={width}

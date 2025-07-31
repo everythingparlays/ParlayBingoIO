@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {width?: number, height?: number}
 
-function Leaders({width, height}: Props) {
+function Leaders({width = 100, height = 100}: Props) {
   return (
     <svg
       width={`${width}`}

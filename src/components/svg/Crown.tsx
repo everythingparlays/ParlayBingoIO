@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {width?: string, height?:string}
 
-const Crown = ({ width ,  height}: Props) => { 
+const Crown = ({ width = '239',  height = '239'}: Props) => { 
   return (
     <svg
       width={`${width}`}

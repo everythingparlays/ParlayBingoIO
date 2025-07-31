@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {width?:string;height?:string}
 
-const HeroBlock = ({width,height}: Props) => {
+const HeroBlock = ({width = '255', height = '217'}: Props) => {
   return (
     <svg
       width={`${width}`}
