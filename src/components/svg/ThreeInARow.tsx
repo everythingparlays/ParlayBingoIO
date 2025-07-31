@@ -5,7 +5,7 @@ type Props = {
   height?: string
 }
 
-function ThreeInARow({ width, height  }: Props) {
+function ThreeInARow({ width = '187', height = '165'  }: Props) {
   return (
     <svg
       width={width}

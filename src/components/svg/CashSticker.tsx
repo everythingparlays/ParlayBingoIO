@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {width?: number, height?: number}
 
-function CashSticker({width, height}: Props) {
+function CashSticker({width = 219, height = 250}: Props) {
   return (
     <svg
       width={`${width}`}

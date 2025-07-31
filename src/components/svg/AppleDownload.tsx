@@ -5,7 +5,7 @@ type Props = {
   width?: number
 }
 
-function AppleDownload({height, width}: Props) {
+function AppleDownload({height = 74, width = 249}: Props) {
   return (
     <svg
       width={`${width}`}

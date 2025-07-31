@@ -160,8 +160,10 @@ body[theme='dark'] {
   --skeleton-shine-color: var(--heading-color);
 
   --secondary-cta: #d9eefb;
+  --white: #ffffff;
 }
 
+/* DISABLED: Light mode styles - using dark mode only
 body[theme='light'] {
   --gray100: rgba(248, 248, 249, 1);
   --gray200: rgba(240, 241, 242, 1);
@@ -232,6 +234,7 @@ body[theme='light'] {
   --secondary-cta: #d9eefb;
   --white: #ffffff;
 }
+*/
 
 @media (width > 600px) {
   body {
@@ -416,10 +419,12 @@ body[theme='dark'] button.secondary:hover {
   filter: brightness(1.25);
 }
 
+/* DISABLED: Light mode hover styles - using dark mode only
 body[theme='light'] a.secondary:hover,
 body[theme='light'] button.secondary:hover {
   filter: brightness(0.9);
 }
+*/
 
 hr {
   width: 100%;

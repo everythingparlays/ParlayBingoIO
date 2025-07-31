@@ -27,7 +27,7 @@ export default function HelpCenter() {
       <section className={styles['faq-container']}>
         <div id={styles['faq']}>
           <h2 className={styles['section-heading']}>
-            Frequently Asked Questions
+          Frequently Asked Questions
           </h2>
           <AccordionItem title="What is OverBoard Sports, and how does it work?">
             <p>

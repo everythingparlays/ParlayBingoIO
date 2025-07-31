@@ -9,7 +9,7 @@ interface ThemeContextType {
 }
 
 export const ThemeContext = createContext<ThemeContextType>({
-  theme: 'light',
+  theme: 'dark',
   switchTheme: () => {}
 })
 
@@ -18,46 +18,18 @@ interface Props {
 }
 
 export function ThemeProvider({ children } : Props) {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
 
   useEffect(() => {
     let body = document.querySelector('body')!
 
-    // Force light mode for now - disable auto theme detection
-    setTheme('light')
-    body.setAttribute('theme', 'light')
-    
-    // DISABLED: Auto theme detection
-    // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
-    // if (prefersDark.matches) {
-    //   setTheme('dark')
-    //   body.setAttribute('theme', 'dark')
-    // } else {
-    //   setTheme('light')
-    //   body.setAttribute('theme', 'light')
-    // }
+    // Force dark mode - no light mode available
+    setTheme('dark')
+    body.setAttribute('theme', 'dark')
   }, [])
 
   const switchTheme = () => {
-    const callback = () => {
-      let body = document.querySelector('body')
-
-      if (theme === 'light') {
-        setTheme('dark')
-        body!.setAttribute('theme', 'dark')
-      } else {
-        setTheme('light')
-        body!.setAttribute('theme', 'light')
-      }
-    }
-
-    // go away TS errors :)
-    if((document as any).startViewTransition) {
-      (document as any).startViewTransition(() => callback())
-    } else {
-      callback();
-    }
-    
+    // Theme switching disabled - always stay in dark mode
   }
 
   return (

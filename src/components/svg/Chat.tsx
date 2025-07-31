@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {width?: number, height?: number}
 
-function Chat({width, height}: Props) {
+function Chat({width = 100, height = 100}: Props) {
   return (
     <svg
       width={`${width}`}

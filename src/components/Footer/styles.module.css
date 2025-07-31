@@ -296,11 +296,46 @@ footer a:hover {
   align-self: center; /* Center the copyright */
 }
 
- .app-store-button {
-    width: 150px;
-    max-width: 200px;
+.app-store-buttons {
+  display: flex;
+  flex: 1;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* DESKTOP BUTTON SIZE CONTROL: Change max-width values here to adjust desktop app store button container sizes */
+.app-store-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  max-width: 150px;
+  flex-shrink: 1; /* Allow shrinking on desktop */
+}
+
+.app-store-button svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Medium screens - match Hero's responsive behavior */
+@media screen and (max-width: 768px) {
+  .app-store-button {
+    width: 160px;
+    max-width: 160px;
     flex-shrink: 0;
   }
+}
+
+/* Small screens - gradual sizing like Hero */
+@media screen and (max-width: 600px) {
+  .app-store-button {
+    width: 140px;
+    max-width: 140px;
+    flex-shrink: 0;
+  }
+}
 
 @media screen and (width > 500px) {
   #links {
@@ -415,6 +450,7 @@ footer a:hover {
 /* Add this new media query for screens less than 480px */
 @media screen and (max-width: 480px) {
   /* Mobile layout using flexbox */
+
   .footer-links-container {
     display: flex;
     flex-direction: column;
@@ -482,6 +518,18 @@ footer a:hover {
     text-align: center;
   }
 
+  /* MOBILE BUTTON SIZE CONTROL: Change width/max-width values here to adjust mobile app store button container sizes */
+  .app-store-button {
+    width: 120px;
+    max-width: 120px;
+    flex-shrink: 1; /* Allow slight shrinking on very small screens */
+  }
+
+  .app-store-button svg {
+    width: 100%;
+    height: auto;
+  }
+
   /* Left container font sizes */
 
   .left-container-content h1 {
@@ -523,11 +571,11 @@ footer a:hover {
   }
 
   .footer-bottom-container p {
-    font-size: 12px;
+    font-size: 12px !important;
   }
 
   .footer-bottom-container a {
-    font-size: 12px;
+    font-size: 12px !important;
   }
 
   .footer-terms-container a {
@@ -545,34 +593,31 @@ footer a:hover {
 
   /* Override any remaining elements */
   #footer p {
-    font-size: 14px;
+    font-size: 1rem;
   }
 
   #footer h3 {
     font-size: 16px;
   }
-  /* Replace the complex download-svg-container with Hero's approach */
-  .app-store-button {
-    width: 150px;
-    max-width: 200px;
-    flex-shrink: 0;
+  .app-store-buttons {
+    flex: 1;
+    gap: 8px;
+    justify-content: center;
   }
 
   .download-svg-container:hover {
     transform: scale(1.05);
   }
 
-  /* Override the footer-bottom-container styles from the 768px media query */
   #footer .footer-bottom-container {
     flex-direction: column;
     gap: var(--size-2);
     justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
-    align-self: flex-start; /* Override the align-self: center from 768px query */
+    align-self: flex-start;
   }
 
-  /* Make sure child elements also align left */
   #footer .footer-copyright-container {
     align-self: flex-start;
     text-align: left;
@@ -584,7 +629,6 @@ footer a:hover {
     text-align: left;
   }
 
-  /* Ensure all text elements align left */
   .footer-bottom-container p,
   .footer-bottom-container a,
   .footer-bottom-container span {

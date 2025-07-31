@@ -8,8 +8,8 @@ interface LogoHeaderProps {
 
 export default function LogoHeader({
   className,
-  height,
-  width,
+  height = '55',
+  width = '201',
 }: LogoHeaderProps) {
   return (
     <svg

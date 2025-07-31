@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {width?: number, height?: number}
 
-function SmileyStar({width , height}: Props) {
+function SmileyStar({width = 100, height = 100}: Props) {
   return (
     <svg
       width={`${width}`}

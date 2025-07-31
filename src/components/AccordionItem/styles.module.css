@@ -1,5 +1,5 @@
 .accordion {
-  border-bottom: 1px solid var(--border-color); 
+  border-bottom: 1px solid white; 
   color: white;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .accordion-toggle:focus {
-  outline: 2px solid var(--card-color);
+  outline: 2px solid var(--white);
 }
 
 .accordion-toggle h3 {

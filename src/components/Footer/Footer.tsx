@@ -60,7 +60,7 @@ export default function Footer() {
             <h1 className={styles['win-text']}>WIN</h1>
             <LineColumns />
           </div>
-          <div>
+          <div className={styles['app-store-buttons']}>
             <a
               href="/download"
               onClick={() => {
@@ -76,7 +76,8 @@ export default function Footer() {
               className={styles['app-store-button']}
               aria-label="Apple App Store Button"
             >
-              <AppleDownload  />
+              {/* BUTTON SIZE CONTROL: Change these width/height values to adjust app store button sizes */}
+              <AppleDownload width={isMobile ? 150 : 240} height={isMobile ? 48 : 74} />
             </a>
             <a
               href="/download"
@@ -93,7 +94,8 @@ export default function Footer() {
               className={styles['app-store-button']}
               aria-label="Google Play Store Button"
             >
-              <GooglePlayDownload />
+              {/* BUTTON SIZE CONTROL: Change these width/height values to adjust app store button sizes */}
+              <GooglePlayDownload width={isMobile ? 120 : 160} height={isMobile ? 36 : 48} />
             </a>
           </div>
           <div className={styles['qr-code-container']}>
@@ -141,7 +143,7 @@ export default function Footer() {
                     }}
                     style={{ cursor: 'pointer' }}
                   >
-                    How to play
+                    How to play                       
                   </p>
                   <p>The Team</p>
                   <a

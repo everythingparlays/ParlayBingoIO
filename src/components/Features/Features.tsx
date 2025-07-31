@@ -3,6 +3,7 @@ import FeatureCard from 'ui/FeatureCard/FeatureCard'
 import styles from './Features.module.css'
 import LeftNewToPlayBlocks from 'components/svg/LeftNewToPlayBlocks'
 import RightNewToPlayBlocks from 'components/svg/RightNewToPlayBlocks'
+import FeatureDashedLine from 'components/svg/FeatureDashedLine'
 
 interface Feature {
   icon: React.ReactNode
@@ -22,6 +23,7 @@ interface FeaturesProps {
   features: Feature[]
   cornerBlocks?: CornerBlocksConfig
   className?: string
+  dashedLine?: boolean
 }
 
 export default function Features({
@@ -33,6 +35,7 @@ export default function Features({
     bottomLeft: false,
     bottomRight: false,
   },
+  dashedLine = true,
   className = '',
 }: FeaturesProps) {
   return (
@@ -63,6 +66,7 @@ export default function Features({
         {/* Content */}
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
+          {dashedLine && <FeatureDashedLine height={4} />}
         </div>
         <div className={styles.featuresGrid}>
           {features.map((feature, index) => (
