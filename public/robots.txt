@@ -1,0 +1,22 @@
+# Create: /public/robots.txt
+User-agent: *
+Allow: /
+
+# SEO pages
+Allow: /how-to-play-overboard-sports
+Allow: /parlay-bingo
+Allow: /overboardsports-promo-code
+Allow: /daily-fantasy-sports-california
+Allow: /daily-fantasy-sports-florida
+Allow: /daily-fantasy-sports-nba
+Allow: /daily-fantasy-sports-nfl
+Allow: /daily-fantasy-sports-mlb
+Allow: /help-center
+
+# Sitemap location
+Sitemap: https://overboardsports.com/sitemap.xml
+
+# Block non-essential paths
+Disallow: /contest/redirect/
+Disallow: /_next/
+Disallow: /assets/

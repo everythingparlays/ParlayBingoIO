@@ -1,3 +1,4 @@
+import DFSSchema from 'components/SEO/DFSSchema'
 import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useNavigate } from 'react-router-dom'
@@ -52,6 +53,8 @@ const PromoCodeRoute: React.FC = () => {
         <link rel="canonical" href="https://overboardsports.com/overboardsports-promo-code" />
       </Helmet>
       
+      <DFSSchema pageType="promo-code" />      
+
       {/* This component immediately redirects, so no visible content needed */}
       <div style={{ display: 'none' }}>Redirecting to promo section...</div>
     </>

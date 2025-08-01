@@ -1,3 +1,4 @@
+import DFSSchema from 'components/SEO/DFSSchema'
 import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useNavigate } from 'react-router-dom'
@@ -51,6 +52,8 @@ const ParlayBingoRoute: React.FC = () => {
         
         <link rel="canonical" href="https://overboardsports.com/parlay-bingo" />
       </Helmet>
+
+      <DFSSchema pageType="parlay-bingo" />
       
       {/* This component immediately redirects, so no visible content needed */}
       <div style={{ display: 'none' }}>Redirecting to Parlay Bingo section...</div>

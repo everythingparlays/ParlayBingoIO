@@ -1,121 +1,90 @@
 import React, { useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import EnhancedSEO from 'components/SEO/EnhancedSEO'
+import DFSSchema from 'components/SEO/DFSSchema'
 
 interface DailyFantasySportsRouteProps {
-  state?: string
   sport?: string
+  state?: string
 }
 
-const DailyFantasySportsRoute: React.FC<DailyFantasySportsRouteProps> = ({ state, sport }) => {
+const DailyFantasySportsRoute: React.FC<DailyFantasySportsRouteProps> = ({
+  sport,
+  state,
+}) => {
   const navigate = useNavigate()
-  const params = useParams()
-
-  // Determine the specific type from URL or props
-  const getSpecificType = () => {
-    if (state) return state
-    if (sport) return sport
-    if (params.type) return params.type
-    return 'general'
-  }
-
-  const specificType = getSpecificType()
-
-  // Generate dynamic content based on type
-  const getMetaContent = () => {
-    const baseTitle = "Daily Fantasy Sports"
-    const baseDescription = "Join daily fantasy sports contests with OverBoard Sports. Experience parlay bingo gameplay"
-    
-    switch (specificType) {
-      case 'california':
-        return {
-          title: `${baseTitle} California - Legal DFS Games & Contests`,
-          description: `${baseDescription} in California. Legal daily fantasy sports with cash prizes available throughout the Golden State.`,
-          keywords: "daily fantasy sports california, legal dfs california, sports contests california, overboard sports california"
-        }
-      case 'florida':
-        return {
-          title: `${baseTitle} Florida - Legal DFS Games & Contests`,
-          description: `${baseDescription} in Florida. Legal daily fantasy sports with cash prizes available throughout the Sunshine State.`,
-          keywords: "daily fantasy sports florida, legal dfs florida, sports contests florida, overboard sports florida"
-        }
-      case 'nba':
-        return {
-          title: `${baseTitle} NBA - Basketball Parlay Bingo Contests`,
-          description: `${baseDescription} with NBA basketball. Create bingo cards with NBA game outcomes and compete for prizes.`,
-          keywords: "daily fantasy sports nba, nba parlay bingo, basketball contests, nba overboard sports"
-        }
-      case 'nfl':
-        return {
-          title: `${baseTitle} NFL - Football Parlay Bingo Contests`,
-          description: `${baseDescription} with NFL football. Create bingo cards with NFL game outcomes and compete for prizes.`,
-          keywords: "daily fantasy sports nfl, nfl parlay bingo, football contests, nfl overboard sports"
-        }
-      case 'mlb':
-        return {
-          title: `${baseTitle} MLB - Baseball Parlay Bingo Contests`,
-          description: `${baseDescription} with MLB baseball. Create bingo cards with MLB game outcomes and compete for prizes.`,
-          keywords: "daily fantasy sports mlb, mlb parlay bingo, baseball contests, mlb overboard sports"
-        }
-      default:
-        return {
-          title: `${baseTitle} - Legal DFS Games & Contests by OverBoard Sports`,
-          description: `${baseDescription}. Legal daily fantasy sports with unique bingo-style gameplay and cash prizes.`,
-          keywords: "daily fantasy sports, legal dfs, sports contests, parlay bingo, overboard sports"
-        }
-    }
-  }
-
-  const metaContent = getMetaContent()
 
   useEffect(() => {
     navigate('/', { replace: true })
-    
     setTimeout(() => {
-      const aboutSection = document.getElementById('where-to-play')
-      if (aboutSection) {
-        aboutSection.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        })
-      } else {
-        const newWaySection = document.querySelector('[id*="where-to-play"]')
-        if (newWaySection) {
-          newWaySection.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          })
-        }
+      const targetSection =
+        document.getElementById('new-way-to-play') ||
+        document.querySelector('[class*="new-way"]')
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }
     }, 300)
   }, [navigate])
 
+  const getTitle = () => {
+    if (sport)
+      return `Daily Fantasy Sports ${sport.toUpperCase()} - OverBoard Sports Parlay Bingo`
+    if (state)
+      return `Daily Fantasy Sports in ${
+        state.charAt(0).toUpperCase() + state.slice(1)
+      } | OverBoard Sports`
+    return 'Daily Fantasy Sports - OverBoard Sports'
+  }
+
+  const getDescription = () => {
+    if (sport)
+      return `Play daily fantasy sports ${sport.toUpperCase()} with OverBoard Sports parlay bingo. Complete your bingo card with ${sport} betting outcomes and win cash prizes at local venues.`
+    if (state)
+      return `Play daily fantasy sports in ${
+        state.charAt(0).toUpperCase() + state.slice(1)
+      } with OverBoard Sports. Legal parlay bingo game available at participating venues.`
+    return 'Play daily fantasy sports with OverBoard Sports parlay bingo. Complete your bingo card with sports betting outcomes and win cash prizes.'
+  }
+
+  const getKeywords = () => {
+    const base =
+      'daily fantasy sports, parlay bingo, overboard sports, fantasy sports app'
+    if (sport)
+      return `${base}, daily fantasy ${sport}, ${sport} bingo, ${sport} parlay, fantasy ${sport} app`
+    if (state)
+      return `${base}, daily fantasy sports ${state}, ${state} fantasy sports, legal fantasy sports ${state}`
+    return base
+  }
+
+  const getCanonical = () => {
+    if (sport)
+      return `https://overboardsports.com/daily-fantasy-sports-${sport}`
+    if (state)
+      return `https://overboardsports.com/daily-fantasy-sports-${state}`
+    return 'https://overboardsports.com'
+  }
+
   return (
     <>
-      <Helmet>
-        <title>{metaContent.title}</title>
-        <meta name="description" content={metaContent.description} />
-        <meta name="keywords" content={metaContent.keywords} />
-        
-        {/* Facebook Meta Tags */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://overboardsports.com/daily-fantasy-sports-${specificType}`} />
-        <meta property="og:title" content={metaContent.title} />
-        <meta property="og:description" content={metaContent.description} />
-        <meta property="og:image" content="https://overboardsports.com/OB-rebrand.png" />
-        
-        {/* Twitter Meta Tags */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={`https://overboardsports.com/daily-fantasy-sports-${specificType}`} />
-        <meta property="twitter:title" content={metaContent.title} />
-        <meta property="twitter:description" content={metaContent.description} />
-        <meta property="twitter:image" content="https://overboardsports.com/OB-rebrand.png" />
-        
-        <link rel="canonical" href={`https://overboardsports.com/daily-fantasy-sports-${specificType}`} />
-      </Helmet>
-      
-      {/* This component immediately redirects, so no visible content needed */}
-      <div style={{ display: 'none' }}>Redirecting to Daily Fantasy Sports section...</div>
+      <EnhancedSEO
+        title={getTitle()}
+        description={getDescription()}
+        keywords={getKeywords()}
+        canonical={getCanonical()}
+        sport={sport}
+        state={state}
+        pageType={sport ? 'dfs-sport' : 'dfs-state'}
+      />
+
+      <DFSSchema
+        sport={sport}
+        state={state}
+        pageType={sport ? 'dfs-sport' : 'dfs-state'}
+      />
+
+      <div style={{ display: 'none' }}>
+        Redirecting to Daily Fantasy Sports section...
+      </div>
     </>
   )
 }
