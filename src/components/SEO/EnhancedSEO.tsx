@@ -178,7 +178,13 @@ const getStateCode = (state: string): string => {
   const stateCodes: { [key: string]: string } = {
     california: 'CA',
     florida: 'FL',
-    // Add more as needed
+    texas: 'TX',
+    new_york: 'NY',
+    illinois: 'IL',
+    michigan: 'MI',
+    pennsylvania: 'PA',
+    ohio: 'OH',
+    indiana: 'IN',
   }
   return stateCodes[state.toLowerCase()] || state.toUpperCase().slice(0, 2)
 }
@@ -187,7 +193,13 @@ const getStateCoordinates = (state: string): string => {
   const coordinates: { [key: string]: string } = {
     california: '36.7783,-119.4179',
     florida: '27.7663,-82.6404',
-    // Add more as needed
+    texas: '31.9686,-99.9018',
+    new_york: '42.1657,-74.9464',
+    illinois: '40.0583,-89.0581',
+    michigan: '43.3266,-84.5361',
+    pennsylvania: '40.5908,-77.2098',
+    ohio: '40.4173,-82.9071',
+    indiana: '39.7684,-86.1581',
   }
   return coordinates[state.toLowerCase()] || '39.8283,-98.5795' // Default to US center
 }

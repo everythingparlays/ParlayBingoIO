@@ -5,14 +5,18 @@ interface DFSSchemaProps {
   sport?: string
   state?: string
   pageType:
-    | 'how-to-play'
-    | 'parlay-bingo'
-    | 'promo-code'
-    | 'dfs-sport'
-    | 'dfs-state'
+  | 'how-to-play'
+  | 'parlay-bingo'
+  | 'promo-code'
+  | 'dfs-sport'
+  | 'dfs-state'
 }
 
-const DFSSchema: React.FC<DFSSchemaProps> = ({ sport, state, pageType }) => {
+const DFSSchema: React.FC<DFSSchemaProps> = ({
+  sport,
+  state,
+  pageType,
+}) => {
   const getSchemaData = () => {
     const baseOrganization = {
       '@type': 'Organization',
@@ -31,7 +35,7 @@ const DFSSchema: React.FC<DFSSchemaProps> = ({ sport, state, pageType }) => {
       gameCategory: 'Daily Fantasy Sports',
       playMode: 'MultiPlayer',
       numberOfPlayers: 'Unlimited',
-      gamePlatform: ['iOS', 'Web'],
+      gamePlatform: ['iOS'],
       provider: baseOrganization,
       offers: {
         '@type': 'Offer',
@@ -42,7 +46,6 @@ const DFSSchema: React.FC<DFSSchemaProps> = ({ sport, state, pageType }) => {
       },
     }
 
-    // Base webpage schema - also use 'any' for flexibility
     let schema: any = {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
@@ -64,14 +67,25 @@ const DFSSchema: React.FC<DFSSchemaProps> = ({ sport, state, pageType }) => {
         name: sport.toUpperCase(),
       }
 
-      // Add sport-specific FAQ schema - now '@graph' will work
+      // Add FAQ schema with sport-specific + general FAQs
       schema = {
         ...schema,
         '@graph': [
           schema,
           {
             '@type': 'FAQPage',
-            mainEntity: getSportFAQs(sport),
+            mainEntity: [...getSportFAQs(sport), ...getGeneralFAQs()],
+          },
+        ],
+      }
+    } else {
+      schema = {
+        ...schema,
+        '@graph': [
+          schema,
+          {
+            '@type': 'FAQPage',
+            mainEntity: getGeneralFAQs(),
           },
         ],
       }
@@ -100,23 +114,23 @@ const DFSSchema: React.FC<DFSSchemaProps> = ({ sport, state, pageType }) => {
             step: [
               {
                 '@type': 'HowToStep',
-                name: 'Download the App',
-                text: 'Download OverBoard Sports from the App Store',
+                name: 'Enter a Contest',
+                text: 'Choose a Free-to-Play contest.',
               },
               {
                 '@type': 'HowToStep',
-                name: 'Find a Venue',
-                text: 'Locate participating venues near you',
+                name: 'Your Board. Exactly How You Want.',
+                text: 'Fill your board with team props, player props, alternative lines and totals across multiple sports',
               },
               {
                 '@type': 'HowToStep',
-                name: 'Join a Contest',
-                text: 'Select and join a live contest',
+                name: 'Hit Picks. Earn Points',
+                text: 'Earn points for each prop that hits and get bonus points for any 3 in a row.',
               },
               {
                 '@type': 'HowToStep',
-                name: 'Complete Your Card',
-                text: 'Mark off outcomes as they happen to complete your bingo card',
+                name: 'Points Leaders Win Prizes',
+                text: 'Outscore the competition to win prizes and brag to your friends.',
               },
             ],
           },
@@ -137,9 +151,8 @@ const DFSSchema: React.FC<DFSSchemaProps> = ({ sport, state, pageType }) => {
     if (sport)
       return `Daily Fantasy Sports ${sport.toUpperCase()} - OverBoard Sports`
     if (state)
-      return `Daily Fantasy Sports in ${
-        state.charAt(0).toUpperCase() + state.slice(1)
-      } | OverBoard Sports`
+      return `Daily Fantasy Sports in ${state.charAt(0).toUpperCase() + state.slice(1)
+        } | OverBoard Sports`
     return 'Daily Fantasy Sports - OverBoard Sports'
   }
 
@@ -153,9 +166,8 @@ const DFSSchema: React.FC<DFSSchemaProps> = ({ sport, state, pageType }) => {
     if (sport)
       return `Play daily fantasy sports ${sport.toUpperCase()} with OverBoard Sports parlay bingo. Complete your bingo card with ${sport} betting outcomes and win cash prizes.`
     if (state)
-      return `Play daily fantasy sports in ${
-        state.charAt(0).toUpperCase() + state.slice(1)
-      } with OverBoard Sports. Legal parlay bingo game available at local venues.`
+      return `Play daily fantasy sports in ${state.charAt(0).toUpperCase() + state.slice(1)
+        } with OverBoard Sports. Legal parlay bingo game available at local venues.`
     return 'Play daily fantasy sports with OverBoard Sports parlay bingo. Complete your bingo card with sports betting outcomes and win cash prizes.'
   }
 
@@ -216,6 +228,80 @@ const DFSSchema: React.FC<DFSSchemaProps> = ({ sport, state, pageType }) => {
     },
   ]
 
+  const getGeneralFAQs = () => [
+    {
+      '@type': 'Question',
+      name: 'What is OverBoard Sports, and how does it work?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'OverBoard Sports is a fantasy sports app that aims to create more entertainment & engagement around sports. OverBoard Sports encourages competition and promotes social connection across a variety of sports. OverBoard Sports offers both an in-venue entertainment service & a standalone fantasy sports app. Here\'s how it works: You use our app to join a contest. To enter, you pay a fee and create a bingo board with different sports props. Then, you can compete with others within the contest. The leaderboard displays who is in the top three and where the following rank. You can see how well you\'re doing on the leaderboard, and with a great board, you might win some money!',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I start playing OverBoard Sports?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You start by downloading our app, creating a profile, and joining a contest!',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How are bingo outcomes determined in OverBoard Sports?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The outcomes of OverBoard Sports are determined by which props you pick on your board. After each individual prop square hits, you earn points. Additional points are earned through each 3 in a row props are hit. Whoever gets the highest amount of points wins first, second, third, etc.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I play OverBoard Sports for free?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The cost of OverBoard Sports is dependent upon the entry fee. It is possible to play OverBoard Sports for free if the contest you create doesn\'t require an entry fee. Although if there is no fee the winner receives no pot prize.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is my personal information secure on OverBoard Sports?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Your personal information is not shared with anyone and secured in our app. For more information on our privacy policy visit our privacy policy at https://www.everythingparlays.com/privacy-policy.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes OverBoard Sports different from other fantasy sports apps?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'OverBoard Sports stands out from other fantasy sports apps because it offers cross-sport fantasy competitions, allowing fans from various sports backgrounds to compete together. Additionally, our in-person bar events feature interactive leaderboards and live chat functionalities, enhancing the overall experience for users.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I change my fantasy team lineup after the games have started?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'After the game has started and you have submitted your board you cannot change your board. However, if you submit your board before the game begins, you can change your board.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What happens in the case of a tie or draw in a OverBoard Sports contest?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The users who earn a tie will both receive the same amount of money.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are there different types of bingo patterns in OverBoard Sports?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, in OverBoard Sports, there are various types of bingo patterns. These patterns are determined by achieving three consecutive props in the same row or diagonal, such as the top row, middle row, bottom row, left-to-right diagonal, right-to-left diagonal, and so on.',
+      },
+    },
+  ]
   return (
     <Helmet>
       <script type="application/ld+json">
@@ -225,4 +311,4 @@ const DFSSchema: React.FC<DFSSchemaProps> = ({ sport, state, pageType }) => {
   )
 }
 
-export default DFSSchema
+export default DFSSchema;
