@@ -14,7 +14,7 @@ function SportsBall({ width = '289', height = '262' }: Props) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_2090_13717)">
+      <g clipPath="url(#clip0_2090_13717)">
         <circle
           cx="100.014"
           cy="52.5645"
@@ -29,7 +29,7 @@ function SportsBall({ width = '289', height = '262' }: Props) {
           stroke="#1D184C"
         />
       </g>
-      <g clip-path="url(#clip1_2090_13717)">
+      <g clipPath="url(#clip1_2090_13717)">
         <rect
           x="104"
           y="132.999"
@@ -70,9 +70,9 @@ function SportsBall({ width = '289', height = '262' }: Props) {
         height="58"
         rx="29"
         stroke="#1D184C"
-        stroke-width="5"
+        strokeWidth="5"
       />
-      <g clip-path="url(#clip2_2090_13717)">
+      <g clipPath="url(#clip2_2090_13717)">
         <rect
           x="146"
           y="195.562"
@@ -99,7 +99,7 @@ function SportsBall({ width = '289', height = '262' }: Props) {
         rx="25.6123"
         transform="rotate(-11.9397 143.037 193.634)"
         stroke="#1D184C"
-        stroke-width="5"
+        strokeWidth="5"
       />
       <mask
         id="path-13-outside-1_2090_13717"
@@ -140,12 +140,12 @@ function SportsBall({ width = '289', height = '262' }: Props) {
         d="M60.9805 163.579C63.1694 163.85 65.3424 164.313 67.4736 164.968L46.2744 188.399C45.3498 186.43 44.6014 184.393 44.0303 182.314L60.9805 163.579Z"
         fill="white"
       />
-      <g clip-path="url(#clip3_2090_13717)">
+      <g clipPath="url(#clip3_2090_13717)">
         <path
           d="M67.9764 95.9831C73.5775 92.833 79.2078 90.7139 83.8256 89.8928C86.1224 89.4845 88.3105 89.3718 90.1737 89.7052C92.0138 90.0346 93.9282 90.8846 94.9769 92.7493C95.6278 93.9069 95.7704 95.1463 95.6243 96.3369L96.2637 95.0373L103.847 108.521C104.896 110.386 104.628 112.463 103.953 114.206C103.271 115.972 102.037 117.782 100.495 119.533C97.3951 123.052 92.6603 126.764 87.0592 129.914C81.458 133.064 75.8274 135.182 71.2095 136.003C68.9127 136.412 66.7251 136.525 64.8619 136.192C63.0218 135.862 61.1074 135.012 60.0587 133.148L52.4755 119.664L53.9181 119.793C52.8247 119.299 51.8398 118.534 51.1887 117.376C50.14 115.511 50.4079 113.434 51.0823 111.69C51.7651 109.925 52.9979 108.114 54.5399 106.363C57.64 102.844 62.3753 99.1332 67.9764 95.9831Z"
           fill="url(#paint4_linear_2090_13717)"
           stroke="#1D184C"
-          stroke-width="5"
+          strokeWidth="5"
         />
       </g>
       <path
@@ -171,9 +171,9 @@ function SportsBall({ width = '289', height = '262' }: Props) {
           y2="81.5606"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#848FBF" />
-          <stop offset="0.377213" stop-color="#B2B9D7" />
-          <stop offset="1" stop-color="white" />
+          <stop stopColor="#848FBF" />
+          <stop offset="0.377213" stopColor="#B2B9D7" />
+          <stop offset="1" stopColor="white" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_2090_13717"
@@ -183,8 +183,8 @@ function SportsBall({ width = '289', height = '262' }: Props) {
           y2="196.98"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_2090_13717"
@@ -194,8 +194,8 @@ function SportsBall({ width = '289', height = '262' }: Props) {
           y2="241.787"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="#C8DBEF" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#C8DBEF" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_2090_13717"
@@ -205,8 +205,8 @@ function SportsBall({ width = '289', height = '262' }: Props) {
           y2="201.362"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E85F3C" />
-          <stop offset="1" stop-color="#DE2F51" />
+          <stop stopColor="#E85F3C" />
+          <stop offset="1" stopColor="#DE2F51" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_2090_13717"
@@ -216,8 +216,8 @@ function SportsBall({ width = '289', height = '262' }: Props) {
           y2="127.735"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#6369A7" />
-          <stop offset="1" stop-color="#1D184C" />
+          <stop stopColor="#6369A7" />
+          <stop offset="1" stopColor="#1D184C" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_2090_13717"
@@ -227,8 +227,8 @@ function SportsBall({ width = '289', height = '262' }: Props) {
           y2="133.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#303083" />
-          <stop offset="1" stop-color="#303083" stop-opacity="0" />
+          <stop stopColor="#303083" />
+          <stop offset="1" stopColor="#303083" stopOpacity="0" />
         </linearGradient>
         <clipPath id="clip0_2090_13717">
           <rect

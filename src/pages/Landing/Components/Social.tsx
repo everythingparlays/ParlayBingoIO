@@ -69,7 +69,7 @@ function Social({}: Props) {
       {/* Bottom button */}
       <div className={styles['button-container']}>
         <Button
-          size="md"
+          size="lg"
           bg="var(--primary)"
           color="white"
           hoverBg="linear-gradient(135deg, #E9663A, #F8AC1C)"

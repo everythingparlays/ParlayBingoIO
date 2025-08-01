@@ -14,7 +14,7 @@ function ThreeInARowBonus({width = 100, height = 100}: ThreeInARowBonusProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_2043_16521)">
+      <g clipPath="url(#clip0_2043_16521)">
         <path
           d="M18.8643 69.6163L40.519 199.143C41.4946 204.979 47.9509 208.119 53.182 205.298L118.986 169.832L212.476 154.202C215.175 153.75 216.998 151.207 216.549 148.521L201.687 59.6233C199.839 48.5708 189.339 41.1158 178.234 42.9723L173.231 43.8087L155.544 57.8417L153.685 38.9117L23.2968 60.7105C20.1159 61.2423 17.9656 64.2409 18.4949 67.4068L18.8643 69.6163Z"
           fill="#1D184C"
@@ -1254,9 +1254,9 @@ function ThreeInARowBonus({width = 100, height = 100}: ThreeInARowBonusProps) {
           width="219.107"
           height="188.725"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

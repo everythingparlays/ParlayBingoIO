@@ -27,7 +27,7 @@ export default function LogoHeader({
         display: 'block',
       }}
     >
-      <g clip-path="url(#clip0_2007_5230)">
+      <g clipPath="url(#clip0_2007_5230)">
         <path
           d="M54.2704 37.8702V11.8236C54.2704 5.43567 49.0735 0.239544 42.6846 0.239544H11.5858C5.19689 0.239544 0 5.43567 0 11.8236V42.9178C0 49.3058 5.19689 54.5019 11.5858 54.5019H42.6846C49.0735 54.5019 54.2704 49.3058 54.2704 42.9178V37.8702Z"
           fill="#D9EEFB"
@@ -190,8 +190,8 @@ export default function LogoHeader({
           y2="44.5138"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_2007_5230"
@@ -201,8 +201,8 @@ export default function LogoHeader({
           y2="10.2276"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_2007_5230"
@@ -212,8 +212,8 @@ export default function LogoHeader({
           y2="27.3707"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <clipPath id="clip0_2007_5230">
           <rect

@@ -64,9 +64,9 @@ function CashSticker({width = 219, height = 250}: Props) {
           width="74.5155"
           height="57.3793"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -117,9 +117,9 @@ function CashSticker({width = 219, height = 250}: Props) {
           width="40.3535"
           height="22.1677"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -161,7 +161,7 @@ function CashSticker({width = 219, height = 250}: Props) {
           x1="142.662"
           y1="37.336"
           x2="127.532"
-          y2="59.1653"
+          y2="59.1653"  
           gradientUnits="userSpaceOnUse"
         >
           <stop stop-color="#F3C048" />
@@ -175,8 +175,8 @@ function CashSticker({width = 219, height = 250}: Props) {
           y2="83.2629"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#834B41" />
-          <stop offset="1" stop-color="#735854" />
+          <stop stopColor="#834B41" />
+          <stop offset="1" stopColor="#735854" />
         </linearGradient>
         <radialGradient
           id="paint3_radial_557_40324"
@@ -186,8 +186,8 @@ function CashSticker({width = 219, height = 250}: Props) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(135.615 79.1379) rotate(-165.112) scale(13.4204 10.1074)"
         >
-          <stop stop-color="#7D5A54" />
-          <stop offset="1" stop-color="#7D5A54" stop-opacity="0" />
+          <stop stopColor="#7D5A54" />
+          <stop offset="1" stopColor="#7D5A54" stopOpacity="0" />
         </radialGradient>
       </defs>
     </svg>

@@ -17,9 +17,9 @@ function Arrow({ className }: Props) {
       <path
         d="M7.33301 20L17.333 10M7.33301 20L17.333 30M7.33301 20L30.6663 20"
         stroke="white"
-        stroke-width="3"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )

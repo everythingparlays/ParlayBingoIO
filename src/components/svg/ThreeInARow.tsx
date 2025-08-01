@@ -14,7 +14,7 @@ function ThreeInARow({ width = '187', height = '165'  }: Props) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_2150_12491)">
+      <g clipPath="url(#clip0_2150_12491)">
         <g filter="url(#filter0_d_2150_12491)">
           <path
             d="M7.75554 63.7493L11.8067 92.3065L34.8116 89.043L37.2758 106.413L16.7845 109.32L21.3991 141.849L42.1701 157.457L77.3006 151.963L91.8372 130.825L156.454 121.658L155.631 90.5794L165.305 85.3626L166.806 39.5727L154.216 39.4921L142.155 15.0506L81.1653 45.8639L66.0946 34.5361L26.5096 38.6139L7.75554 63.7493Z"
@@ -78,9 +78,9 @@ function ThreeInARow({ width = '187', height = '165'  }: Props) {
           width="183.281"
           height="167.297"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -114,8 +114,8 @@ function ThreeInARow({ width = '187', height = '165'  }: Props) {
           y2="166.291"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#D9EEFB" />
-          <stop offset="1" stop-color="#6369A7" />
+          <stop stopColor="#D9EEFB" />
+          <stop offset="1" stopColor="#6369A7" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_2150_12491"
@@ -125,8 +125,8 @@ function ThreeInARow({ width = '187', height = '165'  }: Props) {
           y2="111.094"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <clipPath id="clip0_2150_12491">
           <rect

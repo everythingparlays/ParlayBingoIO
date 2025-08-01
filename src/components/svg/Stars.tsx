@@ -16,7 +16,7 @@ const Stars = ({width = '91', height = '14'}: Props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_535_39418)">
+      <g clipPath="url(#clip0_535_39418)">
         <path
           d="M7.17979 0L8.87275 5.34673H14.3596L9.92131 8.65327L11.6181 14L7.17979 10.6935L2.74151 14L4.43828 8.65327L0 5.34673H5.48303L7.17979 0Z"
           fill="#F8AC1C"

@@ -17,7 +17,7 @@ function FeatureDashedLine({ width = 201, height = 4 }: Props) {
       <path
         d="M0 2H201"
         stroke="url(#paint0_linear_535_28781)"
-        stroke-width="3"
+        strokeWidth="3"
       />
       <defs>
         <linearGradient
@@ -28,9 +28,9 @@ function FeatureDashedLine({ width = 201, height = 4 }: Props) {
           y2="2.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.533654" stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.533654" stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>

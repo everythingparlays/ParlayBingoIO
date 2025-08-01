@@ -17,7 +17,7 @@ const DashedLine = ({ width = 78, height = 4 }: DashedLineProps) => {
       <path
         d="M0 2H78"
         stroke="url(#paint0_linear_2035_10749)"
-        stroke-width="3"
+        strokeWidth="3"
       />
       <defs>
         <linearGradient
@@ -28,9 +28,9 @@ const DashedLine = ({ width = 78, height = 4 }: DashedLineProps) => {
           y2="2.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.533654" stop-color="#848FBF" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.533654" stopColor="#848FBF" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>

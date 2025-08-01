@@ -35,7 +35,7 @@ function Leaders({width = 100, height = 100}: Props) {
         height="24"
         fill="#303083"
         stroke="#F8AC1C"
-        stroke-width="5"
+        strokeWidth="5"
       />
       <rect
         x="67"
@@ -44,7 +44,7 @@ function Leaders({width = 100, height = 100}: Props) {
         height="31"
         fill="#303083"
         stroke="#F8AC1C"
-        stroke-width="5"
+        strokeWidth="5"
       />
       <rect
         x="50"
@@ -53,7 +53,7 @@ function Leaders({width = 100, height = 100}: Props) {
         height="44"
         fill="url(#paint0_linear_554_39704)"
         stroke="#F8AC1C"
-        stroke-width="5"
+        strokeWidth="5"
       />
       <rect
         x="24.5"
@@ -70,7 +70,7 @@ function Leaders({width = 100, height = 100}: Props) {
         height="33"
         rx="16.5"
         stroke="#1D184C"
-        stroke-width="3"
+        strokeWidth="3"
       />
       <path
         d="M40.848 26.7201H36.816V23.2401H44.568V41.0001H40.848V26.7201Z"
@@ -85,8 +85,8 @@ function Leaders({width = 100, height = 100}: Props) {
           y2="97.5339"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
       </defs>
     </svg>

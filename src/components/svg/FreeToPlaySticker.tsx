@@ -244,9 +244,9 @@ function FreeToPlaySticker({width, height}: Props) {
           width="309.604"
           height="256.196"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -280,8 +280,8 @@ function FreeToPlaySticker({width, height}: Props) {
           y2="197.592"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_557_41153"
@@ -291,8 +291,8 @@ function FreeToPlaySticker({width, height}: Props) {
           y2="100.466"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_557_41153"
@@ -302,8 +302,8 @@ function FreeToPlaySticker({width, height}: Props) {
           y2="148.66"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
       </defs>
     </svg>

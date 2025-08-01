@@ -611,10 +611,8 @@
     width: 100%;
     order: 1;
     padding: var(--size-4) var(--size-3);
-    min-height: calc(100vh - var(--header-height));
-    min-height: calc(
-      100dvh - var(--header-height)
-    ); /* Account for mobile browser UI */
+    min-height: 50vh;
+    min-height: 50dvh; /* Account for mobile browser UI */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -626,7 +624,7 @@
 
   .hero-right {
     width: 100%;
-    height: 60vh;
+    height: 50vh;
     order: 2;
     margin-top: var(--size-3);
     position: relative;

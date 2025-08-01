@@ -25,8 +25,8 @@ const Comma = ({width = '15', height = '13'}: Props) => {
           y2="47.9853"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
       </defs>
     </svg>

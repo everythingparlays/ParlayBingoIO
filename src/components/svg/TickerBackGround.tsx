@@ -66,8 +66,8 @@ const TickerBackGround = () => {
           y2="988"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#303083" stop-opacity="0" />
-          <stop offset="1" stop-color="#303083" />
+          <stop stopColor="#303083" stopOpacity="0" />
+          <stop offset="1" stopColor="#303083" />
         </linearGradient>
         <image
           id="image0_565_111398"

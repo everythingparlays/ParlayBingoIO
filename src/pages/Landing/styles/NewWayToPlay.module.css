@@ -1,10 +1,13 @@
 #section {
   background-color: var(--primary);
-  min-height: 60vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: row;
   padding: 2rem;
   margin-bottom: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .left-side {
@@ -62,7 +65,7 @@
 
 .text {
   margin-top: 1rem;
-  width: 80%;
+  /* width: 80%; */
 }
 
 .button-container {
@@ -84,7 +87,7 @@
 }
 
 .text-container p {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.5;
   text-align: center;
@@ -98,9 +101,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.5rem;
   font-weight: 400;
-  line-height: 1.5;
 }
 
 .right-side {
@@ -160,6 +161,8 @@
     width: 100%;
     align-items: center;
   }
+  
+
 
   .svg-container {
     display: flex;
@@ -204,7 +207,7 @@
   }
 
   .text-container p {
-    font-size: 1.33rem;
+    font-size: 1.25rem;
   }
 
   .text-container span {

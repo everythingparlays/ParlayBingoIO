@@ -14,7 +14,7 @@ function FooterLogo({ width = '291', height = '252'  }: Props) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_2064_10542)">
+      <g clipPath="url(#clip0_2064_10542)">
         <path
           d="M217.019 99.1465V30.5199C217.019 13.6892 203.322 0 186.483 0H104.509C87.6692 0 73.9727 13.6892 73.9727 30.5199V112.45C73.9727 129.281 87.6692 142.97 104.509 142.97H186.483C203.322 142.97 217.019 129.281 217.019 112.45V99.1547V99.1465Z"
           fill="#D9EEFB"
@@ -174,8 +174,8 @@ function FooterLogo({ width = '291', height = '252'  }: Props) {
           y2="116.649"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_2064_10542"
@@ -185,8 +185,8 @@ function FooterLogo({ width = '291', height = '252'  }: Props) {
           y2="26.3119"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_2064_10542"
@@ -196,8 +196,8 @@ function FooterLogo({ width = '291', height = '252'  }: Props) {
           y2="71.4808"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <clipPath id="clip0_2064_10542">
           <rect width="291" height="252" fill="white" />

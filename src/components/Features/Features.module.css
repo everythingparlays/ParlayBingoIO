@@ -76,13 +76,13 @@
 .featuresGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--size-4);
+  gap: 1rem;
   position: relative;
   z-index: 2;
 }
 
 .featuresGrid > :last-child {
-  margin-bottom: 4rem !important;
+  margin-bottom: 2rem !important;
 }
 
 /* Tablet and up */
@@ -98,7 +98,7 @@
   }
 
   .featuresGrid {
-    gap: var(--size-4);
+    gap: 1rem;
   }
 
   .cornerBlock svg {
@@ -111,7 +111,7 @@
 @media screen and (min-width: 1024px) {
   .featuresGrid {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--size-7);
+    gap: 1rem;
   }
 
   .cornerBlock svg {
@@ -157,8 +157,9 @@
 
 @media screen and (max-width: 480px) {
   .title {
-    margin-top: var(--size-7);
-    margin-bottom: var(--size-7);
+    /* margin-top: ; */
+    /* margin-bottom: var(--size-7); */
+    margin: 0;
   }
 
   .cornerBlock svg {
@@ -184,5 +185,17 @@
   .cornerBlock[data-corner='bottom-left'],
   .cornerBlock[data-corner='bottom-right'] {
     bottom: -10px;
+  }
+}
+
+/* Large desktop - reduce excessive spacing */
+@media screen and (min-width: 1200px) {
+  .header {
+    margin-top: 2rem; /* Reduced from 4rem (64px) to 2rem (32px) */
+    margin-bottom: var(--size-2); /* Reduced spacing */
+  }
+
+  .featuresGrid > :last-child {
+    margin-bottom: 1rem !important; /* Reduced from 2rem to 1rem */
   }
 }

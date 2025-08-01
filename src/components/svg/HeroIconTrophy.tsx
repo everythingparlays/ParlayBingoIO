@@ -13,7 +13,7 @@ export default function HeroIconTrophy({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_2006_6559)">
+      <g clipPath="url(#clip0_2006_6559)">
         <g filter="url(#filter0_d_2006_6559)">
           <path
             d="M139.776 33.6444C147.966 34.9998 155.121 39.7189 159.742 46.5563L160.166 47.1996C164.268 53.6049 165.896 61.2983 164.893 68.8143L170.198 69.6923L170.856 69.8091C177.626 71.103 183.652 74.9508 187.674 80.5689L188.056 81.117C191.928 86.8193 193.468 93.8006 192.34 100.617L190.616 111.034L190.55 111.418L190.547 111.442L190.542 111.464C188.829 121.07 183.43 129.636 175.486 135.324C167.542 141.012 157.693 143.364 148.046 141.89L148.024 141.887L148.001 141.883L147.616 141.822L147.587 141.817C145.726 141.509 143.903 141.06 142.13 140.484C140.917 141.633 139.647 142.726 138.321 143.758L137.818 144.144C131.87 148.652 125.094 151.734 117.99 153.228L117.887 153.848C121.953 155.309 125.658 157.814 128.474 161.246L128.829 161.69C132.441 166.324 134.217 172.3 133.207 178.398L132.753 181.142C132.09 185.146 129.737 188.368 126.723 190.346L126.43 190.533C123.32 192.463 119.726 193.032 116.434 192.487L72.9633 185.292C69.7742 184.765 66.6534 183.156 64.3507 180.484L64.1308 180.222C61.9209 177.528 60.6487 173.907 61.0669 170.051L61.113 169.676L61.1179 169.634L61.1248 169.593L61.1571 169.38L61.1632 169.337L61.6244 166.551C62.6663 160.256 66.4749 155.04 71.6318 151.838L72.1136 151.547C75.5773 149.511 79.4697 148.431 83.3887 148.264L83.5116 147.522C77.4441 143.924 72.154 139.006 68.0251 133.057L67.6664 132.533C66.5982 130.952 65.6233 129.319 64.7423 127.641C62.9548 127.628 61.1608 127.487 59.3738 127.214L59.3515 127.211L59.3283 127.207L58.9436 127.146L58.9147 127.141C49.4287 125.571 40.9235 120.412 35.1479 112.755L34.5977 112.006C28.8196 103.936 26.4834 93.9 28.1041 84.1076L29.8234 73.7196C30.9881 66.6828 34.9004 60.396 40.6999 56.2435C46.4996 52.091 53.7116 50.413 60.7485 51.5775L66.3057 52.4973C67.8278 44.8085 72.073 37.8458 78.3538 33.0859L78.9753 32.6265C85.4488 27.9698 93.4811 25.9823 101.415 27.2952L139.776 33.6444ZM162.1 118.268C162.121 118.255 162.142 118.243 162.163 118.23L162.167 118.227C162.145 118.241 162.122 118.254 162.1 118.268Z"
@@ -37,8 +37,8 @@ export default function HeroIconTrophy({
           fill="#1D184C"
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M40.7734 75.5317C41.4575 71.3988 43.7552 67.707 47.1613 65.2683C50.5673 62.8296 54.8026 61.8438 58.9355 62.5278L79.7127 65.9666C83.8456 66.6506 87.5374 68.9484 89.9761 72.3545C92.4148 75.7605 93.4006 79.9958 92.7166 84.1287L90.9972 94.5173C89.8571 101.405 86.0275 107.558 80.3508 111.623C74.674 115.687 67.6152 117.33 60.7271 116.19C53.839 115.05 47.6859 111.221 43.6214 105.544C39.557 99.8672 37.914 92.8084 39.054 85.9203L40.7734 75.5317ZM57.2161 72.9165C55.8385 72.6884 54.4267 73.017 53.2913 73.8299C52.156 74.6428 51.3901 75.8734 51.1621 77.2511L49.4427 87.6397C48.7586 91.7725 49.7444 96.0078 52.1831 99.4139C54.6218 102.82 58.3136 105.118 62.4465 105.802C66.5794 106.486 70.8147 105.5 74.2207 103.061C77.6267 100.623 79.9245 96.9307 80.6085 92.7979L82.3279 82.4093C82.5559 81.0316 82.2274 79.6199 81.4145 78.4845C80.6016 77.3492 79.3709 76.5833 77.9933 76.3552L57.2161 72.9165Z"
           fill="url(#paint2_linear_2006_6559)"
         />
@@ -47,8 +47,8 @@ export default function HeroIconTrophy({
           fill="#1D184C"
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M129.446 90.2076C130.13 86.0747 132.428 82.3829 135.834 79.9442C139.24 77.5055 143.475 76.5197 147.608 77.2037L168.386 80.6425C172.518 81.3265 176.21 83.6243 178.649 87.0304C181.088 90.4364 182.073 94.6717 181.389 98.8046L179.67 109.193C178.53 116.081 174.7 122.234 169.024 126.299C163.347 130.363 156.288 132.006 149.4 130.866C142.512 129.726 136.359 125.897 132.294 120.22C128.23 114.543 126.587 107.484 127.727 100.596L129.446 90.2076ZM145.889 87.5924C144.511 87.3643 143.1 87.6929 141.964 88.5058C140.829 89.3187 140.063 90.5493 139.835 91.927L138.116 102.316C137.431 106.448 138.417 110.684 140.856 114.09C143.295 117.496 146.986 119.794 151.119 120.478C155.252 121.162 159.488 120.176 162.894 117.737C166.3 115.298 168.597 111.607 169.281 107.474L171.001 97.0852C171.229 95.7075 170.9 94.2958 170.087 93.1604C169.274 92.0251 168.044 91.2592 166.666 91.0312L145.889 87.5924Z"
           fill="url(#paint3_linear_2006_6559)"
         />
@@ -117,9 +117,9 @@ export default function HeroIconTrophy({
           width="181.1"
           height="181.785"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -153,8 +153,8 @@ export default function HeroIconTrophy({
           y2="167.197"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_2006_6559"
@@ -164,8 +164,8 @@ export default function HeroIconTrophy({
           y2="194.624"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8AC1C" />
-          <stop offset="1" stop-color="#DB2156" />
+          <stop stopColor="#F8AC1C" />
+          <stop offset="1" stopColor="#DB2156" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_2006_6559"
@@ -175,8 +175,8 @@ export default function HeroIconTrophy({
           y2="79.439"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#EB4824" />
-          <stop offset="1" stop-color="#FFCD0F" stop-opacity="0.988" />
+          <stop stopColor="#EB4824" />
+          <stop offset="1" stopColor="#FFCD0F" stopOpacity="0.988" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_2006_6559"
@@ -186,8 +186,8 @@ export default function HeroIconTrophy({
           y2="107.01"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#EB4824" />
-          <stop offset="1" stop-color="#FFCD0F" stop-opacity="0.988" />
+          <stop stopColor="#EB4824" />
+          <stop offset="1" stopColor="#FFCD0F" stopOpacity="0.988" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_2006_6559"
@@ -197,8 +197,8 @@ export default function HeroIconTrophy({
           y2="225.84"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_2006_6559"
@@ -208,8 +208,8 @@ export default function HeroIconTrophy({
           y2="80.5714"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB2156" />
-          <stop offset="1" stop-color="#F8AC1C" />
+          <stop stopColor="#DB2156" />
+          <stop offset="1" stopColor="#F8AC1C" />
         </linearGradient>
         <clipPath id="clip0_2006_6559">
           <rect

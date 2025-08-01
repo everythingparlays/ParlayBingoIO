@@ -12,7 +12,7 @@ function ThreeInARowBonusPhone({}: Props) {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <g clip-path="url(#clip0_2043_19895)">
+      <g clipPath="url(#clip0_2043_19895)">
         <rect x="68" y="11" width="254" height="439" rx="37" fill="white" />
         <rect
           x="67.2056"
@@ -44,12 +44,12 @@ function ThreeInARowBonusPhone({}: Props) {
         />
       </g>
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M334.983 0L51.8711 0L51.8711 576.888H334.983V0ZM69.1049 31.8568C64.943 40.0248 64.943 50.7174 64.943 72.1024V506.506C64.943 527.891 64.943 538.583 69.1049 546.751C72.7657 553.936 78.6071 559.777 85.7919 563.438C93.9599 567.6 104.652 567.6 126.037 567.6H260.473C281.858 567.6 292.55 567.6 300.718 563.438C307.903 559.777 313.744 553.936 317.405 546.751C321.567 538.583 321.567 527.891 321.567 506.506V72.1024C321.567 50.7174 321.567 40.0248 317.405 31.8568C313.744 24.672 307.903 18.8306 300.718 15.1698C292.55 11.008 281.858 11.008 260.473 11.008L126.037 11.008C104.652 11.008 93.9599 11.008 85.7919 15.1698C78.6071 18.8306 72.7657 24.672 69.1049 31.8568Z"
         fill="url(#pattern1_2043_19895)"
       />
-      <g clip-path="url(#clip1_2043_19895)">
+      <g clipPath="url(#clip1_2043_19895)">
         <rect
           x="151.975"
           y="18.5759"
@@ -235,9 +235,9 @@ function ThreeInARowBonusPhone({}: Props) {
           width="153.358"
           height="178.178"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -281,9 +281,9 @@ function ThreeInARowBonusPhone({}: Props) {
           width="153.358"
           height="178.178"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -327,9 +327,9 @@ function ThreeInARowBonusPhone({}: Props) {
           width="153.358"
           height="178.178"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -373,9 +373,9 @@ function ThreeInARowBonusPhone({}: Props) {
           width="77.052"
           height="43.4597"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -408,9 +408,9 @@ function ThreeInARowBonusPhone({}: Props) {
           width="77.052"
           height="43.4597"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -443,9 +443,9 @@ function ThreeInARowBonusPhone({}: Props) {
           width="77.052"
           height="43.4597"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -541,4 +541,4 @@ function ThreeInARowBonusPhone({}: Props) {
   )
 }
 
-export default ThreeInARowBonusPhone
+export default ThreeInARowBonusPhone;

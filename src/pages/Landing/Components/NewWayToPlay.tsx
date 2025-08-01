@@ -84,7 +84,7 @@ function NewWayToPlay({}: Props) {
       <div
         className={styles['right-side']}
         style={{
-          marginBottom: '3rem',
+          marginBottom: '2rem',
         }}
       >
         <Features
