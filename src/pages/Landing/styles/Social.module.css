@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
 }
 
 .title-container {
@@ -21,11 +22,6 @@
 
 .title-text {
   display: inline-block;
-  background: linear-gradient(90deg, #db2156 0%, #f8ac1c 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #db2156; /* Fallback for older browsers */
   font-weight: bold;
 }
 
@@ -79,7 +75,7 @@
   top: 15rem;
   left: -5rem;
   right: -10rem;
-  bottom: -7rem;
+  bottom: -15rem;
   background-image: linear-gradient(
       to bottom,
       rgba(var(--primaryRGB), 1) 2%,
@@ -129,14 +125,19 @@
   height: 100%;
 }
 
-.gradient-text {
+.gradient-line {
   background: linear-gradient(135deg, #f8ac1c, #e9663a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.5rem;
-  font-weight: 400;
-  line-height: 1.5;
+  font-weight: bold;
+}
+
+.white-line {
+  color: white !important;
+  font-weight: bold;
+  -webkit-text-fill-color: white !important;
+  background: none !important;
 }
 
 .button-container {

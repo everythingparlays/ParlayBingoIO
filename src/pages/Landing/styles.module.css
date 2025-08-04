@@ -558,15 +558,18 @@
 .phone-primary picture {
   width: 100%;
   height: auto;
-  /* Improve image quality for Safari/Firefox */
+  /* High-quality image rendering for 3x PNG */
   image-rendering: -webkit-optimize-contrast; /* Safari */
-  image-rendering: -moz-crisp-edges; /* Firefox */
   image-rendering: high-quality; /* General */
-  image-rendering: smooth; /* Chrome/Edge */
+  image-rendering: auto; /* Let browser decide best quality */
+  /* Prevent blurry scaling */
   -webkit-backface-visibility: hidden; /* Safari fix */
   -webkit-transform: translateZ(0); /* Force hardware acceleration */
   backface-visibility: hidden;
   transform: translateZ(0); /* Force GPU acceleration */
+  /* Additional quality improvements */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .phone-secondary {

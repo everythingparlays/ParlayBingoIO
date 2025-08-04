@@ -26,16 +26,16 @@ function Social({}: Props) {
       {/* Title */}
       <div className={styles['title-container']}>
         <h1
-          className={`gradient-text ${styles['title-text']}`}
+          className={styles['title-text']}
           style={{ fontSize: '2rem' }}
         >
-          <span className={styles['title-line']} style={{ fontSize: '2rem' }}>
+          <span className={`${styles['title-line']} ${styles['gradient-line']}`} style={{ fontSize: '2rem' }}>
             BE SOCIAL. 
           </span>
-          <span className={styles['title-line']} style={{ fontSize: '2rem' }}>
+          <span className={`${styles['title-line']} ${styles['gradient-line']}`} style={{ fontSize: '2rem' }}>
             MAKE FRIENDS.
           </span>
-          <span className={styles['title-line']} style={{ fontSize: '2rem' }}>
+          <span className={`${styles['title-line']} ${styles['white-line']}`} style={{ fontSize: '2rem' }}>
             HAVE FUN.
           </span>
         </h1>
