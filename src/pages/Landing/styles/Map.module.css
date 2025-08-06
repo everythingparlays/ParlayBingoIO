@@ -456,6 +456,9 @@ div[class*='contest-tab']:last-child:not([class*='contest-tab-active']) {
   .map-footer-subtitle{
     margin-bottom: 2rem;
   }
+  .map-content {
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 1200px) {

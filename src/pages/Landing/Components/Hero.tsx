@@ -67,7 +67,8 @@ function Hero() {
 
             <div className={styles['app-store-buttons']}>
               <a
-                href="/download"
+                href="https://docs.google.com/forms/d/1Rxwi9b8uKDTDZ2JcKnUrWLbTItRA6WZHWnE77X57kd0/viewform?edit_requested=true"
+                target="_blank"
                 onClick={() => {
                   trackDownloadButton({
                     page: '/',
@@ -82,7 +83,10 @@ function Hero() {
                 className={styles['app-store-button']}
               >
                 {/* HERO BUTTON SIZE CONTROL: Change these width/height values to adjust hero app store button sizes */}
-                <AppleDownload width={isMobile ? 120 : 200} height={isMobile ? 36 : 60} />
+                <AppleDownload
+                  width={isMobile ? 120 : 200}
+                  height={isMobile ? 36 : 60}
+                />
               </a>
               <a
                 href="/download"
@@ -100,7 +104,10 @@ function Hero() {
                 aria-label="Google Play Store Button"
               >
                 {/* HERO BUTTON SIZE CONTROL: Change these width/height values to adjust hero app store button sizes */}
-                <GooglePlayDownload width={isMobile ? 120 : 200} height={isMobile ? 36 : 60} />
+                <GooglePlayDownload
+                  width={isMobile ? 120 : 200}
+                  height={isMobile ? 36 : 60}
+                />
               </a>
             </div>
           </div>
@@ -133,7 +140,7 @@ function Hero() {
 
             {/* Primary phone SVG - z-index: 3 */}
             <div
-              style={{ 
+              style={{
                 position: 'absolute',
                 width: '220%',
                 height: 'auto',

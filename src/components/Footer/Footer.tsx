@@ -83,7 +83,8 @@ export default function Footer() {
               />
             </a>
             <a
-              href="/download"
+              href="https://docs.google.com/forms/d/1Rxwi9b8uKDTDZ2JcKnUrWLbTItRA6WZHWnE77X57kd0/viewform?edit_requested=true"
+              target="_blank"
               onClick={() => {
                 trackDownloadButton({
                   page: location.pathname,

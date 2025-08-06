@@ -119,7 +119,7 @@ const DFSSchema: React.FC<DFSSchemaProps> = ({
               },
               {
                 '@type': 'HowToStep',
-                name: 'Your Board. Exactly How You Want.',
+                name: 'Your Board. How You Want.',
                 text: 'Fill your board with team props, player props, alternative lines and totals across multiple sports',
               },
               {

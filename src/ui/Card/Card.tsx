@@ -6,9 +6,7 @@ type Props = {
   description: string
 }
 
-
-
-function Card({image, title, description}: Props) {
+function Card({ image, title, description }: Props) {
   return (
     <div className={styles.card}>
       {/* Image */}
