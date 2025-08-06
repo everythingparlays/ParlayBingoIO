@@ -595,7 +595,7 @@ button.secondary-cta {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #db2156 0%, #f8ac1c 100%);
+  background: linear-gradient(135deg, #f8ac1c, #e9663a);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

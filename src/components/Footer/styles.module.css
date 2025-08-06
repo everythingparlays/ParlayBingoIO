@@ -1,11 +1,12 @@
 #footer {
   background-color: var(--primary);
-  padding: 0;
+  padding: 1rem 0 0 0;
   position: relative;
-  min-height: 930px;
+  height: auto;
   display: grid;
+  margin: 0 auto;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
   gap: 2rem;
 }
@@ -22,8 +23,8 @@
   position: relative;
   max-width: 400px;
   height: 650px;
-  margin-left: 80px;
-  margin-top: 140px;
+  margin-top: 20px;
+  justify-self: center;
 }
 
 /* Gradient background for the main content */
@@ -42,7 +43,7 @@
   text-align: center;
   z-index: 2;
   overflow: hidden;
-  margin: 0;
+  /* margin-left: 10vw; */
 }
 
 /* Title container with dashed lines */
@@ -131,11 +132,11 @@
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
 }
 
-/* Sports ball decorations container */
-.left-container-decorations {
+/* Sports ball decorations container - positioned relative to footer */
+.footer-left-decorations {
   position: absolute;
-  bottom: -25%;
-  left: -100px;
+  bottom: -5%;
+  left: 0;
   width: 100%;
   max-height: 250px;
   pointer-events: none;
@@ -326,6 +327,13 @@ footer a:hover {
     max-width: 160px;
     flex-shrink: 0;
   }
+  .left-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
 }
 
 /* Small screens - gradual sizing like Hero */
@@ -360,10 +368,7 @@ footer a:hover {
     justify-content: space-between;
   }
 
-  /* Responsive adjustments for left container */
-  .left-container {
-    margin-left: 60px;
-  }
+  /* Responsive adjustments for left container - centering handled by justify-self: center */
 }
 
 @media screen and (width <= 768px) {
@@ -376,11 +381,13 @@ footer a:hover {
   }
 
   .left-container {
-    margin: 0 auto var(--size-6) auto;
-    width: 90%;
-    max-width: 400px;
+    /* margin: 0 auto var(--size-6) auto; */
+    display: flex;
+    width: 100%;
+    max-width: 450px;
     height: auto;
     min-height: 500px;
+    align-items: start;
   }
 
   .left-container-content {
@@ -395,7 +402,7 @@ footer a:hover {
     height: 200px;
   }
 
-  .left-container-decorations {
+  .footer-left-decorations {
     display: none;
   }
 
@@ -450,6 +457,10 @@ footer a:hover {
 /* Add this new media query for screens less than 480px */
 @media screen and (max-width: 480px) {
   /* Mobile layout using flexbox */
+
+  #footer {
+    align-items: center; /* Override flex-start for mobile centering */
+  }
 
   .footer-links-container {
     display: flex;
@@ -633,5 +644,8 @@ footer a:hover {
   .footer-bottom-container a,
   .footer-bottom-container span {
     text-align: left;
+  }
+  .left-container {
+    max-width: 90%;
   }
 }

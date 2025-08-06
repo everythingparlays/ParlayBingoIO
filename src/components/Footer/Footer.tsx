@@ -45,7 +45,7 @@ export default function Footer() {
     <footer id={styles['footer']} data-section="contact">
       {/* Left */}
       {/* {!isMobile && ( */}
-        <div className={styles['left-container']}>
+      <div className={styles['left-container']}>
         <div className={styles['left-container-content']}>
           <div className={styles['title-container']}>
             <DashedLine />
@@ -77,7 +77,10 @@ export default function Footer() {
               aria-label="Apple App Store Button"
             >
               {/* BUTTON SIZE CONTROL: Change these width/height values to adjust app store button sizes */}
-              <AppleDownload width={isMobile ? 150 : 240} height={isMobile ? 48 : 74} />
+              <AppleDownload
+                width={isMobile ? 150 : 240}
+                height={isMobile ? 48 : 74}
+              />
             </a>
             <a
               href="/download"
@@ -95,16 +98,28 @@ export default function Footer() {
               aria-label="Google Play Store Button"
             >
               {/* BUTTON SIZE CONTROL: Change these width/height values to adjust app store button sizes */}
-              <GooglePlayDownload width={isMobile ? 120 : 160} height={isMobile ? 36 : 48} />
+              <GooglePlayDownload
+                width={isMobile ? 120 : 160}
+                height={isMobile ? 36 : 48}
+              />
             </a>
           </div>
           <div className={styles['qr-code-container']}>
-            <QrCode />
+            <img
+              src="/assets/images/qr-code-for-download-redirect.png"
+              alt="QR code to download the app"
+              style={{
+                // width: 'min(80%, 256px)',
+                height: 'auto',
+                borderRadius: '10px',
+              }} // Rounded corners
+            />
           </div>
         </div>
-        <div className={styles['left-container-decorations']}>
-          <SportsBall />
-        </div>
+      </div>
+      {/* Footer decorations positioned relative to footer, not left container */}
+      <div className={styles['footer-left-decorations']}>
+        <SportsBall />
       </div>
       {/* )} */}
       {/* Right*/}
@@ -143,7 +158,7 @@ export default function Footer() {
                     }}
                     style={{ cursor: 'pointer' }}
                   >
-                    How to play                       
+                    How to play
                   </p>
                   <p>The Team</p>
                   <a

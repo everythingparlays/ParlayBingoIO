@@ -36,7 +36,8 @@ p {
 }
 
 .titles-container h1 {
-  font-size: var(--size-5);
+  font-size: 2.875rem;
+  font-weight: 900;
 }
 
 .titles-container h2 {
@@ -61,13 +62,14 @@ p {
 .content-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 4rem;
   padding: 0 2rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  align-items: stretch;
 }
 
 @media screen and (max-width: 480px) {
@@ -105,5 +107,18 @@ p {
   .content-container {
     grid-template-columns: 1fr;
     padding: 0 1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    height: auto;
   }
 }

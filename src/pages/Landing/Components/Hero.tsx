@@ -4,7 +4,6 @@ import HeroIconTrophy from 'components/svg/HeroIconTrophy'
 import GooglePlayDownload from 'components/svg/GooglePlayDownload'
 import AppleDownload from 'components/svg/AppleDownload'
 import LinearGradient from 'ui/LinearGradient'
-import PrimaryPhoneHero from 'components/svg/PrimaryPhoneHero'
 import SecondaryPhoneHero from 'components/svg/SecondaryPhoneHero'
 import HeroBlock from 'components/svg/HeroBlock'
 import DashedLine from 'components/svg/DashedLine'
@@ -144,17 +143,13 @@ function Hero() {
               }}
               className={styles['phone-primary']}
             >
-              <picture>
-                <source
-                  srcSet="/assets/images/landing/PrimaryPhoneHero.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/assets/images/landing/PrimaryPhoneHero.png"
-                  alt="Primary Phone"
-                  loading="eager"
-                />
-              </picture>
+              <img
+                src="/assets/images/landing/PrimaryPhoneHero3x.png"
+                alt="Primary Phone"
+                loading="eager"
+                {...({ fetchpriority: 'high' } as any)}
+                decoding="async"
+              />
             </div>
 
             {/* Secondary phone SVG - z-index: 2 */}

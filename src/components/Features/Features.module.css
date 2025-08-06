@@ -5,7 +5,7 @@
   overflow: hidden;
   border-radius: 1rem;
   border: 0.2rem solid #1d184c;
-  width: 80%;
+  width: 100%;
 }
 
 .featuresSection .container {
@@ -110,7 +110,7 @@
 /* Desktop */
 @media screen and (min-width: 1024px) {
   .featuresGrid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 
@@ -124,9 +124,8 @@
 @media screen and (max-width: 767px) {
   .featuresSection {
     width: 100%;
-    max-width: 90vw;
     margin: 0 auto;
-    padding: var(--size-4) var(--size-2);
+    padding: 1rem 0;
   }
 
   .cornerBlock svg {
