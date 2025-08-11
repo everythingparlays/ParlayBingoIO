@@ -8,6 +8,8 @@ Allow: /parlay-bingo
 Allow: /overboardsports-promo-code
 Allow: /daily-fantasy-sports-california
 Allow: /daily-fantasy-sports-florida
+Allow: /daily-fantasy-sports-new-york
+Allow: /daily-fantasy-sports-illinois
 Allow: /daily-fantasy-sports-nba
 Allow: /daily-fantasy-sports-nfl
 Allow: /daily-fantasy-sports-mlb

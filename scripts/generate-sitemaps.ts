@@ -28,6 +28,16 @@ const routes = [
     changefreq: 'monthly',
     priority: 0.8,
   },
+  {
+    url: '/daily-fantasy-sports-illinois',
+    changefreq: 'monthly',
+    priority: 0.8,
+  },
+  {
+    url: '/daily-fantasy-sports-new-york',
+    changefreq: 'monthly',
+    priority: 0.8,
+  },
   { url: '/daily-fantasy-sports-nba', changefreq: 'weekly', priority: 0.8 },
   { url: '/daily-fantasy-sports-nfl', changefreq: 'weekly', priority: 0.8 },
   { url: '/daily-fantasy-sports-mlb', changefreq: 'weekly', priority: 0.8 },

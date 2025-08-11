@@ -88,6 +88,14 @@ function App() {
                 element={<DailyFantasySportsRoute state="florida" />}
               />
               <Route
+                path="/daily-fantasy-sports-illinois"
+                element={<DailyFantasySportsRoute state="illinois" />}
+              />
+              <Route
+                path="/daily-fantasy-sports-new-york"
+                element={<DailyFantasySportsRoute state="new-york" />}
+              />
+              <Route
                 path="/daily-fantasy-sports-nba"
                 element={<DailyFantasySportsRoute sport="nba" />}
               />
