@@ -25,7 +25,7 @@ function Hero() {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth <= 480)
     }
-    
+
     checkScreenSize()
     window.addEventListener('resize', checkScreenSize)
 
@@ -67,7 +67,7 @@ function Hero() {
 
             <div className={styles['app-store-buttons']}>
               <a
-                href="https://docs.google.com/forms/d/1Rxwi9b8uKDTDZ2JcKnUrWLbTItRA6WZHWnE77X57kd0/viewform?edit_requested=true"
+                href="https://apps.apple.com/us/app/parlay-bingo/id1665470403"
                 target="_blank"
                 onClick={() => {
                   trackDownloadButton({
@@ -89,7 +89,8 @@ function Hero() {
                 />
               </a>
               <a
-                href="/download"
+                href="https://docs.google.com/forms/d/1Rxwi9b8uKDTDZ2JcKnUrWLbTItRA6WZHWnE77X57kd0/viewform?edit_requested=true"
+                target="_blank"
                 onClick={() => {
                   trackDownloadButton({
                     page: '/',
