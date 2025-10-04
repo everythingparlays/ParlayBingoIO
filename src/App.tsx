@@ -68,6 +68,7 @@ function App() {
               <Route path="/help-center" element={<HelpCenter />} />
               <Route path="/contests" element={<Contests />} />
               <Route path="/download" element={<DownloadPage />} />
+              <Route path="/app" element={<DownloadPage />} />
 
               {/* SEO Routes that redirect to landing page sections */}
               <Route
