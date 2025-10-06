@@ -1,7 +1,9 @@
 export interface User{ 
     _id: string;
     cognitoSubNumber: string;
+    oldCognitoSubNumber?: string; //This is for users who have gotten migrated between pools
     username: string;
+    userBio: string;
     email: string;
     phoneNumber: string;
     accountCreationDate: Date;
@@ -9,16 +11,24 @@ export interface User{
     profilePictureUrl: string;
     parlaysHit: Number;
     gamesPlayed: Number;
+    bestScore?: Number;
+    biggestWin?: Number;
+    totalWinnings?: Number;
+    averageScore?: Number;
+    totalBoards?: Number;
+    tokensSpent?: Number;
     accountBalance: Number;
     accountFreePlay: Number;
     admin: Boolean;
-    verified: string; //"Yes" | "No"| "Pending"
-    color1?: string;
-    color2?: string;
-    color3?: string;
+    verified: String; //"Yes" | "No"| "Pending"
+    pushToken?: String;
+    color1?: String;
+    color2?: String;
+    color3?: String;
+    friendsCount?: Number;
 }
 
-
+//@depreciated
 export function isUser(obj: any): obj is User {
     return (
       obj &&

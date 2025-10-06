@@ -21,6 +21,7 @@ const PromoCodeRoute = lazy(() => import('pages/SEORoutes/PromoCodeRoute'))
 const DailyFantasySportsRoute = lazy(
   () => import('pages/SEORoutes/DailyFantasySportsRoute')
 )
+const DownloadNew = lazy(() => import('pages/Download_new/Download_new'))
 
 // Initialize Segment Analytics
 export const analytics = AnalyticsBrowser.load({
@@ -113,6 +114,10 @@ function App() {
               path="/contest/redirect/:id"
               element={<SingleContestRedirectPage />}
             />
+            {/* New generic download route with deep link query parameter */}
+            <Route path="/Download_new" element={<DownloadNew />} />
+            {/* Legacy route for backward compatibility */}
+            <Route path="/Download_new/:type/:code" element={<DownloadNew />} />
           </Routes>
         </Suspense>
       </ThemeProvider>

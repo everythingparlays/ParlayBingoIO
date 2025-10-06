@@ -47,6 +47,7 @@ export interface BettingProp {
     progressValue: number; // if it is a player prop this shows in game how far the player is
     isFinal: boolean; //shows if this prop has been resulted or not
     showProp: boolean; //Show or hide prop from users
+    locked: boolean; //if the prop is locked or not (time expiring on bet event will also lock the props
 }
 
 export interface CreateBettingPropParams {
@@ -81,3 +82,34 @@ export function checkAlternateValue(checkBettingProp: BettingProp) {
         return(checkBettingProp.value)
     }
 }
+
+export const propsAreFromTheSameTeam = (propOne: BettingProp, propTwo: BettingProp): boolean => {
+    //@ts-ignore
+    return propOne.entityInfo.team === propTwo.entityInfo.team;
+}
+
+export const listOfBettingPropsHasMultipleTeams = (bettingProps: BettingProp[]) => {
+    //@ts-ignore
+    const teamList = bettingProps.map(prop => prop.entityInfo.teamName);
+    const firstTeam = teamList[0];
+    for (let i = 1; i < teamList.length; i++) {
+        if (teamList[i] !== firstTeam) {
+            return true
+        }
+    }
+    return false
+}
+
+
+export const bettingPropIsLocked = (bettingProp: BettingProp | null | undefined) => { //checks if a prop tile cannot be edited due to event time passing or manual locking from the backend
+
+    if (bettingProp && bettingProp.betEventId && 'eventTime' in bettingProp.betEventId 
+        && (new Date(bettingProp.betEventId.eventTime).getTime() < Date.now() 
+        || bettingProp.locked)) {
+            return true;
+    } else {
+        return false;
+    }
+}
+
+

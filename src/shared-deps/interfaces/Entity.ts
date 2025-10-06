@@ -1,3 +1,4 @@
+import Sport from "./Sport";
 
 export type  Entity = PlayerEntity | TeamEntity;
 export type EntityTypes = "PlayerEntity" | "TeamEntity";
@@ -13,7 +14,6 @@ export const injuryStatusTypeValidator = (inputVar: any): inputVar is InjuryStat
     return ((injuryStatusTypesList.includes(inputVar)));
 }
 
-
 export interface SharedEntityFields {
     _id?: string;
     displayName: string; //name of player or team
@@ -22,25 +22,30 @@ export interface SharedEntityFields {
     photoUri: string; //uri for specific team or player
     teamName: string;
     type: string;
+    showPhotoUri?: boolean;
 }
 
 export interface PlayerEntity extends SharedEntityFields  { 
-    type: "Player";
+    type: "PlayerEntity";
     PlayerId: string; //sportsdataio playerId
     position: string;
     injuryStatus: InjuryStatusTypes;
     depthChartOrder: number; //denotes which string the player is in ex: 1 for starting player
+    jerseyNumber?: number | null;
 }
 
 export interface TeamEntity extends SharedEntityFields {
-    type: "Team";
+    type: "TeamEntity";
     TeamId: string; //sportsdataio teamId
 }
 
-//displayName: string; //name of player or team
-//position: string; //
-//injuryStatus: string; 
-//photoUri: string; //uri for specific team or player
-
-//q: what should I name an intereface that can support both teams and players
-//a: 
+//returns true if it is a star player or an entity
+export const isStarEntity = (entity: Entity): boolean => {
+  if (
+    entity.type == "TeamEntity" ||
+    (entity.type == "PlayerEntity" && [1, 2].includes(entity.depthChartOrder))
+  ) {
+    return true;
+  }
+  return false;
+};

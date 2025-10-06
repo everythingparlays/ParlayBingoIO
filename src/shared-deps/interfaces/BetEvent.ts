@@ -26,6 +26,7 @@ export interface SharedBetEventFields {
     status: StatusTypes;
     sport: string;
     eventTime: Date;
+    nextPropOpenTime?: Date;
     bettingEvent: string; // Bulls @ Nets
     scoreAvailable: boolean;
     televisionChannel: string | null; //tv channel with the game
@@ -40,6 +41,8 @@ export interface TeamBetEvent extends SharedBetEventFields {
     homeTeam: string;
     awayTeamLogo: string;
     homeTeamLogo: string;
+    homeTeamJersey?: string | null;
+    awayTeamJersey?: string | null;
     eventDetails?: TeamBetEventDetails;
 }
 
@@ -75,4 +78,34 @@ export function getIncludedSports(betEventsList: BetEvent[]):string[] {
     const allOfTheSports: string[] = betEventsList.map(event => event.sport);
     const uniqueSports: string [] = [...new Set(allOfTheSports)];
     return uniqueSports;
+}
+
+interface EventStatusBase { 
+    status: "Joinable" | "OpensSoon" | "Closed";
+}
+
+export interface EventStatusOpensSoon extends EventStatusBase {
+    status: "OpensSoon";
+    timeUntilOpen: number; 
+}
+
+
+export type EventStatus = EventStatusBase | EventStatusOpensSoon;
+
+export function getEventStatus(event: BetEvent): EventStatus {
+    const currentTime = new Date();
+    const eventTime = new Date(event.eventTime);
+    const nextPropOpenTime = event.nextPropOpenTime ? new Date(event.nextPropOpenTime) : null;
+    //console.log("Sport: ", event.sport, "Event Time: ", eventTime, "Next Prop Open Time: ", nextPropOpenTime);   
+    const timeUntilOpen = nextPropOpenTime 
+        ? (nextPropOpenTime.getTime() - currentTime.getTime()) / 1000 / 60 
+        : ((eventTime.getTime() - (2 * 60 * 60 * 1000)) - currentTime.getTime()) / 1000 / 60;
+    //console.log(timeUntilOpen)
+    if (currentTime < eventTime && timeUntilOpen < 0) {
+        return {status: "Joinable"};
+    } else if (timeUntilOpen > 0) {
+        return {status: "OpensSoon", timeUntilOpen: timeUntilOpen};
+    } else {
+        return {status: "Closed"};
+    }
 }
