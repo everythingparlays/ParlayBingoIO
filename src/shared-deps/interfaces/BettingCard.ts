@@ -1,3 +1,5 @@
+import { BetEvent } from "./BetEvent";
+import { Entity } from "./Entity";
 import Sport from "./Sport";
 
 //TODO: Take a look at if this interface should be a shared interfae
@@ -5,9 +7,8 @@ import Sport from "./Sport";
 export interface BettingCard { 
 
     betEventId: string | null, //_id used to match a card to its associated betEvent
-    BettingEventID: number; //game that is being bet on 
-    TeamID: number | null;
-    PlayerID: number | null;
+    betEvent: BetEvent | null,
+    entityInfo: Entity | null,
     //Betting type, shared attributes
     sport: Sport;
     bettingEvent: string; // Bulls @ Nets
