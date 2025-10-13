@@ -27,7 +27,23 @@ export const generateDeepLinkUrl = (
  */
 export const generateShareableLink = (deepLinkUrl: string): string => {
   const encodedDeepLink = encodeURIComponent(deepLinkUrl)
-  return `https://overboardsports.com/Download_new?in_app_link=${encodedDeepLink}`
+  return `https://overboardsports.com/app_redirect?in_app_link=${encodedDeepLink}`
+}
+
+/**
+ * Generate a shareable contest link with deferred deep linking
+ * @param contestId - The contest ID to share
+ * @returns A shareable URL that will open the contest in the app (or redirect to app store)
+ * @example
+ * const shareUrl = generateContestShareLink('68e4284f9a959227023619e5')
+ * // Returns: https://overboardsports.com/app_redirect?in_app_link=parlaybingo://app/contest?type=contest&contest_id=68e4284f9a959227023619e5
+ */
+export const generateContestShareLink = (contestId: string): string => {
+  const deepLink = generateDeepLinkUrl('contest', {
+    type: 'contest',
+    contest_id: contestId,
+  })
+  return generateShareableLink(deepLink)
 }
 
 
