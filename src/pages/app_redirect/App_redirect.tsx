@@ -65,8 +65,7 @@ const App_redirect = () => {
           hasStoredDataRef.current = false
         }
 
-        // Temporarily disabled for testing
-        // attemptAppRedirect(inAppLink)
+        attemptAppRedirect(inAppLink)
       } catch (error) {
         console.error('Error capturing link data:', error)
         setIpLoading(false)
@@ -78,12 +77,12 @@ const App_redirect = () => {
     captureLinkData()
   }, [inAppLink]) // Re-run if inAppLink changes
 
-  // useEffect(() => {
-  //   if (!inAppLink) {
-  //     window.location.href = '/download'
-  //   }
-  //   return
-  // }, [inAppLink])
+  useEffect(() => {
+    if (!inAppLink) {
+      window.location.href = '/download'
+    }
+    return
+  }, [inAppLink])
 
   // Parse deep link URL to extract link type and parameters
   const parseDeepLinkUrl = (
