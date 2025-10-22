@@ -4,9 +4,11 @@ import axios from 'axios'
 import { DeferredDeepLink } from '../../shared-deps/interfaces/DeferredLinking'
 // Interface matching DeferredDeepLink requirements
 import { baseUrl2 } from '../../utils/constants'
+import AppleDownload from 'components/svg/AppleDownload'
+import GooglePlayDownload from 'components/svg/GooglePlayDownload'
 
-const Download_new = () => {
-  console.log('Download_new component is rendering...')
+const App_redirect = () => {
+  console.log('App_redirect component is rendering...')
   const [searchParams] = useSearchParams()
   const inAppLink = searchParams.get('in_app_link')
 
@@ -44,7 +46,7 @@ const Download_new = () => {
           userAgent: navigator.userAgent,
           timestamp: new Date(),
           status: 'pending',
-          baseUrl: window.location.origin + '/Download_new',
+          baseUrl: window.location.origin + '/app_redirect',
           linkType: parsedDeepLink.linkType,
           urlParameters: parsedDeepLink.urlParameters,
           deepLinkUrl: inAppLink,
@@ -74,6 +76,13 @@ const Download_new = () => {
 
     captureLinkData()
   }, [inAppLink]) // Re-run if inAppLink changes
+
+  useEffect(() => {
+    if (!inAppLink) {
+      window.location.href = '/download'
+    }
+    return
+  }, [inAppLink])
 
   // Parse deep link URL to extract link type and parameters
   const parseDeepLinkUrl = (
@@ -281,12 +290,13 @@ const Download_new = () => {
     return ipRegex.test(ip)
   }
 
-  const handleDownloadApp = (platform: 'ios' | 'android') => {
+  const getAppStoreUrl = (platform: 'ios' | 'android'): string => {
     const urls = {
-      ios: 'https://apps.apple.com/app/parlay-bingo/id123456789',
-      android: 'https://play.google.com/store/apps/details?id=com.parlayBingo',
+      ios: 'https://apps.apple.com/us/app/overboard-sports/id1665470403',
+      android:
+        'https://docs.google.com/forms/d/1Rxwi9b8uKDTDZ2JcKnUrWLbTItRA6WZHWnE77X57kd0/viewform?edit_requested=true',
     }
-    window.open(urls[platform], '_blank')
+    return urls[platform]
   }
 
   const getLinkTypeDisplay = (linkType: string): string => {
@@ -304,21 +314,6 @@ const Download_new = () => {
     return displayMap[linkType] || 'App'
   }
 
-  const getLinkTypeEmoji = (linkType: string): string => {
-    const emojiMap: Record<string, string> = {
-      referral: '🤝',
-      contest: '🏆',
-      marketing: '📢',
-      promo: '🎁',
-      invite: '✉️',
-      settings: '⚙️',
-      profile: '👤',
-      board: '📋',
-      leaderboard: '🏅',
-    }
-    return emojiMap[linkType] || '🔗'
-  }
-
   return (
     <div
       style={{
@@ -328,7 +323,7 @@ const Download_new = () => {
         alignItems: 'center',
         justifyContent: 'center',
         fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+          'var(--font-main)',
         padding: '20px',
       }}
     >
@@ -382,12 +377,20 @@ const Download_new = () => {
           <div>
             <div
               style={{
-                fontSize: '56px',
                 marginBottom: '24px',
-                lineHeight: '1',
+                display: 'flex',
+                justifyContent: 'center',
               }}
             >
-              {getLinkTypeEmoji(deferredLinkData?.linkType || '')}
+              <img
+                src={`/public/OB-rebrand.png`}
+                alt="Overboard Sports"
+                style={{
+                  height: window.innerWidth <= 768 ? '70px' : '120px',
+                  width: 'auto',
+                  maxWidth: '100%',
+                }}
+              />
             </div>
             <h1
               style={{
@@ -417,7 +420,7 @@ const Download_new = () => {
                     background: '#f8f9fa',
                     padding: '16px',
                     borderRadius: '12px',
-                    marginBottom: '24px',
+                    marginBottom: '16px',
                     marginTop: '16px',
                   }}
                 >
@@ -427,7 +430,7 @@ const Download_new = () => {
                         key={key}
                         style={{
                           color: '#555',
-                          fontSize: '14px',
+                          fontSize: '16px',
                           margin: '6px 0',
                           lineHeight: '1.5',
                         }}
@@ -483,67 +486,47 @@ const Download_new = () => {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
+                alignItems: 'center',
                 gap: '12px',
                 marginBottom: '20px',
               }}
             >
-              <button
-                onClick={() => handleDownloadApp('ios')}
+              <a
+                href={getAppStoreUrl('ios')}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download on the App Store"
                 style={{
-                  background: 'linear-gradient(135deg, #000 0%, #2d2d2d 100%)',
-                  color: 'white',
-                  border: 'none',
-                  padding: '14px 28px',
-                  borderRadius: '12px',
                   cursor: 'pointer',
-                  fontSize: '15px',
-                  fontWeight: '600',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-                  transition: 'all 0.3s ease',
-                  width: '100%',
+                  transition: 'transform 0.2s ease',
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)'
-                  e.currentTarget.style.boxShadow =
-                    '0 6px 16px rgba(0, 0, 0, 0.2)'
+                  e.currentTarget.style.transform = 'scale(1.05)'
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow =
-                    '0 4px 12px rgba(0, 0, 0, 0.15)'
+                  e.currentTarget.style.transform = 'scale(1)'
                 }}
               >
-                Download for iOS
-              </button>
-              <button
-                onClick={() => handleDownloadApp('android')}
+                <AppleDownload width={180} height={54} />
+              </a>
+              <a
+                href={getAppStoreUrl('android')}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Get it on Google Play"
                 style={{
-                  background:
-                    'linear-gradient(135deg, #34A853 0%, #2d8f47 100%)',
-                  color: 'white',
-                  border: 'none',
-                  padding: '14px 28px',
-                  borderRadius: '12px',
                   cursor: 'pointer',
-                  fontSize: '15px',
-                  fontWeight: '600',
-                  boxShadow: '0 4px 12px rgba(52, 168, 83, 0.3)',
-                  transition: 'all 0.3s ease',
-                  width: '100%',
+                  transition: 'transform 0.2s ease',
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)'
-                  e.currentTarget.style.boxShadow =
-                    '0 6px 16px rgba(52, 168, 83, 0.4)'
+                  e.currentTarget.style.transform = 'scale(1.05)'
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow =
-                    '0 4px 12px rgba(52, 168, 83, 0.3)'
+                  e.currentTarget.style.transform = 'scale(1)'
                 }}
               >
-                Download for Android
-              </button>
+                <GooglePlayDownload width={180} height={54} />
+              </a>
             </div>
 
             {/* {deferredLinkData && (
@@ -593,4 +576,4 @@ const Download_new = () => {
   )
 }
 
-export default Download_new
+export default App_redirect

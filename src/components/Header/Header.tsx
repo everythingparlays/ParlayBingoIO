@@ -16,6 +16,16 @@ export default function Header() {
   const navigate = useNavigate()
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
 
+  // Get appropriate app store URL based on platform
+  const getAppStoreUrl = () => {
+    const userAgent = navigator.userAgent.toLowerCase()
+    if (/iphone|ipad|ipod|macintosh|mac os x/.test(userAgent)) {
+      return 'https://apps.apple.com/us/app/overboard-sports/id1665470403'
+    }
+    // Android waitlist
+    return 'https://docs.google.com/forms/d/1Rxwi9b8uKDTDZ2JcKnUrWLbTItRA6WZHWnE77X57kd0/viewform?edit_requested=true'
+  }
+
   // Track screen size for responsive layout
   useEffect(() => {
     const handleResize = () => {
@@ -106,7 +116,7 @@ export default function Header() {
                 const urlParams = new URLSearchParams(window.location.search)
                 const referrer = urlParams.get('referrer')
                 trackAppDownloadRedirect(referrer)
-                navigate('/download')
+                window.location.href = getAppStoreUrl()
               }}
               bg="#d9eefb"
               color="#303083"
@@ -215,7 +225,7 @@ export default function Header() {
                     )
                     const referrer = urlParams.get('referrer')
                     trackAppDownloadRedirect(referrer)
-                    navigate('/download')
+                    window.location.href = getAppStoreUrl()
                   }}
                   bg="#d9eefb"
                   color="#303083"
@@ -312,7 +322,7 @@ export default function Header() {
                 const urlParams = new URLSearchParams(window.location.search)
                 const referrer = urlParams.get('referrer')
                 trackAppDownloadRedirect(referrer)
-                navigate('/download')
+                window.location.href = getAppStoreUrl()
                 setExpanded(false)
               }}
               bg="#d9eefb"
