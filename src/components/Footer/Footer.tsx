@@ -161,13 +161,12 @@ export default function Footer() {
                   >
                     How to play
                   </p>
-                  <p>The Team</p>
                   <a
-                    href="/help-center"
+                    href="mailto:support@everythingparlays.com"
                     target="_blank"
                     style={{ textDecoration: 'none' }}
                   >
-                    <p>Contact</p>
+                    <p style={{ cursor: 'pointer' }}>Contact</p>
                   </a>
                   <p>Support</p>
                 </div>
@@ -282,9 +281,15 @@ export default function Footer() {
                   </div>
                 </div>
                 <div
-                  className={`${styles['footer-the-team-container']} ${styles['links-row']}`}
+                  className={`${styles['footer-contact-container']} ${styles['links-row']}`}
                 >
-                  <p>The Team</p>
+                  <a
+                    href="mailto:support@everythingparlays.com"
+                    target="_blank"
+                    style={{ cursor: 'pointer', textDecoration: 'none' }}
+                  >
+                    <p>Contact</p>
+                  </a>
                   <Button
                     disabled={true}
                     hoverBg="#ffffff"
@@ -297,18 +302,6 @@ export default function Footer() {
                   >
                     Join the Discord
                   </Button>
-                </div>
-                <div
-                  className={`${styles['footer-contact-container']} ${styles['links-row']}`}
-                >
-                  <a
-                    href="/help-center"
-                    target="_blank"
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <p>Contact</p>
-                  </a>
-                  {!isMobile && <div></div>} {/* Only render on desktop */}
                 </div>
                 <div
                   className={`${styles['footer-support-container']} ${styles['links-row']}`}
