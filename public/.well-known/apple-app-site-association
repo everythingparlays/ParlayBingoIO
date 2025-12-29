@@ -3,7 +3,11 @@
         "details": [
             {
                 "appID": "P8FF38W8J3.com.everythingparlays.ParlayBingo",
-                "paths": [ "*" ]
+                "paths": [
+                    "*",
+                    "NOT /app_redirect",
+                    "NOT /app_redirect/*"
+                ]
             }
         ]
     }
