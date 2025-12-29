@@ -7,10 +7,31 @@ import { baseUrl2 } from '../../utils/constants'
 import AppleDownload from 'components/svg/AppleDownload'
 import GooglePlayDownload from 'components/svg/GooglePlayDownload'
 
+const constructDeepLink = (searchParams: URLSearchParams): string | null => {
+  const params = Object.fromEntries(searchParams.entries())
+
+  if (Object.keys(params).length === 0) {
+    return null
+  }
+
+  // Extract path parameter (defaults to /app if not provided)
+  const path = params.path || '/app'
+  delete params.path
+
+  // Build query string from remaining parameters
+  const queryString = new URLSearchParams(params).toString()
+
+  // Build deep link with DOUBLE slash
+  // path already includes leading slash (e.g., /app or /app/contest)
+  const deepLink = `parlaybingo:/${path}` // Creates parlaybingo://app
+
+  return queryString ? `${deepLink}?${queryString}` : deepLink
+}
+
+
 const App_redirect = () => {
   console.log('App_redirect component is rendering...')
   const [searchParams] = useSearchParams()
-  const inAppLink = searchParams.get('in_app_link')
 
   const [deferredLinkData, setDeferredLinkData] =
     useState<DeferredDeepLink | null>(null)
@@ -19,27 +40,45 @@ const App_redirect = () => {
   const hasStoredDataRef = useRef(false) // Use ref instead of state to prevent duplicate storage
 
   useEffect(() => {
+    // Construct deep link from all URL parameters
+    const deepLinkUrl = constructDeepLink(searchParams)
+
+    // If no parameters, don't process
+    if (!deepLinkUrl) {
+      console.log('No URL parameters found')
+      return
+    }
+
     // Prevent duplicate execution using ref
-    if (hasStoredDataRef.current || !inAppLink) {
-      console.log(
-        'Skipping data capture - already stored or missing in_app_link param'
-      )
+    if (hasStoredDataRef.current) {
+      console.log('Skipping data capture - already stored')
       return
     }
 
     console.log('useEffect triggered, starting link data capture...')
-    console.log('Received in_app_link:', inAppLink)
+    console.log('Constructed deep link:', deepLinkUrl)
 
     // Set the ref immediately to prevent duplicate execution
     hasStoredDataRef.current = true
 
     const captureLinkData = async () => {
       try {
-        // Parse the deep link URL to extract parameters
-        const parsedDeepLink = parseDeepLinkUrl(inAppLink)
-
         const userIP = await getPublicIP()
         setIpLoading(false)
+
+        // Build urlParameters from ALL query params
+        const urlParameters: Record<string, string> = Object.fromEntries(
+          searchParams.entries()
+        )
+
+        // Determine linkType intelligently
+        const linkType =
+          searchParams.get('type') ||
+          (searchParams.get('contest_id')
+            ? 'contest'
+            : searchParams.get('referral_code')
+              ? 'referral'
+              : 'unknown')
 
         const deferredData: DeferredDeepLink = {
           userIP: userIP,
@@ -47,13 +86,13 @@ const App_redirect = () => {
           timestamp: new Date(),
           status: 'pending',
           baseUrl: window.location.origin + '/app_redirect',
-          linkType: parsedDeepLink.linkType,
-          urlParameters: parsedDeepLink.urlParameters,
-          deepLinkUrl: inAppLink,
+          linkType: linkType,
+          urlParameters: urlParameters,
+          deepLinkUrl: deepLinkUrl,
         }
 
         setDeferredLinkData(deferredData)
-        console.log('Generic Link Data:', deferredData)
+        console.log('Link Data:', deferredData)
 
         // Store the deferred link data to backend
         try {
@@ -65,8 +104,7 @@ const App_redirect = () => {
           hasStoredDataRef.current = false
         }
 
-        // Temporarily disabled for UI work
-        attemptAppRedirect(inAppLink)
+        attemptAppRedirect(deepLinkUrl)
       } catch (error) {
         console.error('Error capturing link data:', error)
         setIpLoading(false)
@@ -76,42 +114,16 @@ const App_redirect = () => {
     }
 
     captureLinkData()
-  }, [inAppLink]) // Re-run if inAppLink changes
+  }, [searchParams]) // Depend on entire searchParams object
 
   useEffect(() => {
-    if (!inAppLink) {
+    // If no query parameters at all, redirect to download page
+    const hasParams = Array.from(searchParams.keys()).length > 0
+
+    if (!hasParams) {
       window.location.href = '/download'
     }
-    return
-  }, [inAppLink])
-
-  // Parse deep link URL to extract link type and parameters
-  const parseDeepLinkUrl = (
-    deepLink: string
-  ): { linkType: string; urlParameters: Record<string, string> } => {
-    try {
-      const url = new URL(deepLink)
-      const params = new URLSearchParams(url.search)
-      const urlParameters: Record<string, string> = {}
-
-      // Extract query parameters
-      params.forEach((value, key) => {
-        urlParameters[key] = value
-      })
-
-      // Extract link type from the first segment of the in_app_link
-      // e.g., for example "parlaybingo://app/contest?type=referral&referral_code=ABC123" → "app/contest"
-      const linkType =
-        params.get('type') ||
-        url.pathname.split('/').filter(Boolean)[0] ||
-        'unknown'
-
-      return { linkType, urlParameters }
-    } catch (error) {
-      console.error('Failed to parse deep link:', error)
-      return { linkType: 'unknown', urlParameters: {} }
-    }
-  }
+  }, [searchParams])
 
   const storeDeepLink = async (deepLink: DeferredDeepLink) => {
     const response = await axios.post(`${baseUrl2}/deferred-link`, deepLink)
