@@ -383,7 +383,7 @@ const App_redirect = () => {
               }}
             >
               <img
-                src={`/public/OB-rebrand.png`}
+                src="/OB-rebrand.png"
                 alt="Overboard Sports"
                 style={{
                   height: window.innerWidth <= 768 ? '70px' : '120px',
