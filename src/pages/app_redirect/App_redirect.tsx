@@ -65,6 +65,7 @@ const App_redirect = () => {
           hasStoredDataRef.current = false
         }
 
+        // Temporarily disabled for UI work
         attemptAppRedirect(inAppLink)
       } catch (error) {
         console.error('Error capturing link data:', error)
@@ -139,7 +140,7 @@ const App_redirect = () => {
     const handleVisibilityChange = () => {
       const elapsed = Date.now() - startTime
       if (document.hidden && elapsed > 300) {
-        console.log(`👁️ Page hidden after ${elapsed}ms - app likely opened`)
+        console.log(`Page hidden after ${elapsed}ms - app likely opened`)
         appOpened = true
       }
     }
@@ -318,12 +319,11 @@ const App_redirect = () => {
     <div
       style={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #303083 0%, #1e1e5a 100%)',
+        background: ' #1e1e5a ',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontFamily:
-          'var(--font-main)',
+        fontFamily: 'var(--font-main)',
         padding: '20px',
       }}
     >
@@ -331,7 +331,7 @@ const App_redirect = () => {
         style={{
           maxWidth: '450px',
           width: '100%',
-          backgroundColor: 'white',
+          backgroundColor: '#303083',
           borderRadius: '24px',
           padding: '48px 36px',
           textAlign: 'center',
@@ -394,7 +394,7 @@ const App_redirect = () => {
             </div>
             <h1
               style={{
-                color: '#1a1a1a',
+                color: 'white',
                 marginBottom: '16px',
                 fontSize: '26px',
                 fontWeight: '700',
@@ -405,7 +405,7 @@ const App_redirect = () => {
             </h1>
             <p
               style={{
-                color: '#666',
+                color: 'white',
                 marginBottom: '12px',
                 fontSize: '17px',
                 fontWeight: '500',
@@ -417,11 +417,13 @@ const App_redirect = () => {
               Object.keys(deferredLinkData.urlParameters).length > 0 && (
                 <div
                   style={{
-                    background: '#f8f9fa',
+                    background: '#1e1e5a',
                     padding: '16px',
                     borderRadius: '12px',
                     marginBottom: '16px',
                     marginTop: '16px',
+                    display: 'flex',
+                    flexDirection: 'column',
                   }}
                 >
                   {Object.entries(deferredLinkData.urlParameters).map(
@@ -429,18 +431,22 @@ const App_redirect = () => {
                       <p
                         key={key}
                         style={{
-                          color: '#555',
+                          color: 'white',
                           fontSize: '16px',
                           margin: '6px 0',
                           lineHeight: '1.5',
+                          textAlign: 'left',
                         }}
                       >
                         <span
-                          style={{ color: '#888', textTransform: 'capitalize' }}
+                          style={{
+                            color: 'white',
+                            textTransform: 'capitalize',
+                          }}
                         >
                           {key}:
                         </span>{' '}
-                        <strong style={{ color: '#303083' }}>{value}</strong>
+                        <strong style={{ color: 'white' }}>{value}</strong>
                       </p>
                     )
                   )}
@@ -473,7 +479,8 @@ const App_redirect = () => {
 
             <p
               style={{
-                color: '#777',
+                color: '#848FBF',
+                marginTop: '24px',
                 marginBottom: '32px',
                 fontSize: '15px',
                 lineHeight: '1.6',
