@@ -2,6 +2,13 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import LinearGradient from 'ui/LinearGradient'
 import BusinessHero from './components/BusinessHero'
+import Partners from './sections/Partners'
+import Benefits from './sections/Benefits'
+import FanJourney from './sections/FanJourney'
+import SponsorActivation from './sections/SponsorActivation'
+import DataPerformance from './sections/DataPerformance'
+import Faq from './sections/Faq'
+import FinalCta from './sections/FinalCta'
 import styles from './Business.module.css'
 // page tokens + utilities, scoped under #business (see the file header)
 import './components/business-tokens.css'
@@ -42,19 +49,14 @@ export default function Business() {
       <main id="business" className={styles['page']}>
         <BusinessHero />
         <LinearGradient height="4px" />
-        {/*
-          Sections slot in below, in this order. Each is wrapped in
-          components/BusinessSection (which draws its own bottom separator),
-          titled with SectionHeading and closed with CtaRow using CTA_VARIANTS
-          from sectionsConfig.ts.
-        */}
-        {/* US-03 Partners */}
-        {/* US-04 Benefits */}
-        {/* US-05 FanJourney */}
-        {/* US-06 SponsorActivation */}
-        {/* US-07 Data */}
-        {/* US-08 Faq */}
-        {/* US-09 FinalCta */}
+        {/* Each section draws its own bottom separator (BusinessSection). */}
+        <Partners />
+        <Benefits />
+        <FanJourney />
+        <SponsorActivation />
+        <DataPerformance />
+        <Faq />
+        <FinalCta />
       </main>
     </>
   )

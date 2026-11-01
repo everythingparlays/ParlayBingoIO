@@ -1,0 +1,213 @@
+/* US-05 Fan journey */
+
+.layout {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  /* the steps row is a grid child: without this it could widen the track */
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ---- steps: three columns (tablet + desktop) ---- */
+
+.steps {
+  --col-gap: clamp(1.5rem, 3vw, 2.5rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--col-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  text-align: center;
+  list-style: none;
+}
+
+/* columns: share the four rows (phone, numeral, label, caption) across the
+   steps so a label that wraps never pushes its caption out of line */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 768px) {
+    .steps {
+      grid-template-rows: repeat(4, auto);
+      row-gap: 0;
+    }
+
+    .step {
+      display: grid;
+      grid-row: span 4;
+      grid-template-rows: subgrid;
+      justify-items: center;
+      align-items: start;
+    }
+  }
+}
+
+/* the phone + a soft dark depth glow behind it (as in the hero) */
+.device {
+  position: relative;
+  isolation: isolate;
+  max-width: 100%;
+}
+
+.device::before {
+  content: '';
+  position: absolute;
+  inset: -10% -45%;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(29, 24, 76, 0.85),
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+.phone {
+  max-width: 100%;
+  /* matches the device's rounded outline (15.5em radius on a ~198em-tall frame) */
+  border-radius: 15.5% / 7.84%;
+  box-shadow:
+    0 32px 64px rgba(9, 7, 38, 0.5),
+    0 10px 22px rgba(9, 7, 38, 0.3);
+}
+
+/* numeral chip on a dashed connector that runs between the columns */
+.marker {
+  position: relative;
+  align-self: stretch;
+  justify-self: stretch;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.marker::before,
+.marker::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.32) 0 6px,
+    transparent 6px 12px
+  );
+}
+
+/* left half: from the gap's midpoint to the chip */
+.marker::before {
+  left: calc(var(--col-gap) / -2);
+  right: calc(50% + 32px);
+}
+
+/* right half: from the chip to the next gap's midpoint */
+.marker::after {
+  left: calc(50% + 32px);
+  right: calc(var(--col-gap) / -2);
+}
+
+.step:first-child .marker::before {
+  display: none;
+}
+
+.step:last-child .marker::after {
+  display: none;
+}
+
+.num {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background:
+    linear-gradient(var(--biz-surface), var(--biz-surface)) padding-box,
+    var(--biz-grad-rule) border-box;
+  font-family: var(--font-main);
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--biz-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  margin-top: 1.25rem;
+  font-family: var(--font-main);
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--biz-ink);
+}
+
+.caption {
+  max-width: 19em;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--biz-ink-2);
+  text-wrap: pretty;
+}
+
+/* ---- phone: horizontal scroll-snap row ---- */
+
+@media (max-width: 767px) {
+  .steps {
+    display: flex;
+    gap: 1rem;
+    /* bleed to the viewport edges (the container pads 1.5rem); the section
+       clips overflow-x, so only this row scrolls, never the page */
+    margin-inline: -1.5rem;
+    padding: 0.5rem 1.5rem 0.75rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1.5rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step {
+    flex: 0 0 78vw;
+    max-width: 22rem;
+    padding: 1.75rem 1.25rem 1.5rem;
+    border: 1px solid var(--biz-line);
+    border-radius: var(--biz-radius);
+    background-color: var(--biz-surface);
+    scroll-snap-align: start;
+  }
+
+  .phone {
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.4),
+      0 6px 14px rgba(0, 0, 0, 0.3);
+  }
+
+  /* the card surface already gives the phone its backdrop */
+  .device::before {
+    display: none;
+  }
+
+  .marker {
+    margin-top: 1.5rem;
+  }
+
+  .marker::before,
+  .marker::after {
+    display: none;
+  }
+}

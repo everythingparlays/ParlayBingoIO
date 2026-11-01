@@ -1,0 +1,204 @@
+/* ============================================================
+   US-08 FAQ (tone="indigo")
+   Stacked at every width: heading on top (left-aligned like the other
+   sections), the accordion beneath at up to 760px, then the
+   "Got more questions?" row.
+   ============================================================ */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.main {
+  min-width: 0;
+  max-width: 760px;
+}
+
+/* ---------- accordion ---------- */
+
+.list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* li.item outranks Card's own padding class regardless of CSS order */
+li.item {
+  padding: 0;
+}
+
+.item.open {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.question {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* global button rules: flex + centred, no font size of their own */
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-height: 64px;
+  padding: 1.1rem 1.25rem 1.1rem 1.5rem;
+  border-radius: var(--biz-radius-sm);
+  text-align: left;
+  color: var(--biz-ink);
+}
+
+.question-text {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--biz-ink);
+}
+
+.chevron {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--biz-line);
+  border-radius: 50%;
+  color: var(--biz-ink-2);
+}
+
+.chevron-svg {
+  display: block;
+}
+
+.open .chevron {
+  border-color: transparent;
+  background: var(--biz-grad-cta);
+  color: var(--primary);
+}
+
+.open .chevron-svg {
+  transform: rotate(180deg);
+}
+
+@media (hover: hover) {
+  .trigger:hover .chevron {
+    border-color: rgba(255, 255, 255, 0.35);
+    color: var(--biz-ink);
+  }
+
+  .open .trigger:hover .chevron {
+    border-color: transparent;
+    color: var(--primary);
+  }
+}
+
+/* height animation: 0fr -> 1fr on the wrapper; the region inside clips */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+}
+
+.open .panel {
+  grid-template-rows: 1fr;
+}
+
+.region {
+  min-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.open .region {
+  visibility: visible;
+}
+
+.answer {
+  padding: 0 1.5rem 1.4rem;
+  max-width: 40em;
+}
+
+.answer-text {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--biz-ink-2);
+}
+
+.draft {
+  margin-top: 0.75rem;
+}
+
+/* ---------- more questions row ---------- */
+
+.more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+}
+
+.more-prompt {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--biz-ink);
+}
+
+/* ---------- phone ---------- */
+
+@media (max-width: 767px) {
+  .trigger {
+    padding: 1rem 1rem 1rem 1.15rem;
+  }
+
+  .question-text {
+    font-size: 1.02rem;
+  }
+
+  .answer {
+    padding: 0 1.15rem 1.2rem;
+  }
+
+  .more {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ---------- motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .panel {
+    transition: grid-template-rows 300ms var(--transition-timing);
+  }
+
+  /* stay visible while closing, then drop out of the a11y tree */
+  .region {
+    transition: visibility 0s linear 300ms;
+  }
+
+  .open .region {
+    transition-delay: 0s;
+  }
+
+  .chevron {
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .chevron-svg {
+    transition: transform 300ms var(--transition-timing);
+  }
+}
