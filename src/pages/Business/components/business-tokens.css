@@ -1,0 +1,54 @@
+/* ============================================================
+   /business page tokens + utilities.
+   Plain (global) CSS, imported once by Business.tsx. Every selector is
+   scoped under #business (the page's <main>) so nothing leaks to other
+   routes, even after this lazily-loaded stylesheet stays in the document.
+   Brand set only: indigo #303083 (var(--primary)), dark indigo #1D184C,
+   crimson #db2156, gold #f8ac1c, orange #e9663a, light indigo #848FBF,
+   #c9cfea secondary text, white.
+   ============================================================ */
+
+#business {
+  /* text */
+  --biz-ink: #fff;
+  --biz-ink-2: #c9cfea;
+  --biz-ink-3: #848fbf;
+
+  /* surfaces + hairlines */
+  --biz-surface: #1d184c;
+  --biz-surface-2: rgba(29, 24, 76, 0.55);
+  --biz-line: rgba(255, 255, 255, 0.12);
+
+  /* gradients: CTA fill, and the crimson -> gold section rule */
+  --biz-grad-cta: linear-gradient(135deg, #f8ac1c, #e9663a);
+  --biz-grad-rule: linear-gradient(90deg, #db2156, #f8ac1c);
+
+  /* shape + depth */
+  --biz-radius: 20px;
+  --biz-radius-sm: 12px;
+  --biz-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+
+  /* rhythm */
+  --biz-section-y: clamp(4rem, 8vw, 7rem);
+  --biz-gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* Keyboard focus ring for interactive elements on indigo. Global
+   Button styles strip outlines, so opt in with className="biz-focus". */
+#business .biz-focus:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Visually hidden, still announced by screen readers. */
+#business .biz-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

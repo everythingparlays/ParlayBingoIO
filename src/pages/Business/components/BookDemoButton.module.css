@@ -1,0 +1,55 @@
+.wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 100%;
+}
+
+a.cta {
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+a.cta:hover {
+  transform: translateY(-1px);
+}
+
+/* Button.module.css removes focus outlines; give keyboard users a ring */
+a.cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.note {
+  font-size: 12.5px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #848fbf;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .wrap.full {
+    display: flex;
+    width: 100%;
+  }
+
+  .wrap.full a.cta {
+    width: 100%;
+    /* Button's own <=480 override drops lg to 40px; keep a comfortable tap target */
+    min-height: 48px;
+    font-size: 16px;
+    /* long section labels (e.g. "See a branded demo for your team and
+       sponsors") must wrap instead of clipping at phone widths */
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+    padding-block: 12px;
+  }
+
+  .note {
+    white-space: normal;
+  }
+}

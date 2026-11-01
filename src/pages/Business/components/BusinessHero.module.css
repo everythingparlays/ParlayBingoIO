@@ -1,0 +1,579 @@
+/* ============================================================
+   /business hero — OBS Stadium Game
+   Same family as the consumer hero (pages/Landing): indigo base,
+   heroBackgroundLeft texture panel, HeroBlock dot grid, trophy sticker.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  background-color: var(--primary);
+  overflow-x: hidden; /* fallback */
+  overflow-x: clip; /* guard against horizontal scroll from the visual */
+  isolation: isolate;
+}
+
+/* textured left panel (mirrors .hero-left in Landing/styles.module.css) */
+.texture {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 55%;
+  background-image: url('/heroBackgroundLeft.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* the texture already fades to indigo on its right edge; feather the
+     last stretch so there is never a visible seam */
+  -webkit-mask-image: linear-gradient(to right, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 78%, transparent 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  column-gap: 3rem;
+  align-items: center;
+  min-height: clamp(560px, calc(100vh - var(--header-height)), 880px);
+  min-height: clamp(560px, calc(100svh - var(--header-height)), 880px);
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+/* ---------- copy column ---------- */
+
+.copy {
+  position: relative;
+  z-index: 5;
+  min-width: 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(29, 24, 76, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  max-width: 100%;
+}
+
+.eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow-dot {
+  position: relative;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f8ac1c, #e9663a);
+}
+
+.eyebrow-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f8ac1c, #e9663a);
+  opacity: 0;
+}
+
+.eyebrow-product {
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.eyebrow-divider {
+  flex: none;
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.eyebrow-tagline {
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #c9cfea;
+}
+
+.headline {
+  margin-top: 1.25rem;
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 4.6vw, 4.1rem);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* global `span` rules set 1rem + grey text — reset for headline lines */
+.line {
+  display: block;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.accent {
+  width: fit-content;
+  padding-bottom: 0.08em;
+  background: linear-gradient(135deg, #f8ac1c, #e9663a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #f8ac1c;
+}
+
+.description {
+  margin-top: 1.25rem;
+  max-width: 32em;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.cta-row {
+  margin-top: 2rem;
+}
+
+.credibility {
+  margin-top: 1.75rem;
+  max-width: 36em;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #c9cfea;
+}
+
+/* the site's separator vocabulary: a short crimson→gold rule */
+.credibility::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin-bottom: 0.9rem;
+  border-radius: 2px;
+  background: linear-gradient(to right, #db2156, #f8ac1c);
+}
+
+/* ---------- product visual ---------- */
+
+/*
+  All positions derive from a handful of custom properties so the
+  composition scales as one unit and its height is reserved up front
+  (no layout shift while images load).
+    --pw  phone width        --ph  phone height (frame is 2.06:1)
+    --cw  prize card width   --ch  card height (870x1015 asset)
+    --tw  trophy width       --th  trophy height (224x217 artwork)
+  The phone holds its place in the column; the prize card overlaps it by
+  --overlap of the card's own width (the rest sits over the indigo glow).
+  The trophy is positioned from the card's top-right corner (corrected for
+  the card's 4deg tilt). On desktop that corner lands on the first column
+  of board tiles, so the trophy is offset up and back from it: its body
+  sits on the card's top edge, over indigo and the phone's left bezel, and
+  only its drop shadow reaches the screen. No board tile is covered.
+*/
+.visual {
+  --pw: clamp(200px, min(23vw, calc((100vh - var(--header-height)) * 0.38)), 330px);
+  --pw: clamp(200px, min(23vw, calc((100svh - var(--header-height)) * 0.38)), 330px);
+  --ph: calc(var(--pw) * 2.06);
+  --cw: calc(var(--pw) * 0.75);
+  --ch: calc(var(--cw) * 1015 / 870);
+  --tw: clamp(100px, calc(var(--pw) * 0.39), 122px);
+  --th: calc(var(--tw) * 217 / 224);
+  /* phone position is fixed relative to the column (unchanged from r3) */
+  --phone-left: calc(6px + var(--pw) * 0.5208);
+  --phone-top: calc(50% - var(--ph) / 2);
+  --overlap: 0.26;
+  --card-left: calc(var(--phone-left) - var(--cw) * (1 - var(--overlap)));
+  --card-top: calc(var(--phone-top) + var(--ph) * 0.52);
+  /* card's top-right corner after rotate(4deg) about its centre */
+  --corner-x: calc(var(--card-left) + var(--cw) * 1.04);
+  --corner-y: calc(var(--card-top) + var(--cw) * 0.036);
+  /* trophy offset from that corner, in trophy widths / heights */
+  --trophy-in: 1.4;
+  --trophy-up: 0.75;
+
+  position: relative;
+  width: 100%;
+  height: calc(var(--ph) + 3.5rem);
+}
+
+/* soft depth glow behind the phone */
+.visual::before {
+  content: '';
+  position: absolute;
+  inset: -12% -30%;
+  background: radial-gradient(
+    ellipse at 60% 45%,
+    rgba(29, 24, 76, 0.9),
+    transparent 60%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dots {
+  position: absolute;
+  z-index: 1;
+  width: calc(var(--pw) * 0.78);
+  aspect-ratio: 255 / 217;
+  left: calc(var(--phone-left) + var(--pw) * 0.52);
+  top: calc(var(--phone-top) - var(--pw) * 0.12);
+  pointer-events: none;
+}
+
+.dots svg {
+  display: block;
+}
+
+.phone {
+  position: absolute;
+  z-index: 2;
+  left: var(--phone-left);
+  top: var(--phone-top);
+  width: var(--pw);
+  transform: rotate(-6deg);
+}
+
+.phone-frame {
+  width: 100%;
+  border-radius: 15.5% / 7.5%;
+  box-shadow: 0 40px 80px rgba(9, 7, 38, 0.55), 0 12px 24px rgba(9, 7, 38, 0.35);
+}
+
+.prize-float {
+  position: absolute;
+  z-index: 3;
+  left: var(--card-left);
+  top: var(--card-top);
+  width: var(--cw);
+}
+
+.prize {
+  display: block;
+  transform: rotate(4deg);
+}
+
+.prize img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* card's own corner radius, from the asset manifest */
+  border-radius: 5.008% / 4.288%;
+  box-shadow: 0 36px 70px rgba(0, 0, 0, 0.55), 0 10px 24px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.trophy-bob {
+  position: absolute;
+  z-index: 4;
+  width: var(--tw);
+  aspect-ratio: 224 / 217;
+  left: calc(var(--corner-x) - var(--tw) * var(--trophy-in));
+  top: calc(var(--corner-y) - var(--th) * var(--trophy-up));
+  pointer-events: none;
+}
+
+.trophy-pop {
+  width: 100%;
+  height: 100%;
+  transform: rotate(8deg);
+}
+
+.trophy-pop svg {
+  display: block;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.4));
+}
+
+/* ---------- tablet & mobile: single column ---------- */
+
+@media (max-width: 768px) {
+  .texture {
+    width: 100%;
+    bottom: auto;
+    height: 72%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  }
+
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .headline {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+  }
+
+  .line {
+    white-space: normal;
+  }
+
+  .description {
+    font-size: 1.05rem;
+  }
+
+  .cta-row {
+    margin-top: 1.75rem;
+  }
+
+  .credibility {
+    margin-top: 1.5rem;
+  }
+
+  /* phone left, card bottom-right, trophy on the card's corner; the whole
+     group stays inside the container (trophy edge lands at ~99% of --box) */
+  .visual {
+    --box: min(100vw - 3rem, 600px);
+    --pw: calc(var(--box) * 0.54);
+    --cw: calc(var(--box) * 0.47);
+    --tw: clamp(84px, calc(var(--box) * 0.26), 96px);
+    /* room for the phone's rotated top-left corner */
+    --phone-left: calc(var(--pw) * 0.11);
+    --phone-top: calc(var(--pw) * 0.06);
+    --card-left: calc(var(--phone-left) + var(--pw) - var(--cw) * 0.4);
+    --card-top: calc(var(--phone-top) + var(--ph) * 0.5);
+    /* the corner sits right of the phone, over indigo: centre the trophy on
+       it, tucked onto the card so it clears the container edge */
+    --trophy-in: 0.76;
+    --trophy-up: 0.35;
+
+    max-width: 600px;
+    margin: 1.5rem 0 0;
+    height: calc(var(--phone-top) + var(--ph) + var(--pw) * 0.06 + 1rem);
+  }
+
+  .visual::before {
+    inset: -10% -20%;
+  }
+
+  .dots {
+    width: calc(var(--box) * 0.42);
+    left: calc(var(--phone-left) + var(--pw) * 0.56);
+    top: 0;
+  }
+}
+
+@media (min-width: 561px) and (max-width: 768px) {
+  .inner {
+    padding-top: 2.5rem;
+  }
+}
+
+/* ---------- mobile first screen (<= 767px) ----------
+   Get the product on screen sooner: tighter rhythm, smaller headline, and
+   the credibility line moves below the visual. It stays a single DOM node
+   (read once, in source order, by assistive tech): .copy becomes
+   display: contents so its children join .inner's flex column, and
+   `order` places the visual before the credibility line. */
+@media (max-width: 767px) {
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .copy {
+    display: contents;
+  }
+
+  /* keep copy above the visual's glow, as .copy's z-index does on desktop */
+  .copy > * {
+    position: relative;
+    z-index: 5;
+  }
+
+  .eyebrow {
+    align-self: flex-start;
+  }
+
+  .headline {
+    margin-top: 0.75rem;
+    font-size: clamp(1.9rem, 8.6vw, 2.6rem);
+  }
+
+  .description {
+    margin-top: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .cta-row {
+    margin-top: 1.25rem;
+  }
+
+  .visual {
+    order: 1;
+    margin-top: 1.25rem;
+  }
+
+  .credibility {
+    order: 2;
+    margin-top: 0.75rem;
+  }
+}
+
+@media (max-width: 560px) {
+  /* stack: the pill keeps the product name, the tagline sits beneath it */
+  .eyebrow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .eyebrow-badge {
+    padding: 6px 14px 6px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(29, 24, 76, 0.55);
+  }
+
+  .eyebrow-divider {
+    display: none;
+  }
+
+  .eyebrow-tagline {
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------- motion (only when the user hasn't asked for less) ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: rise 650ms var(--transition-timing) both;
+    animation-delay: var(--d, 0ms);
+    will-change: transform, opacity;
+  }
+
+  .phone {
+    animation: phone-in 950ms var(--transition-timing) 150ms both;
+    will-change: transform, opacity;
+  }
+
+  .prize-float {
+    animation: float 6s ease-in-out -2s infinite;
+    will-change: transform;
+  }
+
+  .prize {
+    animation: prize-in 650ms cubic-bezier(0.34, 1.56, 0.64, 1) 750ms both;
+    will-change: transform, opacity;
+  }
+
+  .trophy-bob {
+    animation: bob 3s ease-in-out 1.5s infinite;
+    will-change: transform;
+  }
+
+  .trophy-pop {
+    animation: pop 500ms cubic-bezier(0.34, 1.56, 0.64, 1) 1000ms both;
+    will-change: transform, opacity;
+  }
+
+  .eyebrow-dot::after {
+    animation: pulse 2.4s ease-out infinite;
+    will-change: transform, opacity;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes phone-in {
+  from {
+    opacity: 0;
+    transform: translateY(48px) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-6deg);
+  }
+}
+
+@keyframes prize-in {
+  from {
+    opacity: 0;
+    transform: rotate(4deg) scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(4deg) scale(1);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: rotate(8deg) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(8deg) scale(1);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}

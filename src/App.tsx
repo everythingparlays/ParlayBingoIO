@@ -12,6 +12,7 @@ const HelpCenter = lazy(() => import('pages/Help Center/HelpCenter'))
 const Leaderboard = lazy(() => import('pages/Leaderboard/Leaderboard'))
 const Contests = lazy(() => import('pages/Contests/Contests'))
 const DownloadPage = lazy(() => import('pages/Download/Download'))
+const Business = lazy(() => import('pages/Business/Business'))
 const SingleContestRedirectPage = lazy(
   () => import('pages/ContestRedirects/SingleContestRedirect')
 )
@@ -70,6 +71,7 @@ function App() {
               <Route path="/contests" element={<Contests />} />
               <Route path="/download" element={<DownloadPage />} />
               <Route path="/app" element={<DownloadPage />} />
+              <Route path="/business" element={<Business />} />
 
               {/* SEO Routes that redirect to landing page sections */}
               <Route

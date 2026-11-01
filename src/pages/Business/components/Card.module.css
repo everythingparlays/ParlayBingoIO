@@ -1,0 +1,53 @@
+.card {
+  position: relative;
+  min-width: 0;
+  border: 1px solid var(--biz-line);
+  color: var(--biz-ink);
+}
+
+.surface {
+  background-color: var(--biz-surface);
+}
+
+.outline {
+  background-color: transparent;
+}
+
+.pad-sm {
+  padding: 1rem;
+}
+
+.pad-md {
+  padding: 1.5rem;
+}
+
+.pad-lg {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.radius-md {
+  border-radius: var(--biz-radius-sm);
+}
+
+.radius-lg {
+  border-radius: var(--biz-radius);
+}
+
+.interactive {
+  transition: border-color 0.25s var(--transition-timing);
+}
+
+.interactive:focus-within {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+@media (hover: hover) {
+  .interactive:hover {
+    border-color: rgba(255, 255, 255, 0.28);
+  }
+}
+
+/* list-item cards: drop the default marker / indent */
+li.card {
+  list-style: none;
+}

@@ -1,0 +1,16 @@
+/* Hidden state exists only for users who haven't asked for less motion;
+   everyone else always sees the content as rendered. */
+@media (prefers-reduced-motion: no-preference) {
+  .armed {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 600ms var(--transition-timing),
+      transform 600ms var(--transition-timing);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .armed.shown {
+    opacity: 1;
+    transform: none;
+  }
+}

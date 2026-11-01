@@ -1,0 +1,68 @@
+.section {
+  position: relative;
+  overflow-x: hidden; /* fallback */
+  overflow-x: clip; /* guard against horizontal scroll from decorative art */
+  isolation: isolate;
+  color: var(--biz-ink);
+}
+
+.indigo {
+  background-color: var(--primary);
+}
+
+.dark {
+  background-color: var(--biz-surface);
+}
+
+/* The hero's textured left panel (heroBackgroundLeft.webp, feathered into
+   indigo on its right edge) under an indigo wash so it reads quieter than
+   the hero itself. */
+.textured {
+  background-color: var(--primary);
+}
+
+.textured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 55%;
+  background-image: url('/heroBackgroundLeft.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-mask-image: linear-gradient(to right, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 78%, transparent 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+.textured::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(48, 48, 131, 0.55);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+}
+
+.padded {
+  padding-block: var(--biz-section-y);
+}
+
+.separator {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .textured::before {
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  }
+}

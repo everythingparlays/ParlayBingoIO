@@ -9,6 +9,7 @@ const routes = [
   { url: '/help-center', changefreq: 'monthly', priority: 0.8 },
   { url: '/contests', changefreq: 'daily', priority: 0.9 },
   { url: '/download', changefreq: 'monthly', priority: 0.7 },
+  { url: '/business', changefreq: 'monthly', priority: 0.9 },
 
   // SEO Routes
   {
