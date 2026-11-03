@@ -16,7 +16,8 @@ export interface SectionHeadingProps {
   align?: 'left' | 'center'
   /** md = the standard section title; xl = the larger closing title (final CTA). Default md. */
   size?: 'md' | 'xl'
-  as?: 'h2' | 'h3'
+  /** h1 only for a page's own title (e.g. /business/demo). */
+  as?: 'h1' | 'h2' | 'h3'
   className?: string
 }
 

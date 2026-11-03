@@ -1,14 +1,16 @@
 /* ============================================================
    /business page tokens + utilities.
-   Plain (global) CSS, imported once by Business.tsx. Every selector is
-   scoped under #business (the page's <main>) so nothing leaks to other
-   routes, even after this lazily-loaded stylesheet stays in the document.
+   Plain (global) CSS, imported by Business.tsx and the /business/demo
+   page. Every selector is scoped under #business / #business-demo (each
+   page's <main>) so nothing leaks to other routes, even after this
+   lazily-loaded stylesheet stays in the document.
    Brand set only: indigo #303083 (var(--primary)), dark indigo #1D184C,
    crimson #db2156, gold #f8ac1c, orange #e9663a, light indigo #848FBF,
    #c9cfea secondary text, white.
    ============================================================ */
 
-#business {
+#business,
+#business-demo {
   /* text */
   --biz-ink: #fff;
   --biz-ink-2: #c9cfea;
@@ -35,13 +37,15 @@
 
 /* Keyboard focus ring for interactive elements on indigo. Global
    Button styles strip outlines, so opt in with className="biz-focus". */
-#business .biz-focus:focus-visible {
+#business .biz-focus:focus-visible,
+#business-demo .biz-focus:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 3px;
 }
 
 /* Visually hidden, still announced by screen readers. */
-#business .biz-sr-only {
+#business .biz-sr-only,
+#business-demo .biz-sr-only {
   position: absolute;
   width: 1px;
   height: 1px;

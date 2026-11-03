@@ -1,13 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import buttonStyles from 'ui/styles/Button.module.css'
 import type { ButtonSize } from 'ui/Button'
 import { trackBusinessCta } from 'services/analytics'
 import styles from './BookDemoButton.module.css'
-import {
-  CTA_LABEL_PRIMARY,
-  getBookDemoHref,
-  isBookDemoPlaceholder,
-} from '../businessConfig'
+import { CTA_LABEL_PRIMARY, getBookDemoHref } from '../businessConfig'
 
 export interface BookDemoButtonProps {
   /** Where on the page this CTA lives (e.g. "hero"); written to data-cta-location. */
@@ -17,11 +14,6 @@ export interface BookDemoButtonProps {
   size?: ButtonSize
   /** Stretch to the full row width on small screens (<= 480px). */
   fullWidthOnMobile?: boolean
-  /**
-   * Show the "[PLACEHOLDER] Booking link pending" note while BOOK_DEMO_URL is
-   * null. Only the hero sets this, so the note appears once per page.
-   */
-  showPlaceholderNote?: boolean
   className?: string
 }
 
@@ -35,22 +27,17 @@ const GRADIENT_STYLE = {
 } as React.CSSProperties & { '--hover-bg': string; '--hover-color': string }
 
 /**
- * "Book a Personalized Demo" call to action. Always routes through
- * getBookDemoHref(): the OBS calendar link once BOOK_DEMO_URL is set,
- * otherwise an email to OBS support. While the link is pending, the CTA
- * that sets `showPlaceholderNote` (the hero) shows a visible placeholder note.
+ * "Book a Personalized Demo" call to action: an in-app link to the
+ * /business/demo booking page (getBookDemoHref()).
  */
 export default function BookDemoButton({
   location,
   label = CTA_LABEL_PRIMARY,
   size = 'lg',
   fullWidthOnMobile = true,
-  showPlaceholderNote = false,
   className,
 }: BookDemoButtonProps) {
   const href = getBookDemoHref()
-  const isExternal = /^https?:\/\//i.test(href)
-  const placeholder = showPlaceholderNote && isBookDemoPlaceholder()
 
   return (
     <div
@@ -58,23 +45,17 @@ export default function BookDemoButton({
         .filter(Boolean)
         .join(' ')}
     >
-      <a
-        href={href}
+      <Link
+        to={href}
         className={[buttonStyles.button, buttonStyles[size], styles['cta']].join(' ')}
         style={GRADIENT_STYLE}
         data-cta="book-demo"
         data-cta-location={location}
         // fire-and-forget: never preventDefault, the link navigates as usual
         onClick={() => trackBusinessCta({ location, label, href })}
-        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       >
         {label}
-      </a>
-      {placeholder && (
-        <span className={styles['note']}>
-          [PLACEHOLDER] Booking link pending — opens an email to OBS for now.
-        </span>
-      )}
+      </Link>
     </div>
   )
 }

@@ -15,9 +15,8 @@ export interface CtaRowProps {
 }
 
 /**
- * End-of-section call to action: the "Book a demo" button (always routed
- * through getBookDemoHref) plus an optional note. Lower sections never show
- * the booking-link placeholder note; only the hero does.
+ * End-of-section call to action: the "Book a demo" button (a link to the
+ * /business/demo booking page) plus an optional note.
  */
 export default function CtaRow({
   label,

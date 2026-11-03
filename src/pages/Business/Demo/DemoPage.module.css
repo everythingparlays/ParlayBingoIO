@@ -1,0 +1,166 @@
+.page {
+  padding-top: var(--header-height);
+  background-color: var(--primary);
+}
+
+/* Same header-height correction as Business.module.css: the 70px mobile
+   override loses to the 85px default set on body. */
+@media (max-width: 767px) {
+  .page {
+    padding-top: 70px;
+  }
+}
+
+/* One 1000px column: back link, heading and calendar share a left edge. */
+.inner {
+  max-width: calc(1000px + 3rem);
+  padding-top: clamp(1.75rem, 4vw, 3rem);
+  padding-bottom: var(--biz-section-y);
+}
+
+/* ---- back link ---- */
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  padding: 0.25rem 0.1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--biz-ink-2);
+  transition: color 0.2s ease;
+}
+
+.chevron {
+  flex: none;
+  transition: transform 0.2s ease;
+}
+
+@media (hover: hover) {
+  .back:hover {
+    color: var(--biz-ink);
+  }
+
+  .back:hover .chevron {
+    transform: translateX(-2px);
+  }
+}
+
+/* ---- heading ---- */
+
+.heading {
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+/* ---- calendar surface ---- */
+
+.calendar {
+  overflow: hidden;
+}
+
+/* Reserve the booker's height while the embed loads so the page doesn't
+   jump; dropped once Cal reports linkReady (the iframe then sizes itself). */
+.calendar-loading {
+  min-height: 720px;
+}
+
+.embed {
+  min-height: inherit;
+}
+
+.loading {
+  display: grid;
+  place-items: center;
+  min-height: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--biz-ink-3);
+}
+
+/* ---- booked ---- */
+
+.booked {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.booked-title {
+  font-family: var(--font-main);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--biz-ink);
+}
+
+.booked-title:focus {
+  outline: none;
+}
+
+.booked-text {
+  max-width: 34em;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--biz-ink-2);
+}
+
+.booked-link {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f8ac1c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---- holding (no Cal.com link yet) ---- */
+
+.holding {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.holding-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--biz-ink);
+}
+
+.holding-text {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--biz-ink-2);
+}
+
+.mail {
+  font-weight: 700;
+  color: #f8ac1c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+  border-radius: 4px;
+}
+
+@media (max-width: 480px) {
+  /* give the booker the width back on phones */
+  .calendar {
+    padding: 0.25rem;
+  }
+
+  .calendar-loading {
+    min-height: 640px;
+  }
+}

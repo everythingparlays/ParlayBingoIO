@@ -22,14 +22,6 @@ a.cta:focus-visible {
   outline-offset: 3px;
 }
 
-.note {
-  font-size: 12.5px;
-  line-height: 1.4;
-  font-weight: 500;
-  color: #848fbf;
-  white-space: nowrap;
-}
-
 @media (max-width: 480px) {
   .wrap.full {
     display: flex;
@@ -47,9 +39,5 @@ a.cta:focus-visible {
     text-align: center;
     line-height: 1.3;
     padding-block: 12px;
-  }
-
-  .note {
-    white-space: normal;
   }
 }

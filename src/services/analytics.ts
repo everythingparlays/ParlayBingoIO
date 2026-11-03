@@ -52,6 +52,14 @@ export const trackBusinessCta = (props: BusinessCtaProps) => {
   })
 }
 
+/** "For Business" demo page: a demo was booked through the Cal.com embed. */
+export const trackBusinessDemoBooked = () => {
+  analytics.track('business_demo_booked', {
+    page: '/business/demo',
+    timestamp: new Date().toISOString(),
+  })
+}
+
 /** "For Business" page: an FAQ item was opened or closed. */
 export const trackBusinessFaq = (question: string, open: boolean) => {
   analytics.track('business_faq_toggled', {

@@ -60,7 +60,7 @@ export default function BusinessHero() {
           </p>
 
           <div className={`${styles['cta-row']} ${styles['reveal']}`} style={delay(210)}>
-            <BookDemoButton location="hero" showPlaceholderNote />
+            <BookDemoButton location="hero" />
           </div>
 
           <p className={`${styles['credibility']} ${styles['reveal']}`} style={delay(280)}>

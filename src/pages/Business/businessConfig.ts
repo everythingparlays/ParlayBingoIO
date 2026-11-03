@@ -4,22 +4,24 @@
 
 export const BUSINESS_PATH = '/business'
 
-// Calendar booking link — to be provided by OBS. Leave as null until then.
-// Every CTA on the page must use getBookDemoHref() rather than this constant,
-// so the email fallback (and the visible placeholder note) switch off
-// automatically the moment a real URL is set here.
-export const BOOK_DEMO_URL: string | null = null
+// Demo-booking page. Every "Book a demo" CTA links here (getBookDemoHref());
+// the page embeds the OBS calendar, or a holding panel until it is set.
+export const DEMO_PATH = '/business/demo'
 
-// Support address already published in the site footer.
-export const CONTACT_FALLBACK_HREF =
-  'mailto:support@everythingparlays.com?subject=OBS%20Stadium%20Game%20demo'
+// The Cal.com event link (the part after cal.com/, e.g. "obs/demo"), to be
+// provided by OBS. Leave as null until then: /business/demo then shows a
+// holding panel with the support email and never loads the Cal.com embed.
+export const CALCOM_EVENT_LINK: string | null = null
+
+// Support address: the site-wide constant (also used by the header and footer).
+export { SUPPORT_EMAIL } from 'constants/contact'
 
 export function getBookDemoHref(): string {
-  return BOOK_DEMO_URL ?? CONTACT_FALLBACK_HREF
+  return DEMO_PATH
 }
 
-export function isBookDemoPlaceholder(): boolean {
-  return BOOK_DEMO_URL === null
+export function isCalcomConfigured(): boolean {
+  return CALCOM_EVENT_LINK !== null
 }
 
 export interface HeroHeadline {

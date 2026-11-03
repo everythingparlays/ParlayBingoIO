@@ -15,6 +15,7 @@ Allow: /daily-fantasy-sports-nfl
 Allow: /daily-fantasy-sports-mlb
 Allow: /help-center
 Allow: /business
+Allow: /business/demo
 
 # Sitemap location
 Sitemap: https://overboardsports.com/sitemap.xml
