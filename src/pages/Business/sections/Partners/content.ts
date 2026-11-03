@@ -25,9 +25,8 @@ export interface Team {
   name: string
   season: string
   logo: Logo
-  /** null = sponsor logos not supplied yet (renders a placeholder) */
-  sponsors: Logo[] | null
-  sponsorsPending?: string
+  /** omitted = the card shows no sponsors row */
+  sponsors?: Logo[]
 }
 
 export const SPONSORS_LABEL = 'Sponsors'
@@ -79,8 +78,6 @@ export const TEAMS: Team[] = [
       width: 461,
       height: 219,
     },
-    sponsors: null,
-    sponsorsPending: 'UND sponsor logos pending',
   },
 ]
 
@@ -100,5 +97,3 @@ export const PARTNERSHIP_TILE = {
   rest: 'including',
   name: 'Andruw Jones',
 }
-
-export const TESTIMONIALS_PENDING = 'Partner testimonials pending'

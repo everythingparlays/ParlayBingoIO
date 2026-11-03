@@ -659,3 +659,31 @@ footer a:hover {
     max-width: 90%;
   }
 }
+
+/* For Business pages: an empty column with the download card's exact
+   footprint, so the footer keeps its layout and height. Desktop takes the
+   card's 400 x 650 box; below 768px the card is content-sized, so the
+   blank matches each of its measured heights. */
+.left-container.left-container-blank {
+  width: 400px;
+}
+
+@media screen and (max-width: 768px) {
+  .left-container.left-container-blank {
+    width: 100%;
+    height: 629px;
+    min-height: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .left-container.left-container-blank {
+    height: 610px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .left-container.left-container-blank {
+    height: 561px;
+  }
+}

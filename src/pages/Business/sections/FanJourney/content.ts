@@ -12,8 +12,11 @@ const IMG_BASE = '/assets/images/business'
 export interface JourneyStep {
   label: string
   caption: string
+  /** Native capture (PNG, ~378px wide): 1x screens and the fallback. */
   src: string
-  /** Native pixel size of the screen capture (all ~378px wide: keep the frame at 190 CSS px max). */
+  /** 660px Lanczos resample of `src` (WebP) for high-density screens. */
+  src2x: string
+  /** Native pixel size of the PNG capture. */
   width: number
   height: number
   alt: string
@@ -24,6 +27,7 @@ export const JOURNEY_STEPS: readonly JourneyStep[] = [
     label: 'Join the game',
     caption: "Fans scan a QR code or join directly through your team's app",
     src: `${IMG_BASE}/screen-wild-pick-players.png`,
+    src2x: `${IMG_BASE}/screen-wild-pick-players-660.webp`,
     width: 378,
     height: 734,
     alt: 'Pick your players screen: a fan chooses Minnesota Wild players for their bingo board',
@@ -33,6 +37,7 @@ export const JOURNEY_STEPS: readonly JourneyStep[] = [
     caption:
       'Fans hit bingos tied to live game action and win tiered sponsor prizes',
     src: `${IMG_BASE}/screen-wild-board.png`,
+    src2x: `${IMG_BASE}/screen-wild-board-660.webp`,
     width: 378,
     height: 734,
     alt: 'Minnesota Wild game board with the Cub prize tiers, a Cub banner, player stat squares and a Cub free square',
@@ -41,6 +46,7 @@ export const JOURNEY_STEPS: readonly JourneyStep[] = [
     label: 'Redeem with the sponsor',
     caption: 'Fans redeem prizes online or at sponsor locations',
     src: `${IMG_BASE}/screen-wild-prize-silver.png`,
+    src2x: `${IMG_BASE}/screen-wild-prize-silver-660.webp`,
     width: 376,
     height: 734,
     alt: 'Silver tier prize screen: $15 off groceries from Cub',

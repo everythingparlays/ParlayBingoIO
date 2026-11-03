@@ -6,7 +6,7 @@ import CtaRow from '../../components/CtaRow'
 import Reveal from '../../components/Reveal'
 import { DraftNote } from '../../components/Placeholder'
 import { CTA_VARIANTS } from '../../sectionsConfig'
-import { FINAL_ACCENT, FINAL_EXPECTATION, FINAL_TITLE } from './content'
+import { FINAL_CTA_HEADING, FINAL_EXPECTATION } from './content'
 import styles from './FinalCta.module.css'
 
 const SECTION_ID = 'final-cta'
@@ -28,8 +28,8 @@ export default function FinalCta() {
         <div className={styles['heading-wrap']}>
           <SectionHeading
             id={`${SECTION_ID}-heading`}
-            title={FINAL_TITLE}
-            accent={FINAL_ACCENT}
+            title={FINAL_CTA_HEADING.title}
+            accent={FINAL_CTA_HEADING.accent}
             align="center"
             size="xl"
           />

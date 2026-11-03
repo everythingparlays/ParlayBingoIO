@@ -82,7 +82,7 @@ export default function BusinessHero() {
                 <source
                   type="image/webp"
                   srcSet={`${IMG_BASE}/stadium-board-und-640.webp 640w, ${IMG_BASE}/stadium-board-und-1063.webp 1063w`}
-                  sizes="(max-width: 768px) 60vw, 330px"
+                  sizes="(max-width: 768px) 60vw, 340px"
                 />
                 <img
                   src={`${IMG_BASE}/stadium-board-und-1063.jpg`}

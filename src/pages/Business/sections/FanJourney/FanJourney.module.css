@@ -9,8 +9,10 @@
 
 /* ---- steps: three columns (tablet + desktop) ---- */
 
+/* the phones are the focus: each column is ~one phone wide (300px at
+   1024px and up, ~224px at 768) and the step text tucks in under it */
 .steps {
-  --col-gap: clamp(1.5rem, 3vw, 2.5rem);
+  --col-gap: clamp(1.5rem, 2.5vw, 2rem);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--col-gap);
@@ -51,7 +53,7 @@
 .device {
   position: relative;
   isolation: isolate;
-  max-width: 100%;
+  width: min(300px, 100%);
 }
 
 .device::before {
@@ -68,7 +70,7 @@
 }
 
 .phone {
-  max-width: 100%;
+  width: 100%;
   /* matches the device's rounded outline (15.5em radius on a ~198em-tall frame) */
   border-radius: 15.5% / 7.84%;
   box-shadow:
@@ -83,7 +85,7 @@
   justify-self: stretch;
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .marker::before,
@@ -103,12 +105,12 @@
 /* left half: from the gap's midpoint to the chip */
 .marker::before {
   left: calc(var(--col-gap) / -2);
-  right: calc(50% + 32px);
+  right: calc(50% + 26px);
 }
 
 /* right half: from the chip to the next gap's midpoint */
 .marker::after {
-  left: calc(50% + 32px);
+  left: calc(50% + 26px);
   right: calc(var(--col-gap) / -2);
 }
 
@@ -123,15 +125,15 @@
 .num {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border: 2px solid transparent;
   border-radius: 50%;
   background:
     linear-gradient(var(--biz-surface), var(--biz-surface)) padding-box,
     var(--biz-grad-rule) border-box;
   font-family: var(--font-main);
-  font-size: 1.05rem;
+  font-size: 0.875rem;
   font-weight: 900;
   line-height: 1;
   color: var(--biz-ink);
@@ -139,20 +141,20 @@
 }
 
 .label {
-  margin-top: 1.25rem;
+  margin-top: 0.9rem;
   font-family: var(--font-main);
-  font-size: 1.25rem;
-  font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: 0.01em;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--biz-ink);
 }
 
 .caption {
-  max-width: 19em;
-  margin-top: 0.5rem;
-  font-size: 1rem;
+  max-width: 24em;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
   font-weight: 500;
   line-height: 1.5;
   color: var(--biz-ink-2);
@@ -181,14 +183,19 @@
     display: none;
   }
 
+  /* ~82vw cards with a ~280px phone; the next card peeks in */
   .step {
-    flex: 0 0 78vw;
-    max-width: 22rem;
-    padding: 1.75rem 1.25rem 1.5rem;
+    flex: 0 0 82vw;
+    max-width: 21.5rem;
+    padding: 1.25rem 0.875rem 1.25rem;
     border: 1px solid var(--biz-line);
     border-radius: var(--biz-radius);
     background-color: var(--biz-surface);
     scroll-snap-align: start;
+  }
+
+  .device {
+    width: min(280px, 100%);
   }
 
   .phone {
@@ -203,7 +210,7 @@
   }
 
   .marker {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
   }
 
   .marker::before,

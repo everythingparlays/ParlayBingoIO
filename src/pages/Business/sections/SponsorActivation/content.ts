@@ -7,7 +7,8 @@ export const SPONSOR_LEAD =
 
 export const BOARD_SCREEN = {
   src: '/assets/images/business/screen-wild-board.png',
-  // 378px-wide source: shown at 280 CSS px it is slightly soft on 2x screens
+  // 660px Lanczos resample of the 378px capture, for high-density screens
+  src2x: '/assets/images/business/screen-wild-board-660.webp',
   width: 378,
   height: 734,
   alt: 'Minnesota Wild game board sponsored by Cub: prize tier tracker, Cub pickup and delivery banner, player stat squares, a Cub free square and a Shop at Cub Foods button',

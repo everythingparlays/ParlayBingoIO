@@ -112,7 +112,10 @@ function FlipCard({ benefit, reducedMotion }: FlipCardProps) {
               <span className={styles['title']}>{benefit.title}</span>
               <span className={styles['hint']} aria-hidden={flipped || undefined}>
                 <FlipIcon />
-                <span className={styles['hint-text']}>{FLIP_HINT}</span>
+                {/* one of the two is display:none per pointer type, so only the
+                    visible wording is part of the button's accessible name */}
+                <span className={`${styles['hint-text']} ${styles['hint-tap']}`}>{FLIP_HINT.tap}</span>
+                <span className={`${styles['hint-text']} ${styles['hint-hover']}`}>{FLIP_HINT.hover}</span>
               </span>
             </span>
           </span>

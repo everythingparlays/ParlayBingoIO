@@ -378,7 +378,32 @@ figure.dashboard {
   grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
   align-items: start;
   gap: clamp(2rem, 5vw, 4.5rem);
-  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  /* The tilted notification + its shadow never cause sideways scroll.
+     The clip box is widened into .container's 1.5rem gutter (negative
+     margin, matching padding) so the shadow fades out instead of being cut
+     at the content edge; the grid itself keeps its original width. */
+  margin: clamp(2.5rem, 5vw, 3.5rem) -1.5rem 0;
+  padding-inline: 1.5rem;
+  overflow-x: hidden; /* fallback */
+  overflow-x: clip;
+}
+
+/* fan card + the example email that "pops up" on that fan's phone */
+.fan-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* desktop: tucked under the card's bottom-right corner. The vertical
+   overlap stays inside the card's bottom padding so the "Joined" row is
+   never covered; the overhang into the column gap is ~40px but always
+   leaves at least 1.5rem of the gap (5vw) clear of the security list. */
+.notify {
+  --notify-tilt: -3deg;
+  align-self: flex-end;
+  margin-top: -1.1rem;
+  margin-right: calc(-1 * min(2.5rem, 5vw - 1.5rem));
 }
 
 figure.fan {
@@ -626,6 +651,14 @@ figure.fan {
     grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
     gap: 2rem;
   }
+
+  /* tablet + phone: directly under the card, centred */
+  .notify {
+    --notify-tilt: -2deg;
+    align-self: center;
+    margin-top: 1.4rem;
+    margin-right: 0;
+  }
 }
 
 /* ---------- phone ---------- */
@@ -647,8 +680,13 @@ figure.fan {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .fan {
-    justify-self: center;
+  .fan-group {
+    align-items: center;
+  }
+
+  /* room for the card's shadow before the security heading below */
+  .notify {
+    margin-bottom: 1rem;
   }
 }
 

@@ -5,6 +5,7 @@ import CtaRow from '../../components/CtaRow'
 import Card from '../../components/Card'
 import Reveal from '../../components/Reveal'
 import PhoneFrame from '../../components/PhoneFrame'
+import ScreenCapture from '../../components/ScreenCapture'
 import { CTA_VARIANTS } from '../../sectionsConfig'
 import {
   BOARD_SCREEN,
@@ -64,17 +65,16 @@ export default function SponsorActivation() {
           <div className={styles['stage']}>
             <div className={styles['device']}>
               <PhoneFrame
-                size="md"
+                size="lg"
                 className={styles['phone']}
                 screenAspect={SCREEN_ASPECT}
               >
-                <img
+                <ScreenCapture
                   src={BOARD_SCREEN.src}
+                  src2x={BOARD_SCREEN.src2x}
                   width={BOARD_SCREEN.width}
                   height={BOARD_SCREEN.height}
                   alt={BOARD_SCREEN.alt}
-                  loading="lazy"
-                  decoding="async"
                 />
               </PhoneFrame>
 

@@ -85,6 +85,19 @@ export const FAN_CARD = {
   joined: 'Oct 2, 2026',
 } as const
 
+// Illustrative email notification beside the fan card: what a team could
+// send Jordan M., built from the profile's favorite-players field (the
+// exportable field, not per-board picks).
+export const NOTIFY_CAPTION = 'Illustrative example of a team email to a fan'
+export const NOTIFY_CHIP = 'Illustrative'
+export const NOTIFY = {
+  sender: 'Minnesota Wild',
+  time: 'now',
+  subject: "Kaprizov is your favorite. Here's 20% off his jersey.",
+  preview:
+    'Hi Jordan, you told us Kirill Kaprizov is your favorite player. Your 20% jersey code is inside.',
+} as const
+
 export const SECURITY_TITLE = 'How fan data is protected' // DRAFT, pending OBS
 export const SECURITY_POINTS: readonly string[] = [
   'Encrypted in transit (HTTPS, TLS 1.2+) with uploads stored in encrypted, private cloud storage',

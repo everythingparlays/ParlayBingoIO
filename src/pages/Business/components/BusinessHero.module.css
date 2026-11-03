@@ -191,12 +191,16 @@
   only its drop shadow reaches the screen. No board tile is covered.
 */
 .visual {
-  --pw: clamp(200px, min(23vw, calc((100vh - var(--header-height)) * 0.38)), 330px);
-  --pw: clamp(200px, min(23vw, calc((100svh - var(--header-height)) * 0.38)), 330px);
+  /* 340px cap: the tilted prize card's left edge sits ~(54 - 0.064 x --pw)px
+     from the copy column, so past ~345px it would come within 32px of it */
+  --pw: clamp(200px, min(25vw, calc((100vh - var(--header-height)) * 0.41)), 340px);
+  --pw: clamp(200px, min(25vw, calc((100svh - var(--header-height)) * 0.41)), 340px);
   --ph: calc(var(--pw) * 2.06);
   --cw: calc(var(--pw) * 0.75);
   --ch: calc(var(--cw) * 1015 / 870);
-  --tw: clamp(100px, calc(var(--pw) * 0.39), 122px);
+  /* stays 0.39 x --pw up to the 340px phone, so the trophy keeps its
+     place off the board tiles at every size */
+  --tw: clamp(100px, calc(var(--pw) * 0.39), 133px);
   --th: calc(var(--tw) * 217 / 224);
   /* phone position is fixed relative to the column (unchanged from r3) */
   --phone-left: calc(6px + var(--pw) * 0.5208);

@@ -15,7 +15,9 @@
   align-items: center;
 }
 
-@media (min-width: 1024px) {
+/* side by side only where the comparison keeps ~475px beside the 562px
+   stage; narrower, it stacks under the phone rather than squeeze either */
+@media (min-width: 1140px) {
   .showcase {
     grid-template-columns: auto minmax(0, 1fr);
     gap: clamp(2.5rem, 4.5vw, 4.5rem);
@@ -30,7 +32,7 @@
   --x / --y (set inline) are the target's fractions of the capture.
 */
 .stage {
-  --pw: 280px;
+  --pw: 330px;
   --rail: 14.5rem;
   position: relative;
   justify-self: center;
@@ -143,7 +145,10 @@
 
 /* phone: no leader lines; the four chips become a 2x2 grid under the phone */
 @media (max-width: 767px) {
+  /* the phone narrows with the container (312px at 360): keep --pw equal
+     to its real width so the target dots stay on their elements */
   .stage {
+    --pw: min(330px, 100vw - 3rem);
     width: 100%;
     display: grid;
     justify-items: center;
@@ -185,7 +190,7 @@
   justify-self: center;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1140px) {
   .compare {
     max-width: none;
   }

@@ -5,6 +5,7 @@ import CtaRow from '../../components/CtaRow'
 import Card from '../../components/Card'
 import Reveal from '../../components/Reveal'
 import { DraftNote } from '../../components/Placeholder'
+import EmailNotification from './EmailNotification'
 import { CTA_VARIANTS } from '../../sectionsConfig'
 import {
   DASHBOARD_CHIP,
@@ -275,7 +276,8 @@ function FanCard() {
 
 /**
  * US-07 Data and performance: an illustrative post-game dashboard, an
- * illustrative fan profile card, and how fan data is protected.
+ * illustrative fan profile card with an example team email popping up
+ * beside it, and how fan data is protected.
  */
 export default function DataPerformance() {
   return (
@@ -296,7 +298,10 @@ export default function DataPerformance() {
       </Reveal>
 
       <div className={styles['lower']}>
-        <FanCard />
+        <div className={styles['fan-group']}>
+          <FanCard />
+          <EmailNotification className={styles['notify']} />
+        </div>
 
         <div className={styles['security']}>
           <h3 className={styles['security-title']}>{SECURITY_TITLE}</h3>

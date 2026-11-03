@@ -1,7 +1,8 @@
 /* ============================================================
    US-03 Partners and credibility (indigo)
-   Desktop: teams 7/12 | proof 5/12. Tablet: teams 2-up, stats 3-up
-   beneath. Phone: one column.
+   Desktop: teams 7/12 (equal-height rows) | proof 5/12. Tablet: team
+   cards stacked in their logo | details row at natural height, stats
+   3-up beneath. Phone: one column.
    Note: global p/span/li/h3 rules set grey text + 1rem, so every text
    element below sets its own size and colour.
    ============================================================ */
@@ -161,10 +162,6 @@
   border-radius: 22%;
 }
 
-.pending {
-  margin-top: 0.65rem;
-}
-
 /* ---------- proof column ---------- */
 
 .proof {
@@ -227,10 +224,6 @@
   color: var(--biz-ink);
 }
 
-.testimonials {
-  align-self: flex-start;
-}
-
 .cta {
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
 }
@@ -251,11 +244,17 @@
   }
 }
 
-/* ---------- tablet: teams 2-up, stats 3-up beneath ---------- */
+/* ---------- tablet up: logo | details rows, stats 3-up beneath ---------- */
 
 @media (min-width: 768px) {
-  .teams {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .team {
+    grid-template-columns: 156px minmax(0, 1fr);
+    align-items: stretch;
+    gap: 1.75rem;
+  }
+
+  .team-body {
+    align-self: center;
   }
 
   .stats {
@@ -272,19 +271,14 @@
     align-items: stretch;
   }
 
+  /* both cards share one height (the proof column sets it); the logo
+     plate fills the card and the details sit centred beside it */
   .teams {
-    grid-template-columns: minmax(0, 1fr);
     grid-auto-rows: 1fr;
   }
 
   .team {
-    grid-template-columns: 156px minmax(0, 1fr);
-    align-items: stretch;
-    gap: 1.75rem;
-  }
-
-  .team-body {
-    align-self: center;
+    align-content: stretch;
   }
 
   .stats {

@@ -1,7 +1,10 @@
 // Copy for US-09 Final CTA.
 
-export const FINAL_TITLE = 'Ready to win'
-export const FINAL_ACCENT = 'every game?'
+// The closing heading: `title` is the plain first line, `accent` the gradient line.
+export const FINAL_CTA_HEADING = {
+  title: 'The future of',
+  accent: 'game-day sponsorship',
+}
 
 // DRAFT, pending OBS approval (renders with <DraftNote />)
 export const FINAL_EXPECTATION =

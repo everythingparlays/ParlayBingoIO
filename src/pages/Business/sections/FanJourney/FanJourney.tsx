@@ -4,6 +4,7 @@ import SectionHeading from '../../components/SectionHeading'
 import CtaRow from '../../components/CtaRow'
 import Reveal from '../../components/Reveal'
 import PhoneFrame from '../../components/PhoneFrame'
+import ScreenCapture from '../../components/ScreenCapture'
 import { CTA_VARIANTS } from '../../sectionsConfig'
 import {
   JOURNEY_ACCENT,
@@ -87,16 +88,14 @@ export default function FanJourney() {
                 <div className={styles['device']}>
                   <PhoneFrame
                     className={styles['phone']}
-                    style={{ width: '190px' }}
                     screenAspect={SCREEN_ASPECT}
                   >
-                    <img
+                    <ScreenCapture
                       src={step.src}
+                      src2x={step.src2x}
                       width={step.width}
                       height={step.height}
                       alt={step.alt}
-                      loading="lazy"
-                      decoding="async"
                     />
                   </PhoneFrame>
                 </div>

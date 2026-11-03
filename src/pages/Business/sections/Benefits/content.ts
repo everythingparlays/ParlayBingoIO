@@ -7,7 +7,12 @@ export const BENEFITS_HEADING = {
   lead: 'Three business outcomes, in a quick scan.',
 }
 
-export const FLIP_HINT = 'Tap to see how'
+/** Front-face hint: the card flips on hover where the primary pointer can
+ * hover, and on tap elsewhere. Both render; CSS shows the one that fits. */
+export const FLIP_HINT = {
+  hover: 'Hover to see how',
+  tap: 'Tap to see how',
+} as const
 
 export type BenefitIcon = 'cash' | 'whistle' | 'target'
 
@@ -23,18 +28,18 @@ export const BENEFITS: Benefit[] = [
     key: 'revenue',
     icon: 'cash',
     title: 'Maximize Sponsorship Revenue',
-    body: 'Sitting as a premium piece of sponsorship inventory, OverBoard helps teams get the best rates from their sponsors while providing higher sponsor ROI',
+    body: 'Start screen, board banner, prize credit and opt-in leads: inventory sponsors pay for.',
   },
   {
     key: 'engagement',
     icon: 'whistle',
     title: 'Deepen Fan Engagement',
-    body: 'Exciting and novel gameplay mechanics leave fans with a memorable gameday experience that they will talk about',
+    body: 'Fans draft up to 8 players, then every bingo tier they reach pops a prize.',
   },
   {
     key: 'retargeting',
     icon: 'target',
     title: 'Enhance Fan Retargeting',
-    body: 'OverBoard builds a more comprehensive profile of each fan to ensure future ticket sales, merch deals, and sponsor offers reach the right audience',
+    body: 'Every fan on record: email, the profile fields you choose, consent with its exact wording.',
   },
 ]

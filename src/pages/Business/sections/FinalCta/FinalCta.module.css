@@ -15,7 +15,8 @@
   text-align: center;
 }
 
-/* shrink-wraps the title so the trophy can sit off its top-right corner */
+/* shrink-wraps the title so the trophy can sit off its top-right corner,
+   in the notch the shorter first line leaves above the accent line */
 .heading-wrap {
   position: relative;
   width: fit-content;
@@ -25,8 +26,8 @@
 .trophy-bob {
   position: absolute;
   z-index: 1;
-  top: -3.5rem;
-  right: -6.25rem;
+  top: -2.5rem;
+  right: -4rem;
   width: 110px;
   aspect-ratio: 224 / 217;
   pointer-events: none;

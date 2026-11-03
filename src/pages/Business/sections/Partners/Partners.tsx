@@ -3,7 +3,6 @@ import BusinessSection from '../../components/BusinessSection'
 import SectionHeading from '../../components/SectionHeading'
 import CtaRow from '../../components/CtaRow'
 import Card from '../../components/Card'
-import Placeholder from '../../components/Placeholder'
 import Reveal from '../../components/Reveal'
 import { CTA_VARIANTS } from '../../sectionsConfig'
 import {
@@ -12,7 +11,6 @@ import {
   SPONSORS_LABEL,
   STATS,
   TEAMS,
-  TESTIMONIALS_PENDING,
   type Logo,
   type Team,
 } from './content'
@@ -47,19 +45,19 @@ function TeamCard({ team }: { team: Team }) {
       <div className={styles['team-body']}>
         <h3 className={styles['team-name']}>{team.name}</h3>
         <p className={styles['season']}>{team.season}</p>
-        <p id={labelId} className={styles['sponsors-label']}>
-          {SPONSORS_LABEL}
-        </p>
-        {team.sponsors ? (
-          <ul className={styles['sponsors']} aria-labelledby={labelId}>
-            {team.sponsors.map((logo) => (
-              <li key={logo.alt} className={styles['chip']}>
-                <LogoImage logo={logo} className={styles['chip-img']} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <Placeholder className={styles['pending']}>{team.sponsorsPending}</Placeholder>
+        {team.sponsors && team.sponsors.length > 0 && (
+          <>
+            <p id={labelId} className={styles['sponsors-label']}>
+              {SPONSORS_LABEL}
+            </p>
+            <ul className={styles['sponsors']} aria-labelledby={labelId}>
+              {team.sponsors.map((logo) => (
+                <li key={logo.alt} className={styles['chip']}>
+                  <LogoImage logo={logo} className={styles['chip-img']} />
+                </li>
+              ))}
+            </ul>
+          </>
         )}
       </div>
     </Card>
@@ -100,9 +98,6 @@ export default function Partners() {
               </p>
             </Card>
           </ul>
-          <Placeholder inline className={styles['testimonials']}>
-            {TESTIMONIALS_PENDING}
-          </Placeholder>
         </div>
       </Reveal>
 
