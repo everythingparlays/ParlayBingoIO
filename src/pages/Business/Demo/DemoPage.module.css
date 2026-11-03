@@ -62,13 +62,9 @@
 }
 
 /* Reserve the booker's height while the embed loads so the page doesn't
-   jump; dropped once Cal reports linkReady (the iframe then sizes itself). */
+   jump; dropped once the embed reports ready (the iframe then sizes itself). */
 .calendar-loading {
   min-height: 720px;
-}
-
-.embed {
-  min-height: inherit;
 }
 
 .loading {
@@ -121,7 +117,7 @@
   border-radius: 4px;
 }
 
-/* ---- holding (no Cal.com link yet) ---- */
+/* ---- holding (no booking link yet) ---- */
 
 .holding {
   display: flex;

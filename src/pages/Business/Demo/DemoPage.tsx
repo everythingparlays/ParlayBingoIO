@@ -9,15 +9,16 @@ import styles from './DemoPage.module.css'
 // page tokens + utilities, scoped under #business / #business-demo
 import '../components/business-tokens.css'
 import {
+  BOOKING_LINK,
   BUSINESS_PATH,
-  CALCOM_EVENT_LINK,
   DEMO_PATH,
   SUPPORT_EMAIL,
-  isCalcomConfigured,
+  isBookingConfigured,
 } from '../businessConfig'
 
-// Own chunk, requested only when the calendar actually renders.
-const CalEmbed = lazy(() => import('./CalEmbed'))
+// Own chunk, requested only when the calendar actually renders, so no
+// booking-provider code loads while BOOKING_LINK is unset.
+const BookingEmbed = lazy(() => import('./BookingEmbed'))
 
 const SITE_URL = 'https://overboardsports.com'
 const CANONICAL = `${SITE_URL}${DEMO_PATH}`
@@ -98,7 +99,7 @@ export default function DemoPage() {
   const [failed, setFailed] = useState(false)
   const bookedRef = useRef(false)
 
-  // Cal can report one booking through two events (V2 + legacy); count it once.
+  // The embed can report one booking more than once; count it once.
   const handleBooked = useCallback(() => {
     if (bookedRef.current) return
     bookedRef.current = true
@@ -109,10 +110,10 @@ export default function DemoPage() {
   const handleReady = useCallback(() => setReady(true), [])
   const handleFailed = useCallback(() => setFailed(true), [])
 
-  const calLink = isCalcomConfigured() ? CALCOM_EVENT_LINK : null
+  const bookingLink = isBookingConfigured() ? BOOKING_LINK : null
 
   let panel: React.ReactNode
-  if (!calLink || failed) {
+  if (!bookingLink || failed) {
     panel = <HoldingPanel failed={failed} />
   } else if (booked) {
     panel = <BookedPanel />
@@ -125,12 +126,11 @@ export default function DemoPage() {
           </p>
         }
       >
-        <CalEmbed
-          calLink={calLink}
+        <BookingEmbed
+          link={bookingLink}
           onBooked={handleBooked}
           onReady={handleReady}
           onFailed={handleFailed}
-          className={styles['embed']}
         />
       </Suspense>
     )
@@ -138,10 +138,10 @@ export default function DemoPage() {
 
   // Reserve the booker's height only until it reports ready; after that the
   // iframe sizes itself and the card hugs it.
-  const loadingCalendar = calLink && !booked && !failed && !ready
+  const embedLoading = bookingLink && !booked && !failed && !ready
   const surfaceClass = [
     styles['calendar'],
-    loadingCalendar ? styles['calendar-loading'] : '',
+    embedLoading ? styles['calendar-loading'] : '',
   ]
     .filter(Boolean)
     .join(' ')

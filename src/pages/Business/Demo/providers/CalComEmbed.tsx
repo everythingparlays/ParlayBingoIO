@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import Cal, { getCalApi } from '@calcom/embed-react'
+import type { BookingEmbedProps } from '../BookingEmbed'
 
-// Loaded only by /business/demo (React.lazy in DemoPage), and only when a
-// Cal.com event link is configured, so neither this chunk nor Cal's
-// embed.js is ever requested by other routes or by the holding state.
+// Cal.com implementation of BookingEmbed. Reached only through BookingEmbed,
+// which DemoPage lazy-loads when BOOKING_LINK is set, so neither this code
+// nor Cal's embed.js is ever requested by other routes or by the holding state.
+// `link` is the Cal.com event link (the part after cal.com/), e.g. "obs/demo".
 
 const BRAND = '#F8AC1C'
 
@@ -26,22 +28,12 @@ const DARK_VARS = {
 // Module-level so the object identity is stable across renders.
 const INLINE_CONFIG = { layout: 'month_view', theme: 'dark' } as const
 
+// min-height: inherit picks up the card's reserved loading height.
 const EMBED_STYLE: React.CSSProperties = {
   width: '100%',
   height: '100%',
+  minHeight: 'inherit',
   overflow: 'auto',
-}
-
-export interface CalEmbedProps {
-  /** Cal.com event link (the part after cal.com/), e.g. "obs/demo". */
-  calLink: string
-  /** Fired once a booking is confirmed inside the embed. */
-  onBooked: () => void
-  /** The booker page loaded inside the iframe. */
-  onReady?: () => void
-  /** The link could not be loaded (e.g. a 404 event link). */
-  onFailed?: () => void
-  className?: string
 }
 
 /**
@@ -49,13 +41,12 @@ export interface CalEmbedProps {
  * colour. Cal.com branding can't be hidden from the embed API; it is a
  * Teams-plan setting on OBS's Cal.com account (Appearance -> Hide branding).
  */
-export default function CalEmbed({
-  calLink,
+export default function CalComEmbed({
+  link,
   onBooked,
   onReady,
   onFailed,
-  className,
-}: CalEmbedProps) {
+}: BookingEmbedProps) {
   // Keep the latest callbacks without re-registering Cal listeners.
   const handlers = useRef({ onBooked, onReady, onFailed })
   useEffect(() => {
@@ -104,11 +95,6 @@ export default function CalEmbed({
   }, [])
 
   return (
-    <Cal
-      calLink={calLink}
-      config={INLINE_CONFIG}
-      style={EMBED_STYLE}
-      className={className}
-    />
+    <Cal calLink={link} config={INLINE_CONFIG} style={EMBED_STYLE} />
   )
 }

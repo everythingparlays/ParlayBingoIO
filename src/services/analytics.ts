@@ -52,7 +52,7 @@ export const trackBusinessCta = (props: BusinessCtaProps) => {
   })
 }
 
-/** "For Business" demo page: a demo was booked through the Cal.com embed. */
+/** "For Business" demo page: a demo was booked through the booking embed. */
 export const trackBusinessDemoBooked = () => {
   analytics.track('business_demo_booked', {
     page: '/business/demo',

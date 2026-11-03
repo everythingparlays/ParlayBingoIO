@@ -8,10 +8,10 @@ export const BUSINESS_PATH = '/business'
 // the page embeds the OBS calendar, or a holding panel until it is set.
 export const DEMO_PATH = '/business/demo'
 
-// The Cal.com event link (the part after cal.com/, e.g. "obs/demo"), to be
-// provided by OBS. Leave as null until then: /business/demo then shows a
-// holding panel with the support email and never loads the Cal.com embed.
-export const CALCOM_EVENT_LINK: string | null = null
+// Provider event link for the demo-booking embed (provider to be confirmed:
+// Cal.com or Calendly). Leave null until OBS provides it; the page then shows
+// a holding panel and loads no embed code.
+export const BOOKING_LINK: string | null = null
 
 // Support address: the site-wide constant (also used by the header and footer).
 export { SUPPORT_EMAIL } from 'constants/contact'
@@ -20,8 +20,8 @@ export function getBookDemoHref(): string {
   return DEMO_PATH
 }
 
-export function isCalcomConfigured(): boolean {
-  return CALCOM_EVENT_LINK !== null
+export function isBookingConfigured(): boolean {
+  return BOOKING_LINK !== null
 }
 
 export interface HeroHeadline {
