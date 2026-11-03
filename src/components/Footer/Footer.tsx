@@ -20,6 +20,7 @@ import Facebook from 'components/svg/Facebook'
 import Instagram from 'components/svg/Instagram'
 import X_twitter from 'components/svg/X_twitter'
 import Button from 'ui/Button'
+import { SUPPORT_EMAIL, SUPPORT_MAILTO } from 'constants/contact'
 
 export default function Footer() {
   const navigate = useNavigate()
@@ -162,13 +163,14 @@ export default function Footer() {
                     How to play
                   </p>
                   <a
-                    href="mailto:support@everythingparlays.com"
-                    target="_blank"
+                    href={SUPPORT_MAILTO}
                     style={{ textDecoration: 'none' }}
                   >
-                    <p style={{ cursor: 'pointer' }}>Contact</p>
+                    <p style={{ cursor: 'pointer' }}>Contact &amp; support</p>
+                    <span className={styles['footer-support-email']}>
+                      {SUPPORT_EMAIL}
+                    </span>
                   </a>
-                  <p>Support</p>
                 </div>
                 <div className={styles['footer-social-section']}>
                   <h3>Social</h3>
@@ -284,11 +286,13 @@ export default function Footer() {
                   className={`${styles['footer-contact-container']} ${styles['links-row']}`}
                 >
                   <a
-                    href="mailto:support@everythingparlays.com"
-                    target="_blank"
+                    href={SUPPORT_MAILTO}
                     style={{ cursor: 'pointer', textDecoration: 'none' }}
                   >
-                    <p>Contact</p>
+                    <p>Contact &amp; support</p>
+                    <span className={styles['footer-support-email']}>
+                      {SUPPORT_EMAIL}
+                    </span>
                   </a>
                   <Button
                     disabled={true}
@@ -306,7 +310,8 @@ export default function Footer() {
                 <div
                   className={`${styles['footer-support-container']} ${styles['links-row']}`}
                 >
-                  <p>Support</p>
+                  {/* Support merged into "Contact & support" above; keep the grid cell */}
+                  <div />
                   <div>
                     <p>Available in All 50 States for Free-to-Play Contests</p>
                   </div>

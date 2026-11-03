@@ -229,6 +229,16 @@
   gap: var(--size-6);
 }
 
+/* Support email under "Contact & support": same muted colour as the
+   copyright / terms line */
+#footer .footer-support-email {
+  display: block;
+  margin-top: var(--size-1);
+  color: #848fbf;
+  font-size: var(--text-0);
+  white-space: nowrap;
+}
+
 #footer a,
 .footer-terms-container a {
   color: var(--white);
