@@ -1,0 +1,77 @@
+.wrap {
+  max-width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--biz-ink);
+  overflow-wrap: break-word;
+}
+
+/* size="xl": the closing title (final CTA) */
+.xl .title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 0.98;
+}
+
+/* section marker: the same short crimson -> gold rule as the hero's
+   credibility line */
+.title::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin-bottom: 0.9rem;
+  border-radius: 2px;
+  background: var(--biz-grad-rule);
+}
+
+.center .title::before {
+  margin-inline: auto;
+}
+
+/* global `span` rules set 1rem + grey text; reset for title lines */
+.line {
+  display: block;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.accent {
+  width: fit-content;
+  max-width: 100%;
+  padding-bottom: 0.08em;
+  background: var(--biz-grad-cta);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #f8ac1c;
+}
+
+.center .accent {
+  margin-inline: auto;
+}
+
+.lead {
+  margin-top: 1rem;
+  max-width: 36em;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--biz-ink-2);
+}
+
+.center .lead {
+  margin-inline: auto;
+}

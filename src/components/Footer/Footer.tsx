@@ -20,10 +20,16 @@ import Facebook from 'components/svg/Facebook'
 import Instagram from 'components/svg/Instagram'
 import X_twitter from 'components/svg/X_twitter'
 import Button from 'ui/Button'
+import { SUPPORT_EMAIL, SUPPORT_MAILTO } from 'constants/contact'
 
 export default function Footer() {
   const navigate = useNavigate()
   const location = useLocation()
+  // The For Business pages keep the footer's footprint but drop the consumer
+  // "Download to win" card (and its SportsBall) in favour of a blank column.
+  const isBusinessPage =
+    location.pathname === '/business' ||
+    location.pathname.startsWith('/business/')
 
   const [isMobile, setIsMobile] = useState(false)
 
@@ -43,86 +49,95 @@ export default function Footer() {
   }, [isMobile])
   return (
     <footer id={styles['footer']} data-section="contact">
-      {/* Left */}
-      {/* {!isMobile && ( */}
-      <div className={styles['left-container']}>
-        <div className={styles['left-container-content']}>
-          <div className={styles['title-container']}>
-            <DashedLine />
-            <h3>100% Free to Play</h3>
-            <DashedLine />
+      {isBusinessPage ? (
+        <div
+          className={`${styles['left-container']} ${styles['left-container-blank']}`}
+          aria-hidden="true"
+        />
+      ) : (
+        <>
+          {/* Left */}
+          {/* {!isMobile && ( */}
+          <div className={styles['left-container']}>
+            <div className={styles['left-container-content']}>
+              <div className={styles['title-container']}>
+                <DashedLine />
+                <h3>100% Free to Play</h3>
+                <DashedLine />
+              </div>
+              <div className={styles['download-to-container']}>
+                <h3>DOWNLOAD TO</h3>
+              </div>
+              <div>
+                <LineColumns />
+                <h1 className={styles['win-text']}>WIN</h1>
+                <LineColumns />
+              </div>
+              <div className={styles['app-store-buttons']}>
+                <a
+                  href="/download"
+                  onClick={() => {
+                    trackDownloadButton({
+                      page: location.pathname,
+                      location: 'footer',
+                      buttonText: 'Apple App Store',
+                    })
+                    const urlParams = new URLSearchParams(window.location.search)
+                    const referrer = urlParams.get('referrer')
+                    trackAppDownloadRedirect(referrer)
+                  }}
+                  className={styles['app-store-button']}
+                  aria-label="Apple App Store Button"
+                >
+                  {/* BUTTON SIZE CONTROL: Change these width/height values to adjust app store button sizes */}
+                  <AppleDownload
+                    width={isMobile ? 150 : 240}
+                    height={isMobile ? 48 : 74}
+                  />
+                </a>
+                <a
+                  href="https://docs.google.com/forms/d/1Rxwi9b8uKDTDZ2JcKnUrWLbTItRA6WZHWnE77X57kd0/viewform?edit_requested=true"
+                  target="_blank"
+                  onClick={() => {
+                    trackDownloadButton({
+                      page: location.pathname,
+                      location: 'footer',
+                      buttonText: 'Google Play Store',
+                    })
+                    const urlParams = new URLSearchParams(window.location.search)
+                    const referrer = urlParams.get('referrer')
+                    trackAppDownloadRedirect(referrer)
+                  }}
+                  className={styles['app-store-button']}
+                  aria-label="Google Play Store Button"
+                >
+                  {/* BUTTON SIZE CONTROL: Change these width/height values to adjust app store button sizes */}
+                  <GooglePlayDownload
+                    width={isMobile ? 120 : 160}
+                    height={isMobile ? 36 : 48}
+                  />
+                </a>
+              </div>
+              <div className={styles['qr-code-container']}>
+                <img
+                  src="/assets/images/qr-code-for-download-redirect.png"
+                  alt="QR code to download the app"
+                  style={{
+                    // width: 'min(80%, 256px)',
+                    height: 'auto',
+                    borderRadius: '10px',
+                  }} // Rounded corners
+                />
+              </div>
+            </div>
           </div>
-          <div className={styles['download-to-container']}>
-            <h3>DOWNLOAD TO</h3>
+          {/* Footer decorations positioned relative to footer, not left container */}
+          <div className={styles['footer-left-decorations']}>
+            <SportsBall />
           </div>
-          <div>
-            <LineColumns />
-            <h1 className={styles['win-text']}>WIN</h1>
-            <LineColumns />
-          </div>
-          <div className={styles['app-store-buttons']}>
-            <a
-              href="/download"
-              onClick={() => {
-                trackDownloadButton({
-                  page: location.pathname,
-                  location: 'footer',
-                  buttonText: 'Apple App Store',
-                })
-                const urlParams = new URLSearchParams(window.location.search)
-                const referrer = urlParams.get('referrer')
-                trackAppDownloadRedirect(referrer)
-              }}
-              className={styles['app-store-button']}
-              aria-label="Apple App Store Button"
-            >
-              {/* BUTTON SIZE CONTROL: Change these width/height values to adjust app store button sizes */}
-              <AppleDownload
-                width={isMobile ? 150 : 240}
-                height={isMobile ? 48 : 74}
-              />
-            </a>
-            <a
-              href="https://docs.google.com/forms/d/1Rxwi9b8uKDTDZ2JcKnUrWLbTItRA6WZHWnE77X57kd0/viewform?edit_requested=true"
-              target="_blank"
-              onClick={() => {
-                trackDownloadButton({
-                  page: location.pathname,
-                  location: 'footer',
-                  buttonText: 'Google Play Store',
-                })
-                const urlParams = new URLSearchParams(window.location.search)
-                const referrer = urlParams.get('referrer')
-                trackAppDownloadRedirect(referrer)
-              }}
-              className={styles['app-store-button']}
-              aria-label="Google Play Store Button"
-            >
-              {/* BUTTON SIZE CONTROL: Change these width/height values to adjust app store button sizes */}
-              <GooglePlayDownload
-                width={isMobile ? 120 : 160}
-                height={isMobile ? 36 : 48}
-              />
-            </a>
-          </div>
-          <div className={styles['qr-code-container']}>
-            <img
-              src="/assets/images/qr-code-for-download-redirect.png"
-              alt="QR code to download the app"
-              style={{
-                // width: 'min(80%, 256px)',
-                height: 'auto',
-                borderRadius: '10px',
-              }} // Rounded corners
-            />
-          </div>
-        </div>
-      </div>
-      {/* Footer decorations positioned relative to footer, not left container */}
-      <div className={styles['footer-left-decorations']}>
-        <SportsBall />
-      </div>
-      {/* )} */}
+          {/* )} */}
+        </>
+      )}
       {/* Right*/}
       <div className={styles['right-container']}>
         <div className={styles['footer-right-container-content']}>
@@ -162,13 +177,14 @@ export default function Footer() {
                     How to play
                   </p>
                   <a
-                    href="mailto:support@everythingparlays.com"
-                    target="_blank"
+                    href={SUPPORT_MAILTO}
                     style={{ textDecoration: 'none' }}
                   >
-                    <p style={{ cursor: 'pointer' }}>Contact</p>
+                    <p style={{ cursor: 'pointer' }}>Contact &amp; support</p>
+                    <span className={styles['footer-support-email']}>
+                      {SUPPORT_EMAIL}
+                    </span>
                   </a>
-                  <p>Support</p>
                 </div>
                 <div className={styles['footer-social-section']}>
                   <h3>Social</h3>
@@ -284,11 +300,13 @@ export default function Footer() {
                   className={`${styles['footer-contact-container']} ${styles['links-row']}`}
                 >
                   <a
-                    href="mailto:support@everythingparlays.com"
-                    target="_blank"
+                    href={SUPPORT_MAILTO}
                     style={{ cursor: 'pointer', textDecoration: 'none' }}
                   >
-                    <p>Contact</p>
+                    <p>Contact &amp; support</p>
+                    <span className={styles['footer-support-email']}>
+                      {SUPPORT_EMAIL}
+                    </span>
                   </a>
                   <Button
                     disabled={true}
@@ -306,7 +324,8 @@ export default function Footer() {
                 <div
                   className={`${styles['footer-support-container']} ${styles['links-row']}`}
                 >
-                  <p>Support</p>
+                  {/* Support merged into "Contact & support" above; keep the grid cell */}
+                  <div />
                   <div>
                     <p>Available in All 50 States for Free-to-Play Contests</p>
                   </div>

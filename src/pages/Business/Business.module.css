@@ -1,0 +1,13 @@
+.page {
+  padding-top: var(--header-height);
+  background-color: var(--primary);
+}
+
+/* The header is 70px tall below 768px, but its --header-height override is
+   set on :root while the 85px default lives on body, so body wins. Match
+   the real header height here. */
+@media (max-width: 767px) {
+  .page {
+    padding-top: 70px;
+  }
+}

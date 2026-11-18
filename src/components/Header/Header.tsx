@@ -212,6 +212,15 @@ export default function Header() {
                 }}>Contests</button>
               </li>
               <li>
+                <Link
+                  to="/business"
+                  className={styles['link']}
+                  aria-current={location.pathname === '/business' ? 'page' : undefined}
+                >
+                  For Business
+                </Link>
+              </li>
+              <li>
                 <Button
                   size="sm"
                   onClick={() => {
@@ -309,6 +318,16 @@ export default function Header() {
             <button className={styles['link']} onClick={() => {
               navigate('/contests')
             }}>Contests</button>
+          </li>
+          <li>
+            <Link
+              to="/business"
+              className={styles['link']}
+              aria-current={location.pathname === '/business' ? 'page' : undefined}
+              onClick={() => setExpanded(false)}
+            >
+              For Business
+            </Link>
           </li>
           <li>
             <Button

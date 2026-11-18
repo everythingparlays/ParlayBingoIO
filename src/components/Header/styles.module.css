@@ -157,6 +157,14 @@ header[aria-expanded='true'] #nav-expanded-bg {
   transition: all 0.4s ease;
 }
 
+/* Router <Link> items: match the <button> nav items (buttons are flex
+   boxes, so transform-on-hover and vertical padding apply) */
+a.link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 body[theme='light'] .link::after {
   opacity: 0.2;
 }

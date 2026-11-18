@@ -5,6 +5,7 @@ import AccordionItem from 'components/AccordionItem/AccordionItem'
 import Mail from 'components/svg/Mail'
 import React from 'react'
 import { LinearGradient } from 'ui/LinearGradient'
+import { SUPPORT_EMAIL, SUPPORT_MAILTO } from 'constants/contact'
 
 export default function HelpCenter() {
   return (
@@ -120,12 +121,12 @@ export default function HelpCenter() {
         <div id={styles['questions']}>
           <h2 className={styles['section-heading']}>Still have questions?</h2>
           <a
-            href="mailto:support@everythingparlays.com"
+            href={SUPPORT_MAILTO}
             id={styles['send-email']}
           >
             <Mail color="var(--blue800)" />
             <h3>Send us an Email</h3>
-            <a style={{ color: 'white' }}>support@everythingparlays.com</a>
+            <a style={{ color: 'white' }}>{SUPPORT_EMAIL}</a>
           </a>
         </div>
       </section>
